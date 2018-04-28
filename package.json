@@ -5,11 +5,15 @@
     "module": "dist/smartsettings.esm.js",
     "browser": "dist/smartsettings.umd.js",
     "devDependencies": {
+        "babel-plugin-transform-flow-strip-types": "^6.22.0",
         "babel-preset-env": "^1.6.0",
+        "esdoc": "^1.0.4",
+        "esdoc-standard-plugin": "^1.0.0",
         "flow-bin": "^0.71.0",
         "rollup": "^0.46.0",
         "rollup-plugin-babel": "^2.7.1",
         "rollup-plugin-commonjs": "^8.0.2",
+        "rollup-plugin-copy": "^0.2.3",
         "rollup-plugin-eslint": "^4.0.0",
         "rollup-plugin-flow": "^1.1.1",
         "rollup-plugin-node-resolve": "^3.0.0"
@@ -19,7 +23,8 @@
         "build": "rollup -c",
         "dev": "flow && rollup -c -w",
         "test": "node test/test.js",
-        "pretest": "npm run build"
+        "pretest": "npm run build",
+        "docs": "./node_modules/.bin/esdoc -c .esdoc.json"
     },
     "files": [
         "dist"

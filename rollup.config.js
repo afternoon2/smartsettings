@@ -6,15 +6,19 @@ import flow from 'rollup-plugin-flow'
 import pkg from './package.json'
 
 export default [
-    // browser-friendly UMD build
+    // UMD
     {
         entry: 'src/index.js',
         dest: pkg.browser,
         format: 'umd',
         moduleName: 'smartsettings',
         plugins: [
-            flow(),
+            flow({ pretty: true }),
             eslint({
+                parserOptions: {
+                    ecmaVersion: 6,
+                    sourceType: "module"
+                },
                 rules: {
                     "indent": [
                         "warn",
@@ -35,27 +39,22 @@ export default [
                     "no-console": ["warn"]
                 }
             }),
-            resolve(), // so Rollup can find `ms`
-            commonjs(), // so Rollup can convert `ms` to an ES module
+            resolve(),
             babel({
                 exclude: ['node_modules/**']
-            })
+            }),
+            commonjs()
         ]
     },
 
-    // CommonJS (for Node) and ES module (for bundlers) build.
-    // (We could have three entries in the configuration array
-    // instead of two, but it's quicker to generate multiple
-    // builds from a single configuration where possible, using
-    // the `targets` option which can specify `dest` and `format`)
+    // ES Module
     {
         entry: 'src/index.js',
-        external: ['ms'],
         targets: [
-            { dest: pkg.module, format: 'es' }
+            { dest: pkg.module, format: 'es' },
         ],
         plugins: [
-            flow(),
+            flow({ pretty: true }),
             babel({
                 exclude: ['node_modules/**']
             })

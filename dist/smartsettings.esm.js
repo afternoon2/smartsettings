@@ -2,8 +2,21 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-//      
+// 
 
+/**
+ * @class SmartSettings
+ * 
+ * @param {string} name describes newly created settings panel by giving a name to it
+ * @param {PositionObject} position sets initial position of the settings panel.
+ * @returns new SmartSettings instance
+ * 
+ * @example
+ * const mySettings = new SmartSettings('My Settings', {
+ *      top: 50,
+ *      left: 20
+ * })
+ */
 
 var SmartSettings = function () {
     function SmartSettings(name, position) {
