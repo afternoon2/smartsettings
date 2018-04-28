@@ -1,10 +1,24 @@
 {
-    "source": "./dist/docs",
     "destination": "./docs",
-    "excludes": ["\\.types\\.js$"],
+    "excludes": [
+        "\\.types\\.js$"
+    ],
     "plugins": [
         {
-            "name": "esdoc-standard-plugin"
+            "name": "esdoc-standard-plugin",
+            "option": {
+                "accessor": {
+                    "access": [
+                        "public",
+                        "protected",
+                        "private"
+                    ],
+                    "autoPrivate": true
+                }
+            }
+        },
+        {
+            "name": "esdoc-external-webapi-plugin"
         }
     ]
 }

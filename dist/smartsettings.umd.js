@@ -12,11 +12,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 /**
  * @class SmartSettings
- * 
- * @param {string} name describes newly created settings panel by giving a name to it
- * @param {PositionObject} position sets initial position of the settings panel.
- * @returns new SmartSettings instance
- * 
  * @example
  * const mySettings = new SmartSettings('My Settings', {
  *      top: 50,
@@ -25,27 +20,61 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  */
 
 var SmartSettings = function () {
-    function SmartSettings(name, position) {
-        _classCallCheck(this, SmartSettings);
 
-        this.name = name;
-        this.position = position;
-        this._panel = undefined;
+  /**
+   * @param {string} name - describes newly created settings panel by giving a name to it.
+   * @param {Object} position - sets initial position of the settings panel.
+   * @property {Node} panel - panel's parent div
+   */
+  function SmartSettings(name, position) {
+    _classCallCheck(this, SmartSettings);
+
+    /**
+     * @type {string}
+     */
+    this.name = name;
+
+    /**
+     * @type {string}
+     */
+    this.position = position;
+
+    /**
+     * @type {Node}
+     */
+    this.panel = document.createElement('div');
+  }
+
+  /**
+   * Updates panel's parent div element with class and id 
+   * @return {void}
+   * @private
+   */
+
+
+  _createClass(SmartSettings, [{
+    key: '_create',
+    value: function _create() {
+      this.panel.setAttribute('class', 'sm-panel');
+      this.panel.setAttribute('id', this.name);
     }
 
-    _createClass(SmartSettings, [{
-        key: "_create",
-        value: function _create() {}
-    }, {
-        key: "_delete",
-        value: function _delete() {
-            if (this._panel !== undefined && this._panel.parentElement) {
-                this._panel.parentElement.removeChild(this._panel);
-            }
-        }
-    }]);
+    /** 
+     * Deletes current settings panel by removing this._panel from the DOM tree.
+     * @return {void}
+     * @private
+     */
 
-    return SmartSettings;
+  }, {
+    key: '_delete',
+    value: function _delete() {
+      if (this.panel && this.panel.parentElement) {
+        this.panel.parentElement.removeChild(this.panel);
+      }
+    }
+  }]);
+
+  return SmartSettings;
 }();
 
 return SmartSettings;
