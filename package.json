@@ -7,6 +7,7 @@
     "devDependencies": {
         "babel-plugin-transform-flow-strip-types": "^6.22.0",
         "babel-preset-env": "^1.6.0",
+        "esdoc": "^1.0.4",
         "esdoc-external-webapi-plugin": "^1.0.0",
         "esdoc-standard-plugin": "^1.0.0",
         "flow-bin": "^0.71.0",
@@ -23,11 +24,11 @@
     },
     "scripts": {
         "flow": "flow",
-        "build": "gulp lib-build-umd && gulp lib-build-es && gulp lib-build-2docs && gulp create-docs",
+        "build": "gulp lib-build-umd && gulp lib-build-es && gulp lib-build-2docs && npm run docs",
         "dev": "flow && npm run build",
         "test": "node test/test.js",
         "pretest": "npm run build",
-        "docs": "gulp lib-build-2docs && gulp create-docs"
+        "docs": "./node_modules/.bin/esdoc -c .esdoc.json"
     },
     "files": [
         "dist"

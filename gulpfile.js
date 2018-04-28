@@ -6,8 +6,6 @@ const commonjs = require('rollup-plugin-commonjs')
 const eslint = require('rollup-plugin-eslint')
 const flow = require('rollup-plugin-flow')
 const types = require('gulp-flow-remove-types')
-const esdoc = require('gulp-esdoc')
-const esdocConfig = require('./.esdoc.json')
 const pkg = require('./package.json')
 
 gulp.task('lib-build-umd', () => {
@@ -76,10 +74,4 @@ gulp.task('lib-build-2docs', () => {
             pretty: true
         }))
         .pipe(gulp.dest('src/docs'))
-})
-
-gulp.task('create-docs', () => {
-    gulp.src('src/docs')
-        .pipe(esdoc(esdocConfig))
-        .pipe(gulp.dest('docs'))
 })

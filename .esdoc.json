@@ -1,4 +1,5 @@
 {
+    "source": "./src/docs",
     "destination": "./docs",
     "excludes": [
         "\\.types\\.js$"

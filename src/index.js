@@ -6,6 +6,9 @@ import type {
 
 /**
  * @class SmartSettings
+ * @param {string} name - describes newly created settings panel by giving a name to it.
+ * @param {Object} position - sets initial position of the settings panel.
+ * @property {Node} panel - panel's parent div
  * @example
  * const mySettings = new SmartSettings('My Settings', {
  *      top: 50,
