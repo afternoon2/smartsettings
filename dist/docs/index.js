@@ -1,8 +1,4 @@
-// @flow
-import type {
-    SmartSettingsObject,
-    PositionObject
-} from './smartsettings/types/SmartSettings.types'
+// 
 
 /**
  * @class SmartSettings
@@ -20,14 +16,11 @@ import type {
 
 class SmartSettings {
 
-    name: string
-    position: PositionObject
 
-    _panel: HTMLDivElement | void
 
     constructor(
-        name: string,
-        position: PositionObject
+        name,
+        position
     ) {
         this.name = name
         this.position = position

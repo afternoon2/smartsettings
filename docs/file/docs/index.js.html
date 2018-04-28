@@ -2,8 +2,8 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <base data-ice="baseUrl">
-  <title data-ice="title">Reference | smartsettings</title>
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">docs/index.js | smartsettings</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -34,53 +34,49 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1>References</h1>
+<div class="content" data-ice="content"><h1 data-ice="title">docs/index.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">// 
 
-<div class="identifiers-wrap">
-  <div>
-    
-  <div data-ice="dirSummaryWrap">
-      
-      <div data-ice="dirSummary"><table class="summary" data-ice="summary">
-  <thead><tr><td data-ice="title" colspan="3">summary</td></tr></thead>
-  <tbody>
-  
-  <tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          <span data-ice="kind-icon" class="kind-class">C</span>
-          
-          
-          <span class="code" data-ice="name"><span><a href="class/docs/index.js~SmartSettings.html">SmartSettings</a></span></span><span class="code" data-ice="signature">(name: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, position: <span>PositionObject</span>): <span>*</span></span>
-        </p>
-      </div>
-      <div>
-        
-        
-        
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-</tbody>
-</table>
-</div>
-    </div>
-</div>
+/**
+ * @class SmartSettings
+ * 
+ * @param {string} name describes newly created settings panel by giving a name to it
+ * @param {PositionObject} position sets initial position of the settings panel.
+ * @returns new SmartSettings instance
+ * 
+ * @example
+ * const mySettings = new SmartSettings(&apos;My Settings&apos;, {
+ *      top: 50,
+ *      left: 20
+ * })
+ */
 
-  
-</div>
+class SmartSettings {
+
+
+
+    constructor(
+        name,
+        position
+    ) {
+        this.name = name
+        this.position = position
+        this._panel = undefined
+    }
+
+    _create() {
+
+    }
+
+    _delete() {
+        if (this._panel !== undefined &amp;&amp; this._panel.parentElement) {
+            this._panel.parentElement.removeChild(this._panel)
+        }
+    }
+}
+
+export default SmartSettings</code></pre>
+
 </div>
 
 <footer class="footer">

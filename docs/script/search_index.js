@@ -1,290 +1,332 @@
 window.esdocSearchIndex = [
   [
-    "src/.external-ecmascript.js~array",
+    "smartsettings/docs/index.js~smartsettings",
+    "class/docs/index.js~SmartSettings.html",
+    "<span>SmartSettings</span> <span class=\"search-result-import-path\">smartsettings/docs/index.js</span>",
+    "class"
+  ],
+  [
+    "docs/.external-ecmascript.js~array",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
-    "src/.external-ecmascript.js~Array",
+    "docs/.external-ecmascript.js~Array",
     "external"
   ],
   [
-    "src/.external-ecmascript.js~arraybuffer",
+    "docs/.external-ecmascript.js~arraybuffer",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer",
-    "src/.external-ecmascript.js~ArrayBuffer",
+    "docs/.external-ecmascript.js~ArrayBuffer",
     "external"
   ],
   [
-    "src/.external-ecmascript.js~boolean",
+    "docs/.external-ecmascript.js~boolean",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
-    "src/.external-ecmascript.js~Boolean",
+    "docs/.external-ecmascript.js~Boolean",
     "external"
   ],
   [
-    "src/.external-ecmascript.js~dataview",
+    "docs/.external-ecmascript.js~dataview",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView",
-    "src/.external-ecmascript.js~DataView",
+    "docs/.external-ecmascript.js~DataView",
     "external"
   ],
   [
-    "src/.external-ecmascript.js~date",
+    "docs/.external-ecmascript.js~date",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date",
-    "src/.external-ecmascript.js~Date",
+    "docs/.external-ecmascript.js~Date",
     "external"
   ],
   [
-    "src/.external-ecmascript.js~error",
+    "docs/.external-ecmascript.js~error",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error",
-    "src/.external-ecmascript.js~Error",
+    "docs/.external-ecmascript.js~Error",
     "external"
   ],
   [
-    "src/.external-ecmascript.js~evalerror",
+    "docs/.external-ecmascript.js~evalerror",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError",
-    "src/.external-ecmascript.js~EvalError",
+    "docs/.external-ecmascript.js~EvalError",
     "external"
   ],
   [
-    "src/.external-ecmascript.js~float32array",
+    "docs/.external-ecmascript.js~float32array",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array",
-    "src/.external-ecmascript.js~Float32Array",
+    "docs/.external-ecmascript.js~Float32Array",
     "external"
   ],
   [
-    "src/.external-ecmascript.js~float64array",
+    "docs/.external-ecmascript.js~float64array",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array",
-    "src/.external-ecmascript.js~Float64Array",
+    "docs/.external-ecmascript.js~Float64Array",
     "external"
   ],
   [
-    "src/.external-ecmascript.js~function",
+    "docs/.external-ecmascript.js~function",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
-    "src/.external-ecmascript.js~Function",
+    "docs/.external-ecmascript.js~Function",
     "external"
   ],
   [
-    "src/.external-ecmascript.js~generator",
+    "docs/.external-ecmascript.js~generator",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator",
-    "src/.external-ecmascript.js~Generator",
+    "docs/.external-ecmascript.js~Generator",
     "external"
   ],
   [
-    "src/.external-ecmascript.js~generatorfunction",
+    "docs/.external-ecmascript.js~generatorfunction",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/GeneratorFunction",
-    "src/.external-ecmascript.js~GeneratorFunction",
+    "docs/.external-ecmascript.js~GeneratorFunction",
     "external"
   ],
   [
-    "src/.external-ecmascript.js~infinity",
+    "docs/.external-ecmascript.js~infinity",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity",
-    "src/.external-ecmascript.js~Infinity",
+    "docs/.external-ecmascript.js~Infinity",
     "external"
   ],
   [
-    "src/.external-ecmascript.js~int16array",
+    "docs/.external-ecmascript.js~int16array",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array",
-    "src/.external-ecmascript.js~Int16Array",
+    "docs/.external-ecmascript.js~Int16Array",
     "external"
   ],
   [
-    "src/.external-ecmascript.js~int32array",
+    "docs/.external-ecmascript.js~int32array",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array",
-    "src/.external-ecmascript.js~Int32Array",
+    "docs/.external-ecmascript.js~Int32Array",
     "external"
   ],
   [
-    "src/.external-ecmascript.js~int8array",
+    "docs/.external-ecmascript.js~int8array",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array",
-    "src/.external-ecmascript.js~Int8Array",
+    "docs/.external-ecmascript.js~Int8Array",
     "external"
   ],
   [
-    "src/.external-ecmascript.js~internalerror",
+    "docs/.external-ecmascript.js~internalerror",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError",
-    "src/.external-ecmascript.js~InternalError",
+    "docs/.external-ecmascript.js~InternalError",
     "external"
   ],
   [
-    "src/.external-ecmascript.js~json",
+    "docs/.external-ecmascript.js~json",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON",
-    "src/.external-ecmascript.js~JSON",
+    "docs/.external-ecmascript.js~JSON",
     "external"
   ],
   [
-    "src/.external-ecmascript.js~map",
+    "docs/.external-ecmascript.js~map",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
-    "src/.external-ecmascript.js~Map",
+    "docs/.external-ecmascript.js~Map",
     "external"
   ],
   [
-    "src/.external-ecmascript.js~nan",
+    "docs/.external-ecmascript.js~nan",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN",
-    "src/.external-ecmascript.js~NaN",
+    "docs/.external-ecmascript.js~NaN",
     "external"
   ],
   [
-    "src/.external-ecmascript.js~number",
+    "docs/.external-ecmascript.js~number",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
-    "src/.external-ecmascript.js~Number",
+    "docs/.external-ecmascript.js~Number",
     "external"
   ],
   [
-    "src/.external-ecmascript.js~object",
+    "docs/.external-ecmascript.js~object",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
-    "src/.external-ecmascript.js~Object",
+    "docs/.external-ecmascript.js~Object",
     "external"
   ],
   [
-    "src/.external-ecmascript.js~promise",
+    "docs/.external-ecmascript.js~promise",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
-    "src/.external-ecmascript.js~Promise",
+    "docs/.external-ecmascript.js~Promise",
     "external"
   ],
   [
-    "src/.external-ecmascript.js~proxy",
+    "docs/.external-ecmascript.js~proxy",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy",
-    "src/.external-ecmascript.js~Proxy",
+    "docs/.external-ecmascript.js~Proxy",
     "external"
   ],
   [
-    "src/.external-ecmascript.js~rangeerror",
+    "docs/.external-ecmascript.js~rangeerror",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError",
-    "src/.external-ecmascript.js~RangeError",
+    "docs/.external-ecmascript.js~RangeError",
     "external"
   ],
   [
-    "src/.external-ecmascript.js~referenceerror",
+    "docs/.external-ecmascript.js~referenceerror",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError",
-    "src/.external-ecmascript.js~ReferenceError",
+    "docs/.external-ecmascript.js~ReferenceError",
     "external"
   ],
   [
-    "src/.external-ecmascript.js~reflect",
+    "docs/.external-ecmascript.js~reflect",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect",
-    "src/.external-ecmascript.js~Reflect",
+    "docs/.external-ecmascript.js~Reflect",
     "external"
   ],
   [
-    "src/.external-ecmascript.js~regexp",
+    "docs/.external-ecmascript.js~regexp",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp",
-    "src/.external-ecmascript.js~RegExp",
+    "docs/.external-ecmascript.js~RegExp",
     "external"
   ],
   [
-    "src/.external-ecmascript.js~set",
+    "docs/.external-ecmascript.js~set",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set",
-    "src/.external-ecmascript.js~Set",
+    "docs/.external-ecmascript.js~Set",
     "external"
   ],
   [
-    "src/.external-ecmascript.js~string",
+    "docs/.external-ecmascript.js~string",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
-    "src/.external-ecmascript.js~String",
+    "docs/.external-ecmascript.js~String",
     "external"
   ],
   [
-    "src/.external-ecmascript.js~symbol",
+    "docs/.external-ecmascript.js~symbol",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
-    "src/.external-ecmascript.js~Symbol",
+    "docs/.external-ecmascript.js~Symbol",
     "external"
   ],
   [
-    "src/.external-ecmascript.js~syntaxerror",
+    "docs/.external-ecmascript.js~syntaxerror",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError",
-    "src/.external-ecmascript.js~SyntaxError",
+    "docs/.external-ecmascript.js~SyntaxError",
     "external"
   ],
   [
-    "src/.external-ecmascript.js~typeerror",
+    "docs/.external-ecmascript.js~typeerror",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError",
-    "src/.external-ecmascript.js~TypeError",
+    "docs/.external-ecmascript.js~TypeError",
     "external"
   ],
   [
-    "src/.external-ecmascript.js~urierror",
+    "docs/.external-ecmascript.js~urierror",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError",
-    "src/.external-ecmascript.js~URIError",
+    "docs/.external-ecmascript.js~URIError",
     "external"
   ],
   [
-    "src/.external-ecmascript.js~uint16array",
+    "docs/.external-ecmascript.js~uint16array",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array",
-    "src/.external-ecmascript.js~Uint16Array",
+    "docs/.external-ecmascript.js~Uint16Array",
     "external"
   ],
   [
-    "src/.external-ecmascript.js~uint32array",
+    "docs/.external-ecmascript.js~uint32array",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array",
-    "src/.external-ecmascript.js~Uint32Array",
+    "docs/.external-ecmascript.js~Uint32Array",
     "external"
   ],
   [
-    "src/.external-ecmascript.js~uint8array",
+    "docs/.external-ecmascript.js~uint8array",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array",
-    "src/.external-ecmascript.js~Uint8Array",
+    "docs/.external-ecmascript.js~Uint8Array",
     "external"
   ],
   [
-    "src/.external-ecmascript.js~uint8clampedarray",
+    "docs/.external-ecmascript.js~uint8clampedarray",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray",
-    "src/.external-ecmascript.js~Uint8ClampedArray",
+    "docs/.external-ecmascript.js~Uint8ClampedArray",
     "external"
   ],
   [
-    "src/.external-ecmascript.js~weakmap",
+    "docs/.external-ecmascript.js~weakmap",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap",
-    "src/.external-ecmascript.js~WeakMap",
+    "docs/.external-ecmascript.js~WeakMap",
     "external"
   ],
   [
-    "src/.external-ecmascript.js~weakset",
+    "docs/.external-ecmascript.js~weakset",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet",
-    "src/.external-ecmascript.js~WeakSet",
+    "docs/.external-ecmascript.js~WeakSet",
     "external"
   ],
   [
-    "src/.external-ecmascript.js~boolean",
+    "docs/.external-ecmascript.js~boolean",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
-    "src/.external-ecmascript.js~boolean",
+    "docs/.external-ecmascript.js~boolean",
     "external"
   ],
   [
-    "src/.external-ecmascript.js~function",
+    "docs/.external-ecmascript.js~function",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
-    "src/.external-ecmascript.js~function",
+    "docs/.external-ecmascript.js~function",
     "external"
   ],
   [
-    "src/.external-ecmascript.js~null",
+    "docs/.external-ecmascript.js~null",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null",
-    "src/.external-ecmascript.js~null",
+    "docs/.external-ecmascript.js~null",
     "external"
   ],
   [
-    "src/.external-ecmascript.js~number",
+    "docs/.external-ecmascript.js~number",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
-    "src/.external-ecmascript.js~number",
+    "docs/.external-ecmascript.js~number",
     "external"
   ],
   [
-    "src/.external-ecmascript.js~object",
+    "docs/.external-ecmascript.js~object",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
-    "src/.external-ecmascript.js~object",
+    "docs/.external-ecmascript.js~object",
     "external"
   ],
   [
-    "src/.external-ecmascript.js~string",
+    "docs/.external-ecmascript.js~string",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
-    "src/.external-ecmascript.js~string",
+    "docs/.external-ecmascript.js~string",
     "external"
   ],
   [
-    "src/.external-ecmascript.js~undefined",
+    "docs/.external-ecmascript.js~undefined",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined",
-    "src/.external-ecmascript.js~undefined",
+    "docs/.external-ecmascript.js~undefined",
     "external"
   ],
   [
-    "src/smartsettings/types/types.js",
-    "file/src/smartsettings/types/types.js.html",
-    "src/smartsettings/types/types.js",
+    "docs/index.js",
+    "file/docs/index.js.html",
+    "docs/index.js",
     "file"
+  ],
+  [
+    "docs/index.js~smartsettings#_create",
+    "class/docs/index.js~SmartSettings.html#instance-method-_create",
+    "docs/index.js~SmartSettings#_create",
+    "method"
+  ],
+  [
+    "docs/index.js~smartsettings#_delete",
+    "class/docs/index.js~SmartSettings.html#instance-method-_delete",
+    "docs/index.js~SmartSettings#_delete",
+    "method"
+  ],
+  [
+    "docs/index.js~smartsettings#_panel",
+    "class/docs/index.js~SmartSettings.html#instance-member-_panel",
+    "docs/index.js~SmartSettings#_panel",
+    "member"
+  ],
+  [
+    "docs/index.js~smartsettings#constructor",
+    "class/docs/index.js~SmartSettings.html#instance-constructor-constructor",
+    "docs/index.js~SmartSettings#constructor",
+    "method"
+  ],
+  [
+    "docs/index.js~smartsettings#name",
+    "class/docs/index.js~SmartSettings.html#instance-member-name",
+    "docs/index.js~SmartSettings#name",
+    "member"
+  ],
+  [
+    "docs/index.js~smartsettings#position",
+    "class/docs/index.js~SmartSettings.html#instance-member-position",
+    "docs/index.js~SmartSettings#position",
+    "member"
   ]
 ]

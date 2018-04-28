@@ -1,7 +1,7 @@
 // @flow
 import type {
     SmartSettingsObject,
-    PositionObject
+        PositionObject
 } from './smartsettings/types/SmartSettings.types'
 
 /**
