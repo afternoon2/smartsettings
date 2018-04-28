@@ -1,0 +1,15 @@
+[ignore]
+.*/build/.*
+.*/__tests__/.*
+.rollup.config.js
+
+[include]
+
+[libs]
+
+[lints]
+
+[options]
+munge_underscores=true
+
+[strict]

@@ -1,0 +1,27 @@
+{
+    "name": "smartsettings",
+    "version": "0.1.0",
+    "main": "dist/smartsettings.umd.js",
+    "module": "dist/smartsettings.esm.js",
+    "browser": "dist/smartsettings.umd.js",
+    "devDependencies": {
+        "babel-preset-env": "^1.6.0",
+        "flow-bin": "^0.71.0",
+        "rollup": "^0.46.0",
+        "rollup-plugin-babel": "^2.7.1",
+        "rollup-plugin-commonjs": "^8.0.2",
+        "rollup-plugin-eslint": "^4.0.0",
+        "rollup-plugin-flow": "^1.1.1",
+        "rollup-plugin-node-resolve": "^3.0.0"
+    },
+    "scripts": {
+        "flow": "flow",
+        "build": "rollup -c",
+        "dev": "flow && rollup -c -w",
+        "test": "node test/test.js",
+        "pretest": "npm run build"
+    },
+    "files": [
+        "dist"
+    ]
+}
