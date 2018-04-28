@@ -1,7 +1,7 @@
 [ignore]
-.*/build/.*
+.*/dist/.*
 .*/__tests__/.*
-.rollup.config.js
+.*\.config\.js
 
 [include]
 
