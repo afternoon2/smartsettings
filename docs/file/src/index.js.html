@@ -35,13 +35,8 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/index.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">// 
-
-/**
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
  * @class SmartSettings
- * @param {string} name - describes newly created settings panel by giving a name to it.
- * @param {Object} position - sets initial position of the settings panel.
- * @property {Node} panel - panel&apos;s parent div
  * @example
  * const mySettings = new SmartSettings(&apos;My Settings&apos;, {
  *      top: 50,
@@ -50,8 +45,6 @@
  */
 
 class SmartSettings {
-
-
     /**
      * @param {string} name - describes newly created settings panel by giving a name to it.
      * @param {Object} position - sets initial position of the settings panel.
@@ -75,27 +68,56 @@ class SmartSettings {
          * @type {Node}
          */
         this.panel = document.createElement(&apos;div&apos;)
+        this._create()
     }
 
     /**
-     * Updates panel&apos;s parent div element with class and id 
+     * Mounts panel in the DOM, immediately called after class instantiation
      * @return {void}
      * @private
      */
     _create() {
-        this.panel.setAttribute(&apos;class&apos;, &apos;sm-panel&apos;)
-        this.panel.setAttribute(&apos;id&apos;, this.name)
+        if (this.panel.childNodes.length &lt; 1) {
+            let attrs = {
+                &apos;class&apos;: &apos;sms-panel&apos;,
+                &apos;id&apos;: this.name
+            }
+            let panel = this._createElement(&apos;div&apos;, attrs)
+            this.panel = panel
+            document.body.appendChild(this.panel)
+        }
     }
 
     /** 
-     * Deletes settings panel by removing this.panel from the DOM tree.
+     * Unmounts settings panel from the DOM
      * @return {void}
      */
-    delete() {
+    destroy() {
         if (this.panel &amp;&amp; this.panel.parentElement) {
             this.panel.parentElement.removeChild(this.panel)
         }
     }
+
+    /**
+     * Creates
+     * @param {string} type - type of HTML element 
+     * @param {Object} attributes - attributes of HTML element
+     * @return {Node}
+     */
+    _createElement(type, attributes) {
+        let element = document.createElement(type)
+        for (let key in attributes) {
+            if (key === &apos;class&apos;)
+                element.classList.add.apply(
+                    element.classList,
+                    [attributes[key]]
+                ) 
+            else
+                element[key] = attributes[key]
+        }
+        return element
+    }
+
 }
 
 export default SmartSettings</code></pre>
