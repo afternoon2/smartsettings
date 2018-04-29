@@ -1,5 +1,24 @@
 # smartsettings
 
+## API sketch
+
+- SmartSettings.js
+    - Public methods
+        - @public `destroy()` - unmounts panel from the DOM
+        - @public `addSection('name')` - adds new section in the panel
+        - @public `removeSection(x'name')` - removes section from the panel
+        - @public `button(name: string, callback?: function)` - adds button to the panel/section
+        - @public `dropdown(name: string, items: array, callback?: function)` - adds dropdown to the panel/section
+        - @public `range(name: string, items: array, callback?: function)` - adds range to the panel/section
+        - @public `boolean(name: string, value: boolean, callback? function)` - adds checkbox to the panel/section
+        - @public `progressbar(name: string, items: number[currentValue, maxValue, displayValue?])` - adds progress bar to the panel/section
+        - @public `text(name: string, value: string, callback?: function)` - adds text input to the panel/section
+        - @public `textarea()`
+        - @public `html()`
+    - Private methods
+        - @private `_create()` - mounts panel in the DOM
+        - @private `_createElement()`
+
 ## TBD list:
 1. Project 
     - structure
