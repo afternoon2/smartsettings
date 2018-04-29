@@ -3,7 +3,7 @@
   "expectCount": 7,
   "actualCount": 7,
   "files": {
-    "docs/index.js": {
+    "flow-striped/index.js": {
       "expectCount": 7,
       "actualCount": 7,
       "undocumentLines": []

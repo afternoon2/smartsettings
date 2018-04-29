@@ -6,12 +6,11 @@ const commonjs = require('rollup-plugin-commonjs')
 const eslint = require('rollup-plugin-eslint')
 const flow = require('rollup-plugin-flow')
 const types = require('gulp-flow-remove-types')
-const watch = require('gulp-watch')
-const plumber = require('gulp-plumber')
 const exec = require('gulp-exec')
+const rename = require('gulp-rename')
 
 const _flowConf = { pretty: true }
-const _babelConf = { exclude: ['node_modules/**']}
+const _babelConf = {  }
 const _eslintConf = {
     parserOptions: {
         ecmaVersion: 6,
@@ -37,33 +36,33 @@ const _eslintConf = {
         "no-console": ["warn"]
     }
 }
-const _onError = err => console.err(err)
 
-gulp.task('lib-build', () => {
-    gulp.src('src/index.js')
+gulp.task('lib-build-dev', () => {
+    gulp.src('src/index.template.js')
         .pipe(rollup({
             plugins: [
                 flow(_flowConf),
                 eslint(_eslintConf),
+                babel(_babelConf),
                 commonjs()
             ]
         }, {
             file: 'smartsettings.umd.js',
             format: 'umd'
-        }
-        ))
-        .pipe(gulp.dest('dist'))
+        }))
+        .pipe(gulp.dest('./dist'))
 })
 
 gulp.task('lib-build-docs', () => {
-    gulp.src('src/index.js')
+    gulp.src('src/index.template.js')
         .pipe(types(_flowConf))
-        .pipe(gulp.dest('src/docs'))
-        .pipe(exec('./node_modules/.bin/esdoc -c .esdoc.json'))
+        .pipe(rename({
+            dirname: 'flow-striped',
+            basename: 'index',
+            extname: '.js'
+        }))
+        .pipe(gulp.dest('./src'))
+        .pipe(exec('./node_modules/.bin/esdoc -c ./.esdoc.json'))
         .pipe(exec.reporter())
         .pipe(gulp.dest('./docs'))
-})
-
-gulp.task('watch-n-build', () => {
-    return gulp.watch('src/index.js', ['lib-build', 'lib-build-docs'])
 })

@@ -28,12 +28,12 @@ class SmartSettings {
          * @type {string}
          */
         this.name = name
-        
+
         /**
          * @type {string}
          */
         this.position = position
-        
+
         /**
          * @type {Node}
          */
