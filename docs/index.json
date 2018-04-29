@@ -663,7 +663,7 @@
     "__docId__": 57,
     "kind": "file",
     "name": "docs/index.js",
-    "content": "// \n\n/**\n * @class SmartSettings\n * @param {string} name - describes newly created settings panel by giving a name to it.\n * @param {Object} position - sets initial position of the settings panel.\n * @property {Node} panel - panel's parent div\n * @example\n * const mySettings = new SmartSettings('My Settings', {\n *      top: 50,\n *      left: 20\n * })\n */\n\nclass SmartSettings {\n\n\n    /**\n     * @param {string} name - describes newly created settings panel by giving a name to it.\n     * @param {Object} position - sets initial position of the settings panel.\n     * @property {Node} panel - panel's parent div\n     */\n    constructor(\n        name,\n        position\n    ) {\n        /**\n         * @type {string}\n         */\n        this.name = name\n        \n        /**\n         * @type {string}\n         */\n        this.position = position\n        \n        /**\n         * @type {Node}\n         */\n        this.panel = document.createElement('div')\n    }\n\n    /**\n     * Updates panel's parent div element with class and id \n     * @return {void}\n     * @private\n     */\n    _create() {\n        this.panel.setAttribute('class', 'sm-panel')\n        this.panel.setAttribute('id', this.name)\n    }\n\n    /** \n     * Deletes current settings panel by removing this._panel from the DOM tree.\n     * @return {void}\n     * @private\n     */\n    _delete() {\n        if (this.panel && this.panel.parentElement) {\n            this.panel.parentElement.removeChild(this.panel)\n        }\n    }\n}\n\nexport default SmartSettings",
+    "content": "// \n\n/**\n * @class SmartSettings\n * @param {string} name - describes newly created settings panel by giving a name to it.\n * @param {Object} position - sets initial position of the settings panel.\n * @property {Node} panel - panel's parent div\n * @example\n * const mySettings = new SmartSettings('My Settings', {\n *      top: 50,\n *      left: 20\n * })\n */\n\nclass SmartSettings {\n\n\n    /**\n     * @param {string} name - describes newly created settings panel by giving a name to it.\n     * @param {Object} position - sets initial position of the settings panel.\n     * @property {Node} panel - panel's parent div\n     */\n    constructor(\n        name,\n        position\n    ) {\n        /**\n         * @type {string}\n         */\n        this.name = name\n        \n        /**\n         * @type {string}\n         */\n        this.position = position\n        \n        /**\n         * @type {Node}\n         */\n        this.panel = document.createElement('div')\n    }\n\n    /**\n     * Updates panel's parent div element with class and id \n     * @return {void}\n     * @private\n     */\n    _create() {\n        this.panel.setAttribute('class', 'sm-panel')\n        this.panel.setAttribute('id', this.name)\n    }\n\n    /** \n     * Deletes settings panel by removing this.panel from the DOM tree.\n     * @return {void}\n     */\n    delete() {\n        if (this.panel && this.panel.parentElement) {\n            this.panel.parentElement.removeChild(this.panel)\n        }\n    }\n}\n\nexport default SmartSettings",
     "static": true,
     "longname": "/Users/jakubantolak/Documents/GitHub/smartsettings/src/docs/index.js",
     "access": "public",
@@ -857,15 +857,15 @@
   {
     "__docId__": 64,
     "kind": "method",
-    "name": "_delete",
+    "name": "delete",
     "memberof": "docs/index.js~SmartSettings",
     "generator": false,
     "async": false,
     "static": false,
-    "longname": "docs/index.js~SmartSettings#_delete",
-    "access": "private",
-    "description": "Deletes current settings panel by removing this._panel from the DOM tree.",
-    "lineNumber": 58,
+    "longname": "docs/index.js~SmartSettings#delete",
+    "access": "public",
+    "description": "Deletes settings panel by removing this.panel from the DOM tree.",
+    "lineNumber": 57,
     "return": {
       "nullable": null,
       "types": [
@@ -886,7 +886,7 @@
   },
   {
     "kind": "packageJSON",
-    "content": "{\n    \"name\": \"smartsettings\",\n    \"version\": \"0.1.0\",\n    \"main\": \"dist/smartsettings.umd.js\",\n    \"module\": \"dist/smartsettings.esm.js\",\n    \"browser\": \"smartsettings.umd.js\",\n    \"devDependencies\": {\n        \"babel-plugin-transform-flow-strip-types\": \"^6.22.0\",\n        \"babel-preset-env\": \"^1.6.0\",\n        \"esdoc\": \"^1.0.4\",\n        \"esdoc-external-webapi-plugin\": \"^1.0.0\",\n        \"esdoc-standard-plugin\": \"^1.0.0\",\n        \"flow-bin\": \"^0.71.0\",\n        \"gulp\": \"^3.9.1\",\n        \"gulp-better-rollup\": \"^3.1.0\",\n        \"gulp-esdoc\": \"^0.4.1\",\n        \"gulp-exec\": \"^3.0.1\",\n        \"gulp-flow-remove-types\": \"^1.0.0\",\n        \"gulp-plumber\": \"^1.2.0\",\n        \"gulp-watch\": \"^5.0.0\",\n        \"rollup-plugin-babel\": \"^2.7.1\",\n        \"rollup-plugin-commonjs\": \"^8.0.2\",\n        \"rollup-plugin-copy\": \"^0.2.3\",\n        \"rollup-plugin-eslint\": \"^4.0.0\",\n        \"rollup-plugin-flow\": \"^1.1.1\",\n        \"rollup-plugin-node-resolve\": \"^3.0.0\"\n    },\n    \"scripts\": {\n        \"flow\": \"flow\",\n        \"build\": \"gulp lib-build && gulp lib-build-docs\",\n        \"dev\": \"npm run build\",\n        \"test\": \"node test/test.js\",\n        \"pretest\": \"npm run build\",\n        \"docs\": \"gulp lib-build-docs\"\n    },\n    \"files\": [\n        \"dist\"\n    ]\n}\n",
+    "content": "{\n    \"name\": \"smartsettings\",\n    \"version\": \"0.1.0\",\n    \"main\": \"dist/smartsettings.umd.js\",\n    \"devDependencies\": {\n        \"babel-plugin-transform-flow-strip-types\": \"^6.22.0\",\n        \"babel-preset-env\": \"^1.6.0\",\n        \"esdoc\": \"^1.0.4\",\n        \"esdoc-external-webapi-plugin\": \"^1.0.0\",\n        \"esdoc-standard-plugin\": \"^1.0.0\",\n        \"flow-bin\": \"^0.71.0\",\n        \"gulp\": \"^3.9.1\",\n        \"gulp-better-rollup\": \"^3.1.0\",\n        \"gulp-esdoc\": \"^0.4.1\",\n        \"gulp-exec\": \"^3.0.1\",\n        \"gulp-flow-remove-types\": \"^1.0.0\",\n        \"gulp-plumber\": \"^1.2.0\",\n        \"gulp-watch\": \"^5.0.0\",\n        \"rollup-plugin-babel\": \"^2.7.1\",\n        \"rollup-plugin-commonjs\": \"^8.0.2\",\n        \"rollup-plugin-copy\": \"^0.2.3\",\n        \"rollup-plugin-eslint\": \"^4.0.0\",\n        \"rollup-plugin-flow\": \"^1.1.1\",\n        \"rollup-plugin-node-resolve\": \"^3.0.0\"\n    },\n    \"scripts\": {\n        \"flow\": \"flow\",\n        \"build\": \"gulp lib-build && gulp lib-build-docs\",\n        \"dev\": \"gulp watch-n-build\",\n        \"test\": \"node test/test.js\",\n        \"pretest\": \"npm run build\",\n        \"docs\": \"gulp lib-build-docs\"\n    },\n    \"files\": [\n        \"dist\"\n    ]\n}\n",
     "longname": "/Users/jakubantolak/Documents/GitHub/smartsettings/package.json",
     "name": "package.json",
     "static": true,

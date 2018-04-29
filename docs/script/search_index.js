@@ -348,15 +348,15 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "docs/index.js~smartsettings#_delete",
-    "class/docs/index.js~SmartSettings.html#instance-method-_delete",
-    "docs/index.js~SmartSettings#_delete",
-    "method"
-  ],
-  [
     "docs/index.js~smartsettings#constructor",
     "class/docs/index.js~SmartSettings.html#instance-constructor-constructor",
     "docs/index.js~SmartSettings#constructor",
+    "method"
+  ],
+  [
+    "docs/index.js~smartsettings#delete",
+    "class/docs/index.js~SmartSettings.html#instance-method-delete",
+    "docs/index.js~SmartSettings#delete",
     "method"
   ],
   [

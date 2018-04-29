@@ -2,8 +2,6 @@
     "name": "smartsettings",
     "version": "0.1.0",
     "main": "dist/smartsettings.umd.js",
-    "module": "dist/smartsettings.esm.js",
-    "browser": "smartsettings.umd.js",
     "devDependencies": {
         "babel-plugin-transform-flow-strip-types": "^6.22.0",
         "babel-preset-env": "^1.6.0",
@@ -28,7 +26,7 @@
     "scripts": {
         "flow": "flow",
         "build": "gulp lib-build && gulp lib-build-docs",
-        "dev": "npm run build",
+        "dev": "gulp watch-n-build",
         "test": "node test/test.js",
         "pretest": "npm run build",
         "docs": "gulp lib-build-docs"

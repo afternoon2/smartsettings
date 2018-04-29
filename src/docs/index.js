@@ -51,11 +51,10 @@ class SmartSettings {
     }
 
     /** 
-     * Deletes current settings panel by removing this._panel from the DOM tree.
+     * Deletes settings panel by removing this.panel from the DOM tree.
      * @return {void}
-     * @private
      */
-    _delete() {
+    delete() {
         if (this.panel && this.panel.parentElement) {
             this.panel.parentElement.removeChild(this.panel)
         }
