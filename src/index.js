@@ -6,9 +6,6 @@ import type {
 
 /**
  * @class SmartSettings
- * @param {string} name - describes newly created settings panel by giving a name to it.
- * @param {Object} position - sets initial position of the settings panel.
- * @property {?Node} panel - panel's parent div
  * @example
  * const mySettings = new SmartSettings('My Settings', {
  *      top: 50,
@@ -20,14 +17,14 @@ class SmartSettings {
 
     name: string
     position: PositionObject
-    panel: HTMLDivElement | null
+    panel: HTMLDivElement
     _create: () => void
     delete: () => void
 
     /**
      * @param {string} name - describes newly created settings panel by giving a name to it.
      * @param {Object} position - sets initial position of the settings panel.
-     * @property {?Node} panel - panel's parent div
+     * @property {Node} panel - panel's parent div
      */
     constructor(
         name: string,
@@ -44,27 +41,27 @@ class SmartSettings {
         this.position = position
 
         /**
-         * @type {?Node}
+         * @type {Node}
          */
-        this.panel = null
+        this.panel = document.createElement('div')
         this._create()
     }
 
     /**
-     * Creates panel's parent div element with class and id 
+     * Mounts panel in the DOM, immediately called after class instantiation
      * @return {void}
      * @private
      */
     _create() {
-        if (this.panel == null) {
-            this.panel = document.createElement('div')
+        if (this.panel.childNodes.length < 1) {
             this.panel.setAttribute('class', 'sms-panel')
             this.panel.setAttribute('id', this.name)
+            document.body.appendChild(this.panel)
         }
     }
 
     /** 
-     * Deletes settings panel by removing this.panel from the DOM tree.
+     * Unmounts settings panel from the DOM
      * @return {void}
      */
     delete() {
