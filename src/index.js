@@ -56,9 +56,9 @@ class SmartSettings {
      * @private
      */
     _create() {
-        if (this.panel === null) {
+        if (this.panel == null) {
             this.panel = document.createElement('div')
-            this.panel.setAttribute('class', 'smartsettings-panel')
+            this.panel.setAttribute('class', 'sms-panel')
             this.panel.setAttribute('id', this.name)
         }
     }

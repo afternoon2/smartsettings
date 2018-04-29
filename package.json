@@ -15,17 +15,21 @@
         "gulp-exec": "^3.0.1",
         "gulp-flow-remove-types": "^1.0.0",
         "gulp-rename": "^1.2.2",
+        "gulp-sass": "^4.0.1",
+        "rollup": "^0.58.2",
         "rollup-plugin-babel": "^2.7.1",
+        "rollup-plugin-cleanup": "^2.0.1",
         "rollup-plugin-commonjs": "^8.0.2",
         "rollup-plugin-copy": "^0.2.3",
         "rollup-plugin-eslint": "^4.0.0",
         "rollup-plugin-flow": "^1.1.1",
-        "rollup-plugin-node-resolve": "^3.0.0"
+        "rollup-plugin-node-resolve": "^3.0.0",
+        "rollup-plugin-uglify": "^3.0.0"
     },
     "scripts": {
         "flow": "flow",
-        "build": "gulp lib-build-dev",
-        "dev": "gulp lib-build-dev && gulp lib-build-docs",
+        "build": "gulp lib-build-dev && gulp compile-sass",
+        "dev": "gulp lib-build-dev && gulp compile-sass && gulp lib-build-docs",
         "test": "node test/test.js",
         "pretest": "npm run build",
         "docs": "gulp lib-build-docs"
