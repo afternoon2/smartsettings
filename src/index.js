@@ -1,4 +1,8 @@
-// 
+// @flow
+import type {
+    SmartSettingsObject,
+        PositionObject
+} from './components/types/types'
 
 /**
  * @class SmartSettings
@@ -14,6 +18,11 @@
 
 class SmartSettings {
 
+    name: string
+    position: PositionObject
+    panel: HTMLDivElement
+    _create: () => void
+    _delete: () => void
 
     /**
      * @param {string} name - describes newly created settings panel by giving a name to it.
@@ -21,8 +30,8 @@ class SmartSettings {
      * @property {Node} panel - panel's parent div
      */
     constructor(
-        name,
-        position
+        name: string,
+        position: PositionObject
     ) {
         /**
          * @type {string}

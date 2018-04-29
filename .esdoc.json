@@ -1,10 +1,8 @@
 {
-    "source": "./src/flow-striped",
+    "source": "./flow-striped",
     "destination": "./docs",
     "excludes": [
-        "\\.types\\.js$",
-        "\\.template\\.js$",
-        "./components/"
+        "\\.types\\.js$"
     ],
     "plugins": [
         {

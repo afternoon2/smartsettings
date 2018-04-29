@@ -38,7 +38,7 @@ const _eslintConf = {
 }
 
 gulp.task('lib-build-dev', () => {
-    gulp.src('src/index.template.js')
+    gulp.src('src/index.js')
         .pipe(rollup({
             plugins: [
                 flow(_flowConf),
@@ -54,14 +54,13 @@ gulp.task('lib-build-dev', () => {
 })
 
 gulp.task('lib-build-docs', () => {
-    gulp.src('src/index.template.js')
+    gulp.src('src/index.js')
         .pipe(types(_flowConf))
         .pipe(rename({
-            dirname: 'flow-striped',
             basename: 'index',
             extname: '.js'
         }))
-        .pipe(gulp.dest('./src'))
+        .pipe(gulp.dest('./flow-striped'))
         .pipe(exec('./node_modules/.bin/esdoc -c ./.esdoc.json'))
         .pipe(exec.reporter())
         .pipe(gulp.dest('./docs'))
