@@ -663,7 +663,7 @@
     "__docId__": 57,
     "kind": "file",
     "name": "flow-striped/index.js",
-    "content": "// \n\n/**\n * @class SmartSettings\n * @param {string} name - describes newly created settings panel by giving a name to it.\n * @param {Object} position - sets initial position of the settings panel.\n * @property {Node} panel - panel's parent div\n * @example\n * const mySettings = new SmartSettings('My Settings', {\n *      top: 50,\n *      left: 20\n * })\n */\n\nclass SmartSettings {\n\n\n    /**\n     * @param {string} name - describes newly created settings panel by giving a name to it.\n     * @param {Object} position - sets initial position of the settings panel.\n     * @property {Node} panel - panel's parent div\n     */\n    constructor(\n        name,\n        position\n    ) {\n        /**\n         * @type {string}\n         */\n        this.name = name\n\n        /**\n         * @type {string}\n         */\n        this.position = position\n\n        /**\n         * @type {Node}\n         */\n        this.panel = document.createElement('div')\n    }\n\n    /**\n     * Updates panel's parent div element with class and id \n     * @return {void}\n     * @private\n     */\n    _create() {\n        this.panel.setAttribute('class', 'sm-panel')\n        this.panel.setAttribute('id', this.name)\n    }\n\n    /** \n     * Deletes settings panel by removing this.panel from the DOM tree.\n     * @return {void}\n     */\n    delete() {\n        if (this.panel && this.panel.parentElement) {\n            this.panel.parentElement.removeChild(this.panel)\n        }\n    }\n}\n\nexport default SmartSettings",
+    "content": "// \n\n/**\n * @class SmartSettings\n * @param {string} name - describes newly created settings panel by giving a name to it.\n * @param {Object} position - sets initial position of the settings panel.\n * @property {?Node} panel - panel's parent div\n * @example\n * const mySettings = new SmartSettings('My Settings', {\n *      top: 50,\n *      left: 20\n * })\n */\n\nclass SmartSettings {\n\n\n    /**\n     * @param {string} name - describes newly created settings panel by giving a name to it.\n     * @param {Object} position - sets initial position of the settings panel.\n     * @property {?Node} panel - panel's parent div\n     */\n    constructor(\n        name,\n        position\n    ) {\n        /**\n         * @type {string}\n         */\n        this.name = name\n\n        /**\n         * @type {string}\n         */\n        this.position = position\n\n        /**\n         * @type {?Node}\n         */\n        this.panel = null\n        this._create()\n    }\n\n    /**\n     * Creates panel's parent div element with class and id \n     * @return {void}\n     * @private\n     */\n    _create() {\n        if (this.panel === null) {\n            this.panel = document.createElement('div')\n            this.panel.setAttribute('class', 'smartsettings-panel')\n            this.panel.setAttribute('id', this.name)\n        }\n    }\n\n    /** \n     * Deletes settings panel by removing this.panel from the DOM tree.\n     * @return {void}\n     */\n    delete() {\n        if (this.panel && this.panel.parentElement) {\n            this.panel.parentElement.removeChild(this.panel)\n        }\n    }\n}\n\nexport default SmartSettings",
     "static": true,
     "longname": "/Users/jakubantolak/Documents/GitHub/smartsettings/flow-striped/index.js",
     "access": "public",
@@ -716,7 +716,7 @@
     ],
     "properties": [
       {
-        "nullable": null,
+        "nullable": true,
         "types": [
           "Node"
         ],
@@ -764,7 +764,7 @@
     ],
     "properties": [
       {
-        "nullable": null,
+        "nullable": true,
         "types": [
           "Node"
         ],
@@ -824,7 +824,7 @@
     "description": "",
     "lineNumber": 40,
     "type": {
-      "nullable": null,
+      "nullable": true,
       "types": [
         "Node"
       ],
@@ -842,8 +842,8 @@
     "static": false,
     "longname": "flow-striped/index.js~SmartSettings#_create",
     "access": "private",
-    "description": "Updates panel's parent div element with class and id ",
-    "lineNumber": 48,
+    "description": "Creates panel's parent div element with class and id ",
+    "lineNumber": 49,
     "return": {
       "nullable": null,
       "types": [
@@ -855,7 +855,7 @@
     "params": []
   },
   {
-    "__docId__": 64,
+    "__docId__": 65,
     "kind": "method",
     "name": "delete",
     "memberof": "flow-striped/index.js~SmartSettings",
@@ -865,7 +865,7 @@
     "longname": "flow-striped/index.js~SmartSettings#delete",
     "access": "public",
     "description": "Deletes settings panel by removing this.panel from the DOM tree.",
-    "lineNumber": 57,
+    "lineNumber": 61,
     "return": {
       "nullable": null,
       "types": [
@@ -878,7 +878,7 @@
   },
   {
     "kind": "index",
-    "content": "# smartsettings\n\n## TBD list:\n1. Project structure\n    - Having flow-striped source files causes problems with excluding flow containing files from esdoc documentation process. Move flow-striped sources to the `./docs` or separate directory, like `./no-flow` or `./flow-striped`.\n    - Provide testing environment for unit and UI tests.\n2. Core functionality\n    - Provide stylesheets for `SmartSettings`:\n        - suggested preprocessor: `sass` (bracket or indentation-driven notation)\n    - ",
+    "content": "# smartsettings\n\n## TBD list:\n1. Project structure\n    - ~~Having flow-striped source files causes problems with excluding flow containing files from esdoc documentation process. Move flow-striped sources to the `./docs` or separate directory, like `./no-flow` or `./flow-striped`.~~\n    - Provide testing environment for unit and UI tests.\n2. Core functionality\n    - Provide stylesheets for `SmartSettings`:\n        - suggested preprocessor: `sass` (bracket or indentation-driven notation)\n    - ",
     "longname": "/Users/jakubantolak/Documents/GitHub/smartsettings/README.md",
     "name": "./README.md",
     "static": true,

@@ -4,7 +4,7 @@
  * @class SmartSettings
  * @param {string} name - describes newly created settings panel by giving a name to it.
  * @param {Object} position - sets initial position of the settings panel.
- * @property {Node} panel - panel's parent div
+ * @property {?Node} panel - panel's parent div
  * @example
  * const mySettings = new SmartSettings('My Settings', {
  *      top: 50,
@@ -18,7 +18,7 @@ class SmartSettings {
     /**
      * @param {string} name - describes newly created settings panel by giving a name to it.
      * @param {Object} position - sets initial position of the settings panel.
-     * @property {Node} panel - panel's parent div
+     * @property {?Node} panel - panel's parent div
      */
     constructor(
         name,
@@ -35,19 +35,23 @@ class SmartSettings {
         this.position = position
 
         /**
-         * @type {Node}
+         * @type {?Node}
          */
-        this.panel = document.createElement('div')
+        this.panel = null
+        this._create()
     }
 
     /**
-     * Updates panel's parent div element with class and id 
+     * Creates panel's parent div element with class and id 
      * @return {void}
      * @private
      */
     _create() {
-        this.panel.setAttribute('class', 'sm-panel')
-        this.panel.setAttribute('id', this.name)
+        if (this.panel === null) {
+            this.panel = document.createElement('div')
+            this.panel.setAttribute('class', 'smartsettings-panel')
+            this.panel.setAttribute('id', this.name)
+        }
     }
 
     /** 
