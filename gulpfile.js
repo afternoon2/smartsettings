@@ -4,44 +4,23 @@ const babel = require('rollup-plugin-babel')
 const resolve = require('rollup-plugin-node-resolve')
 const commonjs = require('rollup-plugin-commonjs')
 const eslint = require('rollup-plugin-eslint')
+const eslintConfig = require('./eslint.config')
 const flow = require('rollup-plugin-flow')
 const types = require('gulp-flow-remove-types')
+const watch = require('gulp-watch')
+const plumber = require('gulp-plumber')
 const pkg = require('./package.json')
+const exec = require('gulp-exec')
 
-gulp.task('lib-build-umd', () => {
+const _flowConf = { pretty: true }
+const _babelConf = { exclude: ['node_modules/**']}
+
+gulp.task('lib-build', () => {
     gulp.src('src/index.js')
         .pipe(rollup({
             plugins: [
-                flow({ pretty: true }),
-                eslint({
-                    parserOptions: {
-                        ecmaVersion: 6,
-                        sourceType: "module"
-                    },
-                    rules: {
-                        "indent": [
-                            "warn",
-                            4
-                        ],
-                        "linebreak-style": [
-                            "warn",
-                            "unix"
-                        ],
-                        "quotes": [
-                            "warn",
-                            "single"
-                        ],
-                        "semi": [
-                            "warn",
-                            "never"
-                        ],
-                        "no-console": ["warn"]
-                    }
-                }),
-                resolve(),
-                babel({
-                    exclude: ['node_modules/**']
-                }),
+                flow(_flowConf),
+                eslint(eslintConfig),
                 commonjs()
             ]
         }, {
@@ -52,26 +31,11 @@ gulp.task('lib-build-umd', () => {
         .pipe(gulp.dest('dist'))
 })
 
-gulp.task('lib-build-es', () => {
+gulp.task('lib-build-docs', () => {
     gulp.src('src/index.js')
-        .pipe(rollup({
-            plugins: [
-                flow({ pretty: true }),
-                babel({
-                    exclude: ['node_modules/**']
-                })
-            ]
-        }, {
-            file: 'smartsettings.esm.js',
-            format: 'es'
-        }
-    ))
-})
-
-gulp.task('lib-build-2docs', () => {
-    gulp.src('src/index.js')
-        .pipe(types({
-            pretty: true
-        }))
+        .pipe(types(_flowConf))
         .pipe(gulp.dest('src/docs'))
+        .pipe(exec('./node_modules/.bin/esdoc -c .esdoc.json'))
+        .pipe(exec.reporter())
+        .pipe(gulp.dest('./docs'))
 })

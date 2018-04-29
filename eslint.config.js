@@ -1,0 +1,25 @@
+module.exports = {
+    parserOptions: {
+        ecmaVersion: 6,
+        sourceType: "module"
+    },
+    rules: {
+        "indent": [
+            "warn",
+            4
+        ],
+        "linebreak-style": [
+            "warn",
+            "unix"
+        ],
+        "quotes": [
+            "warn",
+            "single"
+        ],
+        "semi": [
+            "warn",
+            "never"
+        ],
+        "no-console": ["warn"]
+    }
+}

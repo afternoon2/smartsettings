@@ -14,7 +14,10 @@
         "gulp": "^3.9.1",
         "gulp-better-rollup": "^3.1.0",
         "gulp-esdoc": "^0.4.1",
+        "gulp-exec": "^3.0.1",
         "gulp-flow-remove-types": "^1.0.0",
+        "gulp-plumber": "^1.2.0",
+        "gulp-watch": "^5.0.0",
         "rollup-plugin-babel": "^2.7.1",
         "rollup-plugin-commonjs": "^8.0.2",
         "rollup-plugin-copy": "^0.2.3",
@@ -24,11 +27,11 @@
     },
     "scripts": {
         "flow": "flow",
-        "build": "gulp lib-build-umd && gulp lib-build-es && gulp lib-build-2docs && npm run docs",
-        "dev": "flow && npm run build",
+        "build": "gulp lib-build && gulp lib-build-docs",
+        "dev": "npm run build",
         "test": "node test/test.js",
         "pretest": "npm run build",
-        "docs": "./node_modules/.bin/esdoc -c .esdoc.json"
+        "docs": "gulp lib-build-docs"
     },
     "files": [
         "dist"

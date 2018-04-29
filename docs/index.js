@@ -1,9 +1,3 @@
-(function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-	typeof define === 'function' && define.amd ? define('index', factory) :
-	(global.index = factory());
-}(this, (function () { 'use strict';
-
 // 
 
 /**
@@ -33,17 +27,17 @@ class SmartSettings {
         /**
          * @type {string}
          */
-        this.name = name;
+        this.name = name
         
         /**
          * @type {string}
          */
-        this.position = position;
+        this.position = position
         
         /**
          * @type {Node}
          */
-        this.panel = document.createElement('div');
+        this.panel = document.createElement('div')
     }
 
     /**
@@ -52,8 +46,8 @@ class SmartSettings {
      * @private
      */
     _create() {
-        this.panel.setAttribute('class', 'sm-panel');
-        this.panel.setAttribute('id', this.name);
+        this.panel.setAttribute('class', 'sm-panel')
+        this.panel.setAttribute('id', this.name)
     }
 
     /** 
@@ -63,11 +57,9 @@ class SmartSettings {
      */
     _delete() {
         if (this.panel && this.panel.parentElement) {
-            this.panel.parentElement.removeChild(this.panel);
+            this.panel.parentElement.removeChild(this.panel)
         }
     }
 }
 
-return SmartSettings;
-
-})));
+export default SmartSettings
