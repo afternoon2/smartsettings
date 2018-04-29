@@ -16,6 +16,7 @@
         "gulp-flow-remove-types": "^1.0.0",
         "gulp-rename": "^1.2.2",
         "rollup-plugin-babel": "^2.7.1",
+        "rollup-plugin-cleanup": "^2.0.1",
         "rollup-plugin-commonjs": "^8.0.2",
         "rollup-plugin-copy": "^0.2.3",
         "rollup-plugin-eslint": "^4.0.0",

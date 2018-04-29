@@ -5,6 +5,7 @@ const resolve = require('rollup-plugin-node-resolve')
 const commonjs = require('rollup-plugin-commonjs')
 const eslint = require('rollup-plugin-eslint')
 const flow = require('rollup-plugin-flow')
+const cleanup = require('rollup-plugin-cleanup')
 const types = require('gulp-flow-remove-types')
 const exec = require('gulp-exec')
 const rename = require('gulp-rename')
@@ -44,7 +45,11 @@ gulp.task('lib-build-dev', () => {
                 flow(_flowConf),
                 eslint(_eslintConf),
                 babel(_babelConf),
-                commonjs()
+                cleanup({
+                    comments: 'none',
+                    extensions: '.js'
+                }),
+                commonjs(),
             ]
         }, {
             file: 'smartsettings.umd.js',
