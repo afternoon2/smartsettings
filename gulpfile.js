@@ -6,12 +6,13 @@ const commonjs = require('rollup-plugin-commonjs')
 const eslint = require('rollup-plugin-eslint')
 const flow = require('rollup-plugin-flow')
 const cleanup = require('rollup-plugin-cleanup')
+const uglify = require('rollup-plugin-uglify')
 const types = require('gulp-flow-remove-types')
 const exec = require('gulp-exec')
 const rename = require('gulp-rename')
 
 const _flowConf = { pretty: true }
-const _babelConf = {  }
+const _babelConf = { exclude: ['/node_modules/'] }
 const _eslintConf = {
     parserOptions: {
         ecmaVersion: 6,
@@ -50,11 +51,42 @@ gulp.task('lib-build-dev', () => {
                     extensions: '.js'
                 }),
                 commonjs(),
+            ],
+        }, [
+            {
+                file: 'smartsettings.umd.js',
+                format: 'umd'
+            },
+            {
+                file: 'smartsettings.es.js',
+                format: 'es'
+            }
+        ]))
+        .pipe(gulp.dest('./dist'))
+    // minified versions
+    gulp.src('./src/index.js')
+        .pipe(rollup({
+            plugins: [
+                flow(_flowConf),
+                eslint(_eslintConf),
+                babel(_babelConf),
+                cleanup({
+                    comments: 'none',
+                    extensions: '.js'
+                }),
+                commonjs(),
+                uglify()
             ]
-        }, {
-            file: 'smartsettings.umd.js',
-            format: 'umd'
-        }))
+        }, [
+            {
+                file: 'smartsettings.umd.min.js',
+                format: 'umd'
+            },
+            {
+                file: 'smartsettings.es.min.js',
+                format: 'es'
+            }
+        ]))
         .pipe(gulp.dest('./dist'))
 })
 

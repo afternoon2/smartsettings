@@ -7,8 +7,8 @@
         - Provide testing structure and environment for unit and UI tests.
     - build process
         - ~~Remove esdoc annotations and comments from the build files~~
-        - Add minified files
-        - Provide es6 module versions
+        - ~~Add minified files~~
+        - ~~Provide es6 module versions~~
 2. Core functionality
     - Provide stylesheets for `SmartSettings`:
         - suggested preprocessor: `sass` (bracket or indentation-driven notation)
