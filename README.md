@@ -12,4 +12,4 @@
 2. Core functionality
     - Provide stylesheets for `SmartSettings`:
         - ~~suggested preprocessor: `sass` (bracket or indentation-driven notation)~~
-        - add autoprefixer
+        - ~~add autoprefixer~~

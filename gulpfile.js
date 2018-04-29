@@ -11,6 +11,7 @@ const types = require('gulp-flow-remove-types')
 const exec = require('gulp-exec')
 const rename = require('gulp-rename')
 const sass = require('gulp-sass')
+const autoprefixer = require('gulp-autoprefixer')
 
 const _flowConf = { pretty: true }
 const _babelConf = { exclude: ['/node_modules/'] }
@@ -111,6 +112,9 @@ gulp.task('compile-sass', () => {
         .pipe(sass({
             outputStyle: 'compressed'
         }).on('error', sass.logError))
+        .pipe(autoprefixer({
+            browsers: ['cover 99.5%']
+        }))
         .pipe(rename({
             basename: 'smartsettings',
             suffix: 'min',
