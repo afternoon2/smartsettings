@@ -30,13 +30,15 @@
   <ul>
     
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/index.js~SmartSettings.html">SmartSettings</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#components">components</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-helpers">helpers</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-utils">utils</a></span></span></li>
 </ul>
 </div>
 </nav>
 
 <div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><h1 id="smartsettings">smartsettings</h1><h2 id="api-sketch">API sketch</h2><ul>
 <li>SmartSettings.js<ul>
-<li>@private <code>_create()</code> - mounts panel in the DOM</li>
+<li>Public methods<ul>
 <li>@public <code>destroy()</code> - unmounts panel from the DOM</li>
 <li>@public <code>addSection(&apos;name&apos;)</code> - adds new section in the panel</li>
 <li>@public <code>removeSection(x&apos;name&apos;)</code> - removes section from the panel</li>
@@ -48,6 +50,13 @@
 <li>@public <code>text(name: string, value: string, callback?: function)</code> - adds text input to the panel/section</li>
 <li>@public <code>textarea()</code></li>
 <li>@public <code>html()</code></li>
+</ul>
+</li>
+<li>Private methods<ul>
+<li>@private <code>_create()</code> - mounts panel in the DOM</li>
+<li>@private <code>_createElement()</code></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

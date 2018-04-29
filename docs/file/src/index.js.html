@@ -30,12 +30,16 @@
   <ul>
     
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/index.js~SmartSettings.html">SmartSettings</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#components">components</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-helpers">helpers</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-utils">utils</a></span></span></li>
 </ul>
 </div>
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/index.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import helpers from &apos;./components/helpers&apos;
+
+/**
  * @class SmartSettings
  * @example
  * const mySettings = new SmartSettings(&apos;My Settings&apos;, {
@@ -68,24 +72,7 @@ class SmartSettings {
          * @type {Node}
          */
         this.panel = document.createElement(&apos;div&apos;)
-        this._create()
-    }
-
-    /**
-     * Mounts panel in the DOM, immediately called after class instantiation
-     * @return {void}
-     * @private
-     */
-    _create() {
-        if (this.panel.childNodes.length &lt; 1) {
-            let attrs = {
-                &apos;class&apos;: &apos;sms-panel&apos;,
-                &apos;id&apos;: this.name
-            }
-            let panel = this._createElement(&apos;div&apos;, attrs)
-            this.panel = panel
-            document.body.appendChild(this.panel)
-        }
+        helpers.create(this.panel, this.name)
     }
 
     /** 
@@ -95,29 +82,7 @@ class SmartSettings {
      * mySettings.destroy()
      */
     destroy() {
-        if (this.panel &amp;&amp; this.panel.parentElement) {
-            this.panel.parentElement.removeChild(this.panel)
-        }
-    }
-
-    /**
-     * Creates
-     * @param {string} type - type of HTML element 
-     * @param {Object} attributes - attributes of HTML element
-     * @return {Node}
-     */
-    _createElement(type, attributes) {
-        let element = document.createElement(type)
-        for (let key in attributes) {
-            if (key === &apos;class&apos;)
-                element.classList.add.apply(
-                    element.classList,
-                    [attributes[key]]
-                ) 
-            else
-                element[key] = attributes[key]
-        }
-        return element
+        return helpers.destroy()
     }
 
     /**

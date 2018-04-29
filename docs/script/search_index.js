@@ -6,6 +6,18 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "smartsettings/src/components/helpers.js~helpers",
+    "variable/index.html#static-variable-helpers",
+    "<span>helpers</span> <span class=\"search-result-import-path\">smartsettings/src/components/helpers.js</span>",
+    "variable"
+  ],
+  [
+    "smartsettings/src/components/utils.js~utils",
+    "variable/index.html#static-variable-utils",
+    "<span>utils</span> <span class=\"search-result-import-path\">smartsettings/src/components/utils.js</span>",
+    "variable"
+  ],
+  [
     "src/.external-ecmascript.js~array",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
     "src/.external-ecmascript.js~Array",
@@ -336,22 +348,22 @@ window.esdocSearchIndex = [
     "external"
   ],
   [
+    "src/components/helpers.js",
+    "file/src/components/helpers.js.html",
+    "src/components/helpers.js",
+    "file"
+  ],
+  [
+    "src/components/utils.js",
+    "file/src/components/utils.js.html",
+    "src/components/utils.js",
+    "file"
+  ],
+  [
     "src/index.js",
     "file/src/index.js.html",
     "src/index.js",
     "file"
-  ],
-  [
-    "src/index.js~smartsettings#_create",
-    "class/src/index.js~SmartSettings.html#instance-method-_create",
-    "src/index.js~SmartSettings#_create",
-    "method"
-  ],
-  [
-    "src/index.js~smartsettings#_createelement",
-    "class/src/index.js~SmartSettings.html#instance-method-_createElement",
-    "src/index.js~SmartSettings#_createElement",
-    "method"
   ],
   [
     "src/index.js~smartsettings#addsection",

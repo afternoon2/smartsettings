@@ -3,9 +3,19 @@
   "expectCount": 18,
   "actualCount": 18,
   "files": {
+    "src/components/helpers.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/components/utils.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
     "src/index.js": {
-      "expectCount": 18,
-      "actualCount": 18,
+      "expectCount": 16,
+      "actualCount": 16,
       "undocumentLines": []
     }
   }

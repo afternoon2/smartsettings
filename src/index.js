@@ -1,3 +1,5 @@
+import helpers from './components/helpers'
+
 /**
  * @class SmartSettings
  * @example
@@ -31,24 +33,7 @@ class SmartSettings {
          * @type {Node}
          */
         this.panel = document.createElement('div')
-        this._create()
-    }
-
-    /**
-     * Mounts panel in the DOM, immediately called after class instantiation
-     * @return {void}
-     * @private
-     */
-    _create() {
-        if (this.panel.childNodes.length < 1) {
-            let attrs = {
-                'class': 'sms-panel',
-                'id': this.name
-            }
-            let panel = this._createElement('div', attrs)
-            this.panel = panel
-            document.body.appendChild(this.panel)
-        }
+        helpers.create(this.panel, this.name)
     }
 
     /** 
@@ -58,29 +43,7 @@ class SmartSettings {
      * mySettings.destroy()
      */
     destroy() {
-        if (this.panel && this.panel.parentElement) {
-            this.panel.parentElement.removeChild(this.panel)
-        }
-    }
-
-    /**
-     * Creates
-     * @param {string} type - type of HTML element 
-     * @param {Object} attributes - attributes of HTML element
-     * @return {Node}
-     */
-    _createElement(type, attributes) {
-        let element = document.createElement(type)
-        for (let key in attributes) {
-            if (key === 'class')
-                element.classList.add.apply(
-                    element.classList,
-                    [attributes[key]]
-                ) 
-            else
-                element[key] = attributes[key]
-        }
-        return element
+        return helpers.destroy()
     }
 
     /**
