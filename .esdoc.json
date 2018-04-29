@@ -19,7 +19,10 @@
             }
         },
         {
-            "name": "esdoc-external-webapi-plugin"
+            "name": "esdoc-external-webapi-plugin",
+            "option": {
+                "enable": true
+            }
         }
     ]
 }

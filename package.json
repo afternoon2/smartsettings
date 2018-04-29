@@ -17,6 +17,8 @@
         "gulp-flow-remove-types": "^1.0.0",
         "gulp-rename": "^1.2.2",
         "gulp-sass": "^4.0.1",
+        "jest": "^22.4.3",
+        "jsdom": "^11.9.0",
         "rollup": "^0.58.2",
         "rollup-plugin-babel": "^2.7.1",
         "rollup-plugin-cleanup": "^2.0.1",
@@ -31,7 +33,7 @@
         "flow": "flow",
         "build": "gulp lib-build-dev && gulp compile-sass",
         "dev": "gulp lib-build-dev && gulp compile-sass && gulp lib-build-docs",
-        "test": "node test/test.js",
+        "test": "jest",
         "pretest": "npm run build",
         "docs": "gulp lib-build-docs"
     },

@@ -5,16 +5,16 @@ var SmartSettings = function () {
     _classCallCheck(this, SmartSettings);
     this.name = name;
     this.position = position;
-    this.panel = null;
+    this.panel = document.createElement('div');
     this._create();
   }
   _createClass(SmartSettings, [{
     key: '_create',
     value: function _create() {
-      if (this.panel == null) {
-        this.panel = document.createElement('div');
+      if (this.panel.childNodes.length < 1) {
         this.panel.setAttribute('class', 'sms-panel');
         this.panel.setAttribute('id', this.name);
+        document.body.appendChild(this.panel);
       }
     }
   }, {
