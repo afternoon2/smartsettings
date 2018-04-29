@@ -1,380 +1,386 @@
 window.esdocSearchIndex = [
   [
-    "smartsettings/flow-striped/index.js~smartsettings",
-    "class/flow-striped/index.js~SmartSettings.html",
-    "<span>SmartSettings</span> <span class=\"search-result-import-path\">smartsettings/flow-striped/index.js</span>",
+    "smartsettings/src/index.js~smartsettings",
+    "class/src/index.js~SmartSettings.html",
+    "<span>SmartSettings</span> <span class=\"search-result-import-path\">smartsettings/src/index.js</span>",
     "class"
   ],
   [
-    "flow-striped/.external-ecmascript.js~array",
+    "src/.external-ecmascript.js~array",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
-    "flow-striped/.external-ecmascript.js~Array",
+    "src/.external-ecmascript.js~Array",
     "external"
   ],
   [
-    "flow-striped/.external-ecmascript.js~arraybuffer",
+    "src/.external-ecmascript.js~arraybuffer",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer",
-    "flow-striped/.external-ecmascript.js~ArrayBuffer",
+    "src/.external-ecmascript.js~ArrayBuffer",
     "external"
   ],
   [
-    "flow-striped/.external-ecmascript.js~boolean",
+    "src/.external-ecmascript.js~boolean",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
-    "flow-striped/.external-ecmascript.js~Boolean",
+    "src/.external-ecmascript.js~Boolean",
     "external"
   ],
   [
-    "flow-striped/.external-ecmascript.js~dataview",
+    "src/.external-ecmascript.js~dataview",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView",
-    "flow-striped/.external-ecmascript.js~DataView",
+    "src/.external-ecmascript.js~DataView",
     "external"
   ],
   [
-    "flow-striped/.external-ecmascript.js~date",
+    "src/.external-ecmascript.js~date",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date",
-    "flow-striped/.external-ecmascript.js~Date",
+    "src/.external-ecmascript.js~Date",
     "external"
   ],
   [
-    "flow-striped/.external-ecmascript.js~error",
+    "src/.external-ecmascript.js~error",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error",
-    "flow-striped/.external-ecmascript.js~Error",
+    "src/.external-ecmascript.js~Error",
     "external"
   ],
   [
-    "flow-striped/.external-ecmascript.js~evalerror",
+    "src/.external-ecmascript.js~evalerror",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError",
-    "flow-striped/.external-ecmascript.js~EvalError",
+    "src/.external-ecmascript.js~EvalError",
     "external"
   ],
   [
-    "flow-striped/.external-ecmascript.js~float32array",
+    "src/.external-ecmascript.js~float32array",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array",
-    "flow-striped/.external-ecmascript.js~Float32Array",
+    "src/.external-ecmascript.js~Float32Array",
     "external"
   ],
   [
-    "flow-striped/.external-ecmascript.js~float64array",
+    "src/.external-ecmascript.js~float64array",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array",
-    "flow-striped/.external-ecmascript.js~Float64Array",
+    "src/.external-ecmascript.js~Float64Array",
     "external"
   ],
   [
-    "flow-striped/.external-ecmascript.js~function",
+    "src/.external-ecmascript.js~function",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
-    "flow-striped/.external-ecmascript.js~Function",
+    "src/.external-ecmascript.js~Function",
     "external"
   ],
   [
-    "flow-striped/.external-ecmascript.js~generator",
+    "src/.external-ecmascript.js~generator",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator",
-    "flow-striped/.external-ecmascript.js~Generator",
+    "src/.external-ecmascript.js~Generator",
     "external"
   ],
   [
-    "flow-striped/.external-ecmascript.js~generatorfunction",
+    "src/.external-ecmascript.js~generatorfunction",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/GeneratorFunction",
-    "flow-striped/.external-ecmascript.js~GeneratorFunction",
+    "src/.external-ecmascript.js~GeneratorFunction",
     "external"
   ],
   [
-    "flow-striped/.external-ecmascript.js~infinity",
+    "src/.external-ecmascript.js~infinity",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity",
-    "flow-striped/.external-ecmascript.js~Infinity",
+    "src/.external-ecmascript.js~Infinity",
     "external"
   ],
   [
-    "flow-striped/.external-ecmascript.js~int16array",
+    "src/.external-ecmascript.js~int16array",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array",
-    "flow-striped/.external-ecmascript.js~Int16Array",
+    "src/.external-ecmascript.js~Int16Array",
     "external"
   ],
   [
-    "flow-striped/.external-ecmascript.js~int32array",
+    "src/.external-ecmascript.js~int32array",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array",
-    "flow-striped/.external-ecmascript.js~Int32Array",
+    "src/.external-ecmascript.js~Int32Array",
     "external"
   ],
   [
-    "flow-striped/.external-ecmascript.js~int8array",
+    "src/.external-ecmascript.js~int8array",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array",
-    "flow-striped/.external-ecmascript.js~Int8Array",
+    "src/.external-ecmascript.js~Int8Array",
     "external"
   ],
   [
-    "flow-striped/.external-ecmascript.js~internalerror",
+    "src/.external-ecmascript.js~internalerror",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError",
-    "flow-striped/.external-ecmascript.js~InternalError",
+    "src/.external-ecmascript.js~InternalError",
     "external"
   ],
   [
-    "flow-striped/.external-ecmascript.js~json",
+    "src/.external-ecmascript.js~json",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON",
-    "flow-striped/.external-ecmascript.js~JSON",
+    "src/.external-ecmascript.js~JSON",
     "external"
   ],
   [
-    "flow-striped/.external-ecmascript.js~map",
+    "src/.external-ecmascript.js~map",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
-    "flow-striped/.external-ecmascript.js~Map",
+    "src/.external-ecmascript.js~Map",
     "external"
   ],
   [
-    "flow-striped/.external-ecmascript.js~nan",
+    "src/.external-ecmascript.js~nan",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN",
-    "flow-striped/.external-ecmascript.js~NaN",
+    "src/.external-ecmascript.js~NaN",
     "external"
   ],
   [
-    "flow-striped/.external-ecmascript.js~number",
+    "src/.external-ecmascript.js~number",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
-    "flow-striped/.external-ecmascript.js~Number",
+    "src/.external-ecmascript.js~Number",
     "external"
   ],
   [
-    "flow-striped/.external-ecmascript.js~object",
+    "src/.external-ecmascript.js~object",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
-    "flow-striped/.external-ecmascript.js~Object",
+    "src/.external-ecmascript.js~Object",
     "external"
   ],
   [
-    "flow-striped/.external-ecmascript.js~promise",
+    "src/.external-ecmascript.js~promise",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
-    "flow-striped/.external-ecmascript.js~Promise",
+    "src/.external-ecmascript.js~Promise",
     "external"
   ],
   [
-    "flow-striped/.external-ecmascript.js~proxy",
+    "src/.external-ecmascript.js~proxy",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy",
-    "flow-striped/.external-ecmascript.js~Proxy",
+    "src/.external-ecmascript.js~Proxy",
     "external"
   ],
   [
-    "flow-striped/.external-ecmascript.js~rangeerror",
+    "src/.external-ecmascript.js~rangeerror",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError",
-    "flow-striped/.external-ecmascript.js~RangeError",
+    "src/.external-ecmascript.js~RangeError",
     "external"
   ],
   [
-    "flow-striped/.external-ecmascript.js~referenceerror",
+    "src/.external-ecmascript.js~referenceerror",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError",
-    "flow-striped/.external-ecmascript.js~ReferenceError",
+    "src/.external-ecmascript.js~ReferenceError",
     "external"
   ],
   [
-    "flow-striped/.external-ecmascript.js~reflect",
+    "src/.external-ecmascript.js~reflect",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect",
-    "flow-striped/.external-ecmascript.js~Reflect",
+    "src/.external-ecmascript.js~Reflect",
     "external"
   ],
   [
-    "flow-striped/.external-ecmascript.js~regexp",
+    "src/.external-ecmascript.js~regexp",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp",
-    "flow-striped/.external-ecmascript.js~RegExp",
+    "src/.external-ecmascript.js~RegExp",
     "external"
   ],
   [
-    "flow-striped/.external-ecmascript.js~set",
+    "src/.external-ecmascript.js~set",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set",
-    "flow-striped/.external-ecmascript.js~Set",
+    "src/.external-ecmascript.js~Set",
     "external"
   ],
   [
-    "flow-striped/.external-ecmascript.js~string",
+    "src/.external-ecmascript.js~string",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
-    "flow-striped/.external-ecmascript.js~String",
+    "src/.external-ecmascript.js~String",
     "external"
   ],
   [
-    "flow-striped/.external-ecmascript.js~symbol",
+    "src/.external-ecmascript.js~symbol",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
-    "flow-striped/.external-ecmascript.js~Symbol",
+    "src/.external-ecmascript.js~Symbol",
     "external"
   ],
   [
-    "flow-striped/.external-ecmascript.js~syntaxerror",
+    "src/.external-ecmascript.js~syntaxerror",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError",
-    "flow-striped/.external-ecmascript.js~SyntaxError",
+    "src/.external-ecmascript.js~SyntaxError",
     "external"
   ],
   [
-    "flow-striped/.external-ecmascript.js~typeerror",
+    "src/.external-ecmascript.js~typeerror",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError",
-    "flow-striped/.external-ecmascript.js~TypeError",
+    "src/.external-ecmascript.js~TypeError",
     "external"
   ],
   [
-    "flow-striped/.external-ecmascript.js~urierror",
+    "src/.external-ecmascript.js~urierror",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError",
-    "flow-striped/.external-ecmascript.js~URIError",
+    "src/.external-ecmascript.js~URIError",
     "external"
   ],
   [
-    "flow-striped/.external-ecmascript.js~uint16array",
+    "src/.external-ecmascript.js~uint16array",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array",
-    "flow-striped/.external-ecmascript.js~Uint16Array",
+    "src/.external-ecmascript.js~Uint16Array",
     "external"
   ],
   [
-    "flow-striped/.external-ecmascript.js~uint32array",
+    "src/.external-ecmascript.js~uint32array",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array",
-    "flow-striped/.external-ecmascript.js~Uint32Array",
+    "src/.external-ecmascript.js~Uint32Array",
     "external"
   ],
   [
-    "flow-striped/.external-ecmascript.js~uint8array",
+    "src/.external-ecmascript.js~uint8array",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array",
-    "flow-striped/.external-ecmascript.js~Uint8Array",
+    "src/.external-ecmascript.js~Uint8Array",
     "external"
   ],
   [
-    "flow-striped/.external-ecmascript.js~uint8clampedarray",
+    "src/.external-ecmascript.js~uint8clampedarray",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray",
-    "flow-striped/.external-ecmascript.js~Uint8ClampedArray",
+    "src/.external-ecmascript.js~Uint8ClampedArray",
     "external"
   ],
   [
-    "flow-striped/.external-ecmascript.js~weakmap",
+    "src/.external-ecmascript.js~weakmap",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap",
-    "flow-striped/.external-ecmascript.js~WeakMap",
+    "src/.external-ecmascript.js~WeakMap",
     "external"
   ],
   [
-    "flow-striped/.external-ecmascript.js~weakset",
+    "src/.external-ecmascript.js~weakset",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet",
-    "flow-striped/.external-ecmascript.js~WeakSet",
+    "src/.external-ecmascript.js~WeakSet",
     "external"
   ],
   [
-    "flow-striped/.external-ecmascript.js~boolean",
+    "src/.external-ecmascript.js~boolean",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
-    "flow-striped/.external-ecmascript.js~boolean",
+    "src/.external-ecmascript.js~boolean",
     "external"
   ],
   [
-    "flow-striped/.external-ecmascript.js~function",
+    "src/.external-ecmascript.js~function",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
-    "flow-striped/.external-ecmascript.js~function",
+    "src/.external-ecmascript.js~function",
     "external"
   ],
   [
-    "flow-striped/.external-ecmascript.js~null",
+    "src/.external-ecmascript.js~null",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null",
-    "flow-striped/.external-ecmascript.js~null",
+    "src/.external-ecmascript.js~null",
     "external"
   ],
   [
-    "flow-striped/.external-ecmascript.js~number",
+    "src/.external-ecmascript.js~number",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
-    "flow-striped/.external-ecmascript.js~number",
+    "src/.external-ecmascript.js~number",
     "external"
   ],
   [
-    "flow-striped/.external-ecmascript.js~object",
+    "src/.external-ecmascript.js~object",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
-    "flow-striped/.external-ecmascript.js~object",
+    "src/.external-ecmascript.js~object",
     "external"
   ],
   [
-    "flow-striped/.external-ecmascript.js~string",
+    "src/.external-ecmascript.js~string",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
-    "flow-striped/.external-ecmascript.js~string",
+    "src/.external-ecmascript.js~string",
     "external"
   ],
   [
-    "flow-striped/.external-ecmascript.js~undefined",
+    "src/.external-ecmascript.js~undefined",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined",
-    "flow-striped/.external-ecmascript.js~undefined",
+    "src/.external-ecmascript.js~undefined",
     "external"
   ],
   [
-    "flow-striped/.external-webapi.js~audiocontext",
+    "src/.external-webapi.js~audiocontext",
     "https://developer.mozilla.org/en/docs/Web/API/AudioContext",
-    "flow-striped/.external-webapi.js~AudioContext",
+    "src/.external-webapi.js~AudioContext",
     "external"
   ],
   [
-    "flow-striped/.external-webapi.js~canvasrenderingcontext2d",
+    "src/.external-webapi.js~canvasrenderingcontext2d",
     "https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D",
-    "flow-striped/.external-webapi.js~CanvasRenderingContext2D",
+    "src/.external-webapi.js~CanvasRenderingContext2D",
     "external"
   ],
   [
-    "flow-striped/.external-webapi.js~documentfragment",
+    "src/.external-webapi.js~documentfragment",
     "https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment",
-    "flow-striped/.external-webapi.js~DocumentFragment",
+    "src/.external-webapi.js~DocumentFragment",
     "external"
   ],
   [
-    "flow-striped/.external-webapi.js~element",
+    "src/.external-webapi.js~element",
     "https://developer.mozilla.org/en-US/docs/Web/API/Element",
-    "flow-striped/.external-webapi.js~Element",
+    "src/.external-webapi.js~Element",
     "external"
   ],
   [
-    "flow-striped/.external-webapi.js~event",
+    "src/.external-webapi.js~event",
     "https://developer.mozilla.org/en-US/docs/Web/API/Event",
-    "flow-striped/.external-webapi.js~Event",
+    "src/.external-webapi.js~Event",
     "external"
   ],
   [
-    "flow-striped/.external-webapi.js~node",
+    "src/.external-webapi.js~node",
     "https://developer.mozilla.org/en-US/docs/Web/API/Node",
-    "flow-striped/.external-webapi.js~Node",
+    "src/.external-webapi.js~Node",
     "external"
   ],
   [
-    "flow-striped/.external-webapi.js~nodelist",
+    "src/.external-webapi.js~nodelist",
     "https://developer.mozilla.org/en-US/docs/Web/API/NodeList",
-    "flow-striped/.external-webapi.js~NodeList",
+    "src/.external-webapi.js~NodeList",
     "external"
   ],
   [
-    "flow-striped/.external-webapi.js~xmlhttprequest",
+    "src/.external-webapi.js~xmlhttprequest",
     "https://developer.mozilla.org/en/docs/Web/API/XMLHttpRequest",
-    "flow-striped/.external-webapi.js~XMLHttpRequest",
+    "src/.external-webapi.js~XMLHttpRequest",
     "external"
   ],
   [
-    "flow-striped/index.js",
-    "file/flow-striped/index.js.html",
-    "flow-striped/index.js",
+    "src/index.js",
+    "file/src/index.js.html",
+    "src/index.js",
     "file"
   ],
   [
-    "flow-striped/index.js~smartsettings#_create",
-    "class/flow-striped/index.js~SmartSettings.html#instance-method-_create",
-    "flow-striped/index.js~SmartSettings#_create",
+    "src/index.js~smartsettings#_create",
+    "class/src/index.js~SmartSettings.html#instance-method-_create",
+    "src/index.js~SmartSettings#_create",
     "method"
   ],
   [
-    "flow-striped/index.js~smartsettings#constructor",
-    "class/flow-striped/index.js~SmartSettings.html#instance-constructor-constructor",
-    "flow-striped/index.js~SmartSettings#constructor",
+    "src/index.js~smartsettings#_createelement",
+    "class/src/index.js~SmartSettings.html#instance-method-_createElement",
+    "src/index.js~SmartSettings#_createElement",
     "method"
   ],
   [
-    "flow-striped/index.js~smartsettings#delete",
-    "class/flow-striped/index.js~SmartSettings.html#instance-method-delete",
-    "flow-striped/index.js~SmartSettings#delete",
+    "src/index.js~smartsettings#constructor",
+    "class/src/index.js~SmartSettings.html#instance-constructor-constructor",
+    "src/index.js~SmartSettings#constructor",
     "method"
   ],
   [
-    "flow-striped/index.js~smartsettings#name",
-    "class/flow-striped/index.js~SmartSettings.html#instance-member-name",
-    "flow-striped/index.js~SmartSettings#name",
+    "src/index.js~smartsettings#destroy",
+    "class/src/index.js~SmartSettings.html#instance-method-destroy",
+    "src/index.js~SmartSettings#destroy",
+    "method"
+  ],
+  [
+    "src/index.js~smartsettings#name",
+    "class/src/index.js~SmartSettings.html#instance-member-name",
+    "src/index.js~SmartSettings#name",
     "member"
   ],
   [
-    "flow-striped/index.js~smartsettings#panel",
-    "class/flow-striped/index.js~SmartSettings.html#instance-member-panel",
-    "flow-striped/index.js~SmartSettings#panel",
+    "src/index.js~smartsettings#panel",
+    "class/src/index.js~SmartSettings.html#instance-member-panel",
+    "src/index.js~SmartSettings#panel",
     "member"
   ],
   [
-    "flow-striped/index.js~smartsettings#position",
-    "class/flow-striped/index.js~SmartSettings.html#instance-member-position",
-    "flow-striped/index.js~SmartSettings#position",
+    "src/index.js~smartsettings#position",
+    "class/src/index.js~SmartSettings.html#instance-member-position",
+    "src/index.js~SmartSettings#position",
     "member"
   ]
 ]

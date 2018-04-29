@@ -10,6 +10,7 @@
         - ~~Add minified files~~
         - ~~Provide es6 module versions~~
 2. Core functionality
-    - Provide stylesheets for `SmartSettings`:
+    - Provide stylesheets support for `SmartSettings`:
         - ~~suggested preprocessor: `sass` (bracket or indentation-driven notation)~~
         - ~~add autoprefixer~~
+    - ~~Create sass style structure~~

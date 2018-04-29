@@ -8,13 +8,11 @@
         "esdoc": "^1.0.4",
         "esdoc-external-webapi-plugin": "^1.0.0",
         "esdoc-standard-plugin": "^1.0.0",
-        "flow-bin": "^0.71.0",
         "gulp": "^3.9.1",
         "gulp-autoprefixer": "^5.0.0",
         "gulp-better-rollup": "^3.1.0",
         "gulp-esdoc": "^0.4.1",
         "gulp-exec": "^3.0.1",
-        "gulp-flow-remove-types": "^1.0.0",
         "gulp-rename": "^1.2.2",
         "gulp-sass": "^4.0.1",
         "jest": "^22.4.3",
@@ -25,17 +23,15 @@
         "rollup-plugin-commonjs": "^8.0.2",
         "rollup-plugin-copy": "^0.2.3",
         "rollup-plugin-eslint": "^4.0.0",
-        "rollup-plugin-flow": "^1.1.1",
         "rollup-plugin-node-resolve": "^3.0.0",
         "rollup-plugin-uglify": "^3.0.0"
     },
     "scripts": {
-        "flow": "flow",
         "build": "gulp lib-build-dev && gulp compile-sass",
-        "dev": "gulp lib-build-dev && gulp compile-sass && gulp lib-build-docs",
+        "dev": "gulp lib-build-dev && gulp compile-sass && npm run docs",
         "test": "jest",
         "pretest": "npm run build",
-        "docs": "gulp lib-build-docs"
+        "docs": "./node_modules/.bin/esdoc -c ./.esdoc.json"
     },
     "files": [
         "dist"

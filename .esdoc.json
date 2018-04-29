@@ -1,9 +1,7 @@
 {
-    "source": "./flow-striped",
+    "source": "./src",
     "destination": "./docs",
-    "excludes": [
-        "\\.types\\.js$"
-    ],
+    "excludes": [],
     "plugins": [
         {
             "name": "esdoc-standard-plugin",

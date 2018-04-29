@@ -1,11 +1,11 @@
 {
   "coverage": "100%",
-  "expectCount": 7,
-  "actualCount": 7,
+  "expectCount": 8,
+  "actualCount": 8,
   "files": {
-    "flow-striped/index.js": {
-      "expectCount": 7,
-      "actualCount": 7,
+    "src/index.js": {
+      "expectCount": 8,
+      "actualCount": 8,
       "undocumentLines": []
     }
   }
