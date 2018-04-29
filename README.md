@@ -11,4 +11,5 @@
         - ~~Provide es6 module versions~~
 2. Core functionality
     - Provide stylesheets for `SmartSettings`:
-        - suggested preprocessor: `sass` (bracket or indentation-driven notation)
+        - ~~suggested preprocessor: `sass` (bracket or indentation-driven notation)~~
+        - add autoprefixer

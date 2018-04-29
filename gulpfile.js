@@ -10,6 +10,7 @@ const uglify = require('rollup-plugin-uglify')
 const types = require('gulp-flow-remove-types')
 const exec = require('gulp-exec')
 const rename = require('gulp-rename')
+const sass = require('gulp-sass')
 
 const _flowConf = { pretty: true }
 const _babelConf = { exclude: ['/node_modules/'] }
@@ -90,6 +91,7 @@ gulp.task('lib-build-dev', () => {
         .pipe(gulp.dest('./dist'))
 })
 
+// docs
 gulp.task('lib-build-docs', () => {
     gulp.src('src/index.js')
         .pipe(types(_flowConf))
@@ -101,4 +103,18 @@ gulp.task('lib-build-docs', () => {
         .pipe(exec('./node_modules/.bin/esdoc -c ./.esdoc.json'))
         .pipe(exec.reporter())
         .pipe(gulp.dest('./docs'))
+})
+
+// sass
+gulp.task('compile-sass', () => {
+    gulp.src('./src/*.sass')
+        .pipe(sass({
+            outputStyle: 'compressed'
+        }).on('error', sass.logError))
+        .pipe(rename({
+            basename: 'smartsettings',
+            suffix: 'min',
+            extname: '.css'
+        }))
+        .pipe(gulp.dest('./dist'))
 })
