@@ -1,3 +1,20 @@
+function ___$insertStyle(css) {
+  if (!css) {
+    return;
+  }
+  if (typeof window === 'undefined') {
+    return;
+  }
+
+  var style = document.createElement('style');
+
+  style.setAttribute('type', 'text/css');
+  style.innerHTML = css;
+  document.head.appendChild(style);
+
+  return css;
+}
+
 var utils = {
     createElement: function createElement(type, attributes) {
         var element = document.createElement(type);
@@ -54,46 +71,9 @@ var SmartSettings = function () {
     value: function destroy() {
       return helpers.destroy(this.panel);
     }
-  }, {
-    key: 'addSection',
-    value: function addSection(name) {
-      this.sections.push({
-        name: name,
-        controls: []
-      });
-    }
-  }, {
-    key: 'removeSection',
-    value: function removeSection(name) {
-      delete this.sections[name];
-    }
-  }, {
-    key: 'button',
-    value: function button(name) {
-    }
-  }, {
-    key: 'dropdown',
-    value: function dropdown(name, items, callback) {}
-  }, {
-    key: 'range',
-    value: function range(name, items, callback) {}
-  }, {
-    key: 'boolean',
-    value: function boolean(name, value, callback) {}
-  }, {
-    key: 'progressbar',
-    value: function progressbar(name, items, callback) {}
-  }, {
-    key: 'text',
-    value: function text(name, value, callback) {}
-  }, {
-    key: 'textarea',
-    value: function textarea(name, value, callback) {}
-  }, {
-    key: 'html',
-    value: function html(name, value, callback) {}
   }]);
   return SmartSettings;
 }();
 
 export default SmartSettings;
+//# sourceMappingURL=smartsettings.es.js.map

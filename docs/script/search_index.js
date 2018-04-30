@@ -366,24 +366,6 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/index.js~smartsettings#addsection",
-    "class/src/index.js~SmartSettings.html#instance-method-addSection",
-    "src/index.js~SmartSettings#addSection",
-    "method"
-  ],
-  [
-    "src/index.js~smartsettings#boolean",
-    "class/src/index.js~SmartSettings.html#instance-method-boolean",
-    "src/index.js~SmartSettings#boolean",
-    "method"
-  ],
-  [
-    "src/index.js~smartsettings#button",
-    "class/src/index.js~SmartSettings.html#instance-method-button",
-    "src/index.js~SmartSettings#button",
-    "method"
-  ],
-  [
     "src/index.js~smartsettings#constructor",
     "class/src/index.js~SmartSettings.html#instance-constructor-constructor",
     "src/index.js~SmartSettings#constructor",
@@ -393,18 +375,6 @@ window.esdocSearchIndex = [
     "src/index.js~smartsettings#destroy",
     "class/src/index.js~SmartSettings.html#instance-method-destroy",
     "src/index.js~SmartSettings#destroy",
-    "method"
-  ],
-  [
-    "src/index.js~smartsettings#dropdown",
-    "class/src/index.js~SmartSettings.html#instance-method-dropdown",
-    "src/index.js~SmartSettings#dropdown",
-    "method"
-  ],
-  [
-    "src/index.js~smartsettings#html",
-    "class/src/index.js~SmartSettings.html#instance-method-html",
-    "src/index.js~SmartSettings#html",
     "method"
   ],
   [
@@ -424,35 +394,5 @@ window.esdocSearchIndex = [
     "class/src/index.js~SmartSettings.html#instance-member-position",
     "src/index.js~SmartSettings#position",
     "member"
-  ],
-  [
-    "src/index.js~smartsettings#progressbar",
-    "class/src/index.js~SmartSettings.html#instance-method-progressbar",
-    "src/index.js~SmartSettings#progressbar",
-    "method"
-  ],
-  [
-    "src/index.js~smartsettings#range",
-    "class/src/index.js~SmartSettings.html#instance-method-range",
-    "src/index.js~SmartSettings#range",
-    "method"
-  ],
-  [
-    "src/index.js~smartsettings#removesection",
-    "class/src/index.js~SmartSettings.html#instance-method-removeSection",
-    "src/index.js~SmartSettings#removeSection",
-    "method"
-  ],
-  [
-    "src/index.js~smartsettings#text",
-    "class/src/index.js~SmartSettings.html#instance-method-text",
-    "src/index.js~SmartSettings#text",
-    "method"
-  ],
-  [
-    "src/index.js~smartsettings#textarea",
-    "class/src/index.js~SmartSettings.html#instance-method-textarea",
-    "src/index.js~SmartSettings#textarea",
-    "method"
   ]
 ]

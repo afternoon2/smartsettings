@@ -3,17 +3,10 @@
     "version": "0.1.0",
     "main": "dist/smartsettings.umd.js",
     "devDependencies": {
-        "babel-plugin-transform-flow-strip-types": "^6.22.0",
         "babel-preset-env": "^1.6.0",
         "esdoc": "^1.0.4",
         "esdoc-external-webapi-plugin": "^1.0.0",
         "esdoc-standard-plugin": "^1.0.0",
-        "gulp": "^3.9.1",
-        "gulp-autoprefixer": "^5.0.0",
-        "gulp-better-rollup": "^3.1.0",
-        "gulp-esdoc": "^0.4.1",
-        "gulp-rename": "^1.2.2",
-        "gulp-sass": "^4.0.1",
         "jest": "^22.4.3",
         "rollup": "^0.58.2",
         "rollup-plugin-babel": "^2.7.1",
@@ -22,11 +15,12 @@
         "rollup-plugin-copy": "^0.2.3",
         "rollup-plugin-eslint": "^4.0.0",
         "rollup-plugin-node-resolve": "^3.0.0",
+        "rollup-plugin-sass": "^0.6.1",
         "rollup-plugin-uglify": "^3.0.0"
     },
     "scripts": {
-        "build": "gulp lib-build-dev && gulp compile-sass",
-        "dev": "gulp lib-build-dev && gulp compile-sass && npm run docs",
+        "build": "rollup -c",
+        "dev": "rollup -c && npm run docs",
         "test": "jest",
         "pretest": "npm run build",
         "docs": "./node_modules/.bin/esdoc -c ./.esdoc.json"
