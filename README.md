@@ -1,23 +1,73 @@
-# smartsettings
+# smartsettings.js
+## A JavaScript library for creating advanced, simply setting panels.
+---
+## Installation
 
-## API sketch
+```
+npm install --save-dev smartsettings
+```
 
-- SmartSettings.js
-    - Public methods
-        - @public `destroy()` - unmounts panel from the DOM
-        - @public `addSection('name')` - adds new section in the panel
-        - @public `removeSection(x'name')` - removes section from the panel
-        - @public `button(name: string, callback?: function)` - adds button to the panel/section
-        - @public `dropdown(name: string, items: array, callback?: function)` - adds dropdown to the panel/section
-        - @public `range(name: string, items: array, callback?: function)` - adds range to the panel/section
-        - @public `boolean(name: string, value: boolean, callback? function)` - adds checkbox to the panel/section
-        - @public `progressbar(name: string, items: number[currentValue, maxValue, displayValue?])` - adds progress bar to the panel/section
-        - @public `text(name: string, value: string, callback?: function)` - adds text input to the panel/section
-        - @public `textarea()`
-        - @public `html()`
-    - Private methods
-        - @private `_create()` - mounts panel in the DOM
-        - @private `_createElement()`
+## Usage
+
+Import in ES Modules
+```js
+import SmartSettings from 'smartsettings'
+
+const settings = new Settings('Settings', 10, 10)
+```
+In the browser:
+```js
+const settings = new SmartSettings('Settings', 10, 10)
+```
+
+## API overview
+1. Basic methods:
+    - `show()`
+    - `hide()`
+    - `open()`
+    - `close()`
+    - `toggle()`
+    - `destroy()` - removes specific settings panel from the DOM
+    - **Note** - creation method remains private and is invoked each time the new `SmartSettings` instance is being constructed. To create new `SmartSettings` panel, use the constructor function.
+2. Structuring
+    - Section 
+        - `section(name, isOpen)` - creates new section, `isOpen` set by default to `false`
+        - `add(controlName)` - adds control to the section
+        - `remove(controlName)` - removes control from the section
+3. Controls (for now)
+    - Creating controls
+        - `button(name, callback)`,
+        - `progressbar(name, items, callback)`
+        - `range(name, items, callback)`
+        - `select(name, items, callback)`
+        - `text(name, value, callback)`
+        - `textarea(name, value, callback)`
+    - Managing
+        - Panel
+            - `destroy()` - unmounts panel from the DOM
+            - `setPosition(left, top)` - sets new position of the panel
+            - `getPosition()` - returns current position
+        - `remove(control | control[])` - removes one or more controls from the panel, regardless the section that they belong to.
+        - `hide(control | control[])`
+        - `show(control | control[])`
+        - `enable(control | control[])`
+        - `disable(control | control[])`
+        - `getValue(control | control[])` - returns current (active) value of specific control(s)
+        - `updateItems(items)` - updates items of `select`, `progressbar` or `range` control.
+
+## Panel spec
+- name: string => constructor
+- left: number => constructor
+- top: number => constructor
+- _visible: boolean | true
+- _open: boolean | true
+- _draggable: boolean | false | <Future>
+
+
+## Section spec
+
+## Control spec (regardless the type)
+
 
 ## TBD list:
 1. Project 
