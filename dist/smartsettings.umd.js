@@ -1,7 +1,7 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory() :
     typeof define === 'function' && define.amd ? define(factory) :
-    (global.SmartSettings = factory());
+    (factory());
 }(this, (function () { 'use strict';
 
     function ___$insertStyle(css) {
@@ -21,67 +21,59 @@
       return css;
     }
 
-    var utils = {
-        createElement: function createElement(type, attributes) {
-            var element = document.createElement(type);
-            if (attributes) {
-                for (var key in attributes) {
-                    if (key === 'class') {
-                        element.classList.add.apply(element.classList, [attributes[key]]);
-                    } else {
-                        element[key] = attributes[key];
-                    }
-                }
-            }
-            return element;
-        }
-    };
-
-    var helpers = {
-        create: function create(panel, name) {
-            var _panelHeaderAttrs = { 'class': 'sms-panel-header' };
-            var _panelBodyAttrs = { 'class': 'sms-panel-body' };
-            var _panelNameAttrs = { 'class': 'sms-panel-name' };
-            if (panel.childNodes.length < 1) {
-                var panelHeader = utils.createElement('div', _panelHeaderAttrs),
-                    panelBody = utils.createElement('div', _panelBodyAttrs),
-                    panelName = utils.createElement('p', _panelNameAttrs);
-                panelName.innerText = name;
-                panel.setAttribute('class', 'sms-panel');
-                panel.setAttribute('id', 'panel-[' + name + ']');
-                panel.appendChild(panelHeader);
-                panel.appendChild(panelBody);
-                panelHeader.appendChild(panelName);
-                document.body.appendChild(panel);
-            }
-        },
-        destroy: function destroy(panel) {
-            if (panel && panel.parentElement) {
-                panel.parentElement.removeChild(panel);
-            }
-        }
-    };
-
     var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
     function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
     var SmartSettings = function () {
-      function SmartSettings(name, position) {
+      function SmartSettings(name, left, top) {
         _classCallCheck(this, SmartSettings);
-        this.name = name;
-        this.position = position;
-        this.panel = document.createElement('div');
-        helpers.create(this.panel, this.name);
+        this.name = name || 'SmartSettings';
+        this.left = left || 0;
+        this.top = top || 0;
+        this._visible = true;
+        this.open = true;
+        this._draggable = false;
+        this.panel = null;
+        this._controls = [];
+        this._sections = [];
+        this._create(this.name, this.top, this.left);
       }
       _createClass(SmartSettings, [{
-        key: 'destroy',
-        value: function destroy() {
-          return helpers.destroy(this.panel);
+        key: '_createElement',
+        value: function _createElement(_type, _attributes) {
+          var element = document.createElement(_type);
+          if (attributes) {
+            for (var key in _attributes) {
+              if (key === 'class') {
+                element.classList.add.apply(element.classList, [_attributes[key]]);
+              } else {
+                element[key] = _attributes[key];
+              }
+            }
+          }
+          return element;
+        }
+      }, {
+        key: '_create',
+        value: function _create() {
+          var panelAttributes = {
+            class: 'sms-panel',
+            id: 'sms_panel_' + name,
+            style: 'top: ' + top + 'px; left: ' + left + 'px; z-index: 2'
+          };
+          var panel = this._createElement('div', panelAttributes);
+          var header = this._createElement('div', { class: 'sms-panel-header' });
+          var body = this._createElement('div', { class: 'sms-panel-body' });
+          var paragraph = this._createElement('p', { class: 'sms-panel-header-name' });
+          paragraph.innerText = name;
+          header.appendChild(paragraph);
+          panel.appendChild(header);
+          panel.appendChild(body);
+          this.panel = panel;
+          document.body.appendChild(this.panel);
         }
       }]);
       return SmartSettings;
     }();
-
-    return SmartSettings;
 
 })));
 //# sourceMappingURL=smartsettings.umd.js.map

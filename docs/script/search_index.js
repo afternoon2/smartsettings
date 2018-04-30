@@ -1,20 +1,8 @@
 window.esdocSearchIndex = [
   [
-    "smartsettings/src/index.js~smartsettings",
-    "class/src/index.js~SmartSettings.html",
-    "<span>SmartSettings</span> <span class=\"search-result-import-path\">smartsettings/src/index.js</span>",
-    "class"
-  ],
-  [
-    "smartsettings/src/components/helpers.js~helpers",
+    "smartsettings/src/helpers.js~helpers",
     "variable/index.html#static-variable-helpers",
-    "<span>helpers</span> <span class=\"search-result-import-path\">smartsettings/src/components/helpers.js</span>",
-    "variable"
-  ],
-  [
-    "smartsettings/src/components/utils.js~utils",
-    "variable/index.html#static-variable-utils",
-    "<span>utils</span> <span class=\"search-result-import-path\">smartsettings/src/components/utils.js</span>",
+    "<span>helpers</span> <span class=\"search-result-import-path\">smartsettings/src/helpers.js</span>",
     "variable"
   ],
   [
@@ -348,15 +336,9 @@ window.esdocSearchIndex = [
     "external"
   ],
   [
-    "src/components/helpers.js",
-    "file/src/components/helpers.js.html",
-    "src/components/helpers.js",
-    "file"
-  ],
-  [
-    "src/components/utils.js",
-    "file/src/components/utils.js.html",
-    "src/components/utils.js",
+    "src/helpers.js",
+    "file/src/helpers.js.html",
+    "src/helpers.js",
     "file"
   ],
   [
@@ -364,35 +346,5 @@ window.esdocSearchIndex = [
     "file/src/index.js.html",
     "src/index.js",
     "file"
-  ],
-  [
-    "src/index.js~smartsettings#constructor",
-    "class/src/index.js~SmartSettings.html#instance-constructor-constructor",
-    "src/index.js~SmartSettings#constructor",
-    "method"
-  ],
-  [
-    "src/index.js~smartsettings#destroy",
-    "class/src/index.js~SmartSettings.html#instance-method-destroy",
-    "src/index.js~SmartSettings#destroy",
-    "method"
-  ],
-  [
-    "src/index.js~smartsettings#name",
-    "class/src/index.js~SmartSettings.html#instance-member-name",
-    "src/index.js~SmartSettings#name",
-    "member"
-  ],
-  [
-    "src/index.js~smartsettings#panel",
-    "class/src/index.js~SmartSettings.html#instance-member-panel",
-    "src/index.js~SmartSettings#panel",
-    "member"
-  ],
-  [
-    "src/index.js~smartsettings#position",
-    "class/src/index.js~SmartSettings.html#instance-member-position",
-    "src/index.js~SmartSettings#position",
-    "member"
   ]
 ]

@@ -662,10 +662,10 @@
   {
     "__docId__": 57,
     "kind": "file",
-    "name": "src/components/helpers.js",
+    "name": "src/helpers.js",
     "content": "import utils from './utils'\n\n/**\n * Contains all private methods used by SmartSettings class\n * @type {Object}\n * @property {function} create - Mounts panel in the DOM, immediately called after SmartSettings class instantiation\n * @property {function} destroy - Unmounts settings panel from the DOM\n * @private\n */\nconst helpers = {\n    create: (panel, name) => {\n        let _panelHeaderAttrs = { 'class': 'sms-panel-header' }\n        let _panelBodyAttrs = { 'class': 'sms-panel-body' }\n        let _panelNameAttrs = { 'class': 'sms-panel-name' }\n        if (panel.childNodes.length < 1) {\n            let panelHeader = utils.createElement('div', _panelHeaderAttrs),\n                panelBody = utils.createElement('div', _panelBodyAttrs),\n                panelName = utils.createElement('p', _panelNameAttrs)\n            panelName.innerText = name\n            panel.setAttribute('class', 'sms-panel')\n            panel.setAttribute('id', `panel-[${name}]`)\n            panel.appendChild(panelHeader)\n            panel.appendChild(panelBody)\n            panelHeader.appendChild(panelName)\n            document.body.appendChild(panel)\n        }\n    },\n\n    destroy: (panel) => {\n        if (panel && panel.parentElement) {\n            panel.parentElement.removeChild(panel)\n        }\n    }\n}\n\nexport default helpers",
     "static": true,
-    "longname": "/Users/jakubantolak/Documents/GitHub/smartsettings/src/components/helpers.js",
+    "longname": "/Users/jakubantolak/Documents/GitHub/smartsettings/src/helpers.js",
     "access": "public",
     "description": null,
     "lineNumber": 1
@@ -674,12 +674,12 @@
     "__docId__": 58,
     "kind": "variable",
     "name": "helpers",
-    "memberof": "src/components/helpers.js",
+    "memberof": "src/helpers.js",
     "static": true,
-    "longname": "src/components/helpers.js~helpers",
+    "longname": "src/helpers.js~helpers",
     "access": "private",
     "export": true,
-    "importPath": "smartsettings/src/components/helpers.js",
+    "importPath": "smartsettings/src/helpers.js",
     "importStyle": "helpers",
     "description": "Contains all private methods used by SmartSettings class",
     "lineNumber": 10,
@@ -717,53 +717,8 @@
   {
     "__docId__": 59,
     "kind": "file",
-    "name": "src/components/utils.js",
-    "content": "/**\n * Contains all private utilities used by helpers\n * @type {Object}\n * @property {function} createElement - Creates new DOM element\n * @private\n */\nconst utils = {\n    /**\n     * Creates new DOM element\n     * @param {string} type - type of element \n     * @param {Object} attributes - attributes of that element\n     * @return {Node}\n     */\n    createElement: (type, attributes) => {\n        let element = document.createElement(type)\n        if (attributes) {\n            for (let key in attributes) {\n                if (key === 'class') {\n                    element.classList.add.apply(\n                        element.classList,\n                        [attributes[key]]\n                    )\n                } else {\n                    element[key] = attributes[key]\n                }\n            }\n        }\n        return element\n    }\n}\n\nexport default utils",
-    "static": true,
-    "longname": "/Users/jakubantolak/Documents/GitHub/smartsettings/src/components/utils.js",
-    "access": "public",
-    "description": null,
-    "lineNumber": 1
-  },
-  {
-    "__docId__": 60,
-    "kind": "variable",
-    "name": "utils",
-    "memberof": "src/components/utils.js",
-    "static": true,
-    "longname": "src/components/utils.js~utils",
-    "access": "private",
-    "export": true,
-    "importPath": "smartsettings/src/components/utils.js",
-    "importStyle": "utils",
-    "description": "Contains all private utilities used by helpers",
-    "lineNumber": 7,
-    "properties": [
-      {
-        "nullable": null,
-        "types": [
-          "function"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "createElement",
-        "description": "Creates new DOM element"
-      }
-    ],
-    "type": {
-      "nullable": null,
-      "types": [
-        "Object"
-      ],
-      "spread": false,
-      "description": null
-    }
-  },
-  {
-    "__docId__": 61,
-    "kind": "file",
     "name": "src/index.js",
-    "content": "import helpers from './components/helpers'\n\n/**\n * @class SmartSettings\n * @example\n * const mySettings = new SmartSettings('My Settings', {\n *      top: 50,\n *      left: 20\n * })\n */\n\nexport default class SmartSettings {\n    /**\n     * @param {string} name - describes newly created settings panel by giving a name to it.\n     * @param {Object} position - sets initial position of the settings panel.\n     * @property {Node} panel - panel's parent div\n     */\n    constructor(\n        name,\n        position\n    ) {\n        /**\n         * @type {string}\n         */\n        this.name = name\n\n        /**\n         * @type {string}\n         */\n        this.position = position\n\n        /**\n         * @type {Node}\n         */\n        this.panel = document.createElement('div')\n        helpers.create(this.panel, this.name)\n    }\n\n    /** \n     * Unmounts settings panel from the DOM\n     * @return {void}\n     * @example\n     * mySettings.destroy()\n     */\n    destroy() {\n        return helpers.destroy(this.panel)\n    }\n\n}",
+    "content": "/**\n * @class SmartSettings\n * @example\n * const mySettings = new SmartSettings('My Settings', 10, 10)\n */\nclass SmartSettings {\n    /**\n     * @constructor\n     * @param {string} name \n     * @param {number} left \n     * @param {number} top\n     * @property {boolean} _visible\n     * @property {boolean} _open\n     * @property {boolean} _draggable\n     * @property {Node} _panel\n     * @property {array} _controls\n     * @property {array} _sections\n     */\n    constructor(name, left, top) {\n        /**\n         * @type {string} name\n         */\n        this.name = name || 'SmartSettings'\n\n        /**\n         * @type {number} left\n         */\n        this.left = left || 0\n\n        /**\n         * @type {number} top\n         */\n        this.top = top || 0\n\n        /**\n         * @type {boolean} _visible\n         * @private\n         */\n        this._visible = true\n\n        /**\n         * @type {boolean} _open\n         * @private\n         */\n        this.open = true\n\n        /**\n         * @type {boolean} _draggable\n         * @private\n         */\n        this._draggable = false\n\n        /**\n         * @type {?Node} _panel\n         */\n        this.panel = null\n\n        /**\n         * @type {array} _controls\n         * @private\n         */\n        this._controls = []\n\n        /**\n         * @type {array} _sections\n         * @private\n         */\n        this._sections = []\n\n        this._create(this.name, this.top, this.left)\n\n    }\n\n    /* Utility methods */\n    \n    /**\n     * Creates any DOM element\n     * @param {string} _type - type of the DOM element\n     * @param {Object} _attributes - object with all attributes for the DOM element\n     * @return {Node}\n     * @private \n     */\n    _createElement(_type, _attributes) {\n        let element = document.createElement(_type)\n        if (attributes) {\n            for (let key in _attributes) {\n                if (key === 'class') {\n                    element.classList.add.apply(\n                        element.classList,\n                        [_attributes[key]]\n                    )\n                } else {\n                    element[key] = _attributes[key]\n                }\n            }\n        }\n        return element\n    }\n\n    /**\n     * Creates settings panel, invoked on class construction\n     * @return void\n     * @private\n     */\n    _create() {\n        let panelAttributes = {\n            class: 'sms-panel',\n            id: `sms_panel_${name}`,\n            style: `top: ${top}px; left: ${left}px; z-index: 2`\n        }\n        let panel = this._createElement('div', panelAttributes)\n        let header = this._createElement('div', { class: 'sms-panel-header' })\n        let body = this._createElement('div', { class: 'sms-panel-body' })\n        let paragraph = this._createElement('p', { class: 'sms-panel-header-name' })\n\n        paragraph.innerText = name\n        header.appendChild(paragraph)\n        panel.appendChild(header)\n        panel.appendChild(body)\n        this.panel = panel\n        document.body.appendChild(this.panel)\n    }\n}",
     "static": true,
     "longname": "/Users/jakubantolak/Documents/GitHub/smartsettings/src/index.js",
     "access": "public",
@@ -771,31 +726,32 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 62,
+    "__docId__": 60,
     "kind": "class",
     "name": "SmartSettings",
     "memberof": "src/index.js",
     "static": true,
     "longname": "src/index.js~SmartSettings",
     "access": "public",
-    "export": true,
+    "export": false,
     "importPath": "smartsettings/src/index.js",
-    "importStyle": "SmartSettings",
+    "importStyle": null,
     "description": "",
     "examples": [
-      "const mySettings = new SmartSettings('My Settings', {\n     top: 50,\n     left: 20\n})"
+      "const mySettings = new SmartSettings('My Settings', 10, 10)"
     ],
-    "lineNumber": 12,
+    "lineNumber": 6,
     "unknown": [
       {
         "tagName": "@class",
         "tagValue": "SmartSettings"
       }
     ],
-    "interface": false
+    "interface": false,
+    "ignore": true
   },
   {
-    "__docId__": 63,
+    "__docId__": 61,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "src/index.js~SmartSettings",
@@ -805,7 +761,13 @@
     "longname": "src/index.js~SmartSettings#constructor",
     "access": "public",
     "description": "",
-    "lineNumber": 18,
+    "lineNumber": 19,
+    "unknown": [
+      {
+        "tagName": "@constructor",
+        "tagValue": ""
+      }
+    ],
     "params": [
       {
         "nullable": null,
@@ -815,20 +777,60 @@
         "spread": false,
         "optional": false,
         "name": "name",
-        "description": "describes newly created settings panel by giving a name to it."
+        "description": ""
       },
       {
         "nullable": null,
         "types": [
-          "Object"
+          "number"
         ],
         "spread": false,
         "optional": false,
-        "name": "position",
-        "description": "sets initial position of the settings panel."
+        "name": "left",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "top",
+        "description": ""
       }
     ],
     "properties": [
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "_visible",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "_open",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "_draggable",
+        "description": ""
+      },
       {
         "nullable": null,
         "types": [
@@ -836,13 +838,33 @@
         ],
         "spread": false,
         "optional": false,
-        "name": "panel",
-        "description": "panel's parent div"
+        "name": "_panel",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "array"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "_controls",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "array"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "_sections",
+        "description": ""
       }
     ]
   },
   {
-    "__docId__": 64,
+    "__docId__": 62,
     "kind": "member",
     "name": "name",
     "memberof": "src/index.js~SmartSettings",
@@ -850,11 +872,49 @@
     "longname": "src/index.js~SmartSettings#name",
     "access": "public",
     "description": "",
-    "lineNumber": 25,
+    "lineNumber": 23,
     "type": {
       "nullable": null,
       "types": [
         "string"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 63,
+    "kind": "member",
+    "name": "left",
+    "memberof": "src/index.js~SmartSettings",
+    "static": false,
+    "longname": "src/index.js~SmartSettings#left",
+    "access": "public",
+    "description": "",
+    "lineNumber": 28,
+    "type": {
+      "nullable": null,
+      "types": [
+        "number"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 64,
+    "kind": "member",
+    "name": "top",
+    "memberof": "src/index.js~SmartSettings",
+    "static": false,
+    "longname": "src/index.js~SmartSettings#top",
+    "access": "public",
+    "description": "",
+    "lineNumber": 33,
+    "type": {
+      "nullable": null,
+      "types": [
+        "number"
       ],
       "spread": false,
       "description": null
@@ -863,17 +923,17 @@
   {
     "__docId__": 65,
     "kind": "member",
-    "name": "position",
+    "name": "_visible",
     "memberof": "src/index.js~SmartSettings",
     "static": false,
-    "longname": "src/index.js~SmartSettings#position",
-    "access": "public",
+    "longname": "src/index.js~SmartSettings#_visible",
+    "access": "private",
     "description": "",
-    "lineNumber": 30,
+    "lineNumber": 39,
     "type": {
       "nullable": null,
       "types": [
-        "string"
+        "boolean"
       ],
       "spread": false,
       "description": null
@@ -882,15 +942,53 @@
   {
     "__docId__": 66,
     "kind": "member",
+    "name": "open",
+    "memberof": "src/index.js~SmartSettings",
+    "static": false,
+    "longname": "src/index.js~SmartSettings#open",
+    "access": "private",
+    "description": "",
+    "lineNumber": 45,
+    "type": {
+      "nullable": null,
+      "types": [
+        "boolean"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 67,
+    "kind": "member",
+    "name": "_draggable",
+    "memberof": "src/index.js~SmartSettings",
+    "static": false,
+    "longname": "src/index.js~SmartSettings#_draggable",
+    "access": "private",
+    "description": "",
+    "lineNumber": 51,
+    "type": {
+      "nullable": null,
+      "types": [
+        "boolean"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 68,
+    "kind": "member",
     "name": "panel",
     "memberof": "src/index.js~SmartSettings",
     "static": false,
     "longname": "src/index.js~SmartSettings#panel",
     "access": "public",
     "description": "",
-    "lineNumber": 35,
+    "lineNumber": 56,
     "type": {
-      "nullable": null,
+      "nullable": true,
       "types": [
         "Node"
       ],
@@ -899,33 +997,111 @@
     }
   },
   {
-    "__docId__": 67,
+    "__docId__": 69,
+    "kind": "member",
+    "name": "_controls",
+    "memberof": "src/index.js~SmartSettings",
+    "static": false,
+    "longname": "src/index.js~SmartSettings#_controls",
+    "access": "private",
+    "description": "",
+    "lineNumber": 62,
+    "type": {
+      "nullable": null,
+      "types": [
+        "array"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 70,
+    "kind": "member",
+    "name": "_sections",
+    "memberof": "src/index.js~SmartSettings",
+    "static": false,
+    "longname": "src/index.js~SmartSettings#_sections",
+    "access": "private",
+    "description": "",
+    "lineNumber": 68,
+    "type": {
+      "nullable": null,
+      "types": [
+        "array"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 71,
     "kind": "method",
-    "name": "destroy",
+    "name": "_createElement",
     "memberof": "src/index.js~SmartSettings",
     "generator": false,
     "async": false,
     "static": false,
-    "longname": "src/index.js~SmartSettings#destroy",
-    "access": "public",
-    "description": "Unmounts settings panel from the DOM",
-    "examples": [
-      "mySettings.destroy()"
+    "longname": "src/index.js~SmartSettings#_createElement",
+    "access": "private",
+    "description": "Creates any DOM element",
+    "lineNumber": 83,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "_type",
+        "description": "type of the DOM element"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "_attributes",
+        "description": "object with all attributes for the DOM element"
+      }
     ],
-    "lineNumber": 45,
     "return": {
       "nullable": null,
       "types": [
-        "void"
+        "Node"
       ],
       "spread": false,
       "description": ""
+    }
+  },
+  {
+    "__docId__": 72,
+    "kind": "method",
+    "name": "_create",
+    "memberof": "src/index.js~SmartSettings",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/index.js~SmartSettings#_create",
+    "access": "private",
+    "description": "Creates settings panel, invoked on class construction",
+    "lineNumber": 105,
+    "return": {
+      "nullable": null,
+      "types": [
+        "*"
+      ],
+      "spread": false,
+      "description": "void"
     },
     "params": []
   },
   {
     "kind": "index",
-    "content": "# smartsettings\n\n## API sketch\n\n- SmartSettings.js\n    - Public methods\n        - @public `destroy()` - unmounts panel from the DOM\n        - @public `addSection('name')` - adds new section in the panel\n        - @public `removeSection(x'name')` - removes section from the panel\n        - @public `button(name: string, callback?: function)` - adds button to the panel/section\n        - @public `dropdown(name: string, items: array, callback?: function)` - adds dropdown to the panel/section\n        - @public `range(name: string, items: array, callback?: function)` - adds range to the panel/section\n        - @public `boolean(name: string, value: boolean, callback? function)` - adds checkbox to the panel/section\n        - @public `progressbar(name: string, items: number[currentValue, maxValue, displayValue?])` - adds progress bar to the panel/section\n        - @public `text(name: string, value: string, callback?: function)` - adds text input to the panel/section\n        - @public `textarea()`\n        - @public `html()`\n    - Private methods\n        - @private `_create()` - mounts panel in the DOM\n        - @private `_createElement()`\n\n## TBD list:\n1. Project \n    - structure\n        - ~~Having flow-striped source files causes problems with excluding flow containing files from esdoc documentation process. Move flow-striped sources to the `./docs` or separate directory, like `./no-flow` or `./flow-striped`.~~\n        - ~~Provide testing structure and environment for unit tests.~~\n    - build process\n        - ~~Remove esdoc annotations and comments from the build files~~\n        - ~~Add minified files~~\n        - ~~Provide es6 module versions~~\n2. Core functionality\n    - Provide stylesheets support for `SmartSettings`:\n        - ~~suggested preprocessor: `sass` (bracket or indentation-driven notation)~~\n        - ~~add autoprefixer~~\n    - ~~Create sass style structure~~\n",
+    "content": "# smartsettings.js\n## A JavaScript library for creating advanced, simply setting panels.\n---\n## Installation\n\n```\nnpm install --save-dev smartsettings\n```\n\n## Usage\n\nImport in ES Modules\n```js\nimport SmartSettings from 'smartsettings'\n\nconst settings = new Settings('Settings', 10, 10)\n```\nIn the browser:\n```js\nconst settings = new SmartSettings('Settings', 10, 10)\n```\n\n## API overview\n1. Basic methods:\n    - `show()`\n    - `hide()`\n    - `open()`\n    - `close()`\n    - `toggle()`\n    - `destroy()` - removes specific settings panel from the DOM\n    - **Note** - creation method remains private and is invoked each time the new `SmartSettings` instance is being constructed. To create new `SmartSettings` panel, use the constructor function.\n2. Structuring\n    - Section \n        - `section(name, isOpen)` - creates new section, `isOpen` set by default to `false`\n        - `add(controlName)` - adds control to the section\n        - `remove(controlName)` - removes control from the section\n3. Controls (for now)\n    - Creating controls\n        - `button(name, callback)`,\n        - `progressbar(name, items, callback)`\n        - `range(name, items, callback)`\n        - `select(name, items, callback)`\n        - `text(name, value, callback)`\n        - `textarea(name, value, callback)`\n    - Managing\n        - Panel\n            - `destroy()` - unmounts panel from the DOM\n            - `setPosition(left, top)` - sets new position of the panel\n            - `getPosition()` - returns current position\n        - `remove(control | control[])` - removes one or more controls from the panel, regardless the section that they belong to.\n        - `open()`\n        - `close()`\n        - `hide(control | control[])`\n        - `show(control | control[])`\n        - `enable(control | control[])`\n        - `disable(control | control[])`\n        - `getValue(control | control[])` - returns current (active) value of specific control(s)\n        - `updateItems(items)` - updates items of `select`, `progressbar` or `range` control.\n\n## Panel spec\n- name: string => constructor\n- left: number => constructor\n- top: number => constructor\n- _visible: boolean | true\n- _open: boolean | true\n- _draggable: boolean | false | <Future>\n- _panel: HTMLElement\n- _controls: array<Control>\n- _sections: array<Section>\n\n## Section spec\n- name: string\n- visible: boolean | true\n- open: boolean | true\n- controls: array<Control>\n\n## Control spec (regardless the type)\n- name: string\n- type: string | ['button', 'select', 'range', 'boolean', 'text', 'textarea']\n- element: HTMLElement\n- value?: number|string|boolean\n- values?: Array<string|number>\n- callback?: function\n\n## User stories\n- Create empty panel\n    - create `SmartSettings` instance\n    - => this._create(name, x, y)\n\n## Notes\nSo, maybe:\n\n```js\nconst settings = new Settings('Settings', 10, 10)\n/*\nwhich runs:\n*/\n\n_create: (name, left, top) => {\n    // default values\n    if (!left) {\n        left = 0\n    }\n    if (!top) {\n        top = 0\n    }\n    if (!name) {\n        name = 'SmartSettings'\n    }\n    let panelAttributes = {\n        class: 'sms-panel',\n        id: `sms_panel_${name}`,\n        style: `top: ${top}px; left: ${left}px; z-index: 2`\n    }\n    let panel = this._createElement('div', panelAttributes)\n    let header = this._createElement('div', { class: 'sms-panel-header' })\n    let body = this._createElement('div', { class: 'sms-panel-body' })\n    let paragraph = this._createElement('p', { class: 'sms-panel-header-name' })\n    \n    paragraph.innerText = name\n    header.appendChild(paragraph)\n    panel.appendChild(header)\n    panel.appendChild(body)\n\n    document.body.appendChild(panel)\n}\n\n```\n\n## TBD list:\n1. Project \n    - structure\n        - ~~Having flow-striped source files causes problems with excluding flow containing files from esdoc documentation process. Move flow-striped sources to the `./docs` or separate directory, like `./no-flow` or `./flow-striped`.~~\n        - ~~Provide testing structure and environment for unit tests.~~\n    - build process\n        - ~~Remove esdoc annotations and comments from the build files~~\n        - ~~Add minified files~~\n        - ~~Provide es6 module versions~~\n2. Core functionality\n    - Provide stylesheets support for `SmartSettings`:\n        - ~~suggested preprocessor: `sass` (bracket or indentation-driven notation)~~\n        - ~~add autoprefixer~~\n    - ~~Create sass style structure~~\n",
     "longname": "/Users/jakubantolak/Documents/GitHub/smartsettings/README.md",
     "name": "./README.md",
     "static": true,
@@ -933,7 +1109,7 @@
   },
   {
     "kind": "packageJSON",
-    "content": "{\n    \"name\": \"smartsettings\",\n    \"version\": \"0.1.0\",\n    \"main\": \"dist/smartsettings.umd.js\",\n    \"devDependencies\": {\n        \"babel-preset-env\": \"^1.6.0\",\n        \"esdoc\": \"^1.0.4\",\n        \"esdoc-external-webapi-plugin\": \"^1.0.0\",\n        \"esdoc-standard-plugin\": \"^1.0.0\",\n        \"jest\": \"^22.4.3\",\n        \"rollup\": \"^0.58.2\",\n        \"rollup-plugin-babel\": \"^2.7.1\",\n        \"rollup-plugin-cleanup\": \"^2.0.1\",\n        \"rollup-plugin-commonjs\": \"^8.0.2\",\n        \"rollup-plugin-copy\": \"^0.2.3\",\n        \"rollup-plugin-eslint\": \"^4.0.0\",\n        \"rollup-plugin-node-resolve\": \"^3.0.0\",\n        \"rollup-plugin-sass\": \"^0.6.1\",\n        \"rollup-plugin-uglify\": \"^3.0.0\"\n    },\n    \"scripts\": {\n        \"build\": \"gulp lib-build-dev && gulp compile-sass\",\n        \"dev\": \"rollup -c && npm run docs\",\n        \"test\": \"jest\",\n        \"pretest\": \"npm run build\",\n        \"docs\": \"./node_modules/.bin/esdoc -c ./.esdoc.json\"\n    },\n    \"files\": [\n        \"dist\"\n    ]\n}\n",
+    "content": "{\n    \"name\": \"smartsettings\",\n    \"version\": \"0.1.0\",\n    \"main\": \"dist/smartsettings.umd.js\",\n    \"devDependencies\": {\n        \"babel-preset-env\": \"^1.6.0\",\n        \"esdoc\": \"^1.0.4\",\n        \"esdoc-external-webapi-plugin\": \"^1.0.0\",\n        \"esdoc-standard-plugin\": \"^1.0.0\",\n        \"jest\": \"^22.4.3\",\n        \"rollup\": \"^0.58.2\",\n        \"rollup-plugin-babel\": \"^2.7.1\",\n        \"rollup-plugin-cleanup\": \"^2.0.1\",\n        \"rollup-plugin-commonjs\": \"^8.0.2\",\n        \"rollup-plugin-copy\": \"^0.2.3\",\n        \"rollup-plugin-eslint\": \"^4.0.0\",\n        \"rollup-plugin-node-resolve\": \"^3.0.0\",\n        \"rollup-plugin-sass\": \"^0.6.1\",\n        \"rollup-plugin-uglify\": \"^3.0.0\"\n    },\n    \"scripts\": {\n        \"build\": \"rollup -c\",\n        \"dev\": \"rollup -c && npm run docs\",\n        \"test\": \"jest\",\n        \"pretest\": \"npm run build\",\n        \"docs\": \"./node_modules/.bin/esdoc -c ./.esdoc.json\"\n    },\n    \"files\": [\n        \"dist\"\n    ]\n}\n",
     "longname": "/Users/jakubantolak/Documents/GitHub/smartsettings/package.json",
     "name": "package.json",
     "static": true,

@@ -48,6 +48,8 @@ const settings = new SmartSettings('Settings', 10, 10)
             - `setPosition(left, top)` - sets new position of the panel
             - `getPosition()` - returns current position
         - `remove(control | control[])` - removes one or more controls from the panel, regardless the section that they belong to.
+        - `open()`
+        - `close()`
         - `hide(control | control[])`
         - `show(control | control[])`
         - `enable(control | control[])`
@@ -62,12 +64,68 @@ const settings = new SmartSettings('Settings', 10, 10)
 - _visible: boolean | true
 - _open: boolean | true
 - _draggable: boolean | false | <Future>
-
+- _panel: HTMLElement
+- _controls: array<Control>
+- _sections: array<Section>
 
 ## Section spec
+- name: string
+- visible: boolean | true
+- open: boolean | true
+- controls: array<Control>
 
 ## Control spec (regardless the type)
+- name: string
+- type: string | ['button', 'select', 'range', 'boolean', 'text', 'textarea']
+- element: HTMLElement
+- value?: number|string|boolean
+- values?: Array<string|number>
+- callback?: function
 
+## User stories
+- Create empty panel
+    - create `SmartSettings` instance
+    - => this._create(name, x, y)
+
+## Notes
+So, maybe:
+
+```js
+const settings = new Settings('Settings', 10, 10)
+/*
+which runs:
+*/
+
+_create: (name, left, top) => {
+    // default values
+    if (!left) {
+        left = 0
+    }
+    if (!top) {
+        top = 0
+    }
+    if (!name) {
+        name = 'SmartSettings'
+    }
+    let panelAttributes = {
+        class: 'sms-panel',
+        id: `sms_panel_${name}`,
+        style: `top: ${top}px; left: ${left}px; z-index: 2`
+    }
+    let panel = this._createElement('div', panelAttributes)
+    let header = this._createElement('div', { class: 'sms-panel-header' })
+    let body = this._createElement('div', { class: 'sms-panel-body' })
+    let paragraph = this._createElement('p', { class: 'sms-panel-header-name' })
+    
+    paragraph.innerText = name
+    header.appendChild(paragraph)
+    panel.appendChild(header)
+    panel.appendChild(body)
+
+    document.body.appendChild(panel)
+}
+
+```
 
 ## TBD list:
 1. Project 
