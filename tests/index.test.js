@@ -1,27 +1,31 @@
 const SmartSettings = require('../dist/smartsettings.umd.js')
-const jsdom = require('jsdom')
-const { JSDOM } = jsdom
 
 beforeEach(() => {
     const name = 'Test name'
-    const { document } = (new JSDOM(`
-        <!DOCTYPE html>
-        <head>
-        </head>
-        <body></body>
-    `)).window
 })
 
 test('New panel is an instance of SmartSettings class', () => {
-    let test = new SmartSettings(name, {
-        top: 10, left: 10
-    })
-    expect(test).toBeInstanceOf(SmartSettings)
+    let _test = new SmartSettings(name, { top: 10, left: 10 })
+    expect(_test).toBeInstanceOf(SmartSettings)
 })
 
 test('New panel correctly mounts in the DOM', () => {
-    let test = new SmartSettings(name, { top: 10, left: 10 })
-    let panel = document.body.childNodes[0]
-    expect(panel.classList[0]).toBe('sms-panel')
-    expect(panel.id).toBe(name)
+    
+    let _test = new SmartSettings(name, { top: 10, left: 10 })
+    let smsPanel = document.querySelector('.sms-panel')
+    let smsPanelHeader = document.querySelector('.sms-panel-header')
+    let smsPanelBody = document.querySelector('.sms-panel-body')
+    let smsPanelName = document.querySelector('.sms-panel-name')
+    
+    // panel mounts
+    expect(smsPanel).not.toBe(null)
+    expect(smsPanel).not.toBe(undefined)
+    expect(smsPanel.classList[0]).toBe('sms-panel')
+    expect(smsPanel.id).toBe(`panel-[${name}]`)
+
+    // header body and paragraph are in place
+    expect(smsPanelHeader.classList[0]).toBe('sms-panel-header')
+    expect(smsPanelHeader.childNodes[0]).toBe(smsPanelName)
+    expect(smsPanelName.innerText).toBe(name)
+    expect(smsPanelBody.classList[0]).toBe('sms-panel-body')
 })

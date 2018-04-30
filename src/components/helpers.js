@@ -8,31 +8,24 @@ import utils from './utils'
  * @private
  */
 const helpers = {
-    /**
-     * Mounts panel in the DOM, immediately called after SmartSettings class instantiation
-     * @param {Node} panel - empty div element
-     * @param {name} string - name of the panel set by the class instantiation
-     * @return {void}
-     * @private
-     */
     create: (panel, name) => {
+        let _panelHeaderAttrs = { 'class': 'sms-panel-header' }
+        let _panelBodyAttrs = { 'class': 'sms-panel-body' }
+        let _panelNameAttrs = { 'class': 'sms-panel-name' }
         if (panel.childNodes.length < 1) {
-            let attrs = {
-                'class': 'sms-panel',
-                'id': name
-            }
-            panel = utils.createElement('div', attrs)
+            let panelHeader = utils.createElement('div', _panelHeaderAttrs),
+                panelBody = utils.createElement('div', _panelBodyAttrs),
+                panelName = utils.createElement('p', _panelNameAttrs)
+            panelName.innerText = name
+            panel.setAttribute('class', 'sms-panel')
+            panel.setAttribute('id', `panel-[${name}]`)
+            panel.appendChild(panelHeader)
+            panel.appendChild(panelBody)
+            panelHeader.appendChild(panelName)
             document.body.appendChild(panel)
         }
     },
 
-    /** 
-     * Unmounts settings panel from the DOM
-     * @param {Node} panel - SmartSettings' this.panel
-     * @return {void}
-     * @example
-     * mySettings.destroy()
-     */
     destroy: (panel) => {
         if (panel && panel.parentElement) {
             panel.parentElement.removeChild(panel)

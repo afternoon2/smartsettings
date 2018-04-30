@@ -52,14 +52,16 @@ const utils = {
      */
     createElement: (type, attributes) =&gt; {
         let element = document.createElement(type)
-        for (let key in attributes) {
-            if (key === &apos;class&apos;) {
-                element.classList.add.apply(
-                    element.classList,
-                    [attributes[key]]
-                )
-            } else {
-                element[key] = attributes[key]
+        if (attributes) {
+            for (let key in attributes) {
+                if (key === &apos;class&apos;) {
+                    element.classList.add.apply(
+                        element.classList,
+                        [attributes[key]]
+                    )
+                } else {
+                    element[key] = attributes[key]
+                }
             }
         }
         return element

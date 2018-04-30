@@ -43,7 +43,7 @@ class SmartSettings {
      * mySettings.destroy()
      */
     destroy() {
-        return helpers.destroy()
+        return helpers.destroy(this.panel)
     }
 
     /**

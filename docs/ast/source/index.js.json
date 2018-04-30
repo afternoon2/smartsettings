@@ -1,7 +1,7 @@
 {
   "type": "File",
   "start": 0,
-  "end": 4051,
+  "end": 4061,
   "loc": {
     "start": {
       "line": 1,
@@ -15,7 +15,7 @@
   "program": {
     "type": "Program",
     "start": 0,
-    "end": 4051,
+    "end": 4061,
     "loc": {
       "start": {
         "line": 1,
@@ -120,7 +120,7 @@
       {
         "type": "Identifier",
         "start": 186,
-        "end": 4021,
+        "end": 4031,
         "loc": {
           "start": {
             "line": 12,
@@ -153,7 +153,7 @@
         "body": {
           "type": "ClassBody",
           "start": 206,
-          "end": 4021,
+          "end": 4031,
           "loc": {
             "start": {
               "line": 12,
@@ -940,7 +940,7 @@
             {
               "type": "ClassMethod",
               "start": 946,
-              "end": 996,
+              "end": 1006,
               "loc": {
                 "start": {
                   "line": 45,
@@ -980,7 +980,7 @@
               "body": {
                 "type": "BlockStatement",
                 "start": 956,
-                "end": 996,
+                "end": 1006,
                 "loc": {
                   "start": {
                     "line": 45,
@@ -995,7 +995,7 @@
                   {
                     "type": "ReturnStatement",
                     "start": 966,
-                    "end": 990,
+                    "end": 1000,
                     "loc": {
                       "start": {
                         "line": 46,
@@ -1003,13 +1003,13 @@
                       },
                       "end": {
                         "line": 46,
-                        "column": 32
+                        "column": 42
                       }
                     },
                     "argument": {
                       "type": "CallExpression",
                       "start": 973,
-                      "end": 990,
+                      "end": 1000,
                       "loc": {
                         "start": {
                           "line": 46,
@@ -1017,7 +1017,7 @@
                         },
                         "end": {
                           "line": 46,
-                          "column": 32
+                          "column": 42
                         }
                       },
                       "callee": {
@@ -1070,7 +1070,56 @@
                         },
                         "computed": false
                       },
-                      "arguments": []
+                      "arguments": [
+                        {
+                          "type": "MemberExpression",
+                          "start": 989,
+                          "end": 999,
+                          "loc": {
+                            "start": {
+                              "line": 46,
+                              "column": 31
+                            },
+                            "end": {
+                              "line": 46,
+                              "column": 41
+                            }
+                          },
+                          "object": {
+                            "type": "ThisExpression",
+                            "start": 989,
+                            "end": 993,
+                            "loc": {
+                              "start": {
+                                "line": 46,
+                                "column": 31
+                              },
+                              "end": {
+                                "line": 46,
+                                "column": 35
+                              }
+                            }
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "start": 994,
+                            "end": 999,
+                            "loc": {
+                              "start": {
+                                "line": 46,
+                                "column": 36
+                              },
+                              "end": {
+                                "line": 46,
+                                "column": 41
+                              },
+                              "identifierName": "panel"
+                            },
+                            "name": "panel"
+                          },
+                          "computed": false
+                        }
+                      ]
                     }
                   }
                 ],
@@ -1099,8 +1148,8 @@
                 {
                   "type": "CommentBlock",
                   "value": "*\n     * Adds new section to the panel\n     * @param {string} name - name of the section\n     * @return {void}\n     * @example\n     * const newSection = mySettings.addSection('New section')\n     ",
-                  "start": 1002,
-                  "end": 1201,
+                  "start": 1012,
+                  "end": 1211,
                   "loc": {
                     "start": {
                       "line": 49,
@@ -1116,8 +1165,8 @@
             },
             {
               "type": "ClassMethod",
-              "start": 1206,
-              "end": 1319,
+              "start": 1216,
+              "end": 1329,
               "loc": {
                 "start": {
                   "line": 56,
@@ -1132,8 +1181,8 @@
               "computed": false,
               "key": {
                 "type": "Identifier",
-                "start": 1206,
-                "end": 1216,
+                "start": 1216,
+                "end": 1226,
                 "loc": {
                   "start": {
                     "line": 56,
@@ -1156,8 +1205,8 @@
               "params": [
                 {
                   "type": "Identifier",
-                  "start": 1217,
-                  "end": 1221,
+                  "start": 1227,
+                  "end": 1231,
                   "loc": {
                     "start": {
                       "line": 56,
@@ -1174,8 +1223,8 @@
               ],
               "body": {
                 "type": "BlockStatement",
-                "start": 1223,
-                "end": 1319,
+                "start": 1233,
+                "end": 1329,
                 "loc": {
                   "start": {
                     "line": 56,
@@ -1189,8 +1238,8 @@
                 "body": [
                   {
                     "type": "ExpressionStatement",
-                    "start": 1233,
-                    "end": 1313,
+                    "start": 1243,
+                    "end": 1323,
                     "loc": {
                       "start": {
                         "line": 57,
@@ -1203,8 +1252,8 @@
                     },
                     "expression": {
                       "type": "CallExpression",
-                      "start": 1233,
-                      "end": 1313,
+                      "start": 1243,
+                      "end": 1323,
                       "loc": {
                         "start": {
                           "line": 57,
@@ -1217,8 +1266,8 @@
                       },
                       "callee": {
                         "type": "MemberExpression",
-                        "start": 1233,
-                        "end": 1251,
+                        "start": 1243,
+                        "end": 1261,
                         "loc": {
                           "start": {
                             "line": 57,
@@ -1231,8 +1280,8 @@
                         },
                         "object": {
                           "type": "MemberExpression",
-                          "start": 1233,
-                          "end": 1246,
+                          "start": 1243,
+                          "end": 1256,
                           "loc": {
                             "start": {
                               "line": 57,
@@ -1245,8 +1294,8 @@
                           },
                           "object": {
                             "type": "ThisExpression",
-                            "start": 1233,
-                            "end": 1237,
+                            "start": 1243,
+                            "end": 1247,
                             "loc": {
                               "start": {
                                 "line": 57,
@@ -1260,8 +1309,8 @@
                           },
                           "property": {
                             "type": "Identifier",
-                            "start": 1238,
-                            "end": 1246,
+                            "start": 1248,
+                            "end": 1256,
                             "loc": {
                               "start": {
                                 "line": 57,
@@ -1279,8 +1328,8 @@
                         },
                         "property": {
                           "type": "Identifier",
-                          "start": 1247,
-                          "end": 1251,
+                          "start": 1257,
+                          "end": 1261,
                           "loc": {
                             "start": {
                               "line": 57,
@@ -1299,8 +1348,8 @@
                       "arguments": [
                         {
                           "type": "ObjectExpression",
-                          "start": 1252,
-                          "end": 1312,
+                          "start": 1262,
+                          "end": 1322,
                           "loc": {
                             "start": {
                               "line": 57,
@@ -1314,8 +1363,8 @@
                           "properties": [
                             {
                               "type": "ObjectProperty",
-                              "start": 1266,
-                              "end": 1276,
+                              "start": 1276,
+                              "end": 1286,
                               "loc": {
                                 "start": {
                                   "line": 58,
@@ -1331,8 +1380,8 @@
                               "computed": false,
                               "key": {
                                 "type": "Identifier",
-                                "start": 1266,
-                                "end": 1270,
+                                "start": 1276,
+                                "end": 1280,
                                 "loc": {
                                   "start": {
                                     "line": 58,
@@ -1348,8 +1397,8 @@
                               },
                               "value": {
                                 "type": "Identifier",
-                                "start": 1272,
-                                "end": 1276,
+                                "start": 1282,
+                                "end": 1286,
                                 "loc": {
                                   "start": {
                                     "line": 58,
@@ -1366,8 +1415,8 @@
                             },
                             {
                               "type": "ObjectProperty",
-                              "start": 1290,
-                              "end": 1302,
+                              "start": 1300,
+                              "end": 1312,
                               "loc": {
                                 "start": {
                                   "line": 59,
@@ -1383,8 +1432,8 @@
                               "computed": false,
                               "key": {
                                 "type": "Identifier",
-                                "start": 1290,
-                                "end": 1298,
+                                "start": 1300,
+                                "end": 1308,
                                 "loc": {
                                   "start": {
                                     "line": 59,
@@ -1400,8 +1449,8 @@
                               },
                               "value": {
                                 "type": "ArrayExpression",
-                                "start": 1300,
-                                "end": 1302,
+                                "start": 1310,
+                                "end": 1312,
                                 "loc": {
                                   "start": {
                                     "line": 59,
@@ -1428,8 +1477,8 @@
                 {
                   "type": "CommentBlock",
                   "value": "*\n     * Adds new section to the panel\n     * @param {string} name - name of the section\n     * @return {void}\n     * @example\n     * const newSection = mySettings.addSection('New section')\n     ",
-                  "start": 1002,
-                  "end": 1201,
+                  "start": 1012,
+                  "end": 1211,
                   "loc": {
                     "start": {
                       "line": 49,
@@ -1446,8 +1495,8 @@
                 {
                   "type": "CommentBlock",
                   "value": "*\n     * Removes section from the panel\n     * @param {string} name - name of the section\n     * @return {void}\n     * @example\n     * mySettings.removeSection('New section')\n     ",
-                  "start": 1325,
-                  "end": 1509,
+                  "start": 1335,
+                  "end": 1519,
                   "loc": {
                     "start": {
                       "line": 63,
@@ -1463,8 +1512,8 @@
             },
             {
               "type": "ClassMethod",
-              "start": 1514,
-              "end": 1576,
+              "start": 1524,
+              "end": 1586,
               "loc": {
                 "start": {
                   "line": 70,
@@ -1479,8 +1528,8 @@
               "computed": false,
               "key": {
                 "type": "Identifier",
-                "start": 1514,
-                "end": 1527,
+                "start": 1524,
+                "end": 1537,
                 "loc": {
                   "start": {
                     "line": 70,
@@ -1503,8 +1552,8 @@
               "params": [
                 {
                   "type": "Identifier",
-                  "start": 1528,
-                  "end": 1532,
+                  "start": 1538,
+                  "end": 1542,
                   "loc": {
                     "start": {
                       "line": 70,
@@ -1521,8 +1570,8 @@
               ],
               "body": {
                 "type": "BlockStatement",
-                "start": 1534,
-                "end": 1576,
+                "start": 1544,
+                "end": 1586,
                 "loc": {
                   "start": {
                     "line": 70,
@@ -1536,8 +1585,8 @@
                 "body": [
                   {
                     "type": "ExpressionStatement",
-                    "start": 1544,
-                    "end": 1570,
+                    "start": 1554,
+                    "end": 1580,
                     "loc": {
                       "start": {
                         "line": 71,
@@ -1550,8 +1599,8 @@
                     },
                     "expression": {
                       "type": "UnaryExpression",
-                      "start": 1544,
-                      "end": 1570,
+                      "start": 1554,
+                      "end": 1580,
                       "loc": {
                         "start": {
                           "line": 71,
@@ -1566,8 +1615,8 @@
                       "prefix": true,
                       "argument": {
                         "type": "MemberExpression",
-                        "start": 1551,
-                        "end": 1570,
+                        "start": 1561,
+                        "end": 1580,
                         "loc": {
                           "start": {
                             "line": 71,
@@ -1580,8 +1629,8 @@
                         },
                         "object": {
                           "type": "MemberExpression",
-                          "start": 1551,
-                          "end": 1564,
+                          "start": 1561,
+                          "end": 1574,
                           "loc": {
                             "start": {
                               "line": 71,
@@ -1594,8 +1643,8 @@
                           },
                           "object": {
                             "type": "ThisExpression",
-                            "start": 1551,
-                            "end": 1555,
+                            "start": 1561,
+                            "end": 1565,
                             "loc": {
                               "start": {
                                 "line": 71,
@@ -1609,8 +1658,8 @@
                           },
                           "property": {
                             "type": "Identifier",
-                            "start": 1556,
-                            "end": 1564,
+                            "start": 1566,
+                            "end": 1574,
                             "loc": {
                               "start": {
                                 "line": 71,
@@ -1628,8 +1677,8 @@
                         },
                         "property": {
                           "type": "Identifier",
-                          "start": 1565,
-                          "end": 1569,
+                          "start": 1575,
+                          "end": 1579,
                           "loc": {
                             "start": {
                               "line": 71,
@@ -1658,8 +1707,8 @@
                 {
                   "type": "CommentBlock",
                   "value": "*\n     * Removes section from the panel\n     * @param {string} name - name of the section\n     * @return {void}\n     * @example\n     * mySettings.removeSection('New section')\n     ",
-                  "start": 1325,
-                  "end": 1509,
+                  "start": 1335,
+                  "end": 1519,
                   "loc": {
                     "start": {
                       "line": 63,
@@ -1676,8 +1725,8 @@
                 {
                   "type": "CommentBlock",
                   "value": "*\n     * Creates button control\n     * @param {string} name - name of the button (displayed in it)\n     * @param {function} [callback] - callback invoked after button click\n     * @return {void}\n     * @example\n     * mySettings.button('Execute', executionHadler)\n     ",
-                  "start": 1582,
-                  "end": 1855,
+                  "start": 1592,
+                  "end": 1865,
                   "loc": {
                     "start": {
                       "line": 74,
@@ -1693,8 +1742,8 @@
             },
             {
               "type": "ClassMethod",
-              "start": 1860,
-              "end": 1898,
+              "start": 1870,
+              "end": 1908,
               "loc": {
                 "start": {
                   "line": 82,
@@ -1709,8 +1758,8 @@
               "computed": false,
               "key": {
                 "type": "Identifier",
-                "start": 1860,
-                "end": 1866,
+                "start": 1870,
+                "end": 1876,
                 "loc": {
                   "start": {
                     "line": 82,
@@ -1733,8 +1782,8 @@
               "params": [
                 {
                   "type": "Identifier",
-                  "start": 1867,
-                  "end": 1871,
+                  "start": 1877,
+                  "end": 1881,
                   "loc": {
                     "start": {
                       "line": 82,
@@ -1750,8 +1799,8 @@
                 },
                 {
                   "type": "AssignmentPattern",
-                  "start": 1873,
-                  "end": 1888,
+                  "start": 1883,
+                  "end": 1898,
                   "loc": {
                     "start": {
                       "line": 82,
@@ -1764,8 +1813,8 @@
                   },
                   "left": {
                     "type": "Identifier",
-                    "start": 1873,
-                    "end": 1881,
+                    "start": 1883,
+                    "end": 1891,
                     "loc": {
                       "start": {
                         "line": 82,
@@ -1781,8 +1830,8 @@
                   },
                   "right": {
                     "type": "NullLiteral",
-                    "start": 1884,
-                    "end": 1888,
+                    "start": 1894,
+                    "end": 1898,
                     "loc": {
                       "start": {
                         "line": 82,
@@ -1798,8 +1847,8 @@
               ],
               "body": {
                 "type": "BlockStatement",
-                "start": 1890,
-                "end": 1898,
+                "start": 1900,
+                "end": 1908,
                 "loc": {
                   "start": {
                     "line": 82,
@@ -1819,8 +1868,8 @@
                 {
                   "type": "CommentBlock",
                   "value": "*\n     * Creates button control\n     * @param {string} name - name of the button (displayed in it)\n     * @param {function} [callback] - callback invoked after button click\n     * @return {void}\n     * @example\n     * mySettings.button('Execute', executionHadler)\n     ",
-                  "start": 1582,
-                  "end": 1855,
+                  "start": 1592,
+                  "end": 1865,
                   "loc": {
                     "start": {
                       "line": 74,
@@ -1837,8 +1886,8 @@
                 {
                   "type": "CommentBlock",
                   "value": "*\n     * Creates dropdown control\n     * @param {string} name - dropdown name\n     * @param {string[]|number[]|function} items - list of values to display in the dropdown options list or a function that returns these values\n     * @param {function} [callback] - callback invoked after every change\n     ",
-                  "start": 1904,
-                  "end": 2211,
+                  "start": 1914,
+                  "end": 2221,
                   "loc": {
                     "start": {
                       "line": 86,
@@ -1854,8 +1903,8 @@
             },
             {
               "type": "ClassMethod",
-              "start": 2216,
-              "end": 2256,
+              "start": 2226,
+              "end": 2266,
               "loc": {
                 "start": {
                   "line": 92,
@@ -1870,8 +1919,8 @@
               "computed": false,
               "key": {
                 "type": "Identifier",
-                "start": 2216,
-                "end": 2224,
+                "start": 2226,
+                "end": 2234,
                 "loc": {
                   "start": {
                     "line": 92,
@@ -1894,8 +1943,8 @@
               "params": [
                 {
                   "type": "Identifier",
-                  "start": 2225,
-                  "end": 2229,
+                  "start": 2235,
+                  "end": 2239,
                   "loc": {
                     "start": {
                       "line": 92,
@@ -1911,8 +1960,8 @@
                 },
                 {
                   "type": "Identifier",
-                  "start": 2231,
-                  "end": 2236,
+                  "start": 2241,
+                  "end": 2246,
                   "loc": {
                     "start": {
                       "line": 92,
@@ -1928,8 +1977,8 @@
                 },
                 {
                   "type": "Identifier",
-                  "start": 2238,
-                  "end": 2246,
+                  "start": 2248,
+                  "end": 2256,
                   "loc": {
                     "start": {
                       "line": 92,
@@ -1946,8 +1995,8 @@
               ],
               "body": {
                 "type": "BlockStatement",
-                "start": 2248,
-                "end": 2256,
+                "start": 2258,
+                "end": 2266,
                 "loc": {
                   "start": {
                     "line": 92,
@@ -1967,8 +2016,8 @@
                 {
                   "type": "CommentBlock",
                   "value": "*\n     * Creates dropdown control\n     * @param {string} name - dropdown name\n     * @param {string[]|number[]|function} items - list of values to display in the dropdown options list or a function that returns these values\n     * @param {function} [callback] - callback invoked after every change\n     ",
-                  "start": 1904,
-                  "end": 2211,
+                  "start": 1914,
+                  "end": 2221,
                   "loc": {
                     "start": {
                       "line": 86,
@@ -1985,8 +2034,8 @@
                 {
                   "type": "CommentBlock",
                   "value": "*\n     * Creates range control\n     * @param {string} name - range name\n     * @param {number[]|function} items - list of range values (min, max, step, default) or a function that returns them\n     * @param {function} [callback] - callback invoked after every change\n     ",
-                  "start": 2262,
-                  "end": 2538,
+                  "start": 2272,
+                  "end": 2548,
                   "loc": {
                     "start": {
                       "line": 96,
@@ -2002,8 +2051,8 @@
             },
             {
               "type": "ClassMethod",
-              "start": 2543,
-              "end": 2580,
+              "start": 2553,
+              "end": 2590,
               "loc": {
                 "start": {
                   "line": 102,
@@ -2018,8 +2067,8 @@
               "computed": false,
               "key": {
                 "type": "Identifier",
-                "start": 2543,
-                "end": 2548,
+                "start": 2553,
+                "end": 2558,
                 "loc": {
                   "start": {
                     "line": 102,
@@ -2042,8 +2091,8 @@
               "params": [
                 {
                   "type": "Identifier",
-                  "start": 2549,
-                  "end": 2553,
+                  "start": 2559,
+                  "end": 2563,
                   "loc": {
                     "start": {
                       "line": 102,
@@ -2059,8 +2108,8 @@
                 },
                 {
                   "type": "Identifier",
-                  "start": 2555,
-                  "end": 2560,
+                  "start": 2565,
+                  "end": 2570,
                   "loc": {
                     "start": {
                       "line": 102,
@@ -2076,8 +2125,8 @@
                 },
                 {
                   "type": "Identifier",
-                  "start": 2562,
-                  "end": 2570,
+                  "start": 2572,
+                  "end": 2580,
                   "loc": {
                     "start": {
                       "line": 102,
@@ -2094,8 +2143,8 @@
               ],
               "body": {
                 "type": "BlockStatement",
-                "start": 2572,
-                "end": 2580,
+                "start": 2582,
+                "end": 2590,
                 "loc": {
                   "start": {
                     "line": 102,
@@ -2115,8 +2164,8 @@
                 {
                   "type": "CommentBlock",
                   "value": "*\n     * Creates range control\n     * @param {string} name - range name\n     * @param {number[]|function} items - list of range values (min, max, step, default) or a function that returns them\n     * @param {function} [callback] - callback invoked after every change\n     ",
-                  "start": 2262,
-                  "end": 2538,
+                  "start": 2272,
+                  "end": 2548,
                   "loc": {
                     "start": {
                       "line": 96,
@@ -2133,8 +2182,8 @@
                 {
                   "type": "CommentBlock",
                   "value": "*\n     * Creates checkbox control\n     * @param {string} name - checkbox name\n     * @param {boolean} value - checkbox default value\n     * @param {function} [callback] - callback invoked after every change\n     ",
-                  "start": 2586,
-                  "end": 2802,
+                  "start": 2596,
+                  "end": 2812,
                   "loc": {
                     "start": {
                       "line": 106,
@@ -2150,8 +2199,8 @@
             },
             {
               "type": "ClassMethod",
-              "start": 2807,
-              "end": 2846,
+              "start": 2817,
+              "end": 2856,
               "loc": {
                 "start": {
                   "line": 112,
@@ -2166,8 +2215,8 @@
               "computed": false,
               "key": {
                 "type": "Identifier",
-                "start": 2807,
-                "end": 2814,
+                "start": 2817,
+                "end": 2824,
                 "loc": {
                   "start": {
                     "line": 112,
@@ -2190,8 +2239,8 @@
               "params": [
                 {
                   "type": "Identifier",
-                  "start": 2815,
-                  "end": 2819,
+                  "start": 2825,
+                  "end": 2829,
                   "loc": {
                     "start": {
                       "line": 112,
@@ -2207,8 +2256,8 @@
                 },
                 {
                   "type": "Identifier",
-                  "start": 2821,
-                  "end": 2826,
+                  "start": 2831,
+                  "end": 2836,
                   "loc": {
                     "start": {
                       "line": 112,
@@ -2224,8 +2273,8 @@
                 },
                 {
                   "type": "Identifier",
-                  "start": 2828,
-                  "end": 2836,
+                  "start": 2838,
+                  "end": 2846,
                   "loc": {
                     "start": {
                       "line": 112,
@@ -2242,8 +2291,8 @@
               ],
               "body": {
                 "type": "BlockStatement",
-                "start": 2838,
-                "end": 2846,
+                "start": 2848,
+                "end": 2856,
                 "loc": {
                   "start": {
                     "line": 112,
@@ -2263,8 +2312,8 @@
                 {
                   "type": "CommentBlock",
                   "value": "*\n     * Creates checkbox control\n     * @param {string} name - checkbox name\n     * @param {boolean} value - checkbox default value\n     * @param {function} [callback] - callback invoked after every change\n     ",
-                  "start": 2586,
-                  "end": 2802,
+                  "start": 2596,
+                  "end": 2812,
                   "loc": {
                     "start": {
                       "line": 106,
@@ -2281,8 +2330,8 @@
                 {
                   "type": "CommentBlock",
                   "value": "*\n     * Creates progress bar control\n     * @param {string} name - progress bar name\n     * @param {Array<any>} items - list of progress bar values (current value, max value, display value)\n     * @param {function} [callback] -  callback invoked after every change\n     ",
-                  "start": 2852,
-                  "end": 3127,
+                  "start": 2862,
+                  "end": 3137,
                   "loc": {
                     "start": {
                       "line": 116,
@@ -2298,8 +2347,8 @@
             },
             {
               "type": "ClassMethod",
-              "start": 3132,
-              "end": 3175,
+              "start": 3142,
+              "end": 3185,
               "loc": {
                 "start": {
                   "line": 122,
@@ -2314,8 +2363,8 @@
               "computed": false,
               "key": {
                 "type": "Identifier",
-                "start": 3132,
-                "end": 3143,
+                "start": 3142,
+                "end": 3153,
                 "loc": {
                   "start": {
                     "line": 122,
@@ -2338,8 +2387,8 @@
               "params": [
                 {
                   "type": "Identifier",
-                  "start": 3144,
-                  "end": 3148,
+                  "start": 3154,
+                  "end": 3158,
                   "loc": {
                     "start": {
                       "line": 122,
@@ -2355,8 +2404,8 @@
                 },
                 {
                   "type": "Identifier",
-                  "start": 3150,
-                  "end": 3155,
+                  "start": 3160,
+                  "end": 3165,
                   "loc": {
                     "start": {
                       "line": 122,
@@ -2372,8 +2421,8 @@
                 },
                 {
                   "type": "Identifier",
-                  "start": 3157,
-                  "end": 3165,
+                  "start": 3167,
+                  "end": 3175,
                   "loc": {
                     "start": {
                       "line": 122,
@@ -2390,8 +2439,8 @@
               ],
               "body": {
                 "type": "BlockStatement",
-                "start": 3167,
-                "end": 3175,
+                "start": 3177,
+                "end": 3185,
                 "loc": {
                   "start": {
                     "line": 122,
@@ -2411,8 +2460,8 @@
                 {
                   "type": "CommentBlock",
                   "value": "*\n     * Creates progress bar control\n     * @param {string} name - progress bar name\n     * @param {Array<any>} items - list of progress bar values (current value, max value, display value)\n     * @param {function} [callback] -  callback invoked after every change\n     ",
-                  "start": 2852,
-                  "end": 3127,
+                  "start": 2862,
+                  "end": 3137,
                   "loc": {
                     "start": {
                       "line": 116,
@@ -2429,8 +2478,8 @@
                 {
                   "type": "CommentBlock",
                   "value": "*\n     * Creates text input control\n     * @param {string} name - text input control name\n     * @param {string} value - default text to display\n     * @param {function} [callback] -  callback invoked after every change\n     ",
-                  "start": 3181,
-                  "end": 3410,
+                  "start": 3191,
+                  "end": 3420,
                   "loc": {
                     "start": {
                       "line": 126,
@@ -2446,8 +2495,8 @@
             },
             {
               "type": "ClassMethod",
-              "start": 3415,
-              "end": 3451,
+              "start": 3425,
+              "end": 3461,
               "loc": {
                 "start": {
                   "line": 132,
@@ -2462,8 +2511,8 @@
               "computed": false,
               "key": {
                 "type": "Identifier",
-                "start": 3415,
-                "end": 3419,
+                "start": 3425,
+                "end": 3429,
                 "loc": {
                   "start": {
                     "line": 132,
@@ -2486,8 +2535,8 @@
               "params": [
                 {
                   "type": "Identifier",
-                  "start": 3420,
-                  "end": 3424,
+                  "start": 3430,
+                  "end": 3434,
                   "loc": {
                     "start": {
                       "line": 132,
@@ -2503,8 +2552,8 @@
                 },
                 {
                   "type": "Identifier",
-                  "start": 3426,
-                  "end": 3431,
+                  "start": 3436,
+                  "end": 3441,
                   "loc": {
                     "start": {
                       "line": 132,
@@ -2520,8 +2569,8 @@
                 },
                 {
                   "type": "Identifier",
-                  "start": 3433,
-                  "end": 3441,
+                  "start": 3443,
+                  "end": 3451,
                   "loc": {
                     "start": {
                       "line": 132,
@@ -2538,8 +2587,8 @@
               ],
               "body": {
                 "type": "BlockStatement",
-                "start": 3443,
-                "end": 3451,
+                "start": 3453,
+                "end": 3461,
                 "loc": {
                   "start": {
                     "line": 132,
@@ -2559,8 +2608,8 @@
                 {
                   "type": "CommentBlock",
                   "value": "*\n     * Creates text input control\n     * @param {string} name - text input control name\n     * @param {string} value - default text to display\n     * @param {function} [callback] -  callback invoked after every change\n     ",
-                  "start": 3181,
-                  "end": 3410,
+                  "start": 3191,
+                  "end": 3420,
                   "loc": {
                     "start": {
                       "line": 126,
@@ -2577,8 +2626,8 @@
                 {
                   "type": "CommentBlock",
                   "value": "*\n     * Creates textarea control\n     * @param {string} name - text input control name\n     * @param {string} value - default text to display\n     * @param {function} [callback] -  callback invoked after every change\n     ",
-                  "start": 3462,
-                  "end": 3689,
+                  "start": 3472,
+                  "end": 3699,
                   "loc": {
                     "start": {
                       "line": 137,
@@ -2594,8 +2643,8 @@
             },
             {
               "type": "ClassMethod",
-              "start": 3694,
-              "end": 3734,
+              "start": 3704,
+              "end": 3744,
               "loc": {
                 "start": {
                   "line": 143,
@@ -2610,8 +2659,8 @@
               "computed": false,
               "key": {
                 "type": "Identifier",
-                "start": 3694,
-                "end": 3702,
+                "start": 3704,
+                "end": 3712,
                 "loc": {
                   "start": {
                     "line": 143,
@@ -2634,8 +2683,8 @@
               "params": [
                 {
                   "type": "Identifier",
-                  "start": 3703,
-                  "end": 3707,
+                  "start": 3713,
+                  "end": 3717,
                   "loc": {
                     "start": {
                       "line": 143,
@@ -2651,8 +2700,8 @@
                 },
                 {
                   "type": "Identifier",
-                  "start": 3709,
-                  "end": 3714,
+                  "start": 3719,
+                  "end": 3724,
                   "loc": {
                     "start": {
                       "line": 143,
@@ -2668,8 +2717,8 @@
                 },
                 {
                   "type": "Identifier",
-                  "start": 3716,
-                  "end": 3724,
+                  "start": 3726,
+                  "end": 3734,
                   "loc": {
                     "start": {
                       "line": 143,
@@ -2686,8 +2735,8 @@
               ],
               "body": {
                 "type": "BlockStatement",
-                "start": 3726,
-                "end": 3734,
+                "start": 3736,
+                "end": 3744,
                 "loc": {
                   "start": {
                     "line": 143,
@@ -2707,8 +2756,8 @@
                 {
                   "type": "CommentBlock",
                   "value": "*\n     * Creates textarea control\n     * @param {string} name - text input control name\n     * @param {string} value - default text to display\n     * @param {function} [callback] -  callback invoked after every change\n     ",
-                  "start": 3462,
-                  "end": 3689,
+                  "start": 3472,
+                  "end": 3699,
                   "loc": {
                     "start": {
                       "line": 137,
@@ -2725,8 +2774,8 @@
                 {
                   "type": "CommentBlock",
                   "value": "*\n     * Creates custom html content control\n     * @param {string} name - control name\n     * @param {string} value - default content to display\n     * @param {function} [callback] -  callback invoked after every change\n     ",
-                  "start": 3745,
-                  "end": 3975,
+                  "start": 3755,
+                  "end": 3985,
                   "loc": {
                     "start": {
                       "line": 148,
@@ -2742,8 +2791,8 @@
             },
             {
               "type": "ClassMethod",
-              "start": 3980,
-              "end": 4016,
+              "start": 3990,
+              "end": 4026,
               "loc": {
                 "start": {
                   "line": 154,
@@ -2758,8 +2807,8 @@
               "computed": false,
               "key": {
                 "type": "Identifier",
-                "start": 3980,
-                "end": 3984,
+                "start": 3990,
+                "end": 3994,
                 "loc": {
                   "start": {
                     "line": 154,
@@ -2782,8 +2831,8 @@
               "params": [
                 {
                   "type": "Identifier",
-                  "start": 3985,
-                  "end": 3989,
+                  "start": 3995,
+                  "end": 3999,
                   "loc": {
                     "start": {
                       "line": 154,
@@ -2799,8 +2848,8 @@
                 },
                 {
                   "type": "Identifier",
-                  "start": 3991,
-                  "end": 3996,
+                  "start": 4001,
+                  "end": 4006,
                   "loc": {
                     "start": {
                       "line": 154,
@@ -2816,8 +2865,8 @@
                 },
                 {
                   "type": "Identifier",
-                  "start": 3998,
-                  "end": 4006,
+                  "start": 4008,
+                  "end": 4016,
                   "loc": {
                     "start": {
                       "line": 154,
@@ -2834,8 +2883,8 @@
               ],
               "body": {
                 "type": "BlockStatement",
-                "start": 4008,
-                "end": 4016,
+                "start": 4018,
+                "end": 4026,
                 "loc": {
                   "start": {
                     "line": 154,
@@ -2853,8 +2902,8 @@
                 {
                   "type": "CommentBlock",
                   "value": "*\n     * Creates custom html content control\n     * @param {string} name - control name\n     * @param {string} value - default content to display\n     * @param {function} [callback] -  callback invoked after every change\n     ",
-                  "start": 3745,
-                  "end": 3975,
+                  "start": 3755,
+                  "end": 3985,
                   "loc": {
                     "start": {
                       "line": 148,
@@ -2876,8 +2925,8 @@
       },
       {
         "type": "Identifier",
-        "start": 4023,
-        "end": 4051,
+        "start": 4033,
+        "end": 4061,
         "loc": {
           "start": {
             "line": 162,
@@ -2890,8 +2939,8 @@
         },
         "declaration": {
           "type": "Identifier",
-          "start": 4038,
-          "end": 4051,
+          "start": 4048,
+          "end": 4061,
           "loc": {
             "start": {
               "line": 162,
@@ -2911,8 +2960,8 @@
       },
       {
         "type": "ExportDefaultDeclaration",
-        "start": 4023,
-        "end": 4051,
+        "start": 4033,
+        "end": 4061,
         "loc": {
           "start": {
             "line": 162,
@@ -2926,7 +2975,7 @@
         "declaration": {
           "type": "ClassDeclaration",
           "start": 186,
-          "end": 4021,
+          "end": 4031,
           "loc": {
             "start": {
               "line": 12,
@@ -2959,7 +3008,7 @@
           "body": {
             "type": "ClassBody",
             "start": 206,
-            "end": 4021,
+            "end": 4031,
             "loc": {
               "start": {
                 "line": 12,
@@ -3746,7 +3795,7 @@
               {
                 "type": "ClassMethod",
                 "start": 946,
-                "end": 996,
+                "end": 1006,
                 "loc": {
                   "start": {
                     "line": 45,
@@ -3786,7 +3835,7 @@
                 "body": {
                   "type": "BlockStatement",
                   "start": 956,
-                  "end": 996,
+                  "end": 1006,
                   "loc": {
                     "start": {
                       "line": 45,
@@ -3801,7 +3850,7 @@
                     {
                       "type": "ReturnStatement",
                       "start": 966,
-                      "end": 990,
+                      "end": 1000,
                       "loc": {
                         "start": {
                           "line": 46,
@@ -3809,13 +3858,13 @@
                         },
                         "end": {
                           "line": 46,
-                          "column": 32
+                          "column": 42
                         }
                       },
                       "argument": {
                         "type": "CallExpression",
                         "start": 973,
-                        "end": 990,
+                        "end": 1000,
                         "loc": {
                           "start": {
                             "line": 46,
@@ -3823,7 +3872,7 @@
                           },
                           "end": {
                             "line": 46,
-                            "column": 32
+                            "column": 42
                           }
                         },
                         "callee": {
@@ -3876,7 +3925,56 @@
                           },
                           "computed": false
                         },
-                        "arguments": []
+                        "arguments": [
+                          {
+                            "type": "MemberExpression",
+                            "start": 989,
+                            "end": 999,
+                            "loc": {
+                              "start": {
+                                "line": 46,
+                                "column": 31
+                              },
+                              "end": {
+                                "line": 46,
+                                "column": 41
+                              }
+                            },
+                            "object": {
+                              "type": "ThisExpression",
+                              "start": 989,
+                              "end": 993,
+                              "loc": {
+                                "start": {
+                                  "line": 46,
+                                  "column": 31
+                                },
+                                "end": {
+                                  "line": 46,
+                                  "column": 35
+                                }
+                              }
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "start": 994,
+                              "end": 999,
+                              "loc": {
+                                "start": {
+                                  "line": 46,
+                                  "column": 36
+                                },
+                                "end": {
+                                  "line": 46,
+                                  "column": 41
+                                },
+                                "identifierName": "panel"
+                              },
+                              "name": "panel"
+                            },
+                            "computed": false
+                          }
+                        ]
                       }
                     }
                   ],
@@ -3905,8 +4003,8 @@
                   {
                     "type": "CommentBlock",
                     "value": "*\n     * Adds new section to the panel\n     * @param {string} name - name of the section\n     * @return {void}\n     * @example\n     * const newSection = mySettings.addSection('New section')\n     ",
-                    "start": 1002,
-                    "end": 1201,
+                    "start": 1012,
+                    "end": 1211,
                     "loc": {
                       "start": {
                         "line": 49,
@@ -3922,8 +4020,8 @@
               },
               {
                 "type": "ClassMethod",
-                "start": 1206,
-                "end": 1319,
+                "start": 1216,
+                "end": 1329,
                 "loc": {
                   "start": {
                     "line": 56,
@@ -3938,8 +4036,8 @@
                 "computed": false,
                 "key": {
                   "type": "Identifier",
-                  "start": 1206,
-                  "end": 1216,
+                  "start": 1216,
+                  "end": 1226,
                   "loc": {
                     "start": {
                       "line": 56,
@@ -3962,8 +4060,8 @@
                 "params": [
                   {
                     "type": "Identifier",
-                    "start": 1217,
-                    "end": 1221,
+                    "start": 1227,
+                    "end": 1231,
                     "loc": {
                       "start": {
                         "line": 56,
@@ -3980,8 +4078,8 @@
                 ],
                 "body": {
                   "type": "BlockStatement",
-                  "start": 1223,
-                  "end": 1319,
+                  "start": 1233,
+                  "end": 1329,
                   "loc": {
                     "start": {
                       "line": 56,
@@ -3995,8 +4093,8 @@
                   "body": [
                     {
                       "type": "ExpressionStatement",
-                      "start": 1233,
-                      "end": 1313,
+                      "start": 1243,
+                      "end": 1323,
                       "loc": {
                         "start": {
                           "line": 57,
@@ -4009,8 +4107,8 @@
                       },
                       "expression": {
                         "type": "CallExpression",
-                        "start": 1233,
-                        "end": 1313,
+                        "start": 1243,
+                        "end": 1323,
                         "loc": {
                           "start": {
                             "line": 57,
@@ -4023,8 +4121,8 @@
                         },
                         "callee": {
                           "type": "MemberExpression",
-                          "start": 1233,
-                          "end": 1251,
+                          "start": 1243,
+                          "end": 1261,
                           "loc": {
                             "start": {
                               "line": 57,
@@ -4037,8 +4135,8 @@
                           },
                           "object": {
                             "type": "MemberExpression",
-                            "start": 1233,
-                            "end": 1246,
+                            "start": 1243,
+                            "end": 1256,
                             "loc": {
                               "start": {
                                 "line": 57,
@@ -4051,8 +4149,8 @@
                             },
                             "object": {
                               "type": "ThisExpression",
-                              "start": 1233,
-                              "end": 1237,
+                              "start": 1243,
+                              "end": 1247,
                               "loc": {
                                 "start": {
                                   "line": 57,
@@ -4066,8 +4164,8 @@
                             },
                             "property": {
                               "type": "Identifier",
-                              "start": 1238,
-                              "end": 1246,
+                              "start": 1248,
+                              "end": 1256,
                               "loc": {
                                 "start": {
                                   "line": 57,
@@ -4085,8 +4183,8 @@
                           },
                           "property": {
                             "type": "Identifier",
-                            "start": 1247,
-                            "end": 1251,
+                            "start": 1257,
+                            "end": 1261,
                             "loc": {
                               "start": {
                                 "line": 57,
@@ -4105,8 +4203,8 @@
                         "arguments": [
                           {
                             "type": "ObjectExpression",
-                            "start": 1252,
-                            "end": 1312,
+                            "start": 1262,
+                            "end": 1322,
                             "loc": {
                               "start": {
                                 "line": 57,
@@ -4120,8 +4218,8 @@
                             "properties": [
                               {
                                 "type": "ObjectProperty",
-                                "start": 1266,
-                                "end": 1276,
+                                "start": 1276,
+                                "end": 1286,
                                 "loc": {
                                   "start": {
                                     "line": 58,
@@ -4137,8 +4235,8 @@
                                 "computed": false,
                                 "key": {
                                   "type": "Identifier",
-                                  "start": 1266,
-                                  "end": 1270,
+                                  "start": 1276,
+                                  "end": 1280,
                                   "loc": {
                                     "start": {
                                       "line": 58,
@@ -4154,8 +4252,8 @@
                                 },
                                 "value": {
                                   "type": "Identifier",
-                                  "start": 1272,
-                                  "end": 1276,
+                                  "start": 1282,
+                                  "end": 1286,
                                   "loc": {
                                     "start": {
                                       "line": 58,
@@ -4172,8 +4270,8 @@
                               },
                               {
                                 "type": "ObjectProperty",
-                                "start": 1290,
-                                "end": 1302,
+                                "start": 1300,
+                                "end": 1312,
                                 "loc": {
                                   "start": {
                                     "line": 59,
@@ -4189,8 +4287,8 @@
                                 "computed": false,
                                 "key": {
                                   "type": "Identifier",
-                                  "start": 1290,
-                                  "end": 1298,
+                                  "start": 1300,
+                                  "end": 1308,
                                   "loc": {
                                     "start": {
                                       "line": 59,
@@ -4206,8 +4304,8 @@
                                 },
                                 "value": {
                                   "type": "ArrayExpression",
-                                  "start": 1300,
-                                  "end": 1302,
+                                  "start": 1310,
+                                  "end": 1312,
                                   "loc": {
                                     "start": {
                                       "line": 59,
@@ -4234,8 +4332,8 @@
                   {
                     "type": "CommentBlock",
                     "value": "*\n     * Adds new section to the panel\n     * @param {string} name - name of the section\n     * @return {void}\n     * @example\n     * const newSection = mySettings.addSection('New section')\n     ",
-                    "start": 1002,
-                    "end": 1201,
+                    "start": 1012,
+                    "end": 1211,
                     "loc": {
                       "start": {
                         "line": 49,
@@ -4252,8 +4350,8 @@
                   {
                     "type": "CommentBlock",
                     "value": "*\n     * Removes section from the panel\n     * @param {string} name - name of the section\n     * @return {void}\n     * @example\n     * mySettings.removeSection('New section')\n     ",
-                    "start": 1325,
-                    "end": 1509,
+                    "start": 1335,
+                    "end": 1519,
                     "loc": {
                       "start": {
                         "line": 63,
@@ -4269,8 +4367,8 @@
               },
               {
                 "type": "ClassMethod",
-                "start": 1514,
-                "end": 1576,
+                "start": 1524,
+                "end": 1586,
                 "loc": {
                   "start": {
                     "line": 70,
@@ -4285,8 +4383,8 @@
                 "computed": false,
                 "key": {
                   "type": "Identifier",
-                  "start": 1514,
-                  "end": 1527,
+                  "start": 1524,
+                  "end": 1537,
                   "loc": {
                     "start": {
                       "line": 70,
@@ -4309,8 +4407,8 @@
                 "params": [
                   {
                     "type": "Identifier",
-                    "start": 1528,
-                    "end": 1532,
+                    "start": 1538,
+                    "end": 1542,
                     "loc": {
                       "start": {
                         "line": 70,
@@ -4327,8 +4425,8 @@
                 ],
                 "body": {
                   "type": "BlockStatement",
-                  "start": 1534,
-                  "end": 1576,
+                  "start": 1544,
+                  "end": 1586,
                   "loc": {
                     "start": {
                       "line": 70,
@@ -4342,8 +4440,8 @@
                   "body": [
                     {
                       "type": "ExpressionStatement",
-                      "start": 1544,
-                      "end": 1570,
+                      "start": 1554,
+                      "end": 1580,
                       "loc": {
                         "start": {
                           "line": 71,
@@ -4356,8 +4454,8 @@
                       },
                       "expression": {
                         "type": "UnaryExpression",
-                        "start": 1544,
-                        "end": 1570,
+                        "start": 1554,
+                        "end": 1580,
                         "loc": {
                           "start": {
                             "line": 71,
@@ -4372,8 +4470,8 @@
                         "prefix": true,
                         "argument": {
                           "type": "MemberExpression",
-                          "start": 1551,
-                          "end": 1570,
+                          "start": 1561,
+                          "end": 1580,
                           "loc": {
                             "start": {
                               "line": 71,
@@ -4386,8 +4484,8 @@
                           },
                           "object": {
                             "type": "MemberExpression",
-                            "start": 1551,
-                            "end": 1564,
+                            "start": 1561,
+                            "end": 1574,
                             "loc": {
                               "start": {
                                 "line": 71,
@@ -4400,8 +4498,8 @@
                             },
                             "object": {
                               "type": "ThisExpression",
-                              "start": 1551,
-                              "end": 1555,
+                              "start": 1561,
+                              "end": 1565,
                               "loc": {
                                 "start": {
                                   "line": 71,
@@ -4415,8 +4513,8 @@
                             },
                             "property": {
                               "type": "Identifier",
-                              "start": 1556,
-                              "end": 1564,
+                              "start": 1566,
+                              "end": 1574,
                               "loc": {
                                 "start": {
                                   "line": 71,
@@ -4434,8 +4532,8 @@
                           },
                           "property": {
                             "type": "Identifier",
-                            "start": 1565,
-                            "end": 1569,
+                            "start": 1575,
+                            "end": 1579,
                             "loc": {
                               "start": {
                                 "line": 71,
@@ -4464,8 +4562,8 @@
                   {
                     "type": "CommentBlock",
                     "value": "*\n     * Removes section from the panel\n     * @param {string} name - name of the section\n     * @return {void}\n     * @example\n     * mySettings.removeSection('New section')\n     ",
-                    "start": 1325,
-                    "end": 1509,
+                    "start": 1335,
+                    "end": 1519,
                     "loc": {
                       "start": {
                         "line": 63,
@@ -4482,8 +4580,8 @@
                   {
                     "type": "CommentBlock",
                     "value": "*\n     * Creates button control\n     * @param {string} name - name of the button (displayed in it)\n     * @param {function} [callback] - callback invoked after button click\n     * @return {void}\n     * @example\n     * mySettings.button('Execute', executionHadler)\n     ",
-                    "start": 1582,
-                    "end": 1855,
+                    "start": 1592,
+                    "end": 1865,
                     "loc": {
                       "start": {
                         "line": 74,
@@ -4499,8 +4597,8 @@
               },
               {
                 "type": "ClassMethod",
-                "start": 1860,
-                "end": 1898,
+                "start": 1870,
+                "end": 1908,
                 "loc": {
                   "start": {
                     "line": 82,
@@ -4515,8 +4613,8 @@
                 "computed": false,
                 "key": {
                   "type": "Identifier",
-                  "start": 1860,
-                  "end": 1866,
+                  "start": 1870,
+                  "end": 1876,
                   "loc": {
                     "start": {
                       "line": 82,
@@ -4539,8 +4637,8 @@
                 "params": [
                   {
                     "type": "Identifier",
-                    "start": 1867,
-                    "end": 1871,
+                    "start": 1877,
+                    "end": 1881,
                     "loc": {
                       "start": {
                         "line": 82,
@@ -4556,8 +4654,8 @@
                   },
                   {
                     "type": "AssignmentPattern",
-                    "start": 1873,
-                    "end": 1888,
+                    "start": 1883,
+                    "end": 1898,
                     "loc": {
                       "start": {
                         "line": 82,
@@ -4570,8 +4668,8 @@
                     },
                     "left": {
                       "type": "Identifier",
-                      "start": 1873,
-                      "end": 1881,
+                      "start": 1883,
+                      "end": 1891,
                       "loc": {
                         "start": {
                           "line": 82,
@@ -4587,8 +4685,8 @@
                     },
                     "right": {
                       "type": "NullLiteral",
-                      "start": 1884,
-                      "end": 1888,
+                      "start": 1894,
+                      "end": 1898,
                       "loc": {
                         "start": {
                           "line": 82,
@@ -4604,8 +4702,8 @@
                 ],
                 "body": {
                   "type": "BlockStatement",
-                  "start": 1890,
-                  "end": 1898,
+                  "start": 1900,
+                  "end": 1908,
                   "loc": {
                     "start": {
                       "line": 82,
@@ -4625,8 +4723,8 @@
                   {
                     "type": "CommentBlock",
                     "value": "*\n     * Creates button control\n     * @param {string} name - name of the button (displayed in it)\n     * @param {function} [callback] - callback invoked after button click\n     * @return {void}\n     * @example\n     * mySettings.button('Execute', executionHadler)\n     ",
-                    "start": 1582,
-                    "end": 1855,
+                    "start": 1592,
+                    "end": 1865,
                     "loc": {
                       "start": {
                         "line": 74,
@@ -4643,8 +4741,8 @@
                   {
                     "type": "CommentBlock",
                     "value": "*\n     * Creates dropdown control\n     * @param {string} name - dropdown name\n     * @param {string[]|number[]|function} items - list of values to display in the dropdown options list or a function that returns these values\n     * @param {function} [callback] - callback invoked after every change\n     ",
-                    "start": 1904,
-                    "end": 2211,
+                    "start": 1914,
+                    "end": 2221,
                     "loc": {
                       "start": {
                         "line": 86,
@@ -4660,8 +4758,8 @@
               },
               {
                 "type": "ClassMethod",
-                "start": 2216,
-                "end": 2256,
+                "start": 2226,
+                "end": 2266,
                 "loc": {
                   "start": {
                     "line": 92,
@@ -4676,8 +4774,8 @@
                 "computed": false,
                 "key": {
                   "type": "Identifier",
-                  "start": 2216,
-                  "end": 2224,
+                  "start": 2226,
+                  "end": 2234,
                   "loc": {
                     "start": {
                       "line": 92,
@@ -4700,8 +4798,8 @@
                 "params": [
                   {
                     "type": "Identifier",
-                    "start": 2225,
-                    "end": 2229,
+                    "start": 2235,
+                    "end": 2239,
                     "loc": {
                       "start": {
                         "line": 92,
@@ -4717,8 +4815,8 @@
                   },
                   {
                     "type": "Identifier",
-                    "start": 2231,
-                    "end": 2236,
+                    "start": 2241,
+                    "end": 2246,
                     "loc": {
                       "start": {
                         "line": 92,
@@ -4734,8 +4832,8 @@
                   },
                   {
                     "type": "Identifier",
-                    "start": 2238,
-                    "end": 2246,
+                    "start": 2248,
+                    "end": 2256,
                     "loc": {
                       "start": {
                         "line": 92,
@@ -4752,8 +4850,8 @@
                 ],
                 "body": {
                   "type": "BlockStatement",
-                  "start": 2248,
-                  "end": 2256,
+                  "start": 2258,
+                  "end": 2266,
                   "loc": {
                     "start": {
                       "line": 92,
@@ -4773,8 +4871,8 @@
                   {
                     "type": "CommentBlock",
                     "value": "*\n     * Creates dropdown control\n     * @param {string} name - dropdown name\n     * @param {string[]|number[]|function} items - list of values to display in the dropdown options list or a function that returns these values\n     * @param {function} [callback] - callback invoked after every change\n     ",
-                    "start": 1904,
-                    "end": 2211,
+                    "start": 1914,
+                    "end": 2221,
                     "loc": {
                       "start": {
                         "line": 86,
@@ -4791,8 +4889,8 @@
                   {
                     "type": "CommentBlock",
                     "value": "*\n     * Creates range control\n     * @param {string} name - range name\n     * @param {number[]|function} items - list of range values (min, max, step, default) or a function that returns them\n     * @param {function} [callback] - callback invoked after every change\n     ",
-                    "start": 2262,
-                    "end": 2538,
+                    "start": 2272,
+                    "end": 2548,
                     "loc": {
                       "start": {
                         "line": 96,
@@ -4808,8 +4906,8 @@
               },
               {
                 "type": "ClassMethod",
-                "start": 2543,
-                "end": 2580,
+                "start": 2553,
+                "end": 2590,
                 "loc": {
                   "start": {
                     "line": 102,
@@ -4824,8 +4922,8 @@
                 "computed": false,
                 "key": {
                   "type": "Identifier",
-                  "start": 2543,
-                  "end": 2548,
+                  "start": 2553,
+                  "end": 2558,
                   "loc": {
                     "start": {
                       "line": 102,
@@ -4848,8 +4946,8 @@
                 "params": [
                   {
                     "type": "Identifier",
-                    "start": 2549,
-                    "end": 2553,
+                    "start": 2559,
+                    "end": 2563,
                     "loc": {
                       "start": {
                         "line": 102,
@@ -4865,8 +4963,8 @@
                   },
                   {
                     "type": "Identifier",
-                    "start": 2555,
-                    "end": 2560,
+                    "start": 2565,
+                    "end": 2570,
                     "loc": {
                       "start": {
                         "line": 102,
@@ -4882,8 +4980,8 @@
                   },
                   {
                     "type": "Identifier",
-                    "start": 2562,
-                    "end": 2570,
+                    "start": 2572,
+                    "end": 2580,
                     "loc": {
                       "start": {
                         "line": 102,
@@ -4900,8 +4998,8 @@
                 ],
                 "body": {
                   "type": "BlockStatement",
-                  "start": 2572,
-                  "end": 2580,
+                  "start": 2582,
+                  "end": 2590,
                   "loc": {
                     "start": {
                       "line": 102,
@@ -4921,8 +5019,8 @@
                   {
                     "type": "CommentBlock",
                     "value": "*\n     * Creates range control\n     * @param {string} name - range name\n     * @param {number[]|function} items - list of range values (min, max, step, default) or a function that returns them\n     * @param {function} [callback] - callback invoked after every change\n     ",
-                    "start": 2262,
-                    "end": 2538,
+                    "start": 2272,
+                    "end": 2548,
                     "loc": {
                       "start": {
                         "line": 96,
@@ -4939,8 +5037,8 @@
                   {
                     "type": "CommentBlock",
                     "value": "*\n     * Creates checkbox control\n     * @param {string} name - checkbox name\n     * @param {boolean} value - checkbox default value\n     * @param {function} [callback] - callback invoked after every change\n     ",
-                    "start": 2586,
-                    "end": 2802,
+                    "start": 2596,
+                    "end": 2812,
                     "loc": {
                       "start": {
                         "line": 106,
@@ -4956,8 +5054,8 @@
               },
               {
                 "type": "ClassMethod",
-                "start": 2807,
-                "end": 2846,
+                "start": 2817,
+                "end": 2856,
                 "loc": {
                   "start": {
                     "line": 112,
@@ -4972,8 +5070,8 @@
                 "computed": false,
                 "key": {
                   "type": "Identifier",
-                  "start": 2807,
-                  "end": 2814,
+                  "start": 2817,
+                  "end": 2824,
                   "loc": {
                     "start": {
                       "line": 112,
@@ -4996,8 +5094,8 @@
                 "params": [
                   {
                     "type": "Identifier",
-                    "start": 2815,
-                    "end": 2819,
+                    "start": 2825,
+                    "end": 2829,
                     "loc": {
                       "start": {
                         "line": 112,
@@ -5013,8 +5111,8 @@
                   },
                   {
                     "type": "Identifier",
-                    "start": 2821,
-                    "end": 2826,
+                    "start": 2831,
+                    "end": 2836,
                     "loc": {
                       "start": {
                         "line": 112,
@@ -5030,8 +5128,8 @@
                   },
                   {
                     "type": "Identifier",
-                    "start": 2828,
-                    "end": 2836,
+                    "start": 2838,
+                    "end": 2846,
                     "loc": {
                       "start": {
                         "line": 112,
@@ -5048,8 +5146,8 @@
                 ],
                 "body": {
                   "type": "BlockStatement",
-                  "start": 2838,
-                  "end": 2846,
+                  "start": 2848,
+                  "end": 2856,
                   "loc": {
                     "start": {
                       "line": 112,
@@ -5069,8 +5167,8 @@
                   {
                     "type": "CommentBlock",
                     "value": "*\n     * Creates checkbox control\n     * @param {string} name - checkbox name\n     * @param {boolean} value - checkbox default value\n     * @param {function} [callback] - callback invoked after every change\n     ",
-                    "start": 2586,
-                    "end": 2802,
+                    "start": 2596,
+                    "end": 2812,
                     "loc": {
                       "start": {
                         "line": 106,
@@ -5087,8 +5185,8 @@
                   {
                     "type": "CommentBlock",
                     "value": "*\n     * Creates progress bar control\n     * @param {string} name - progress bar name\n     * @param {Array<any>} items - list of progress bar values (current value, max value, display value)\n     * @param {function} [callback] -  callback invoked after every change\n     ",
-                    "start": 2852,
-                    "end": 3127,
+                    "start": 2862,
+                    "end": 3137,
                     "loc": {
                       "start": {
                         "line": 116,
@@ -5104,8 +5202,8 @@
               },
               {
                 "type": "ClassMethod",
-                "start": 3132,
-                "end": 3175,
+                "start": 3142,
+                "end": 3185,
                 "loc": {
                   "start": {
                     "line": 122,
@@ -5120,8 +5218,8 @@
                 "computed": false,
                 "key": {
                   "type": "Identifier",
-                  "start": 3132,
-                  "end": 3143,
+                  "start": 3142,
+                  "end": 3153,
                   "loc": {
                     "start": {
                       "line": 122,
@@ -5144,8 +5242,8 @@
                 "params": [
                   {
                     "type": "Identifier",
-                    "start": 3144,
-                    "end": 3148,
+                    "start": 3154,
+                    "end": 3158,
                     "loc": {
                       "start": {
                         "line": 122,
@@ -5161,8 +5259,8 @@
                   },
                   {
                     "type": "Identifier",
-                    "start": 3150,
-                    "end": 3155,
+                    "start": 3160,
+                    "end": 3165,
                     "loc": {
                       "start": {
                         "line": 122,
@@ -5178,8 +5276,8 @@
                   },
                   {
                     "type": "Identifier",
-                    "start": 3157,
-                    "end": 3165,
+                    "start": 3167,
+                    "end": 3175,
                     "loc": {
                       "start": {
                         "line": 122,
@@ -5196,8 +5294,8 @@
                 ],
                 "body": {
                   "type": "BlockStatement",
-                  "start": 3167,
-                  "end": 3175,
+                  "start": 3177,
+                  "end": 3185,
                   "loc": {
                     "start": {
                       "line": 122,
@@ -5217,8 +5315,8 @@
                   {
                     "type": "CommentBlock",
                     "value": "*\n     * Creates progress bar control\n     * @param {string} name - progress bar name\n     * @param {Array<any>} items - list of progress bar values (current value, max value, display value)\n     * @param {function} [callback] -  callback invoked after every change\n     ",
-                    "start": 2852,
-                    "end": 3127,
+                    "start": 2862,
+                    "end": 3137,
                     "loc": {
                       "start": {
                         "line": 116,
@@ -5235,8 +5333,8 @@
                   {
                     "type": "CommentBlock",
                     "value": "*\n     * Creates text input control\n     * @param {string} name - text input control name\n     * @param {string} value - default text to display\n     * @param {function} [callback] -  callback invoked after every change\n     ",
-                    "start": 3181,
-                    "end": 3410,
+                    "start": 3191,
+                    "end": 3420,
                     "loc": {
                       "start": {
                         "line": 126,
@@ -5252,8 +5350,8 @@
               },
               {
                 "type": "ClassMethod",
-                "start": 3415,
-                "end": 3451,
+                "start": 3425,
+                "end": 3461,
                 "loc": {
                   "start": {
                     "line": 132,
@@ -5268,8 +5366,8 @@
                 "computed": false,
                 "key": {
                   "type": "Identifier",
-                  "start": 3415,
-                  "end": 3419,
+                  "start": 3425,
+                  "end": 3429,
                   "loc": {
                     "start": {
                       "line": 132,
@@ -5292,8 +5390,8 @@
                 "params": [
                   {
                     "type": "Identifier",
-                    "start": 3420,
-                    "end": 3424,
+                    "start": 3430,
+                    "end": 3434,
                     "loc": {
                       "start": {
                         "line": 132,
@@ -5309,8 +5407,8 @@
                   },
                   {
                     "type": "Identifier",
-                    "start": 3426,
-                    "end": 3431,
+                    "start": 3436,
+                    "end": 3441,
                     "loc": {
                       "start": {
                         "line": 132,
@@ -5326,8 +5424,8 @@
                   },
                   {
                     "type": "Identifier",
-                    "start": 3433,
-                    "end": 3441,
+                    "start": 3443,
+                    "end": 3451,
                     "loc": {
                       "start": {
                         "line": 132,
@@ -5344,8 +5442,8 @@
                 ],
                 "body": {
                   "type": "BlockStatement",
-                  "start": 3443,
-                  "end": 3451,
+                  "start": 3453,
+                  "end": 3461,
                   "loc": {
                     "start": {
                       "line": 132,
@@ -5365,8 +5463,8 @@
                   {
                     "type": "CommentBlock",
                     "value": "*\n     * Creates text input control\n     * @param {string} name - text input control name\n     * @param {string} value - default text to display\n     * @param {function} [callback] -  callback invoked after every change\n     ",
-                    "start": 3181,
-                    "end": 3410,
+                    "start": 3191,
+                    "end": 3420,
                     "loc": {
                       "start": {
                         "line": 126,
@@ -5383,8 +5481,8 @@
                   {
                     "type": "CommentBlock",
                     "value": "*\n     * Creates textarea control\n     * @param {string} name - text input control name\n     * @param {string} value - default text to display\n     * @param {function} [callback] -  callback invoked after every change\n     ",
-                    "start": 3462,
-                    "end": 3689,
+                    "start": 3472,
+                    "end": 3699,
                     "loc": {
                       "start": {
                         "line": 137,
@@ -5400,8 +5498,8 @@
               },
               {
                 "type": "ClassMethod",
-                "start": 3694,
-                "end": 3734,
+                "start": 3704,
+                "end": 3744,
                 "loc": {
                   "start": {
                     "line": 143,
@@ -5416,8 +5514,8 @@
                 "computed": false,
                 "key": {
                   "type": "Identifier",
-                  "start": 3694,
-                  "end": 3702,
+                  "start": 3704,
+                  "end": 3712,
                   "loc": {
                     "start": {
                       "line": 143,
@@ -5440,8 +5538,8 @@
                 "params": [
                   {
                     "type": "Identifier",
-                    "start": 3703,
-                    "end": 3707,
+                    "start": 3713,
+                    "end": 3717,
                     "loc": {
                       "start": {
                         "line": 143,
@@ -5457,8 +5555,8 @@
                   },
                   {
                     "type": "Identifier",
-                    "start": 3709,
-                    "end": 3714,
+                    "start": 3719,
+                    "end": 3724,
                     "loc": {
                       "start": {
                         "line": 143,
@@ -5474,8 +5572,8 @@
                   },
                   {
                     "type": "Identifier",
-                    "start": 3716,
-                    "end": 3724,
+                    "start": 3726,
+                    "end": 3734,
                     "loc": {
                       "start": {
                         "line": 143,
@@ -5492,8 +5590,8 @@
                 ],
                 "body": {
                   "type": "BlockStatement",
-                  "start": 3726,
-                  "end": 3734,
+                  "start": 3736,
+                  "end": 3744,
                   "loc": {
                     "start": {
                       "line": 143,
@@ -5513,8 +5611,8 @@
                   {
                     "type": "CommentBlock",
                     "value": "*\n     * Creates textarea control\n     * @param {string} name - text input control name\n     * @param {string} value - default text to display\n     * @param {function} [callback] -  callback invoked after every change\n     ",
-                    "start": 3462,
-                    "end": 3689,
+                    "start": 3472,
+                    "end": 3699,
                     "loc": {
                       "start": {
                         "line": 137,
@@ -5531,8 +5629,8 @@
                   {
                     "type": "CommentBlock",
                     "value": "*\n     * Creates custom html content control\n     * @param {string} name - control name\n     * @param {string} value - default content to display\n     * @param {function} [callback] -  callback invoked after every change\n     ",
-                    "start": 3745,
-                    "end": 3975,
+                    "start": 3755,
+                    "end": 3985,
                     "loc": {
                       "start": {
                         "line": 148,
@@ -5548,8 +5646,8 @@
               },
               {
                 "type": "ClassMethod",
-                "start": 3980,
-                "end": 4016,
+                "start": 3990,
+                "end": 4026,
                 "loc": {
                   "start": {
                     "line": 154,
@@ -5564,8 +5662,8 @@
                 "computed": false,
                 "key": {
                   "type": "Identifier",
-                  "start": 3980,
-                  "end": 3984,
+                  "start": 3990,
+                  "end": 3994,
                   "loc": {
                     "start": {
                       "line": 154,
@@ -5588,8 +5686,8 @@
                 "params": [
                   {
                     "type": "Identifier",
-                    "start": 3985,
-                    "end": 3989,
+                    "start": 3995,
+                    "end": 3999,
                     "loc": {
                       "start": {
                         "line": 154,
@@ -5605,8 +5703,8 @@
                   },
                   {
                     "type": "Identifier",
-                    "start": 3991,
-                    "end": 3996,
+                    "start": 4001,
+                    "end": 4006,
                     "loc": {
                       "start": {
                         "line": 154,
@@ -5622,8 +5720,8 @@
                   },
                   {
                     "type": "Identifier",
-                    "start": 3998,
-                    "end": 4006,
+                    "start": 4008,
+                    "end": 4016,
                     "loc": {
                       "start": {
                         "line": 154,
@@ -5640,8 +5738,8 @@
                 ],
                 "body": {
                   "type": "BlockStatement",
-                  "start": 4008,
-                  "end": 4016,
+                  "start": 4018,
+                  "end": 4026,
                   "loc": {
                     "start": {
                       "line": 154,
@@ -5659,8 +5757,8 @@
                   {
                     "type": "CommentBlock",
                     "value": "*\n     * Creates custom html content control\n     * @param {string} name - control name\n     * @param {string} value - default content to display\n     * @param {function} [callback] -  callback invoked after every change\n     ",
-                    "start": 3745,
-                    "end": 3975,
+                    "start": 3755,
+                    "end": 3985,
                     "loc": {
                       "start": {
                         "line": 148,
@@ -5802,8 +5900,8 @@
     {
       "type": "CommentBlock",
       "value": "*\n     * Adds new section to the panel\n     * @param {string} name - name of the section\n     * @return {void}\n     * @example\n     * const newSection = mySettings.addSection('New section')\n     ",
-      "start": 1002,
-      "end": 1201,
+      "start": 1012,
+      "end": 1211,
       "loc": {
         "start": {
           "line": 49,
@@ -5818,8 +5916,8 @@
     {
       "type": "CommentBlock",
       "value": "*\n     * Removes section from the panel\n     * @param {string} name - name of the section\n     * @return {void}\n     * @example\n     * mySettings.removeSection('New section')\n     ",
-      "start": 1325,
-      "end": 1509,
+      "start": 1335,
+      "end": 1519,
       "loc": {
         "start": {
           "line": 63,
@@ -5834,8 +5932,8 @@
     {
       "type": "CommentBlock",
       "value": "*\n     * Creates button control\n     * @param {string} name - name of the button (displayed in it)\n     * @param {function} [callback] - callback invoked after button click\n     * @return {void}\n     * @example\n     * mySettings.button('Execute', executionHadler)\n     ",
-      "start": 1582,
-      "end": 1855,
+      "start": 1592,
+      "end": 1865,
       "loc": {
         "start": {
           "line": 74,
@@ -5850,8 +5948,8 @@
     {
       "type": "CommentBlock",
       "value": "*\n     * Creates dropdown control\n     * @param {string} name - dropdown name\n     * @param {string[]|number[]|function} items - list of values to display in the dropdown options list or a function that returns these values\n     * @param {function} [callback] - callback invoked after every change\n     ",
-      "start": 1904,
-      "end": 2211,
+      "start": 1914,
+      "end": 2221,
       "loc": {
         "start": {
           "line": 86,
@@ -5866,8 +5964,8 @@
     {
       "type": "CommentBlock",
       "value": "*\n     * Creates range control\n     * @param {string} name - range name\n     * @param {number[]|function} items - list of range values (min, max, step, default) or a function that returns them\n     * @param {function} [callback] - callback invoked after every change\n     ",
-      "start": 2262,
-      "end": 2538,
+      "start": 2272,
+      "end": 2548,
       "loc": {
         "start": {
           "line": 96,
@@ -5882,8 +5980,8 @@
     {
       "type": "CommentBlock",
       "value": "*\n     * Creates checkbox control\n     * @param {string} name - checkbox name\n     * @param {boolean} value - checkbox default value\n     * @param {function} [callback] - callback invoked after every change\n     ",
-      "start": 2586,
-      "end": 2802,
+      "start": 2596,
+      "end": 2812,
       "loc": {
         "start": {
           "line": 106,
@@ -5898,8 +5996,8 @@
     {
       "type": "CommentBlock",
       "value": "*\n     * Creates progress bar control\n     * @param {string} name - progress bar name\n     * @param {Array<any>} items - list of progress bar values (current value, max value, display value)\n     * @param {function} [callback] -  callback invoked after every change\n     ",
-      "start": 2852,
-      "end": 3127,
+      "start": 2862,
+      "end": 3137,
       "loc": {
         "start": {
           "line": 116,
@@ -5914,8 +6012,8 @@
     {
       "type": "CommentBlock",
       "value": "*\n     * Creates text input control\n     * @param {string} name - text input control name\n     * @param {string} value - default text to display\n     * @param {function} [callback] -  callback invoked after every change\n     ",
-      "start": 3181,
-      "end": 3410,
+      "start": 3191,
+      "end": 3420,
       "loc": {
         "start": {
           "line": 126,
@@ -5930,8 +6028,8 @@
     {
       "type": "CommentBlock",
       "value": "*\n     * Creates textarea control\n     * @param {string} name - text input control name\n     * @param {string} value - default text to display\n     * @param {function} [callback] -  callback invoked after every change\n     ",
-      "start": 3462,
-      "end": 3689,
+      "start": 3472,
+      "end": 3699,
       "loc": {
         "start": {
           "line": 137,
@@ -5946,8 +6044,8 @@
     {
       "type": "CommentBlock",
       "value": "*\n     * Creates custom html content control\n     * @param {string} name - control name\n     * @param {string} value - default content to display\n     * @param {function} [callback] -  callback invoked after every change\n     ",
-      "start": 3745,
-      "end": 3975,
+      "start": 3755,
+      "end": 3985,
       "loc": {
         "start": {
           "line": 148,
@@ -7523,6 +7621,86 @@
     },
     {
       "type": {
+        "label": "this",
+        "keyword": "this",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "this",
+      "start": 989,
+      "end": 993,
+      "loc": {
+        "start": {
+          "line": 46,
+          "column": 31
+        },
+        "end": {
+          "line": 46,
+          "column": 35
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ".",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 993,
+      "end": 994,
+      "loc": {
+        "start": {
+          "line": 46,
+          "column": 35
+        },
+        "end": {
+          "line": 46,
+          "column": 36
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "panel",
+      "start": 994,
+      "end": 999,
+      "loc": {
+        "start": {
+          "line": 46,
+          "column": 36
+        },
+        "end": {
+          "line": 46,
+          "column": 41
+        }
+      }
+    },
+    {
+      "type": {
         "label": ")",
         "beforeExpr": false,
         "startsExpr": false,
@@ -7533,16 +7711,16 @@
         "postfix": false,
         "binop": null
       },
-      "start": 989,
-      "end": 990,
+      "start": 999,
+      "end": 1000,
       "loc": {
         "start": {
           "line": 46,
-          "column": 31
+          "column": 41
         },
         "end": {
           "line": 46,
-          "column": 32
+          "column": 42
         }
       }
     },
@@ -7558,8 +7736,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 995,
-      "end": 996,
+      "start": 1005,
+      "end": 1006,
       "loc": {
         "start": {
           "line": 47,
@@ -7574,8 +7752,8 @@
     {
       "type": "CommentBlock",
       "value": "*\n     * Adds new section to the panel\n     * @param {string} name - name of the section\n     * @return {void}\n     * @example\n     * const newSection = mySettings.addSection('New section')\n     ",
-      "start": 1002,
-      "end": 1201,
+      "start": 1012,
+      "end": 1211,
       "loc": {
         "start": {
           "line": 49,
@@ -7600,8 +7778,8 @@
         "binop": null
       },
       "value": "addSection",
-      "start": 1206,
-      "end": 1216,
+      "start": 1216,
+      "end": 1226,
       "loc": {
         "start": {
           "line": 56,
@@ -7625,8 +7803,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1216,
-      "end": 1217,
+      "start": 1226,
+      "end": 1227,
       "loc": {
         "start": {
           "line": 56,
@@ -7651,8 +7829,8 @@
         "binop": null
       },
       "value": "name",
-      "start": 1217,
-      "end": 1221,
+      "start": 1227,
+      "end": 1231,
       "loc": {
         "start": {
           "line": 56,
@@ -7676,8 +7854,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1221,
-      "end": 1222,
+      "start": 1231,
+      "end": 1232,
       "loc": {
         "start": {
           "line": 56,
@@ -7701,8 +7879,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1223,
-      "end": 1224,
+      "start": 1233,
+      "end": 1234,
       "loc": {
         "start": {
           "line": 56,
@@ -7729,8 +7907,8 @@
         "updateContext": null
       },
       "value": "this",
-      "start": 1233,
-      "end": 1237,
+      "start": 1243,
+      "end": 1247,
       "loc": {
         "start": {
           "line": 57,
@@ -7755,8 +7933,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1237,
-      "end": 1238,
+      "start": 1247,
+      "end": 1248,
       "loc": {
         "start": {
           "line": 57,
@@ -7781,8 +7959,8 @@
         "binop": null
       },
       "value": "sections",
-      "start": 1238,
-      "end": 1246,
+      "start": 1248,
+      "end": 1256,
       "loc": {
         "start": {
           "line": 57,
@@ -7807,8 +7985,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1246,
-      "end": 1247,
+      "start": 1256,
+      "end": 1257,
       "loc": {
         "start": {
           "line": 57,
@@ -7833,8 +8011,8 @@
         "binop": null
       },
       "value": "push",
-      "start": 1247,
-      "end": 1251,
+      "start": 1257,
+      "end": 1261,
       "loc": {
         "start": {
           "line": 57,
@@ -7858,8 +8036,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1251,
-      "end": 1252,
+      "start": 1261,
+      "end": 1262,
       "loc": {
         "start": {
           "line": 57,
@@ -7883,8 +8061,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1252,
-      "end": 1253,
+      "start": 1262,
+      "end": 1263,
       "loc": {
         "start": {
           "line": 57,
@@ -7909,8 +8087,8 @@
         "binop": null
       },
       "value": "name",
-      "start": 1266,
-      "end": 1270,
+      "start": 1276,
+      "end": 1280,
       "loc": {
         "start": {
           "line": 58,
@@ -7935,8 +8113,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1270,
-      "end": 1271,
+      "start": 1280,
+      "end": 1281,
       "loc": {
         "start": {
           "line": 58,
@@ -7961,8 +8139,8 @@
         "binop": null
       },
       "value": "name",
-      "start": 1272,
-      "end": 1276,
+      "start": 1282,
+      "end": 1286,
       "loc": {
         "start": {
           "line": 58,
@@ -7987,8 +8165,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1276,
-      "end": 1277,
+      "start": 1286,
+      "end": 1287,
       "loc": {
         "start": {
           "line": 58,
@@ -8013,8 +8191,8 @@
         "binop": null
       },
       "value": "controls",
-      "start": 1290,
-      "end": 1298,
+      "start": 1300,
+      "end": 1308,
       "loc": {
         "start": {
           "line": 59,
@@ -8039,8 +8217,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1298,
-      "end": 1299,
+      "start": 1308,
+      "end": 1309,
       "loc": {
         "start": {
           "line": 59,
@@ -8065,8 +8243,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1300,
-      "end": 1301,
+      "start": 1310,
+      "end": 1311,
       "loc": {
         "start": {
           "line": 59,
@@ -8091,8 +8269,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1301,
-      "end": 1302,
+      "start": 1311,
+      "end": 1312,
       "loc": {
         "start": {
           "line": 59,
@@ -8116,8 +8294,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1311,
-      "end": 1312,
+      "start": 1321,
+      "end": 1322,
       "loc": {
         "start": {
           "line": 60,
@@ -8141,8 +8319,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1312,
-      "end": 1313,
+      "start": 1322,
+      "end": 1323,
       "loc": {
         "start": {
           "line": 60,
@@ -8166,8 +8344,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1318,
-      "end": 1319,
+      "start": 1328,
+      "end": 1329,
       "loc": {
         "start": {
           "line": 61,
@@ -8182,8 +8360,8 @@
     {
       "type": "CommentBlock",
       "value": "*\n     * Removes section from the panel\n     * @param {string} name - name of the section\n     * @return {void}\n     * @example\n     * mySettings.removeSection('New section')\n     ",
-      "start": 1325,
-      "end": 1509,
+      "start": 1335,
+      "end": 1519,
       "loc": {
         "start": {
           "line": 63,
@@ -8208,8 +8386,8 @@
         "binop": null
       },
       "value": "removeSection",
-      "start": 1514,
-      "end": 1527,
+      "start": 1524,
+      "end": 1537,
       "loc": {
         "start": {
           "line": 70,
@@ -8233,8 +8411,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1527,
-      "end": 1528,
+      "start": 1537,
+      "end": 1538,
       "loc": {
         "start": {
           "line": 70,
@@ -8259,8 +8437,8 @@
         "binop": null
       },
       "value": "name",
-      "start": 1528,
-      "end": 1532,
+      "start": 1538,
+      "end": 1542,
       "loc": {
         "start": {
           "line": 70,
@@ -8284,8 +8462,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1532,
-      "end": 1533,
+      "start": 1542,
+      "end": 1543,
       "loc": {
         "start": {
           "line": 70,
@@ -8309,8 +8487,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1534,
-      "end": 1535,
+      "start": 1544,
+      "end": 1545,
       "loc": {
         "start": {
           "line": 70,
@@ -8337,8 +8515,8 @@
         "updateContext": null
       },
       "value": "delete",
-      "start": 1544,
-      "end": 1550,
+      "start": 1554,
+      "end": 1560,
       "loc": {
         "start": {
           "line": 71,
@@ -8365,8 +8543,8 @@
         "updateContext": null
       },
       "value": "this",
-      "start": 1551,
-      "end": 1555,
+      "start": 1561,
+      "end": 1565,
       "loc": {
         "start": {
           "line": 71,
@@ -8391,8 +8569,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1555,
-      "end": 1556,
+      "start": 1565,
+      "end": 1566,
       "loc": {
         "start": {
           "line": 71,
@@ -8417,8 +8595,8 @@
         "binop": null
       },
       "value": "sections",
-      "start": 1556,
-      "end": 1564,
+      "start": 1566,
+      "end": 1574,
       "loc": {
         "start": {
           "line": 71,
@@ -8443,8 +8621,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1564,
-      "end": 1565,
+      "start": 1574,
+      "end": 1575,
       "loc": {
         "start": {
           "line": 71,
@@ -8469,8 +8647,8 @@
         "binop": null
       },
       "value": "name",
-      "start": 1565,
-      "end": 1569,
+      "start": 1575,
+      "end": 1579,
       "loc": {
         "start": {
           "line": 71,
@@ -8495,8 +8673,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1569,
-      "end": 1570,
+      "start": 1579,
+      "end": 1580,
       "loc": {
         "start": {
           "line": 71,
@@ -8520,8 +8698,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1575,
-      "end": 1576,
+      "start": 1585,
+      "end": 1586,
       "loc": {
         "start": {
           "line": 72,
@@ -8536,8 +8714,8 @@
     {
       "type": "CommentBlock",
       "value": "*\n     * Creates button control\n     * @param {string} name - name of the button (displayed in it)\n     * @param {function} [callback] - callback invoked after button click\n     * @return {void}\n     * @example\n     * mySettings.button('Execute', executionHadler)\n     ",
-      "start": 1582,
-      "end": 1855,
+      "start": 1592,
+      "end": 1865,
       "loc": {
         "start": {
           "line": 74,
@@ -8562,8 +8740,8 @@
         "binop": null
       },
       "value": "button",
-      "start": 1860,
-      "end": 1866,
+      "start": 1870,
+      "end": 1876,
       "loc": {
         "start": {
           "line": 82,
@@ -8587,8 +8765,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1866,
-      "end": 1867,
+      "start": 1876,
+      "end": 1877,
       "loc": {
         "start": {
           "line": 82,
@@ -8613,8 +8791,8 @@
         "binop": null
       },
       "value": "name",
-      "start": 1867,
-      "end": 1871,
+      "start": 1877,
+      "end": 1881,
       "loc": {
         "start": {
           "line": 82,
@@ -8639,8 +8817,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1871,
-      "end": 1872,
+      "start": 1881,
+      "end": 1882,
       "loc": {
         "start": {
           "line": 82,
@@ -8665,8 +8843,8 @@
         "binop": null
       },
       "value": "callback",
-      "start": 1873,
-      "end": 1881,
+      "start": 1883,
+      "end": 1891,
       "loc": {
         "start": {
           "line": 82,
@@ -8692,8 +8870,8 @@
         "updateContext": null
       },
       "value": "=",
-      "start": 1882,
-      "end": 1883,
+      "start": 1892,
+      "end": 1893,
       "loc": {
         "start": {
           "line": 82,
@@ -8720,8 +8898,8 @@
         "updateContext": null
       },
       "value": "null",
-      "start": 1884,
-      "end": 1888,
+      "start": 1894,
+      "end": 1898,
       "loc": {
         "start": {
           "line": 82,
@@ -8745,8 +8923,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1888,
-      "end": 1889,
+      "start": 1898,
+      "end": 1899,
       "loc": {
         "start": {
           "line": 82,
@@ -8770,8 +8948,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1890,
-      "end": 1891,
+      "start": 1900,
+      "end": 1901,
       "loc": {
         "start": {
           "line": 82,
@@ -8795,8 +8973,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1897,
-      "end": 1898,
+      "start": 1907,
+      "end": 1908,
       "loc": {
         "start": {
           "line": 84,
@@ -8811,8 +8989,8 @@
     {
       "type": "CommentBlock",
       "value": "*\n     * Creates dropdown control\n     * @param {string} name - dropdown name\n     * @param {string[]|number[]|function} items - list of values to display in the dropdown options list or a function that returns these values\n     * @param {function} [callback] - callback invoked after every change\n     ",
-      "start": 1904,
-      "end": 2211,
+      "start": 1914,
+      "end": 2221,
       "loc": {
         "start": {
           "line": 86,
@@ -8837,8 +9015,8 @@
         "binop": null
       },
       "value": "dropdown",
-      "start": 2216,
-      "end": 2224,
+      "start": 2226,
+      "end": 2234,
       "loc": {
         "start": {
           "line": 92,
@@ -8862,8 +9040,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 2224,
-      "end": 2225,
+      "start": 2234,
+      "end": 2235,
       "loc": {
         "start": {
           "line": 92,
@@ -8888,8 +9066,8 @@
         "binop": null
       },
       "value": "name",
-      "start": 2225,
-      "end": 2229,
+      "start": 2235,
+      "end": 2239,
       "loc": {
         "start": {
           "line": 92,
@@ -8914,8 +9092,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 2229,
-      "end": 2230,
+      "start": 2239,
+      "end": 2240,
       "loc": {
         "start": {
           "line": 92,
@@ -8940,8 +9118,8 @@
         "binop": null
       },
       "value": "items",
-      "start": 2231,
-      "end": 2236,
+      "start": 2241,
+      "end": 2246,
       "loc": {
         "start": {
           "line": 92,
@@ -8966,8 +9144,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 2236,
-      "end": 2237,
+      "start": 2246,
+      "end": 2247,
       "loc": {
         "start": {
           "line": 92,
@@ -8992,8 +9170,8 @@
         "binop": null
       },
       "value": "callback",
-      "start": 2238,
-      "end": 2246,
+      "start": 2248,
+      "end": 2256,
       "loc": {
         "start": {
           "line": 92,
@@ -9017,8 +9195,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 2246,
-      "end": 2247,
+      "start": 2256,
+      "end": 2257,
       "loc": {
         "start": {
           "line": 92,
@@ -9042,8 +9220,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 2248,
-      "end": 2249,
+      "start": 2258,
+      "end": 2259,
       "loc": {
         "start": {
           "line": 92,
@@ -9067,8 +9245,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 2255,
-      "end": 2256,
+      "start": 2265,
+      "end": 2266,
       "loc": {
         "start": {
           "line": 94,
@@ -9083,8 +9261,8 @@
     {
       "type": "CommentBlock",
       "value": "*\n     * Creates range control\n     * @param {string} name - range name\n     * @param {number[]|function} items - list of range values (min, max, step, default) or a function that returns them\n     * @param {function} [callback] - callback invoked after every change\n     ",
-      "start": 2262,
-      "end": 2538,
+      "start": 2272,
+      "end": 2548,
       "loc": {
         "start": {
           "line": 96,
@@ -9109,8 +9287,8 @@
         "binop": null
       },
       "value": "range",
-      "start": 2543,
-      "end": 2548,
+      "start": 2553,
+      "end": 2558,
       "loc": {
         "start": {
           "line": 102,
@@ -9134,8 +9312,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 2548,
-      "end": 2549,
+      "start": 2558,
+      "end": 2559,
       "loc": {
         "start": {
           "line": 102,
@@ -9160,8 +9338,8 @@
         "binop": null
       },
       "value": "name",
-      "start": 2549,
-      "end": 2553,
+      "start": 2559,
+      "end": 2563,
       "loc": {
         "start": {
           "line": 102,
@@ -9186,8 +9364,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 2553,
-      "end": 2554,
+      "start": 2563,
+      "end": 2564,
       "loc": {
         "start": {
           "line": 102,
@@ -9212,8 +9390,8 @@
         "binop": null
       },
       "value": "items",
-      "start": 2555,
-      "end": 2560,
+      "start": 2565,
+      "end": 2570,
       "loc": {
         "start": {
           "line": 102,
@@ -9238,8 +9416,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 2560,
-      "end": 2561,
+      "start": 2570,
+      "end": 2571,
       "loc": {
         "start": {
           "line": 102,
@@ -9264,8 +9442,8 @@
         "binop": null
       },
       "value": "callback",
-      "start": 2562,
-      "end": 2570,
+      "start": 2572,
+      "end": 2580,
       "loc": {
         "start": {
           "line": 102,
@@ -9289,8 +9467,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 2570,
-      "end": 2571,
+      "start": 2580,
+      "end": 2581,
       "loc": {
         "start": {
           "line": 102,
@@ -9314,8 +9492,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 2572,
-      "end": 2573,
+      "start": 2582,
+      "end": 2583,
       "loc": {
         "start": {
           "line": 102,
@@ -9339,8 +9517,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 2579,
-      "end": 2580,
+      "start": 2589,
+      "end": 2590,
       "loc": {
         "start": {
           "line": 104,
@@ -9355,8 +9533,8 @@
     {
       "type": "CommentBlock",
       "value": "*\n     * Creates checkbox control\n     * @param {string} name - checkbox name\n     * @param {boolean} value - checkbox default value\n     * @param {function} [callback] - callback invoked after every change\n     ",
-      "start": 2586,
-      "end": 2802,
+      "start": 2596,
+      "end": 2812,
       "loc": {
         "start": {
           "line": 106,
@@ -9381,8 +9559,8 @@
         "binop": null
       },
       "value": "boolean",
-      "start": 2807,
-      "end": 2814,
+      "start": 2817,
+      "end": 2824,
       "loc": {
         "start": {
           "line": 112,
@@ -9406,8 +9584,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 2814,
-      "end": 2815,
+      "start": 2824,
+      "end": 2825,
       "loc": {
         "start": {
           "line": 112,
@@ -9432,8 +9610,8 @@
         "binop": null
       },
       "value": "name",
-      "start": 2815,
-      "end": 2819,
+      "start": 2825,
+      "end": 2829,
       "loc": {
         "start": {
           "line": 112,
@@ -9458,8 +9636,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 2819,
-      "end": 2820,
+      "start": 2829,
+      "end": 2830,
       "loc": {
         "start": {
           "line": 112,
@@ -9484,8 +9662,8 @@
         "binop": null
       },
       "value": "value",
-      "start": 2821,
-      "end": 2826,
+      "start": 2831,
+      "end": 2836,
       "loc": {
         "start": {
           "line": 112,
@@ -9510,8 +9688,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 2826,
-      "end": 2827,
+      "start": 2836,
+      "end": 2837,
       "loc": {
         "start": {
           "line": 112,
@@ -9536,8 +9714,8 @@
         "binop": null
       },
       "value": "callback",
-      "start": 2828,
-      "end": 2836,
+      "start": 2838,
+      "end": 2846,
       "loc": {
         "start": {
           "line": 112,
@@ -9561,8 +9739,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 2836,
-      "end": 2837,
+      "start": 2846,
+      "end": 2847,
       "loc": {
         "start": {
           "line": 112,
@@ -9586,8 +9764,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 2838,
-      "end": 2839,
+      "start": 2848,
+      "end": 2849,
       "loc": {
         "start": {
           "line": 112,
@@ -9611,8 +9789,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 2845,
-      "end": 2846,
+      "start": 2855,
+      "end": 2856,
       "loc": {
         "start": {
           "line": 114,
@@ -9627,8 +9805,8 @@
     {
       "type": "CommentBlock",
       "value": "*\n     * Creates progress bar control\n     * @param {string} name - progress bar name\n     * @param {Array<any>} items - list of progress bar values (current value, max value, display value)\n     * @param {function} [callback] -  callback invoked after every change\n     ",
-      "start": 2852,
-      "end": 3127,
+      "start": 2862,
+      "end": 3137,
       "loc": {
         "start": {
           "line": 116,
@@ -9653,8 +9831,8 @@
         "binop": null
       },
       "value": "progressbar",
-      "start": 3132,
-      "end": 3143,
+      "start": 3142,
+      "end": 3153,
       "loc": {
         "start": {
           "line": 122,
@@ -9678,8 +9856,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 3143,
-      "end": 3144,
+      "start": 3153,
+      "end": 3154,
       "loc": {
         "start": {
           "line": 122,
@@ -9704,8 +9882,8 @@
         "binop": null
       },
       "value": "name",
-      "start": 3144,
-      "end": 3148,
+      "start": 3154,
+      "end": 3158,
       "loc": {
         "start": {
           "line": 122,
@@ -9730,8 +9908,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 3148,
-      "end": 3149,
+      "start": 3158,
+      "end": 3159,
       "loc": {
         "start": {
           "line": 122,
@@ -9756,8 +9934,8 @@
         "binop": null
       },
       "value": "items",
-      "start": 3150,
-      "end": 3155,
+      "start": 3160,
+      "end": 3165,
       "loc": {
         "start": {
           "line": 122,
@@ -9782,8 +9960,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 3155,
-      "end": 3156,
+      "start": 3165,
+      "end": 3166,
       "loc": {
         "start": {
           "line": 122,
@@ -9808,8 +9986,8 @@
         "binop": null
       },
       "value": "callback",
-      "start": 3157,
-      "end": 3165,
+      "start": 3167,
+      "end": 3175,
       "loc": {
         "start": {
           "line": 122,
@@ -9833,8 +10011,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 3165,
-      "end": 3166,
+      "start": 3175,
+      "end": 3176,
       "loc": {
         "start": {
           "line": 122,
@@ -9858,8 +10036,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 3167,
-      "end": 3168,
+      "start": 3177,
+      "end": 3178,
       "loc": {
         "start": {
           "line": 122,
@@ -9883,8 +10061,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 3174,
-      "end": 3175,
+      "start": 3184,
+      "end": 3185,
       "loc": {
         "start": {
           "line": 124,
@@ -9899,8 +10077,8 @@
     {
       "type": "CommentBlock",
       "value": "*\n     * Creates text input control\n     * @param {string} name - text input control name\n     * @param {string} value - default text to display\n     * @param {function} [callback] -  callback invoked after every change\n     ",
-      "start": 3181,
-      "end": 3410,
+      "start": 3191,
+      "end": 3420,
       "loc": {
         "start": {
           "line": 126,
@@ -9925,8 +10103,8 @@
         "binop": null
       },
       "value": "text",
-      "start": 3415,
-      "end": 3419,
+      "start": 3425,
+      "end": 3429,
       "loc": {
         "start": {
           "line": 132,
@@ -9950,8 +10128,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 3419,
-      "end": 3420,
+      "start": 3429,
+      "end": 3430,
       "loc": {
         "start": {
           "line": 132,
@@ -9976,8 +10154,8 @@
         "binop": null
       },
       "value": "name",
-      "start": 3420,
-      "end": 3424,
+      "start": 3430,
+      "end": 3434,
       "loc": {
         "start": {
           "line": 132,
@@ -10002,8 +10180,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 3424,
-      "end": 3425,
+      "start": 3434,
+      "end": 3435,
       "loc": {
         "start": {
           "line": 132,
@@ -10028,8 +10206,8 @@
         "binop": null
       },
       "value": "value",
-      "start": 3426,
-      "end": 3431,
+      "start": 3436,
+      "end": 3441,
       "loc": {
         "start": {
           "line": 132,
@@ -10054,8 +10232,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 3431,
-      "end": 3432,
+      "start": 3441,
+      "end": 3442,
       "loc": {
         "start": {
           "line": 132,
@@ -10080,8 +10258,8 @@
         "binop": null
       },
       "value": "callback",
-      "start": 3433,
-      "end": 3441,
+      "start": 3443,
+      "end": 3451,
       "loc": {
         "start": {
           "line": 132,
@@ -10105,8 +10283,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 3441,
-      "end": 3442,
+      "start": 3451,
+      "end": 3452,
       "loc": {
         "start": {
           "line": 132,
@@ -10130,8 +10308,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 3443,
-      "end": 3444,
+      "start": 3453,
+      "end": 3454,
       "loc": {
         "start": {
           "line": 132,
@@ -10155,8 +10333,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 3450,
-      "end": 3451,
+      "start": 3460,
+      "end": 3461,
       "loc": {
         "start": {
           "line": 134,
@@ -10171,8 +10349,8 @@
     {
       "type": "CommentBlock",
       "value": "*\n     * Creates textarea control\n     * @param {string} name - text input control name\n     * @param {string} value - default text to display\n     * @param {function} [callback] -  callback invoked after every change\n     ",
-      "start": 3462,
-      "end": 3689,
+      "start": 3472,
+      "end": 3699,
       "loc": {
         "start": {
           "line": 137,
@@ -10197,8 +10375,8 @@
         "binop": null
       },
       "value": "textarea",
-      "start": 3694,
-      "end": 3702,
+      "start": 3704,
+      "end": 3712,
       "loc": {
         "start": {
           "line": 143,
@@ -10222,8 +10400,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 3702,
-      "end": 3703,
+      "start": 3712,
+      "end": 3713,
       "loc": {
         "start": {
           "line": 143,
@@ -10248,8 +10426,8 @@
         "binop": null
       },
       "value": "name",
-      "start": 3703,
-      "end": 3707,
+      "start": 3713,
+      "end": 3717,
       "loc": {
         "start": {
           "line": 143,
@@ -10274,8 +10452,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 3707,
-      "end": 3708,
+      "start": 3717,
+      "end": 3718,
       "loc": {
         "start": {
           "line": 143,
@@ -10300,8 +10478,8 @@
         "binop": null
       },
       "value": "value",
-      "start": 3709,
-      "end": 3714,
+      "start": 3719,
+      "end": 3724,
       "loc": {
         "start": {
           "line": 143,
@@ -10326,8 +10504,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 3714,
-      "end": 3715,
+      "start": 3724,
+      "end": 3725,
       "loc": {
         "start": {
           "line": 143,
@@ -10352,8 +10530,8 @@
         "binop": null
       },
       "value": "callback",
-      "start": 3716,
-      "end": 3724,
+      "start": 3726,
+      "end": 3734,
       "loc": {
         "start": {
           "line": 143,
@@ -10377,8 +10555,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 3724,
-      "end": 3725,
+      "start": 3734,
+      "end": 3735,
       "loc": {
         "start": {
           "line": 143,
@@ -10402,8 +10580,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 3726,
-      "end": 3727,
+      "start": 3736,
+      "end": 3737,
       "loc": {
         "start": {
           "line": 143,
@@ -10427,8 +10605,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 3733,
-      "end": 3734,
+      "start": 3743,
+      "end": 3744,
       "loc": {
         "start": {
           "line": 145,
@@ -10443,8 +10621,8 @@
     {
       "type": "CommentBlock",
       "value": "*\n     * Creates custom html content control\n     * @param {string} name - control name\n     * @param {string} value - default content to display\n     * @param {function} [callback] -  callback invoked after every change\n     ",
-      "start": 3745,
-      "end": 3975,
+      "start": 3755,
+      "end": 3985,
       "loc": {
         "start": {
           "line": 148,
@@ -10469,8 +10647,8 @@
         "binop": null
       },
       "value": "html",
-      "start": 3980,
-      "end": 3984,
+      "start": 3990,
+      "end": 3994,
       "loc": {
         "start": {
           "line": 154,
@@ -10494,8 +10672,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 3984,
-      "end": 3985,
+      "start": 3994,
+      "end": 3995,
       "loc": {
         "start": {
           "line": 154,
@@ -10520,8 +10698,8 @@
         "binop": null
       },
       "value": "name",
-      "start": 3985,
-      "end": 3989,
+      "start": 3995,
+      "end": 3999,
       "loc": {
         "start": {
           "line": 154,
@@ -10546,8 +10724,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 3989,
-      "end": 3990,
+      "start": 3999,
+      "end": 4000,
       "loc": {
         "start": {
           "line": 154,
@@ -10572,8 +10750,8 @@
         "binop": null
       },
       "value": "value",
-      "start": 3991,
-      "end": 3996,
+      "start": 4001,
+      "end": 4006,
       "loc": {
         "start": {
           "line": 154,
@@ -10598,8 +10776,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 3996,
-      "end": 3997,
+      "start": 4006,
+      "end": 4007,
       "loc": {
         "start": {
           "line": 154,
@@ -10624,8 +10802,8 @@
         "binop": null
       },
       "value": "callback",
-      "start": 3998,
-      "end": 4006,
+      "start": 4008,
+      "end": 4016,
       "loc": {
         "start": {
           "line": 154,
@@ -10649,8 +10827,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 4006,
-      "end": 4007,
+      "start": 4016,
+      "end": 4017,
       "loc": {
         "start": {
           "line": 154,
@@ -10674,8 +10852,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 4008,
-      "end": 4009,
+      "start": 4018,
+      "end": 4019,
       "loc": {
         "start": {
           "line": 154,
@@ -10699,8 +10877,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 4015,
-      "end": 4016,
+      "start": 4025,
+      "end": 4026,
       "loc": {
         "start": {
           "line": 156,
@@ -10724,8 +10902,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 4020,
-      "end": 4021,
+      "start": 4030,
+      "end": 4031,
       "loc": {
         "start": {
           "line": 160,
@@ -10752,8 +10930,8 @@
         "updateContext": null
       },
       "value": "export",
-      "start": 4023,
-      "end": 4029,
+      "start": 4033,
+      "end": 4039,
       "loc": {
         "start": {
           "line": 162,
@@ -10780,8 +10958,8 @@
         "updateContext": null
       },
       "value": "default",
-      "start": 4030,
-      "end": 4037,
+      "start": 4040,
+      "end": 4047,
       "loc": {
         "start": {
           "line": 162,
@@ -10806,8 +10984,8 @@
         "binop": null
       },
       "value": "SmartSettings",
-      "start": 4038,
-      "end": 4051,
+      "start": 4048,
+      "end": 4061,
       "loc": {
         "start": {
           "line": 162,
@@ -10832,8 +11010,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 4051,
-      "end": 4051,
+      "start": 4061,
+      "end": 4061,
       "loc": {
         "start": {
           "line": 162,

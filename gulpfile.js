@@ -10,39 +10,16 @@ const exec = require('gulp-exec')
 const rename = require('gulp-rename')
 const sass = require('gulp-sass')
 const autoprefixer = require('gulp-autoprefixer')
+const eslintConf = require('./.eslintrc.json')
 
 const _babelConf = { exclude: ['/node_modules/'] }
-const _eslintConf = {
-    parserOptions: {
-        ecmaVersion: 6,
-        sourceType: "module"
-    },
-    rules: {
-        "indent": [
-            "warn",
-            4
-        ],
-        "linebreak-style": [
-            "warn",
-            "unix"
-        ],
-        "quotes": [
-            "warn",
-            "single"
-        ],
-        "semi": [
-            "warn",
-            "never"
-        ],
-        "no-console": ["warn"]
-    }
-}
+
 
 gulp.task('lib-build-dev', () => {
     gulp.src('src/index.js')
         .pipe(rollup({
             plugins: [
-                eslint(_eslintConf),
+                eslint(eslintConf),
                 babel(_babelConf),
                 cleanup({
                     comments: 'none',
@@ -65,7 +42,7 @@ gulp.task('lib-build-dev', () => {
     gulp.src('./src/index.js')
         .pipe(rollup({
             plugins: [
-                eslint(_eslintConf),
+                eslint(eslintConf),
                 babel(_babelConf),
                 cleanup({
                     comments: 'none',
@@ -86,18 +63,6 @@ gulp.task('lib-build-dev', () => {
         ]))
         .pipe(gulp.dest('./dist'))
 })
-
-// docs
-// gulp.task('lib-build-docs', () => {
-//     gulp.src('src/index.js')
-//         .pipe(rename({
-//             basename: 'index',
-//             extname: '.js'
-//         }))
-//         .pipe(exec('./node_modules/.bin/esdoc -c ./.esdoc.json'))
-//         .pipe(exec.reporter())
-//         .pipe(gulp.dest('./docs'))
-// })
 
 // sass
 gulp.task('compile-sass', () => {

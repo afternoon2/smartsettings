@@ -47,31 +47,24 @@
  * @private
  */
 const helpers = {
-    /**
-     * Mounts panel in the DOM, immediately called after SmartSettings class instantiation
-     * @param {Node} panel - empty div element
-     * @param {name} string - name of the panel set by the class instantiation
-     * @return {void}
-     * @private
-     */
     create: (panel, name) =&gt; {
+        let _panelHeaderAttrs = { &apos;class&apos;: &apos;sms-panel-header&apos; }
+        let _panelBodyAttrs = { &apos;class&apos;: &apos;sms-panel-body&apos; }
+        let _panelNameAttrs = { &apos;class&apos;: &apos;sms-panel-name&apos; }
         if (panel.childNodes.length &lt; 1) {
-            let attrs = {
-                &apos;class&apos;: &apos;sms-panel&apos;,
-                &apos;id&apos;: name
-            }
-            panel = utils.createElement(&apos;div&apos;, attrs)
+            let panelHeader = utils.createElement(&apos;div&apos;, _panelHeaderAttrs),
+                panelBody = utils.createElement(&apos;div&apos;, _panelBodyAttrs),
+                panelName = utils.createElement(&apos;p&apos;, _panelNameAttrs)
+            panelName.innerText = name
+            panel.setAttribute(&apos;class&apos;, &apos;sms-panel&apos;)
+            panel.setAttribute(&apos;id&apos;, `panel-[${name}]`)
+            panel.appendChild(panelHeader)
+            panel.appendChild(panelBody)
+            panelHeader.appendChild(panelName)
             document.body.appendChild(panel)
         }
     },
 
-    /** 
-     * Unmounts settings panel from the DOM
-     * @param {Node} panel - SmartSettings&apos; this.panel
-     * @return {void}
-     * @example
-     * mySettings.destroy()
-     */
     destroy: (panel) =&gt; {
         if (panel &amp;&amp; panel.parentElement) {
             panel.parentElement.removeChild(panel)

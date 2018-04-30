@@ -7,11 +7,13 @@
 var utils = {
     createElement: function createElement(type, attributes) {
         var element = document.createElement(type);
-        for (var key in attributes) {
-            if (key === 'class') {
-                element.classList.add.apply(element.classList, [attributes[key]]);
-            } else {
-                element[key] = attributes[key];
+        if (attributes) {
+            for (var key in attributes) {
+                if (key === 'class') {
+                    element.classList.add.apply(element.classList, [attributes[key]]);
+                } else {
+                    element[key] = attributes[key];
+                }
             }
         }
         return element;
@@ -20,12 +22,19 @@ var utils = {
 
 var helpers = {
     create: function create(panel, name) {
+        var _panelHeaderAttrs = { 'class': 'sms-panel-header' };
+        var _panelBodyAttrs = { 'class': 'sms-panel-body' };
+        var _panelNameAttrs = { 'class': 'sms-panel-name' };
         if (panel.childNodes.length < 1) {
-            var attrs = {
-                'class': 'sms-panel',
-                'id': name
-            };
-            panel = utils.createElement('div', attrs);
+            var panelHeader = utils.createElement('div', _panelHeaderAttrs),
+                panelBody = utils.createElement('div', _panelBodyAttrs),
+                panelName = utils.createElement('p', _panelNameAttrs);
+            panelName.innerText = name;
+            panel.setAttribute('class', 'sms-panel');
+            panel.setAttribute('id', 'panel-[' + name + ']');
+            panel.appendChild(panelHeader);
+            panel.appendChild(panelBody);
+            panelHeader.appendChild(panelName);
             document.body.appendChild(panel);
         }
     },
@@ -49,7 +58,7 @@ var SmartSettings = function () {
   _createClass(SmartSettings, [{
     key: 'destroy',
     value: function destroy() {
-      return helpers.destroy();
+      return helpers.destroy(this.panel);
     }
   }, {
     key: 'addSection',
