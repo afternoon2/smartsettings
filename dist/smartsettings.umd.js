@@ -107,6 +107,40 @@
               this._panel.classList.add('hide');
               this._visible = false;
           }
+      }, {
+          key: 'open',
+          value: function open() {
+              var panelBody = this._panel.childNodes[1];
+              if (panelBody.classList[1] === 'hide') {
+                  panelBody.classList.remove('hide');
+              }
+              this._open = true;
+          }
+      }, {
+          key: 'close',
+          value: function close() {
+              var panelBody = this._panel.childNodes[1];
+              panelBody.classList.add('hide');
+              this._open = false;
+          }
+      }, {
+          key: 'toggle',
+          value: function toggle() {
+              var panelBody = this._panel.childNodes[1];
+              panelBody.classList[1] === 'hide' ? panelBody.classList.remove('hide') : panelBody.classList.add('hide');
+              this._open = !this._open;
+          }
+      }, {
+          key: 'getPosition',
+          value: function getPosition() {
+              return [this.left, this.top];
+          }
+      }, {
+          key: 'setPosition',
+          value: function setPosition(left, top) {
+              this.left = left;
+              this.top = top;
+          }
       }]);
       return SmartSettings;
   }();

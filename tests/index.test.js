@@ -68,3 +68,36 @@ test('Show settings panel', () => {
     expect(panel.classList[1]).toBe(undefined)
     expect(test._visible).toBe(true)
 })
+
+test('Close, open and toggle settings panel', () => {
+    let test = new SmartSettings()
+    let body = test._panel.childNodes[1]
+    test.close()
+
+    expect(test._open).toBe(false)
+    expect(body.classList[1]).toBe('hide')
+
+    test.open()
+    expect(test._open).toBe(true)
+    expect(body.classList[1]).toBe(undefined)
+
+    test.toggle()
+    expect(test._open).toBe(false)
+    expect(body.classList[1]).toBe('hide')
+
+})
+
+test('Get current position', () => {
+    let t = new SmartSettings()
+    let position = t.getPosition()
+    expect(position[0]).toBe(0)
+    expect(position[1]).toBe(0)
+    expect(position[2]).toBe(undefined)
+})
+
+test('Set current position', () => {
+    let t = new SmartSettings()
+    t.setPosition(300, 400)
+    expect(t.left).toBe(300)
+    expect(t.top).toBe(400)
+})

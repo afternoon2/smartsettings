@@ -147,6 +147,66 @@ class SmartSettings {
         this._visible = false
     }
 
+    /**
+     * Open settings panel
+     * @example
+     * mySettings.open()
+     */
+    open() {
+        let panelBody = this._panel.childNodes[1]
+        if (panelBody.classList[1] === 'hide') {
+            panelBody.classList.remove('hide')
+        } 
+        this._open = true
+    }
+
+    /**
+     * Close settings panel
+     * @example
+     * mySettings.close()
+     * 
+     */
+    close() {
+        let panelBody = this._panel.childNodes[1]
+        panelBody.classList.add('hide')
+        this._open = false
+    }
+
+    /**
+     * Open or close settings panel depending on `_open` property
+     * @example
+     * mySettings.toggle()
+     */
+    toggle() {
+        let panelBody = this._panel.childNodes[1]
+        panelBody.classList[1] === 'hide' ?
+            panelBody.classList.remove('hide') :
+            panelBody.classList.add('hide')
+        this._open = !this._open
+    }
+
+    /**
+     * Returns panel position [left, top]
+     * @return {array<number>}
+     * @example
+     * let position = mySettings.getPosition() // [0, 0]
+     */
+    getPosition() {
+        return [this.left, this.top]
+    }
+
+    /**
+     * Sets panel position
+     * @param {number} left - new position on the X axis
+     * @param {number} top - new position on the Y axis
+     * @example
+     * mySettings.setPosition(400, 400)
+     */
+    setPosition(left, top) {
+        this.left = left
+        this.top = top
+    } 
+
 }
 
 export default SmartSettings
