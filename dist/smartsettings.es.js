@@ -107,7 +107,6 @@ var SmartSettings = function () {
                 this._panel.parentElement.removeChild(this._panel);
             }
             this._panel = null;
-            this._sections = {};
             this._controls = {};
         }
     }, {

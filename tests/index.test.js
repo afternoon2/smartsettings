@@ -50,7 +50,6 @@ test('Destroy settings panel', () => {
     let controls = Object.keys(test._controls)
     expect(smsPanel).toBe(null)
     expect(controls.length).toBe(0)
-    expect(controls.length).toBe(0)
 })
 
 test('Hide settings panel', () => {
