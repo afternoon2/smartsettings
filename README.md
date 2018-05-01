@@ -22,19 +22,14 @@ const settings = new SmartSettings('Settings', 10, 10)
 
 ## API overview
 1. Basic methods:
-    - `show()`
-    - `hide()`
-    - `open()`
-    - `close()`
-    - `toggle()`
-    - `destroy()` - removes specific settings panel from the DOM
+    - ~~`show()`~~
+    - ~~`hide()`~~
+    - ~~`open()`~~
+    - ~~`close()`~~
+    - ~~`toggle()`~~
+    - ~~`destroy()`~~ - removes specific settings panel from the DOM
     - **Note** - creation method remains private and is invoked each time the new `SmartSettings` instance is being constructed. To create new `SmartSettings` panel, use the constructor function.
-2. Structuring
-    - Section 
-        - `section(name, isOpen)` - creates new section, `isOpen` set by default to `false`
-        - `add(controlName)` - adds control to the section
-        - `remove(controlName)` - removes control from the section
-3. Controls (for now)
+2. Controls (for now)
     - Creating controls
         - `button(name, callback)`,
         - `progressbar(name, items, callback)`
@@ -68,12 +63,6 @@ const settings = new SmartSettings('Settings', 10, 10)
 - _controls: array<Control>
 - _sections: array<Section>
 
-## Section spec
-- name: string
-- visible: boolean | true
-- open: boolean | true
-- controls: array<Control>
-
 ## Control spec (regardless the type)
 - name: string
 - type: string | ['button', 'select', 'range', 'boolean', 'text', 'textarea']
@@ -82,10 +71,8 @@ const settings = new SmartSettings('Settings', 10, 10)
 - values?: Array<string|number>
 - callback?: function
 
-## User stories
-- Create empty panel
-    - create `SmartSettings` instance
-    - => this._create(name, x, y)
+
+
 
 ## TBD list:
 1. Provide internal rendering environment

@@ -4,6 +4,7 @@ import commonjs from 'rollup-plugin-commonjs'
 import postcss from 'rollup-plugin-postcss'
 import postcssMixins from 'postcss-mixins'
 import postcssAdvancedVariables from 'postcss-advanced-variables'
+import extend from 'postcss-extend'
 import nested from 'postcss-nested'
 import node from 'rollup-plugin-node-resolve'
 import eslint from 'rollup-plugin-eslint'
@@ -12,7 +13,7 @@ import resolve from 'rollup-plugin-node-resolve'
 import autoprefixer from 'autoprefixer'
 import eslintConf from './.eslintrc.json'
 
-const babelConf = { exclude: ['/node_modules/'] }
+const babelConf = { exclude: ['/node_modules/'], plugins: ['external-helpers'] }
 
 export default {
     input: 'src/index.js',
@@ -41,6 +42,7 @@ export default {
                 postcssMixins(),
                 nested(),
                 postcssAdvancedVariables(),
+                extend(),
                 autoprefixer({
                     browsers: ['cover 99.5%']
                 })

@@ -47,9 +47,10 @@ test('Destroy settings panel', () => {
     let test = new SmartSettings()
     test.destroy()
     let smsPanel = document.querySelector('.sms-panel')
+    let controls = Object.keys(test._controls)
     expect(smsPanel).toBe(null)
-    expect(test._controls.length).toBe(0)
-    expect(test._controls.length).toBe(0)
+    expect(controls.length).toBe(0)
+    expect(controls.length).toBe(0)
 })
 
 test('Hide settings panel', () => {

@@ -40,16 +40,10 @@ class SmartSettings {
         this._panel = null
 
         /**
-         * @property {array} _controls
+         * @property {object} _controls
          * @private
          */
-        this._controls = []
-
-        /**
-         * @property {array} _sections
-         * @private
-         */
-        this._sections = []
+        this._controls = {}
 
         this._create(this.name, this.top, this.left)
     }
@@ -121,8 +115,8 @@ class SmartSettings {
             this._panel.parentElement.removeChild(this._panel)
         }
         this._panel = null
-        this._sections = []
-        this._controls = []
+        this._sections = {}
+        this._controls = {}
     }
 
     /**
@@ -205,8 +199,7 @@ class SmartSettings {
     setPosition(left, top) {
         this.left = left
         this.top = top
-    } 
-
+    }
 }
 
 export default SmartSettings

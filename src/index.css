@@ -24,20 +24,7 @@ $sms-panel-header-height: 25px;
     justify-content: $justify;
 }
 
-.sms-panel {
-    position: absolute;
-    width: $sms-g-width;
-    background-color:$sms-panel-header-bg;
-    padding: 0 $sms-g-h-padding;
-}
-
-.sms-panel * {
-    * {
-        box-sizing: $sms-g-box-sizing;
-    }
-}
-
-.sms-panel-header {
+@define-mixin header {
     width: 100%;
     height: $sms-panel-header-height;
     @mixin flexAJ center, flex-start;
@@ -46,14 +33,34 @@ $sms-panel-header-height: 25px;
     }
 }
 
-.sms-panel-header-name {
+@define-mixin name {
     font-family: $sms-g-font;
     font-size: $sms-g-font-size;
-    font-weight: 500;
     color: $sms-g-text-color;
     padding: 0 $sms-g-h-padding;
     margin: 0;
     box-sizing: $sms-g-box-sizing;
+}
+
+/* panel */
+.sms-panel {
+    position: absolute;
+    width: $sms-g-width;
+    background-color:$sms-panel-header-bg;
+    padding: 0 $sms-g-h-padding;
+}
+
+.sms-panel * {
+    box-sizing: $sms-g-box-sizing;
+}
+
+.sms-panel-header {
+    @mixin header;
+}
+
+.sms-panel-header-name {
+    @mixin name;
+    font-weight: 500;
 }
 
 /* utilities */
