@@ -1,11 +1,5 @@
 window.esdocSearchIndex = [
   [
-    "smartsettings/src/helpers.js~helpers",
-    "variable/index.html#static-variable-helpers",
-    "<span>helpers</span> <span class=\"search-result-import-path\">smartsettings/src/helpers.js</span>",
-    "variable"
-  ],
-  [
     "src/.external-ecmascript.js~array",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
     "src/.external-ecmascript.js~Array",
@@ -334,12 +328,6 @@ window.esdocSearchIndex = [
     "https://developer.mozilla.org/en/docs/Web/API/XMLHttpRequest",
     "src/.external-webapi.js~XMLHttpRequest",
     "external"
-  ],
-  [
-    "src/helpers.js",
-    "file/src/helpers.js.html",
-    "src/helpers.js",
-    "file"
   ],
   [
     "src/index.js",

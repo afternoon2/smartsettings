@@ -1,205 +1,65 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <base data-ice="baseUrl">
-  <title data-ice="title">Home | smartsettings</title>
-  <link type="text/css" rel="stylesheet" href="css/style.css">
-  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
-  <script src="script/prettify/prettify.js"></script>
-  <script src="script/manual.js"></script>
+    <meta charset="utf-8">
+    <title>JSDoc: Home</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
 </head>
-<body class="layout-container" data-ice="rootContainer">
 
-<header>
-  <a href="./">Home</a>
-  
-  <a href="identifiers.html">Reference</a>
-  <a href="source.html">Source</a>
-  
-  <div class="search-box">
-  <span>
-    <img src="./image/search.png">
-    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
-  </span>
-    <ul class="search-result"></ul>
-  </div>
-</header>
+<body>
 
-<nav class="navigation" data-ice="nav"><div>
-  <ul>
+<div id="main">
+
+    <h1 class="page-title">Home</h1>
+
     
-  <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-helpers">helpers</a></span></span></li>
-</ul>
+
+
+
+    
+
+
+    <h3> </h3>
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
 </div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="SmartSettings.html">SmartSettings</a></li></ul>
 </nav>
 
-<div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><h1 id="smartsettings-js">smartsettings.js</h1><h2 id="a-javascript-library-for-creating-advanced--simply-setting-panels-">A JavaScript library for creating advanced, simply setting panels.</h2><hr>
-<h2 id="installation">Installation</h2><pre><code><code class="source-code prettyprint">npm install --save-dev smartsettings</code>
-</code></pre><h2 id="usage">Usage</h2><p>Import in ES Modules</p>
-<pre><code class="lang-js"><code class="source-code prettyprint">import SmartSettings from &apos;smartsettings&apos;
+<br class="clear">
 
-const settings = new Settings(&apos;Settings&apos;, 10, 10)</code>
-</code></pre>
-<p>In the browser:</p>
-<pre><code class="lang-js"><code class="source-code prettyprint">const settings = new SmartSettings(&apos;Settings&apos;, 10, 10)</code>
-</code></pre>
-<h2 id="api-overview">API overview</h2><ol>
-<li>Basic methods:<ul>
-<li><code>show()</code></li>
-<li><code>hide()</code></li>
-<li><code>open()</code></li>
-<li><code>close()</code></li>
-<li><code>toggle()</code></li>
-<li><code>destroy()</code> - removes specific settings panel from the DOM</li>
-<li><strong>Note</strong> - creation method remains private and is invoked each time the new <code>SmartSettings</code> instance is being constructed. To create new <code>SmartSettings</code> panel, use the constructor function.</li>
-</ul>
-</li>
-<li>Structuring<ul>
-<li>Section <ul>
-<li><code>section(name, isOpen)</code> - creates new section, <code>isOpen</code> set by default to <code>false</code></li>
-<li><code>add(controlName)</code> - adds control to the section</li>
-<li><code>remove(controlName)</code> - removes control from the section</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Controls (for now)<ul>
-<li>Creating controls<ul>
-<li><code>button(name, callback)</code>,</li>
-<li><code>progressbar(name, items, callback)</code></li>
-<li><code>range(name, items, callback)</code></li>
-<li><code>select(name, items, callback)</code></li>
-<li><code>text(name, value, callback)</code></li>
-<li><code>textarea(name, value, callback)</code></li>
-</ul>
-</li>
-<li>Managing<ul>
-<li>Panel<ul>
-<li><code>destroy()</code> - unmounts panel from the DOM</li>
-<li><code>setPosition(left, top)</code> - sets new position of the panel</li>
-<li><code>getPosition()</code> - returns current position</li>
-</ul>
-</li>
-<li><code>remove(control | control[])</code> - removes one or more controls from the panel, regardless the section that they belong to.</li>
-<li><code>open()</code></li>
-<li><code>close()</code></li>
-<li><code>hide(control | control[])</code></li>
-<li><code>show(control | control[])</code></li>
-<li><code>enable(control | control[])</code></li>
-<li><code>disable(control | control[])</code></li>
-<li><code>getValue(control | control[])</code> - returns current (active) value of specific control(s)</li>
-<li><code>updateItems(items)</code> - updates items of <code>select</code>, <code>progressbar</code> or <code>range</code> control.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="panel-spec">Panel spec</h2><ul>
-<li>name: string =&gt; constructor</li>
-<li>left: number =&gt; constructor</li>
-<li>top: number =&gt; constructor</li>
-<li>_visible: boolean | true</li>
-<li>_open: boolean | true</li>
-<li>_draggable: boolean | false | &lt;Future&gt;</li>
-<li>_panel: HTMLElement</li>
-<li>_controls: array&lt;Control&gt;</li>
-<li>_sections: array&lt;Section&gt;</li>
-</ul>
-<h2 id="section-spec">Section spec</h2><ul>
-<li>name: string</li>
-<li>visible: boolean | true</li>
-<li>open: boolean | true</li>
-<li>controls: array&lt;Control&gt;</li>
-</ul>
-<h2 id="control-spec--regardless-the-type-">Control spec (regardless the type)</h2><ul>
-<li>name: string</li>
-<li>type: string | [&apos;button&apos;, &apos;select&apos;, &apos;range&apos;, &apos;boolean&apos;, &apos;text&apos;, &apos;textarea&apos;]</li>
-<li>element: HTMLElement</li>
-<li>value?: number|string|boolean</li>
-<li>values?: Array&lt;string|number&gt;</li>
-<li>callback?: function</li>
-</ul>
-<h2 id="user-stories">User stories</h2><ul>
-<li>Create empty panel<ul>
-<li>create <code>SmartSettings</code> instance</li>
-<li>=&gt; this._create(name, x, y)</li>
-</ul>
-</li>
-</ul>
-<h2 id="notes">Notes</h2><p>So, maybe:</p>
-<pre><code class="lang-js"><code class="source-code prettyprint">const settings = new Settings(&apos;Settings&apos;, 10, 10)
-/*
-which runs:
-*/
-
-_create: (name, left, top) =&gt; {
-    // default values
-    if (!left) {
-        left = 0
-    }
-    if (!top) {
-        top = 0
-    }
-    if (!name) {
-        name = &apos;SmartSettings&apos;
-    }
-    let panelAttributes = {
-        class: &apos;sms-panel&apos;,
-        id: `sms_panel_${name}`,
-        style: `top: ${top}px; left: ${left}px; z-index: 2`
-    }
-    let panel = this._createElement(&apos;div&apos;, panelAttributes)
-    let header = this._createElement(&apos;div&apos;, { class: &apos;sms-panel-header&apos; })
-    let body = this._createElement(&apos;div&apos;, { class: &apos;sms-panel-body&apos; })
-    let paragraph = this._createElement(&apos;p&apos;, { class: &apos;sms-panel-header-name&apos; })
-
-    paragraph.innerText = name
-    header.appendChild(paragraph)
-    panel.appendChild(header)
-    panel.appendChild(body)
-
-    document.body.appendChild(panel)
-}</code>
-</code></pre>
-<h2 id="tbd-list-">TBD list:</h2><ol>
-<li>Project <ul>
-<li>structure<ul>
-<li><del>Having flow-striped source files causes problems with excluding flow containing files from esdoc documentation process. Move flow-striped sources to the <code>./docs</code> or separate directory, like <code>./no-flow</code> or <code>./flow-striped</code>.</del></li>
-<li><del>Provide testing structure and environment for unit tests.</del></li>
-</ul>
-</li>
-<li>build process<ul>
-<li><del>Remove esdoc annotations and comments from the build files</del></li>
-<li><del>Add minified files</del></li>
-<li><del>Provide es6 module versions</del></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Core functionality<ul>
-<li>Provide stylesheets support for <code>SmartSettings</code>:<ul>
-<li><del>suggested preprocessor: <code>sass</code> (bracket or indentation-driven notation)</del></li>
-<li><del>add autoprefixer</del></li>
-</ul>
-</li>
-<li><del>Create sass style structure</del></li>
-</ul>
-</li>
-</ol>
-</div>
-</div>
-
-<footer class="footer">
-  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.0.4)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue May 01 2018 12:28:59 GMT+0200 (CEST)
 </footer>
 
-<script src="script/search_index.js"></script>
-<script src="script/search.js"></script>
-<script src="script/pretty-print.js"></script>
-<script src="script/inherited-summary.js"></script>
-<script src="script/test-summary.js"></script>
-<script src="script/inner-link.js"></script>
-<script src="script/patch-for-local.js"></script>
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
 </body>
 </html>
