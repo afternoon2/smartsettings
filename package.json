@@ -18,6 +18,7 @@
         "rollup-plugin-eslint": "^4.0.0",
         "rollup-plugin-node-resolve": "^3.0.0",
         "rollup-plugin-postcss": "^1.6.1",
+        "rollup-plugin-serve": "^0.4.2",
         "rollup-plugin-uglify": "^3.0.0"
     },
     "scripts": {

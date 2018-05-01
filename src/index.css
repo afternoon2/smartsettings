@@ -55,3 +55,8 @@ $sms-panel-header-height: 25px;
     margin: 0;
     box-sizing: $sms-g-box-sizing;
 }
+
+/* utilities */
+.hide {
+    display: none !important;
+}

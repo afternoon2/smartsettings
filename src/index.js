@@ -125,6 +125,28 @@ class SmartSettings {
         this._controls = []
     }
 
+    /**
+     * Shows settings panel
+     * @returns {void}
+     * @example
+     * mySettings.show()
+     */
+    show() {
+        this._panel.classList.remove('hide')
+        this._visible = true
+    }
+
+    /**
+     * Hides settings panel
+     * @returns {void}
+     * @example
+     * mySettings.hide()
+     */
+    hide() {
+        this._panel.classList.add('hide')
+        this._visible = false
+    }
+
 }
 
 export default SmartSettings

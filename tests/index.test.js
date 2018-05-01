@@ -51,3 +51,20 @@ test('Destroy settings panel', () => {
     expect(test._controls.length).toBe(0)
     expect(test._controls.length).toBe(0)
 })
+
+test('Hide settings panel', () => {
+    let test = new SmartSettings()
+    test.hide()
+    let panel = document.querySelector('.sms-panel.hide')
+    expect(panel.classList[1]).toBe('hide')
+    expect(test._visible).toBe(false)
+})
+
+test('Show settings panel', () => {
+    let test = new SmartSettings()
+    test.hide()
+    test.show()
+    let panel = document.querySelector('.sms-panel')
+    expect(panel.classList[1]).toBe(undefined)
+    expect(test._visible).toBe(true)
+})

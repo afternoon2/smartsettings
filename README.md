@@ -88,4 +88,4 @@ const settings = new SmartSettings('Settings', 10, 10)
     - => this._create(name, x, y)
 
 ## TBD list:
-1. Provide internal rendering environment with hot reload
+1. Provide internal rendering environment
