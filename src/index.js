@@ -3,15 +3,9 @@ import style from './index.css'
 /**
  * @class SmartSettings
  * @classdesc SmartSettings module, returns new SmartSettings instance
- * @param {string} name
- * @param {number} left
- * @param {number} top
- * @property {boolean} _visible
- * @property {boolean} _open
- * @property {boolean} _draggable
- * @property {Node} _panel
- * @property {array} _controls
- * @property {array} _sections
+ * @param {string} name - name of the SmartSettings panel
+ * @param {number} left - position of the SmartSettings panel on X axis
+ * @param {number} top - position of the SmartSettings panel on Y axis
  * @example
  * const mySettings = new SmartSettings('My Settings', 10, 10)
 */
@@ -20,12 +14,43 @@ class SmartSettings {
         this.name = name
         this.left = left
         this.top = top
+
+        /**
+         * @property {boolean} _visible
+         * @private
+         */
         this._visible = true
+
+        /**
+         * @property {boolean} _open
+         * @private
+         */
         this._open = true
+
+        /**
+         * @property {boolean} _draggable
+         * @private
+         */
         this._draggable = false
-        this.panel = null
+
+        /**
+         * @property {Node} _panel
+         * @private
+         */
+        this._panel = null
+
+        /**
+         * @property {array} _controls
+         * @private
+         */
         this._controls = []
+
+        /**
+         * @property {array} _sections
+         * @private
+         */
         this._sections = []
+
         this._create(this.name, this.top, this.left)
     }
 
@@ -55,6 +80,9 @@ class SmartSettings {
         return element
     }
 
+
+    /* Helper methods */
+
     /**
      * Creates settings panel, invoked on class construction
      * @returns {void}
@@ -75,9 +103,28 @@ class SmartSettings {
         header.appendChild(paragraph)
         panel.appendChild(header)
         panel.appendChild(body)
-        this.panel = panel
-        document.body.appendChild(this.panel)
+        this._panel = panel
+        document.body.appendChild(this._panel)
     }
+
+
+    /* Basic methods */
+
+    /**
+     * Removes settings panel from the DOM and removes all sections and controls
+     * @returns {void}
+     * @example
+     * mySettings.destroy()
+     */
+    destroy() {
+        if (this._panel && this._panel.parentElement) {
+            this._panel.parentElement.removeChild(this._panel)
+        }
+        this._panel = null
+        this._sections = []
+        this._controls = []
+    }
+
 }
 
 export default SmartSettings

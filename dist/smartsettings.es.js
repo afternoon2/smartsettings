@@ -40,7 +40,7 @@ var SmartSettings = function () {
         this._visible = true;
         this._open = true;
         this._draggable = false;
-        this.panel = null;
+        this._panel = null;
         this._controls = [];
         this._sections = [];
         this._create(this.name, this.top, this.left);
@@ -76,8 +76,18 @@ var SmartSettings = function () {
             header.appendChild(paragraph);
             panel.appendChild(header);
             panel.appendChild(body);
-            this.panel = panel;
-            document.body.appendChild(this.panel);
+            this._panel = panel;
+            document.body.appendChild(this._panel);
+        }
+    }, {
+        key: 'destroy',
+        value: function destroy() {
+            if (this._panel && this._panel.parentElement) {
+                this._panel.parentElement.removeChild(this._panel);
+            }
+            this._panel = null;
+            this._sections = [];
+            this._controls = [];
         }
     }]);
     return SmartSettings;

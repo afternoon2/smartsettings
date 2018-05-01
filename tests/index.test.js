@@ -4,6 +4,12 @@ beforeEach(() => {
     const name = 'Test name'
 })
 
+afterEach(() => {
+    while (document.body.firstChild) {
+        document.body.removeChild(document.body.firstChild)
+    }
+})
+
 test('New panel is an instance of SmartSettings class', () => {
     let _test = new SmartSettings(name, 10, 10)
     expect(_test).toBeInstanceOf(SmartSettings)
@@ -35,4 +41,13 @@ test('Load default name and position when there are no parameters', () => {
     expect(test.name).toBe('SmartSettings')
     expect(test.left).toBe(0)
     expect(test.top).toBe(0)
+})
+
+test('Destroy settings panel', () => {
+    let test = new SmartSettings()
+    test.destroy()
+    let smsPanel = document.querySelector('.sms-panel')
+    expect(smsPanel).toBe(null)
+    expect(test._controls.length).toBe(0)
+    expect(test._controls.length).toBe(0)
 })
