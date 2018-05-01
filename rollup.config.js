@@ -2,6 +2,9 @@ import babel from 'rollup-plugin-babel'
 import cleanup from 'rollup-plugin-cleanup'
 import commonjs from 'rollup-plugin-commonjs'
 import postcss from 'rollup-plugin-postcss'
+import postcssMixins from 'postcss-mixins'
+import postcssAdvancedVariables from 'postcss-advanced-variables'
+import nested from 'postcss-nested'
 import node from 'rollup-plugin-node-resolve'
 import eslint from 'rollup-plugin-eslint'
 import uglify from 'rollup-plugin-uglify'
@@ -35,6 +38,9 @@ export default {
             modules: false,
             minimize: true,
             plugins: [
+                postcssMixins(),
+                nested(),
+                postcssAdvancedVariables(),
                 autoprefixer({
                     browsers: ['cover 99.5%']
                 })

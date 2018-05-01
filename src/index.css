@@ -1,6 +1,57 @@
+/* global variables */
+$sms-g-width: 200px;
+$sms-g-height: auto;
+$sms-g-font: 'Roboto', sans-serif;
+$sms-g-font-size: 12px;
+$sms-g-text-color: #ffffff;
+$sms-g-primary-color: #16285A;
+$sms-g-secondary-color: #101B39;
+$sms-g-box-sizing: border-box;
+$sms-g-h-padding: 10px;
+
+/* panel header variables */
+$sms-panel-header-bg: $sms-g-primary-color;
+$sms-panel-header-height: 25px;
+
+/* mixins */
+@define-mixin flex {
+    display: flex;
+}
+
+@define-mixin flexAJ $align, $justify {
+    @mixin flex;
+    align-items: $align;
+    justify-content: $justify;
+}
+
 .sms-panel {
     position: absolute;
-    width: 200px;
-    height: 35px;
-    background-color: palegoldenrod;
+    width: $sms-g-width;
+    background-color:$sms-panel-header-bg;
+    padding: 0 $sms-g-h-padding;
+}
+
+.sms-panel * {
+    * {
+        box-sizing: $sms-g-box-sizing;
+    }
+}
+
+.sms-panel-header {
+    width: 100%;
+    height: $sms-panel-header-height;
+    @mixin flexAJ center, flex-start;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.sms-panel-header-name {
+    font-family: $sms-g-font;
+    font-size: $sms-g-font-size;
+    font-weight: 500;
+    color: $sms-g-text-color;
+    padding: 0 $sms-g-h-padding;
+    margin: 0;
+    box-sizing: $sms-g-box-sizing;
 }
