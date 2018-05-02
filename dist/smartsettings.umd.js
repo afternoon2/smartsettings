@@ -99,6 +99,7 @@
       }, {
           key: '_create',
           value: function _create() {
+              var _this = this;
               var panelAttributes = {
                   class: 'sms-panel',
                   id: uniqueId(),
@@ -108,6 +109,9 @@
               var header = this._createElement('div', { class: 'sms-panel-header' });
               var body = this._createElement('div', { class: 'sms-panel-body' });
               var paragraph = this._createElement('p', { class: 'sms-panel-header-name' });
+              header.addEventListener('click', function (e) {
+                  return _this.toggle();
+              });
               paragraph.innerText = this.name;
               header.appendChild(paragraph);
               panel.appendChild(header);

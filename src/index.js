@@ -100,6 +100,8 @@ class SmartSettings {
         let body = this._createElement('div', { class: 'sms-panel-body' })
         let paragraph = this._createElement('p', { class: 'sms-panel-header-name' })
 
+        header.addEventListener('click', e => this.toggle())
+
         paragraph.innerText = this.name
         header.appendChild(paragraph)
         panel.appendChild(header)
@@ -252,6 +254,7 @@ class SmartSettings {
      * Creates button control
      * @param {string} name - name of the control 
      * @param {function} callback - function executed on each change
+     * @returns {object} button control object
      */
     button(name, callback) {
         let body = this._panel.childNodes[1]

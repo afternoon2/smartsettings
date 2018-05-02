@@ -39,6 +39,7 @@ test('Show settings panel', () => {
 test('Close, open and toggle settings panel', () => {
     let test = new SmartSettings()
     let body = test._panel.childNodes[1]
+    let header = test._panel.childNodes[0]
     test.close()
 
     expect(test._open).toBe(false)
@@ -51,6 +52,10 @@ test('Close, open and toggle settings panel', () => {
     test.toggle()
     expect(test._open).toBe(false)
     expect(body.classList[1]).toBe('hide')
+
+    header.dispatchEvent(new Event('click'))
+    expect(test._open).toBe(true)
+    expect(body.classList[1]).toBe(undefined)
 
 })
 
