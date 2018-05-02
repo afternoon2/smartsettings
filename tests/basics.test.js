@@ -41,10 +41,10 @@ test('Hide and show specific control', () => {
     let test = new SmartSettings()
     let btn = test.button(name)
     test.hide(name)
-    expect(btn.element().classList[2]).toBe('hide')
+    expect(btn.element().classList[1]).toBe('hide')
 
     test.show(name)
-    expect(btn.element().classList[2]).toBe(undefined)
+    expect(btn.element().classList[1]).toBe(undefined)
 })
 
 test('Close, open and toggle settings panel', () => {

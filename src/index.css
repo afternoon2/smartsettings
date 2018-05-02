@@ -77,12 +77,14 @@ $sms-panel-header-height: 25px;
 
 /* controls */
 .sms-control {
-    margin: calc($sms-g-h-padding / 2), $sms-g-h-padding;
+    width: 100%;
+    height: auto;
+    padding: calc($sms-g-h-padding / 2), $sms-g-h-padding;
     &:first-child {
-        margin: $sms-g-h-padding $sms-g-h-padding calc($sms-g-h-padding / 2) $sms-g-h-padding;
+        padding: $sms-g-h-padding $sms-g-h-padding calc($sms-g-h-padding / 2) $sms-g-h-padding;
     }
     &:last-child {
-        margin: calc($sms-g-h-padding / 2) $sms-g-h-padding $sms-g-h-padding $sms-g-h-padding;
+        padding: calc($sms-g-h-padding / 2) $sms-g-h-padding $sms-g-h-padding $sms-g-h-padding;
     }
 }
 
@@ -101,6 +103,7 @@ $sms-button-border-color: #C0C0C0;
     font-size: $sms-g-control-font-size;
     font-weight: 400;
     color: $sms-g-text-color;
+    text-align: left;
     &:hover {
         cursor: pointer;
         outline: none;

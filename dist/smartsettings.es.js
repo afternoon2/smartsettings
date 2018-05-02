@@ -23,7 +23,7 @@ function styleInject(css, ref) {
   }
 }
 
-var css = ".sms-panel{position:absolute;width:200px;background-color:#16285a;-webkit-box-shadow:0 1px 3px rgba(0,0,0,.25);-moz-box-shadow:0 1px 3px rgba(0,0,0,.25);box-shadow:0 1px 3px rgba(0,0,0,.25)}.sms-panel *{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}.sms-panel-header{width:100%;height:25px;-webkit-box-shadow:0 1px 3px rgba(0,0,0,.25);-moz-box-shadow:0 1px 3px rgba(0,0,0,.25);box-shadow:0 1px 3px rgba(0,0,0,.25);display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-webkit-align-items:center;-moz-box-align:center;-ms-flex-align:center;align-items:center}.sms-panel-header:hover{cursor:pointer}.sms-panel-header-name{font-size:12px;padding:0 10px;margin:0;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;font-weight:500}.sms-panel-body,.sms-panel-header-name{font-family:Roboto,sans-serif;color:#fff}.sms-panel-body{width:100%;height:auto;background-color:#101b39;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;-moz-box-orient:vertical;-moz-box-direction:normal;-ms-flex-direction:column;flex-direction:column;display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex;-webkit-box-align:start;-webkit-align-items:flex-start;-moz-box-align:start;-ms-flex-align:start;align-items:flex-start;-webkit-justify-content:space-around;-ms-flex-pack:distribute;justify-content:space-around}.sms-control{margin:5px,10px}.sms-control:first-child{margin:10px 10px 5px}.sms-control:last-child{margin:5px 10px 10px}.sms-button{width:180px;height:25px;background-color:#101b39;border:1px solid silver;-webkit-border-radius:2px;-moz-border-radius:2px;border-radius:2px;padding:0 10px;font-family:Roboto,sans-serif;font-size:10px;font-weight:400;color:#fff}.sms-button:hover{cursor:pointer;outline:none;background-color:#102052}.sms-button:focus{cursor:pointer;outline:none;background-color:#0b1638}.sms-button:focus:hover{background-color:#102052}.hide{display:none!important}";
+var css = ".sms-panel{position:absolute;width:200px;background-color:#16285a;-webkit-box-shadow:0 1px 3px rgba(0,0,0,.25);-moz-box-shadow:0 1px 3px rgba(0,0,0,.25);box-shadow:0 1px 3px rgba(0,0,0,.25)}.sms-panel *{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}.sms-panel-header{width:100%;height:25px;-webkit-box-shadow:0 1px 3px rgba(0,0,0,.25);-moz-box-shadow:0 1px 3px rgba(0,0,0,.25);box-shadow:0 1px 3px rgba(0,0,0,.25);display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-webkit-align-items:center;-moz-box-align:center;-ms-flex-align:center;align-items:center}.sms-panel-header:hover{cursor:pointer}.sms-panel-header-name{font-size:12px;padding:0 10px;margin:0;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;font-weight:500}.sms-panel-body,.sms-panel-header-name{font-family:Roboto,sans-serif;color:#fff}.sms-panel-body{width:100%;height:auto;background-color:#101b39;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;-moz-box-orient:vertical;-moz-box-direction:normal;-ms-flex-direction:column;flex-direction:column;display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex;-webkit-box-align:start;-webkit-align-items:flex-start;-moz-box-align:start;-ms-flex-align:start;align-items:flex-start;-webkit-justify-content:space-around;-ms-flex-pack:distribute;justify-content:space-around}.sms-control{width:100%;height:auto;padding:5px,10px}.sms-control:first-child{padding:10px 10px 5px}.sms-control:last-child{padding:5px 10px 10px}.sms-button{width:180px;height:25px;background-color:#101b39;border:1px solid silver;-webkit-border-radius:2px;-moz-border-radius:2px;border-radius:2px;padding:0 10px;font-family:Roboto,sans-serif;font-size:10px;font-weight:400;color:#fff;text-align:left}.sms-button:hover{cursor:pointer;outline:none;background-color:#102052}.sms-button:focus{cursor:pointer;outline:none;background-color:#0b1638}.sms-button:focus:hover{background-color:#102052}.hide{display:none!important}";
 styleInject(css);
 
 var classCallCheck = function (instance, Constructor) {
@@ -135,13 +135,13 @@ var SmartSettings = function () {
                     this.disabled = true;
                 },
                 show: function show() {
-                    if (this.element().classList[2] === 'hide') {
+                    if (this.element().classList[1] === 'hide') {
                         this.element().classList.remove('hide');
                         this.hidden = false;
                     }
                 },
                 hide: function hide() {
-                    if (this.element().classList[2] !== 'hide') {
+                    if (this.element().classList[1] !== 'hide') {
                         this.element().classList.add('hide');
                         this.hidden = true;
                     }
@@ -215,6 +215,7 @@ var SmartSettings = function () {
         value: function remove(name) {
             if (name) {
                 var elem = this._controls[name].element();
+                elem.parentElement.remove();
                 elem.remove();
                 delete this._controls[name];
             }
@@ -245,14 +246,20 @@ var SmartSettings = function () {
     }, {
         key: 'button',
         value: function button(name, callback) {
-            var body = this._panel.childNodes[1];
             var base = this._createControlBasics();
-            var element = this._createElement('button', {
-                class: 'sms-control sms-button',
+            var body = this._panel.childNodes[1];
+            var wrapper = this._createElement('div', {
+                class: 'sms-control'
+            });
+            var button = this._createElement('button', {
+                class: 'sms-button',
                 id: base.id
             });
-            element.innerText = name;
-            element.addEventListener('click', callback);
+            base.type = 'button';
+            base.value = name;
+            button.innerText = name;
+            button.addEventListener('click', callback);
+            wrapper.appendChild(button);
             base.getValue = function () {
                 return base.element().innerText;
             };
@@ -260,8 +267,7 @@ var SmartSettings = function () {
                 base.value = value;
                 base.element().innerText = value;
             };
-            base.type = 'button';
-            body.appendChild(element);
+            body.appendChild(wrapper);
             this._controls[name] = base;
             return this._controls[name];
         }

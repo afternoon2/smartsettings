@@ -135,13 +135,13 @@ class SmartSettings {
                 this.disabled = true
             },
             show: function() {
-                if (this.element().classList[2] === 'hide') {
+                if (this.element().classList[1] === 'hide') {
                     this.element().classList.remove('hide')
                     this.hidden = false
                 }
             },
             hide: function() {
-                if (this.element().classList[2] !== 'hide') {
+                if (this.element().classList[1] !== 'hide') {
                     this.element().classList.add('hide')
                     this.hidden = true
                 }
@@ -267,6 +267,7 @@ class SmartSettings {
     remove(name) {
         if (name) {
             let elem = this._controls[name].element()
+            elem.parentElement.remove()
             elem.remove()
             delete this._controls[name]
         }
@@ -320,16 +321,20 @@ class SmartSettings {
      * @returns {object} button control object
      */
     button(name, callback) {
-        let body = this._panel.childNodes[1]
         let base = this._createControlBasics()
-        let element = this._createElement('button', { 
-            class: 'sms-control sms-button', 
-            id: base.id 
+        let body = this._panel.childNodes[1]
+        let wrapper = this._createElement('div', {
+            class: 'sms-control'
         })
-
-        element.innerText = name
-        element.addEventListener('click', callback)
-
+        let button = this._createElement('button', {
+            class: 'sms-button',
+            id: base.id
+        })
+        base.type = 'button'
+        base.value = name
+        button.innerText = name
+        button.addEventListener('click', callback)
+        wrapper.appendChild(button)
         base.getValue = function() {
             return base.element().innerText
         }
@@ -337,9 +342,7 @@ class SmartSettings {
             base.value = value
             base.element().innerText = value
         }
-        base.type = 'button'
-        
-        body.appendChild(element)
+        body.appendChild(wrapper)
         this._controls[name] = base
         return this._controls[name]
     }
