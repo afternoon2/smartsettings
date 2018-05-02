@@ -59,14 +59,23 @@ var SmartSettings = function () {
         this.name = name;
         this.left = left;
         this.top = top;
-        this._visible = true;
+        this._hidden = false;
         this._open = true;
         this._draggable = false;
         this._panel = null;
         this._controls = {};
+        this._createUniqueId();
         this._create(this.name, this.top, this.left);
     }
     createClass(SmartSettings, [{
+        key: '_createUniqueId',
+        value: function _createUniqueId() {
+            var counter = 0;
+            window.uniqueId = function () {
+                return 'sms-id-' + counter++;
+            };
+        }
+    }, {
         key: '_createElement',
         value: function _createElement(type, attributes) {
             var element = document.createElement(type);
@@ -86,7 +95,7 @@ var SmartSettings = function () {
         value: function _create() {
             var panelAttributes = {
                 class: 'sms-panel',
-                id: 'sms_panel_' + this.name,
+                id: uniqueId(),
                 style: 'top: ' + this.top + 'px; left: ' + this.left + 'px; z-index: 2'
             };
             var panel = this._createElement('div', panelAttributes);
@@ -101,6 +110,44 @@ var SmartSettings = function () {
             document.body.appendChild(this._panel);
         }
     }, {
+        key: '_createControlBasics',
+        value: function _createControlBasics() {
+            var id = uniqueId();
+            var basics = {
+                id: id,
+                disabled: false,
+                hidden: false,
+                element: function element() {
+                    return document.getElementById(this.id);
+                },
+                enable: function enable() {
+                    this.element().removeAttribute('disabled');
+                    this.disabled = false;
+                },
+                disable: function disable() {
+                    this.element().setAttribute('disabled', true);
+                    this.disabled = true;
+                },
+                show: function show() {
+                    if (this.element().classList[1] === 'hide') {
+                        this.element().classList.remove('hide');
+                        this.hidden = false;
+                    }
+                },
+                hide: function hide() {
+                    if (this.element().classList[1] !== 'hide') {
+                        this.element().classList.add('hide');
+                        this.hidden = true;
+                    }
+                },
+                remove: function remove() {
+                    delete self._controls[name];
+                    this.element().remove();
+                }
+            };
+            return basics;
+        }
+    }, {
         key: 'destroy',
         value: function destroy() {
             if (this._panel && this._panel.parentElement) {
@@ -113,13 +160,13 @@ var SmartSettings = function () {
         key: 'show',
         value: function show() {
             this._panel.classList.remove('hide');
-            this._visible = true;
+            this._hidden = false;
         }
     }, {
         key: 'hide',
         value: function hide() {
             this._panel.classList.add('hide');
-            this._visible = false;
+            this._hidden = true;
         }
     }, {
         key: 'open',
@@ -154,6 +201,24 @@ var SmartSettings = function () {
         value: function setPosition(left, top) {
             this.left = left;
             this.top = top;
+        }
+    }, {
+        key: 'button',
+        value: function button(name, callback) {
+            var body = this._panel.childNodes[1];
+            var base = this._createControlBasics();
+            var element = this._createElement('button', {
+                class: 'sms-button',
+                id: base.id
+            });
+            element.innerText = name;
+            element.addEventListener('click', callback);
+            base.getValue = function () {
+                return base.element().innerText;
+            };
+            body.appendChild(element);
+            this._controls[name] = base;
+            return this._controls[name];
         }
     }]);
     return SmartSettings;

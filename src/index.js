@@ -16,10 +16,10 @@ class SmartSettings {
         this.top = top
 
         /**
-         * @property {boolean} _visible
+         * @property {boolean} _hidden
          * @private
          */
-        this._visible = true
+        this._hidden = false
 
         /**
          * @property {boolean} _open
@@ -45,11 +45,21 @@ class SmartSettings {
          */
         this._controls = {}
 
+        this._createUniqueId()
         this._create(this.name, this.top, this.left)
     }
 
     /* Utility methods */
-    
+
+    /**
+     * Creates unique element identifier
+     * @private
+     */
+    _createUniqueId() {
+        let counter = 0
+        window.uniqueId = () => `sms-id-${counter++}`
+    }
+     
     /**
      * Creates any DOM element
      * @param {string} type - type of the DOM element
@@ -85,7 +95,7 @@ class SmartSettings {
     _create() {
         let panelAttributes = {
             class: 'sms-panel',
-            id: `sms_panel_${this.name}`,
+            id: uniqueId(),
             style: `top: ${this.top}px; left: ${this.left}px; z-index: 2`
         }
         let panel = this._createElement('div', panelAttributes)
@@ -101,6 +111,47 @@ class SmartSettings {
         document.body.appendChild(this._panel)
     }
 
+    /**
+     * Creates basic properties for the new control
+     * @returns {object}
+     * @private
+     */
+    _createControlBasics() {
+        let id = uniqueId()
+        let basics = {
+            id: id,
+            disabled: false,
+            hidden: false,
+            element: function() {
+                return document.getElementById(this.id)
+            },
+            enable: function() {
+                this.element().removeAttribute('disabled')
+                this.disabled = false
+            },
+            disable: function() {
+                this.element().setAttribute('disabled', true)
+                this.disabled = true
+            },
+            show: function() {
+                if (this.element().classList[1] === 'hide') {
+                    this.element().classList.remove('hide')
+                    this.hidden = false
+                }
+            },
+            hide: function() {
+                if (this.element().classList[1] !== 'hide') {
+                    this.element().classList.add('hide')
+                    this.hidden = true
+                }
+            },
+            remove: function() {
+                delete self._controls[name]
+                this.element().remove()
+            }
+        }
+        return basics
+    }
 
     /* Basic methods */
 
@@ -126,7 +177,7 @@ class SmartSettings {
      */
     show() {
         this._panel.classList.remove('hide')
-        this._visible = true
+        this._hidden = false
     }
 
     /**
@@ -137,7 +188,7 @@ class SmartSettings {
      */
     hide() {
         this._panel.classList.add('hide')
-        this._visible = false
+        this._hidden = true
     }
 
     /**
@@ -198,6 +249,31 @@ class SmartSettings {
     setPosition(left, top) {
         this.left = left
         this.top = top
+    }
+
+    /**
+     * Creates button control
+     * @param {string} name - name of the control 
+     * @param {function} callback - function executed on each change
+     */
+    button(name, callback) {
+        let body = this._panel.childNodes[1]
+        let base = this._createControlBasics()
+        let element = this._createElement('button', { 
+            class: 'sms-button', 
+            id: base.id 
+        })
+
+        element.innerText = name
+        element.addEventListener('click', callback)
+
+        base.getValue = function() {
+            return base.element().innerText
+        }
+        
+        body.appendChild(element)
+        this._controls[name] = base
+        return this._controls[name]
     }
 }
 
