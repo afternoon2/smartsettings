@@ -1,5 +1,5 @@
 # smartsettings.js
-## A JavaScript library for creating advanced, simply setting panels.
+## A JavaScript library for creating simply and advanced setting panels.
 ---
 ## Installation
 
@@ -28,8 +28,8 @@ const settings = new SmartSettings('Settings', 10, 10)
     - ~~`close()`~~
     - ~~`toggle()`~~
     - ~~`destroy()`~~ - removes specific settings panel from the DOM
-    - `getValue()` - returns current value of the specific control
-    - `setValue()` - sets new active value of the specific control
+    - ~~`getValue()` - returns current value of the specific control~~
+    - ~~`setValue()` - sets new active value of the specific control~~
     - ~~`getValues()`~~ - returns object active values of all controls
     - ~~`remove(name)` - removes specific control from the panel~~
     - **Note** - creation method remains private and is invoked each time the new `SmartSettings` instance is being constructed. To create new `SmartSettings` panel, use the constructor function.
@@ -44,7 +44,7 @@ const settings = new SmartSettings('Settings', 10, 10)
     - `updateItems()` - for `select`, `progressbar` and `range`
 
 3. Controls:
-    - `button(name, callback)`,
+    - ~~`button(name, callback)`~~
     - `progressbar(name, items, callback)`
     - `range(name, items, callback)`
     - `select(name, items, callback)`
@@ -68,4 +68,3 @@ const settings = new SmartSettings('Settings', 10, 10)
 - element: HTMLElement
 - value?: number|string|boolean
 - values?: Array<string|number>
-- callback?: function

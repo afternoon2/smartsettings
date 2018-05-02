@@ -122,6 +122,7 @@ class SmartSettings {
             disabled: false,
             hidden: false,
             value: null,
+            type: null,
             element: function() {
                 return document.getElementById(this.id)
             },
@@ -336,6 +337,7 @@ class SmartSettings {
             base.value = value
             base.element().innerText = value
         }
+        base.type = 'button'
         
         body.appendChild(element)
         this._controls[name] = base
