@@ -50,12 +50,19 @@ test('Button control methods: show, hide', () => {
     let domButton = button.element()
     button.hide()
 
-    expect(domButton.classList[1]).toBe('hide')
+    expect(domButton.classList[2]).toBe('hide')
     expect(button.hidden).toBe(true)
     expect(s._controls[name].hidden).toBe(true)
 
     button.show()
-    expect(domButton.classList[1]).toBe(undefined)
+    expect(domButton.classList[2]).toBe(undefined)
     expect(button.hidden).toBe(false)
     expect(s._controls[name].hidden).toBe(false)
 }) 
+
+test('Get button\'s value', () => {
+    let name = 'Name'
+    let s = new SmartSettings()
+    let button = s.button(name)
+    expect(button.getValue()).toBe(name)
+})

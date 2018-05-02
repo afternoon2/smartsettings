@@ -72,10 +72,7 @@ class SmartSettings {
         if (attributes) {
             for (let key in attributes) {
                 if (key === 'class') {
-                    element.classList.add.apply(
-                        element.classList,
-                        [attributes[key]]
-                    )
+                    element.setAttribute('class', attributes[key])
                 } else {
                     element[key] = attributes[key]
                 }
@@ -134,13 +131,13 @@ class SmartSettings {
                 this.disabled = true
             },
             show: function() {
-                if (this.element().classList[1] === 'hide') {
+                if (this.element().classList[2] === 'hide') {
                     this.element().classList.remove('hide')
                     this.hidden = false
                 }
             },
             hide: function() {
-                if (this.element().classList[1] !== 'hide') {
+                if (this.element().classList[2] !== 'hide') {
                     this.element().classList.add('hide')
                     this.hidden = true
                 }
@@ -260,7 +257,7 @@ class SmartSettings {
         let body = this._panel.childNodes[1]
         let base = this._createControlBasics()
         let element = this._createElement('button', { 
-            class: 'sms-button', 
+            class: 'sms-control sms-button', 
             id: base.id 
         })
 

@@ -3,23 +3,22 @@ $sms-g-width: 200px;
 $sms-g-height: auto;
 $sms-g-font: 'Roboto', sans-serif;
 $sms-g-font-size: 12px;
+$sms-g-control-font-size: 10px;
 $sms-g-text-color: #ffffff;
 $sms-g-primary-color: #16285A;
 $sms-g-secondary-color: #101B39;
 $sms-g-box-sizing: border-box;
 $sms-g-h-padding: 10px;
+$sms-g-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
 
 /* panel header variables */
 $sms-panel-header-bg: $sms-g-primary-color;
 $sms-panel-header-height: 25px;
 
 /* mixins */
-@define-mixin flex {
-    display: flex;
-}
 
 @define-mixin flexAJ $align, $justify {
-    @mixin flex;
+    display: flex;
     align-items: $align;
     justify-content: $justify;
 }
@@ -27,7 +26,9 @@ $sms-panel-header-height: 25px;
 @define-mixin header {
     width: 100%;
     height: $sms-panel-header-height;
-    @mixin flexAJ center, flex-start;
+    box-shadow: $sms-g-box-shadow;
+    display: flex;
+    align-items: center;
     &:hover {
         cursor: pointer;
     }
@@ -47,7 +48,7 @@ $sms-panel-header-height: 25px;
     position: absolute;
     width: $sms-g-width;
     background-color:$sms-panel-header-bg;
-    padding: 0 $sms-g-h-padding;
+    box-shadow: $sms-g-box-shadow;
 }
 
 .sms-panel * {
@@ -61,6 +62,57 @@ $sms-panel-header-height: 25px;
 .sms-panel-header-name {
     @mixin name;
     font-weight: 500;
+}
+
+.sms-panel-body {
+    width: 100%;
+    height: auto;
+    background-color: $sms-g-secondary-color;
+    color: $sms-g-text-color;
+    font-family: $sms-g-font;
+    flex-direction: column;
+    @mixin flexAJ flex-start, space-around;
+}
+
+/* controls */
+.sms-control {
+    margin: calc($sms-g-h-padding / 2), $sms-g-h-padding;
+    &:first-child {
+        margin: $sms-g-h-padding $sms-g-h-padding calc($sms-g-h-padding / 2) $sms-g-h-padding;
+    }
+    &:last-child {
+        margin: calc($sms-g-h-padding / 2) $sms-g-h-padding $sms-g-h-padding $sms-g-h-padding;
+    }
+}
+
+/* buttons */
+
+$sms-button-border-color: #C0C0C0;
+
+.sms-button {
+    width: 180px;
+    height: 25px;
+    background-color: $sms-g-secondary-color;
+    border: 1px solid $sms-button-border-color;
+    border-radius: 2px;
+    padding: 0 $sms-g-h-padding;
+    font-family: $sms-g-font;
+    font-size: $sms-g-control-font-size;
+    font-weight: 400;
+    color: $sms-g-text-color;
+    &:hover {
+        cursor: pointer;
+        outline: none;
+        background-color: #102052;
+    }
+    &:focus {
+        cursor: pointer;
+        outline: none;
+        background-color: #0B1638;
+        &:hover {
+            background-color: #102052;
+        }
+    }
 }
 
 /* utilities */
