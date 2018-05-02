@@ -66,3 +66,26 @@ test('Get button\'s value', () => {
     let button = s.button(name)
     expect(button.getValue()).toBe(name)
 })
+
+test('Set button\'s value', () => {
+    let name = 'Name'
+    let name2 = 'Changed'
+    let s = new SmartSettings()
+    let button = s.button(name)
+    button.setValue(name2)
+
+    let button2 = document.getElementById(button.id)
+
+    expect(button.value).toBe(name2)
+    expect(button.element().innerText).toBe(name2)
+    expect(button2.innerText).toBe(name2)
+})
+
+test('Remove button', () => {
+    let name = 'Name'
+    let s = new SmartSettings()
+    s.button(name)
+    s.remove(name)
+
+    expect(s._controls[name]).toBe(undefined)
+})

@@ -121,6 +121,7 @@ class SmartSettings {
             id: id,
             disabled: false,
             hidden: false,
+            value: null,
             element: function() {
                 return document.getElementById(this.id)
             },
@@ -143,10 +144,6 @@ class SmartSettings {
                     this.element().classList.add('hide')
                     this.hidden = true
                 }
-            },
-            remove: function() {
-                delete self._controls[name]
-                this.element().remove()
             }
         }
         return basics
@@ -169,23 +166,31 @@ class SmartSettings {
     }
 
     /**
-     * Shows settings panel
+     * Shows settings panel or specific control (if the name is provided)
+     * @param {string} [name] - name of control to be shown
      * @returns {void}
      * @example
      * mySettings.show()
      */
-    show() {
+    show(name) {
+        if (name) {
+            this._controls[name].show()
+        }
         this._panel.classList.remove('hide')
         this._hidden = false
     }
 
     /**
-     * Hides settings panel
+     * Hides settings panel or specific control (if the name is provided)
+     * @param {string} [name] - name of control to be hidden
      * @returns {void}
      * @example
      * mySettings.hide()
      */
-    hide() {
+    hide(name) {
+        if (name) {
+            this._controls[name].hide()
+        }
         this._panel.classList.add('hide')
         this._hidden = true
     }
@@ -217,6 +222,7 @@ class SmartSettings {
 
     /**
      * Open or close settings panel depending on `_open` property
+     * @returns {void}
      * @example
      * mySettings.toggle()
      */
@@ -251,6 +257,62 @@ class SmartSettings {
     }
 
     /**
+     * Removes specific control
+     * @param {string} name - name of the control to be deleted
+     * @returns {void}
+     * @example
+     * mySettings.remove('Control name')
+     */
+    remove(name) {
+        if (name) {
+            let elem = this._controls[name].element()
+            elem.remove()
+            delete this._controls[name]
+        }
+    }
+
+    /**
+     * Get value of specific control
+     * @param {string} name - name of the control
+     * @returns {(number|string)}
+     * @example
+     * let value = mySettings.getValue('Control name')
+     */
+    getValue(name) {
+        if (name && this._controls[name]) {
+            return this._controls[name].getValue()
+        }
+    }
+
+    /**
+     * Sets new active value of the specific control
+     * @param {string} name - name of the control
+     * @param {(number|string)} name - new value
+     * @returns {void}
+     * @example
+     * mySettings.setValue('Control name', 'value')
+     */
+    setValue(name, value) {
+        if (name && this._controls[name]) {
+            return this._controls[name].setValue(value)
+        }
+    }
+
+    /**
+     * Get all active values
+     * @returns {object} - an object with values from all currently set controls
+     * @example
+     * let values = mySettings.getValues()
+     */
+    getValues() {
+        let values = {}
+        for (let i in this._controls) {
+            values[i] = this._controls[i].getValue()
+        }
+        return values
+    }
+
+    /**
      * Creates button control
      * @param {string} name - name of the control 
      * @param {function} callback - function executed on each change
@@ -269,6 +331,10 @@ class SmartSettings {
 
         base.getValue = function() {
             return base.element().innerText
+        }
+        base.setValue = function(value) {
+            base.value = value
+            base.element().innerText = value
         }
         
         body.appendChild(element)

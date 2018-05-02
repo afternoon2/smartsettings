@@ -36,6 +36,17 @@ test('Show settings panel', () => {
     expect(test._hidden).toBe(false)
 })
 
+test('Hide and show specific control', () => {
+    let name = 'Name'
+    let test = new SmartSettings()
+    let btn = test.button(name)
+    test.hide(name)
+    expect(btn.element().classList[2]).toBe('hide')
+
+    test.show(name)
+    expect(btn.element().classList[2]).toBe(undefined)
+})
+
 test('Close, open and toggle settings panel', () => {
     let test = new SmartSettings()
     let body = test._panel.childNodes[1]
@@ -72,4 +83,36 @@ test('Set current position', () => {
     t.setPosition(300, 400)
     expect(t.left).toBe(300)
     expect(t.top).toBe(400)
+})
+
+test('Get current values', () => {
+    let name = 'Name'
+    let t = new SmartSettings()
+    t.button(name)
+    let values = t.getValues()
+    let expectedValues = {
+        'Name': name
+    }
+    expect(values).toEqual(expectedValues)
+})
+
+test('Get value of a specific control', () => {
+    let name = 'Name'
+    let t = new SmartSettings()
+    let button = t.button(name)
+    let value = t.getValue(name)
+
+    expect(value).toBe(name)
+    expect(document.getElementById(button.id).innerText).toBe(name)
+})
+
+test('Set value of a specific control', () => {
+    let name = 'Name'
+    let name2 = 'Changed'
+    let t = new SmartSettings()
+    let button = t.button(name)
+    t.setValue(name, name2)
+
+    expect(button.value).toBe(name2)
+    expect(document.getElementById(button.id).innerText).toBe(name2)
 })

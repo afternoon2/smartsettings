@@ -22,5 +22,4 @@ test('Create control\'s basics', () => {
     expect(basics.disable).toBeInstanceOf(Function)
     expect(basics.show).toBeInstanceOf(Function)
     expect(basics.hide).toBeInstanceOf(Function)
-    expect(basics.remove).toBeInstanceOf(Function)
 })

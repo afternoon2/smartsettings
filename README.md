@@ -21,36 +21,35 @@ const settings = new SmartSettings('Settings', 10, 10)
 ```
 
 ## API overview
-1. Basic methods:
+1. Panel methods:
     - ~~`show()`~~
     - ~~`hide()`~~
     - ~~`open()`~~
     - ~~`close()`~~
     - ~~`toggle()`~~
     - ~~`destroy()`~~ - removes specific settings panel from the DOM
+    - `getValue()` - returns current value of the specific control
+    - `setValue()` - sets new active value of the specific control
+    - ~~`getValues()`~~ - returns object active values of all controls
+    - ~~`remove(name)` - removes specific control from the panel~~
     - **Note** - creation method remains private and is invoked each time the new `SmartSettings` instance is being constructed. To create new `SmartSettings` panel, use the constructor function.
-2. Controls (for now)
-    - Creating controls
-        - `button(name, callback)`,
-        - `progressbar(name, items, callback)`
-        - `range(name, items, callback)`
-        - `select(name, items, callback)`
-        - `text(name, value, callback)`
-        - `textarea(name, value, callback)`
-    - Managing
-        - Panel
-            - `destroy()` - unmounts panel from the DOM
-            - `setPosition(left, top)` - sets new position of the panel
-            - `getPosition()` - returns current position
-        - `remove(control | control[])` - removes one or more controls from the panel, regardless the section that they belong to.
-        - `open()`
-        - `close()`
-        - `hide(control | control[])`
-        - `show(control | control[])`
-        - `enable(control | control[])`
-        - `disable(control | control[])`
-        - `getValue(control | control[])` - returns current (active) value of specific control(s)
-        - `updateItems(items)` - updates items of `select`, `progressbar` or `range` control.
+2. Control methods:
+    - ~~`enable()`~~
+    - ~~`disable()`~~
+    - ~~`show()`~~
+    - ~~`hide()`~~
+    - ~~`getValue()` - returns active value~~
+    - ~~`setValue()` - sets new active value~~
+    - `getItems()` - for `select`, `progressbar` and `range`
+    - `updateItems()` - for `select`, `progressbar` and `range`
+
+3. Controls:
+    - `button(name, callback)`,
+    - `progressbar(name, items, callback)`
+    - `range(name, items, callback)`
+    - `select(name, items, callback)`
+    - `text(name, value, callback)`
+    - `textarea(name, value, callback)`
 
 ## Panel spec
 - name: string => constructor
@@ -70,9 +69,3 @@ const settings = new SmartSettings('Settings', 10, 10)
 - value?: number|string|boolean
 - values?: Array<string|number>
 - callback?: function
-
-
-
-
-## TBD list:
-1. Provide internal rendering environment

@@ -41,6 +41,7 @@ $sms-panel-header-height: 25px;
     padding: 0 $sms-g-h-padding;
     margin: 0;
     box-sizing: $sms-g-box-sizing;
+    user-select: none;
 }
 
 /* panel */
