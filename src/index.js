@@ -276,7 +276,7 @@ class SmartSettings {
     /**
      * Get value of specific control
      * @param {string} name - name of the control
-     * @returns {(number|string)}
+     * @returns {(number|string|boolean)}
      * @example
      * let value = mySettings.getValue('Control name')
      */
@@ -289,7 +289,7 @@ class SmartSettings {
     /**
      * Sets new active value of the specific control. (Changing button control value does not change its' id property)
      * @param {string} name - name of the control
-     * @param {(number|string)} name - new value
+     * @param {(number|string|boolean)} name - new value
      * @returns {void}
      * @example
      * mySettings.setValue('Control name', 'value')
@@ -419,7 +419,10 @@ class SmartSettings {
         wrapper.appendChild(label)
         wrapper.appendChild(textarea)
         if (callback) {
-            textarea.addEventListener('input', callback)
+            textarea.addEventListener('input', e => {
+                base.value = e.target.value
+                callback(e)
+            })
         }
         body.appendChild(wrapper)
         base.getValue = function () {
@@ -438,7 +441,7 @@ class SmartSettings {
      * Creates range control
      * @param {string} name - name of the control
      * @param {array} items - array with min, max, default and step values
-     * @param {function} callback - function executed on each change
+     * @param {function} [callback] - function executed on each change
      * @returns {void}
      * @example
      * let range = mySettings.range('Range', [1, 100, 40, 1], e => console.log(e.target.value))
@@ -465,7 +468,9 @@ class SmartSettings {
         input.addEventListener('input', e => {
             base.value = e.target.value
             span.innerText = base.value
-            callback(e)
+            if (callback) {
+                callback(e)
+            }
         })
         span.innerText = base.value
         label.value = name
@@ -497,6 +502,55 @@ class SmartSettings {
             e.value = items[2]
             e.step = items[3]
             base.value = parseFloat(e.value)
+        }
+        this._controls[name] = base
+        return this._controls[name]
+    }
+
+    /**
+     * Creates checkbox control
+     * @param {string} name - name of the control
+     * @param {boolean} value - value of the control
+     * @param {function} [callback] - function executed on each change
+     * @returns {void}
+     * @example
+     * let checkbox = mySettings.checkbox('Check this out!', true, e => {
+     *      console.log(e.target.value)
+     * })
+     */
+    checkbox(name, value, callback) {
+        let body = this._panel.childNodes[1]
+        let base = this._createControlBasics()
+        let wrapper = this._createElement('div', { class: 'sms-control' })
+        let label = this._createElement('label', { class: 'sms-label' })
+        let checkbox = this._createElement('input', {
+            class: 'sms-checkbox',
+            id: base.id,
+            type: 'checkbox'
+        })
+        base.name = name
+        base.type = 'checkbox'
+        base.value = value
+        label.innerText = name
+        label.value = name
+        if (value === true) {
+            checkbox.setAttribute('checked', true)
+        }
+        checkbox.addEventListener('change', e => {
+            base.value = e.target.value
+            if (callback) {
+                callback(e)
+            }
+        })
+        wrapper.appendChild(label)
+        wrapper.appendChild(checkbox)
+        body.appendChild(wrapper)
+        base.getValue = function() {
+            return base.element().checked
+        }
+        base.setValue = function(v) {
+            base.element().checked = v
+            base.value = v
         }
         this._controls[name] = base
         return this._controls[name]

@@ -49,6 +49,7 @@ const settings = new SmartSettings('Settings', 10, 10)
     - `progressbar(name, items, callback)`
     - ~~`range(name, items, callback)`~~
     - `select(name, items, callback)`
+    - `checkbox(name, value)`
     - ~~`text(name, value, callback)`~~
     - ~~`textarea(name, value, callback)`~~
 

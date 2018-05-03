@@ -222,6 +222,49 @@ $sms-button-border-color: #C0C0C0;
     align-self: flex-end;
 }
 
+/* checkbox */
+.sms-checkbox {
+    box-sizing: border-box;
+    appearance: none;
+    width: 30px;
+    height: 20px;
+    border-radius: 8px;
+    background-color: #1B3585;
+    &:hover {
+        cursor: pointer;
+    }
+    &:focus {
+        outline: none;
+    }
+    &:before {
+        content: '';
+        display: block;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        position: relative;
+        top: 0;
+        background-color: white;
+        box-shadow: 0 1px 3px rgba(255, 255, 255, 0.25);
+        transition: 200ms all ease-in-out;
+    }
+    &:checked:before {
+        left: 12.25px;
+        background-color: #2EA883;
+    }
+    &:not(:checked):before {
+        background-color: #3366FF;
+        left: 0;
+    }
+    &:disabled {
+        background-color: $sms-g-primary-color;
+    }
+    &:disabled:before {
+        background-color: #2447B3;
+        box-shadow: none;
+    }
+}
+
 /* utilities */
 .sms-label {
     font-family: $sms-g-font;
