@@ -80,6 +80,8 @@ $sms-panel-header-height: 25px;
     width: 100%;
     height: auto;
     padding: calc($sms-g-h-padding / 2), $sms-g-h-padding;
+    display: flex;
+    flex-direction: column;
     &:first-child {
         padding: $sms-g-h-padding $sms-g-h-padding calc($sms-g-h-padding / 2) $sms-g-h-padding;
     }
@@ -119,7 +121,36 @@ $sms-button-border-color: #C0C0C0;
     }
 }
 
+/* text */
+.sms-text {
+    width: 180px;
+    height: 25px;
+    background-color: $sms-g-text-color;
+    color: $sms-g-primary-color;
+    font-size: 10px;
+    border: 1px solid $sms-button-border-color;
+    padding: 0 $sms-g-h-padding;
+    &:placeholder {
+        font-size: 10px;
+        font-family: $sms-g-font;
+        color: $sms-button-border-color;
+    }
+    &:focus {
+        outline: none;
+    }
+}
+
 /* utilities */
+.sms-label {
+    font-family: $sms-g-font;
+    font-size: 10px;
+    font-weight: 400;
+    width: 100%;
+    color: $sms-g-text-color;
+    padding-bottom: 5px;
+    line-height: 10px;
+}
+
 .hide {
     display: none !important;
-}
+} 

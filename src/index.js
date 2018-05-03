@@ -287,7 +287,7 @@ class SmartSettings {
     }
 
     /**
-     * Sets new active value of the specific control
+     * Sets new active value of the specific control. (Changing button control value does not change its' id property)
      * @param {string} name - name of the control
      * @param {(number|string)} name - new value
      * @returns {void}
@@ -319,6 +319,8 @@ class SmartSettings {
      * @param {string} name - name of the control 
      * @param {function} callback - function executed on each change
      * @returns {object} button control object
+     * @example
+     * let button = mySettings.button('Button Name', () => console.log('This is the button'))
      */
     button(name, callback) {
         let base = this._createControlBasics()
@@ -333,7 +335,9 @@ class SmartSettings {
         base.type = 'button'
         base.value = name
         button.innerText = name
-        button.addEventListener('click', callback)
+        if (callback) {
+            button.addEventListener('click', callback)
+        }
         wrapper.appendChild(button)
         base.getValue = function() {
             return base.element().innerText
@@ -343,6 +347,47 @@ class SmartSettings {
             base.element().innerText = value
         }
         body.appendChild(wrapper)
+        this._controls[name] = base
+        return this._controls[name]
+    }
+
+    /**
+     * Creates text input control
+     * @param {string} name - name of the control
+     * @param {string} value - value of the control
+     * @param {function} [callback] - function executed on each change
+     * @returns {void}
+     * @example
+     * let textInput = mySettings.text('Text input', 'Hello world')
+     */
+    text(name, value, callback) {
+        let body = this._panel.childNodes[1]
+        let base = this._createControlBasics()
+        let wrapper = this._createElement('div', { class: 'sms-control' })
+        let label = this._createElement('label', { class: 'sms-label' })
+        let input = this._createElement('input', {
+            class: 'sms-text',
+            id: base.id,
+            type: 'text'
+        })
+        input.innerText = value
+        input.placeholder = value
+        base.value = value
+        base.type = 'text'
+        label.innerText = name
+        wrapper.appendChild(label)
+        wrapper.appendChild(input)
+        if (callback) {
+            input.addEventListener('input', callback)
+        }
+        body.appendChild(wrapper)
+        base.getValue = function() {
+            return this.element().innerText
+        }
+        base.setValue = function(value) {
+            base.value = value
+            base.element().innerText = value
+        }
         this._controls[name] = base
         return this._controls[name]
     }
