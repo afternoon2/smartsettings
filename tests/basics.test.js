@@ -112,27 +112,12 @@ test('Get value of a specific control', () => {
 })
 
 test('Set value of a specific control', () => {
-    let name = 'Control'
-    let changedName = 'Control changed'
+    let values = [1, 100, 50, 1]
     let s = new SmartSettings()
-    let control = s.button(name, () => {})
-    s.setName(name, changedName)
+    let range = s.range('Range', values, (e) => {})
 
-    expect(s._controls[name]).toBe(undefined)
-    expect(s._controls[changedName].name).toBe(changedName)
-    expect(s._controls[changedName].element().innerText).toBe(changedName)
-    expect(s._controls[changedName].element().value).toBe(changedName)
+    range.setValue(3)
 
-    let inputName = 'Input'
-    let changedInputName = 'Input 2'
-    let inputControl = s.text(inputName, 'Hello world!')
-    s.setName(inputName, changedInputName)
-
-    let _parent = s._controls[changedInputName].element().parentElement
-    let _label = _parent.childNodes[0]
-
-    expect(s._controls[inputName]).toBe(undefined)
-    expect(s._controls[changedInputName].name).toBe(changedInputName)
-    expect(_label.value).toBe(changedInputName)
-    expect(_label.innerText).toBe(changedInputName)
+    expect(range.getValue()).toBe(3)
+    expect(range.element().value).toBe('3')
 })

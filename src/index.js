@@ -81,7 +81,6 @@ class SmartSettings {
         return element
     }
 
-
     /* Helper methods */
 
     /**
@@ -318,40 +317,6 @@ class SmartSettings {
     }
 
     /**
-     * Sets new control name (with keeping its' functionality). For buttons it changes the text inside, for all other controls it changes their label's content.
-     * @param {string} oldName - current name of the control
-     * @param {string} newName - new name of the control
-     * @example
-     * mySettings.setName('Controls)
-     * // Important! This method does not support 
-     * // dynamic changes (like in inputs),
-     * // so the following snippet will not work.
-     * someInput.addEventListener(
-     *      'input', 
-     *      e => mySettings.setName('button', e.target.value)
-     * ) // throws Error
-     */
-    setName(oldName, newName) {
-        let method = Object.getOwnPropertyDescriptor(this._controls, oldName)
-        this._controls[newName] = method.value
-
-        let newControl = this._controls[newName]
-        newControl.name = newName
-        if (newControl.type === 'button') {
-            newControl.value = newName
-            newControl.element().value = newName
-            newControl.element().innerText = newName
-        } else {
-            let parent = this._controls[oldName].element().parentElement
-            let label = parent.childNodes[0]
-            label.innerText = newName
-            label.value = newName
-        }
-
-        delete this._controls[oldName]
-    }
-
-    /**
      * Creates button control
      * @param {string} name - name of the control 
      * @param {function} callback - function executed on each change
@@ -360,7 +325,6 @@ class SmartSettings {
      * let button = mySettings.button('Button Name', () => console.log('This is the button'))
      */
     button(name, callback) {
-        let self = this
         let base = this._createControlBasics()
         let body = this._panel.childNodes[1]
         let wrapper = this._createElement('div', {
