@@ -47,7 +47,7 @@ const settings = new SmartSettings('Settings', 10, 10)
 3. Controls:
     - ~~`button(name, callback)`~~
     - `progressbar(name, items, callback)`
-    - `range(name, items, callback)`
+    - ~~`range(name, items, callback)`~~
     - `select(name, items, callback)`
     - ~~`text(name, value, callback)`~~
     - ~~`textarea(name, value, callback)`~~

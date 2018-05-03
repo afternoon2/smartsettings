@@ -141,6 +141,82 @@ $sms-button-border-color: #C0C0C0;
     padding: 5px $sms-g-h-padding;
     resize: none;
     height: 100px;
+    border: none;
+    outline: none;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+/* range (oh boy, this gonna be hard) */
+
+@define-mixin track {
+    background-color: $sms-g-primary-color;
+    width: 180px;
+    height: 15px;
+}
+
+@define-mixin thumb {
+    width: 15px;
+    height: 15px;
+    background-color: #3366FF;
+    border-radius: 2px;
+}
+
+.sms-range {
+    appearance: none;
+    width: 180px;
+    &:focus {
+        outline: none;
+    }
+    &:hover {
+        cursor: pointer;
+    }
+    /* slider */
+    &::-webkit-slider-runnable-track {
+        @mixin track;
+    }
+    &:focus::-webkit-slider-runnable-track {
+        @mixin track;
+    }
+    &::-moz-range-track {
+        @mixin track;
+    }
+    &::-ms-track {
+        @mixin track;
+    }
+    &::-ms-fill-lower {
+        background-color: #102052;
+    }
+    &:::-ms-fill-upper {
+        background-color: #102052;
+    }
+    &:focus::-ms-fill-lower {
+        background-color: #102052;
+    }
+    &:focus::-ms-fill-upper {
+        background-color: #102052;
+    }
+    /* thumb */
+    &::-webkit-slider-thumb {
+        appearance: none;
+        @mixin thumb;
+    }
+    &::-moz-range-thumb {
+        @mixin thumb;
+    }
+    &::-ms-thumb {
+        @mixin thumb;
+    }
+}
+
+.sms-label-span {
+    width: 15%;
+    text-align: right;
+    font-family: $sms-g-font;
+    font-size: 10px;
+    font-weight: 400;
+    align-self: flex-end;
 }
 
 /* utilities */
@@ -152,6 +228,8 @@ $sms-button-border-color: #C0C0C0;
     color: $sms-g-text-color;
     padding-bottom: 5px;
     line-height: 10px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .hide {
