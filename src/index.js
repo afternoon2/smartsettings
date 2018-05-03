@@ -555,6 +555,56 @@ class SmartSettings {
         this._controls[name] = base
         return this._controls[name]
     }
+
+    /**
+     * Creates color control
+     * @param {string} name - name of the control
+     * @param {string} value -hexadecimal string value of initial color
+     * @param {function} [callback] - function executed afer each change
+     * @returns {void}
+     * @example
+     * let color = mySettings.color('Color control', '#fcfcfc', e => someCallbackFunction())
+     */
+    color(name, value, callback) {
+        let body = this._panel.childNodes[1]
+        let base = this._createControlBasics()
+        let wrapper = this._createElement('div', { class: 'sms-control' })
+        let label = this._createElement('label', { class: 'sms-label' })
+        let span = this._createElement('span', { class: 'sms-label-span' })
+        let input = this._createElement('input', {
+            class: 'sms-color',
+            id: base.id,
+            type: 'color'
+        })
+        base.name = name
+        base.type = 'color'
+        base.value = value
+        input.setAttribute('value', value)
+        input.addEventListener('input', e => {
+            base.value = e.target.value
+            span.innerText = e.target.value
+            if (callback) {
+                callback(e)
+            }
+        })
+        span.innerText = value
+        label.value = name
+        label.innerText = name
+        label.appendChild(span)
+        wrapper.appendChild(label)
+        wrapper.appendChild(input)
+        body.appendChild(wrapper)
+        base.getValue = function() {
+            return base.element().value
+        }
+        base.setValue = function(v) {
+            base.element().value = v
+            base.value = v
+            span.innerText = v
+        }
+        this._controls[name] = base
+        return this._controls[name]
+    }
 }
 
 export default SmartSettings

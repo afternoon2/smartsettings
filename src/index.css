@@ -214,7 +214,7 @@ $sms-button-border-color: #C0C0C0;
 }
 
 .sms-label-span {
-    width: 15%;
+    width: 30%;
     text-align: right;
     font-family: $sms-g-font;
     font-size: 10px;

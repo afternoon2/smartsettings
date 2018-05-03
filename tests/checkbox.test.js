@@ -38,7 +38,6 @@ test('Get checkbox value', () => {
     let val = checkbox.getValue()
     expect(val).toBe(false)
     expect(checkbox.element().checked).toBe(false)
-    console.log(checkbox)
     expect(checkbox.value).toBe(false)
 })
 
