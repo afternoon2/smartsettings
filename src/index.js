@@ -416,9 +416,52 @@ class SmartSettings {
         }
         body.appendChild(wrapper)
         base.getValue = function() {
-            return this.element().innerText
+            return this.element().value
         }
         base.setValue = function(value) {
+            base.value = value
+            base.element().innerText = value
+            base.element().value = value
+        }
+        this._controls[name] = base
+        return this._controls[name]
+    }
+
+    /**
+     * Creates textarea control
+     * @param {string} name - name of the control
+     * @param {string} value - value of the control
+     * @param {function} [callback] - function executed on each change
+     * @returns {void}
+     * @example
+     * let textarea = mySettings.textarea('Text input', 'Hello world')
+     */
+    textarea(name, value, callback) {
+        let body = this._panel.childNodes[1]
+        let base = this._createControlBasics()
+        let wrapper = this._createElement('div', { class: 'sms-control' })
+        let label = this._createElement('label', { class: 'sms-label' })
+        let textarea = this._createElement('textarea', {
+            class: 'sms-textarea',
+            id: base.id
+        })
+        textarea.innerText = value
+        textarea.value = value
+        textarea.placeholder = value
+        base.name = name
+        base.value = value
+        base.type = 'text'
+        label.innerText = name
+        wrapper.appendChild(label)
+        wrapper.appendChild(textarea)
+        if (callback) {
+            textarea.addEventListener('input', callback)
+        }
+        body.appendChild(wrapper)
+        base.getValue = function () {
+            return this.element().value
+        }
+        base.setValue = function (value) {
             base.value = value
             base.element().innerText = value
             base.element().value = value

@@ -30,7 +30,8 @@ const settings = new SmartSettings('Settings', 10, 10)
     - ~~`destroy()`~~ - removes specific settings panel from the DOM
     - ~~`getValue()` - returns current value of the specific control~~
     - ~~`setValue()` - sets new active value of the specific control~~
-    - ~~`getValues()`~~ - returns object active values of all controls
+    - ~~`getValues()` - returns object active values of all controls~~
+    - ~~`setName()` - sets new name of the control~~
     - ~~`remove(name)` - removes specific control from the panel~~
     - **Note** - creation method remains private and is invoked each time the new `SmartSettings` instance is being constructed. To create new `SmartSettings` panel, use the constructor function.
 2. Control methods:
@@ -48,8 +49,8 @@ const settings = new SmartSettings('Settings', 10, 10)
     - `progressbar(name, items, callback)`
     - `range(name, items, callback)`
     - `select(name, items, callback)`
-    - `text(name, value, callback)`
-    - `textarea(name, value, callback)`
+    - ~~`text(name, value, callback)`~~
+    - ~~`textarea(name, value, callback)`~~
 
 ## Panel spec
 - name: string => constructor

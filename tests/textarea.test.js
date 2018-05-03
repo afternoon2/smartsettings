@@ -6,7 +6,7 @@ beforeEach(() => {
     s = new SmartSettings()
     name = 'Name'
     value = 'Hello world!'
-    input = s.text(name, value)
+    textarea = s.textarea(name, value)
 })
 
 afterEach(() => {
@@ -16,15 +16,15 @@ afterEach(() => {
     s = undefined
     name = undefined
     value = undefined
-    input = undefined
+    textarea = undefined
 })
 
-test('Create text input control', () => {
-    let _input = document.getElementById('sms-id-1')
+test('Create text textarea control', () => {
+    let _textarea = document.getElementById('sms-id-1')
 
-    expect(input.element()).toBe(s._controls[name].element())
-    expect(input.type).toBe('text')
-    expect(input.id).toBe('sms-id-1')
-    expect(_input).toBe(input.element())
+    expect(textarea.element()).toBe(s._controls[name].element())
+    expect(textarea.type).toBe('text')
+    expect(textarea.id).toBe('sms-id-1')
+    expect(_textarea).toBe(textarea.element())
 })
 

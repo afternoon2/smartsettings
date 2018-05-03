@@ -135,6 +135,14 @@ $sms-button-border-color: #C0C0C0;
     }
 }
 
+/* textarea */
+.sms-textarea {
+    @extend .sms-text;
+    padding: 5px $sms-g-h-padding;
+    resize: none;
+    height: 100px;
+}
+
 /* utilities */
 .sms-label {
     font-family: $sms-g-font;
