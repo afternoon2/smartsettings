@@ -87,32 +87,52 @@ test('Set current position', () => {
 
 test('Get current values', () => {
     let name = 'Name'
+    let name2 = 'Second name'
+    let value = 'Hello'
     let t = new SmartSettings()
     t.button(name)
+    t.text(name2, value)
     let values = t.getValues()
     let expectedValues = {
-        'Name': name
+        [name2]: value
     }
     expect(values).toEqual(expectedValues)
 })
 
 test('Get value of a specific control', () => {
     let name = 'Name'
+    let textValue = 'Hello'
     let t = new SmartSettings()
-    let button = t.button(name)
+    let text = t.text(name, textValue)
     let value = t.getValue(name)
 
-    expect(value).toBe(name)
-    expect(document.getElementById(button.id).innerText).toBe(name)
+    expect(value).toBe(textValue)
+    expect(document.getElementById(text.id).value).toBe(textValue)
+    expect(document.getElementById(text.id).innerText).toBe(textValue)
 })
 
 test('Set value of a specific control', () => {
-    let name = 'Name'
-    let name2 = 'Changed'
-    let t = new SmartSettings()
-    let button = t.button(name)
-    t.setValue(name, name2)
+    let name = 'Control'
+    let changedName = 'Control changed'
+    let s = new SmartSettings()
+    let control = s.button(name, () => {})
+    s.setName(name, changedName)
 
-    expect(button.value).toBe(name2)
-    expect(document.getElementById(button.id).innerText).toBe(name2)
+    expect(s._controls[name]).toBe(undefined)
+    expect(s._controls[changedName].name).toBe(changedName)
+    expect(s._controls[changedName].element().innerText).toBe(changedName)
+    expect(s._controls[changedName].element().value).toBe(changedName)
+
+    let inputName = 'Input'
+    let changedInputName = 'Input 2'
+    let inputControl = s.text(inputName, 'Hello world!')
+    s.setName(inputName, changedInputName)
+
+    let _parent = s._controls[changedInputName].element().parentElement
+    let _label = _parent.childNodes[0]
+
+    expect(s._controls[inputName]).toBe(undefined)
+    expect(s._controls[changedInputName].name).toBe(changedInputName)
+    expect(_label.value).toBe(changedInputName)
+    expect(_label.innerText).toBe(changedInputName)
 })

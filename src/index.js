@@ -122,6 +122,7 @@ class SmartSettings {
             disabled: false,
             hidden: false,
             value: null,
+            name: null,
             type: null,
             element: function() {
                 return document.getElementById(this.id)
@@ -281,7 +282,7 @@ class SmartSettings {
      * let value = mySettings.getValue('Control name')
      */
     getValue(name) {
-        if (name && this._controls[name]) {
+        if (name && this._controls[name] && this._controls[name].getValue) {
             return this._controls[name].getValue()
         }
     }
@@ -295,7 +296,7 @@ class SmartSettings {
      * mySettings.setValue('Control name', 'value')
      */
     setValue(name, value) {
-        if (name && this._controls[name]) {
+        if (name && this._controls[name] && this._controls[name].setValue) {
             return this._controls[name].setValue(value)
         }
     }
@@ -309,9 +310,45 @@ class SmartSettings {
     getValues() {
         let values = {}
         for (let i in this._controls) {
-            values[i] = this._controls[i].getValue()
+            if (this._controls[i].getValue) {
+                values[i] = this._controls[i].getValue()
+            }
         }
         return values
+    }
+
+    /**
+     * Sets new control name (with keeping its' functionality). For buttons it changes the text inside, for all other controls it changes their label's content.
+     * @param {string} oldName - current name of the control
+     * @param {string} newName - new name of the control
+     * @example
+     * mySettings.setName('Controls)
+     * // Important! This method does not support 
+     * // dynamic changes (like in inputs),
+     * // so won't work.
+     * someInput.addEventListener(
+     *      'input', 
+     *      e => mySettings.setName('button', e.target.value)
+     * ) // throws Error
+     */
+    setName(oldName, newName) {
+        let method = Object.getOwnPropertyDescriptor(this._controls, oldName)
+        this._controls[newName] = method.value
+
+        let newControl = this._controls[newName]
+        newControl.name = newName
+        if (newControl.type === 'button') {
+            newControl.value = newName
+            newControl.element().value = newName
+            newControl.element().innerText = newName
+        } else {
+            let parent = this._controls[oldName].element().parentElement
+            let label = parent.childNodes[0]
+            label.innerText = newName
+            label.value = newName
+        }
+
+        delete this._controls[oldName]
     }
 
     /**
@@ -323,6 +360,7 @@ class SmartSettings {
      * let button = mySettings.button('Button Name', () => console.log('This is the button'))
      */
     button(name, callback) {
+        let self = this
         let base = this._createControlBasics()
         let body = this._panel.childNodes[1]
         let wrapper = this._createElement('div', {
@@ -333,19 +371,13 @@ class SmartSettings {
             id: base.id
         })
         base.type = 'button'
-        base.value = name
+        base.name = name
         button.innerText = name
+        button.value = name
         if (callback) {
             button.addEventListener('click', callback)
         }
         wrapper.appendChild(button)
-        base.getValue = function() {
-            return base.element().innerText
-        }
-        base.setValue = function(value) {
-            base.value = value
-            base.element().innerText = value
-        }
         body.appendChild(wrapper)
         this._controls[name] = base
         return this._controls[name]
@@ -371,7 +403,9 @@ class SmartSettings {
             type: 'text'
         })
         input.innerText = value
+        input.value = value
         input.placeholder = value
+        base.name = name
         base.value = value
         base.type = 'text'
         label.innerText = name
@@ -387,6 +421,7 @@ class SmartSettings {
         base.setValue = function(value) {
             base.value = value
             base.element().innerText = value
+            base.element().value = value
         }
         this._controls[name] = base
         return this._controls[name]
