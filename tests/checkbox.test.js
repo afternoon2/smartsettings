@@ -5,7 +5,7 @@ let s, name, value, checkbox
 beforeEach(() => {
     s = new SmartSettings()
     name = 'Checkbox'
-    value: false
+    value = false
     checkbox = s.checkbox(name, value)
 })
 
@@ -16,6 +16,7 @@ afterEach(() => {
     s = undefined
     name = undefined
     value = undefined
+    checkbox = undefined
 })
 
 test('Add checkbox control', () => {
@@ -37,6 +38,8 @@ test('Get checkbox value', () => {
     let val = checkbox.getValue()
     expect(val).toBe(false)
     expect(checkbox.element().checked).toBe(false)
+    console.log(checkbox)
+    expect(checkbox.value).toBe(false)
 })
 
 test('Get checkbox type', () => {

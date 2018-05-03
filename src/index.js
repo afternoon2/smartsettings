@@ -537,7 +537,7 @@ class SmartSettings {
             checkbox.setAttribute('checked', true)
         }
         checkbox.addEventListener('change', e => {
-            base.value = e.target.value
+            base.value = e.target.checked
             if (callback) {
                 callback(e)
             }

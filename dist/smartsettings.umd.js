@@ -427,7 +427,7 @@
                   checkbox.setAttribute('checked', true);
               }
               checkbox.addEventListener('change', function (e) {
-                  base.value = e.target.value;
+                  base.value = e.target.checked;
                   if (callback) {
                       callback(e);
                   }
