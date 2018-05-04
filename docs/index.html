@@ -43,77 +43,53 @@
 
 
     <section>
-        <article><h1>smartsettings.js</h1><h2>A JavaScript library for creating simply and advanced setting panels.</h2><hr>
-<h2>Installation</h2><pre class="prettyprint source"><code>npm install --save-dev smartsettings</code></pre><h2>Usage</h2><p>Import in ES Modules</p>
-<pre class="prettyprint source lang-js"><code>import SmartSettings from 'smartsettings'
-
-const settings = new Settings('Settings', 10, 10)</code></pre><p>In the browser:</p>
-<pre class="prettyprint source lang-js"><code>const settings = new SmartSettings('Settings', 10, 10)</code></pre><h2>API overview</h2><ol>
-<li>Panel methods:<ul>
-<li><del><code>show()</code></del></li>
-<li><del><code>hide()</code></del></li>
-<li><del><code>open()</code></del></li>
-<li><del><code>close()</code></del></li>
-<li><del><code>toggle()</code></del></li>
-<li><del><code>destroy()</code></del> - removes specific settings panel from the DOM</li>
-<li><del><code>getValue()</code> - returns current value of the specific control</del></li>
-<li><del><code>setValue()</code> - sets new active value of the specific control</del></li>
-<li><del><code>getActiveValues()</code> - returns object active values of all controls</del></li>
-<li><del><code>setName()</code> - sets new name of the control</del></li>
-<li><del><code>remove(name)</code> - removes specific control from the panel</del></li>
-<li><strong>Note</strong> - creation method remains private and is invoked each time the new <code>SmartSettings</code> instance is being constructed. To create new <code>SmartSettings</code> panel, use the constructor function.</li>
+        <article><h1>smartsettings.js</h1><p>Yet another JavaScript library for creating (smart) setting panels.</p>
+<h2>Installation</h2><pre class="prettyprint source lang-html"><code>&lt;script src=&quot;./smartsettings.umd.js&quot;>&lt;/script></code></pre><p>or (in ES modules):</p>
+<pre class="prettyprint source"><code>npm install --save-dev smartsettings</code></pre><p>and then</p>
+<pre class="prettyprint source lang-js"><code>import SmartSettings from 'smartsettings'</code></pre><p>and then just:</p>
+<pre class="prettyprint source lang-js"><code>const settings = new SmartSettings('Settings', 10, 10)</code></pre><h2>API overview</h2><ul>
+<li>Controls:<ul>
+<li><code>button(name, callback)</code> ✅</li>
+<li><code>range(name, items, callback)</code> ✅</li>
+<li><code>select(name, items, callback)</code> ✅</li>
+<li><code>checkbox(name, value)</code> ✅</li>
+<li><code>color(name, value)</code> ✅</li>
+<li><code>text(name, value, callback)</code> ✅</li>
+<li><code>textarea(name, value, callback)</code> ✅</li>
+<li><code>progressbar(name, items, callback)</code> ❌</li>
+<li><code>file()</code> ❌</li>
+<li><code>number()</code> ❌</li>
+<li><code>time()</code> ❌</li>
 </ul>
 </li>
-<li><p>Control methods:</p>
-<ul>
-<li><del><code>enable()</code></del></li>
-<li><del><code>disable()</code></del></li>
-<li><del><code>show()</code></del></li>
-<li><del><code>hide()</code></del></li>
-<li><del><code>getValue()</code> - returns active value</del></li>
-<li><del><code>setValue()</code> - sets new active value</del></li>
-<li><del><code>setItems()</code> - for <code>select</code>, <code>progressbar</code> and <code>range</code></del></li>
-<li><del><code>getItems()</code> - for <code>select</code>, <code>progressbar</code> and <code>range</code></del></li>
+<li>Methods:<ul>
+<li><code>show(name)</code> - show settings panel or control (if the name is provided) </li>
+<li><code>hide(name)</code> - hide settings panel or control (if the name is provided)</li>
+<li><code>enable(name)</code> - enable specific control</li>
+<li><code>disable(name)</code> - disable specific control</li>
+<li><code>open()</code> - open settings panel</li>
+<li><code>close()</code> - close settings panel</li>
+<li><code>toggle()</code> - open/close settings panel</li>
+<li><code>destroy()</code> - remove current panel from the DOM</li>
+<li><code>remove(name)</code> - removes specific control from the panel</li>
+<li><code>getValue(name)</code> - returns active value of the specific control</li>
+<li><code>setValue()</code> - sets new active value of the specific control</li>
+<li><code>getActiveValues()</code> - returns object with active values of all controls (except buttons)</li>
+<li><code>setItems(name, items)</code> - set new dropdown, range or progressbar control items</li>
+<li><code>getItems(name)</code> - get items of the specific dropdown, range or progressbar control   </li>
 </ul>
 </li>
-<li><p>Controls:</p>
-<ul>
-<li><del><code>button(name, callback)</code></del></li>
-<li><del><code>range(name, items, callback)</code></del></li>
-<li><del><code>select(name, items, callback)</code></del></li>
-<li><del><code>checkbox(name, value)</code></del></li>
-<li><del><code>color(name, value)</code></del></li>
-<li><del><code>text(name, value, callback)</code></del></li>
-<li><del><code>textarea(name, value, callback)</code></del></li>
-<li><code>progressbar(name, items, callback)</code></li>
 </ul>
-</li>
-</ol>
 <h2>TBD:</h2><ul>
-<li>Drag &amp; drop position</li>
+<li><code>progressbar(name, items, callback)</code> ❌</li>
+<li><code>file()</code> ❌</li>
+<li><code>number()</code> ❌</li>
+<li><code>time()</code> ❌</li>
+<li>Drag &amp; drop panel</li>
 <li>set &amp; get position - update panel's position on each this._top and this._left change</li>
-<li><code>progressbar()</code></li>
 <li>styling enhancements</li>
 <li>prepare npm publish script</li>
 <li>more tests</li>
-</ul>
-<h2>Panel spec</h2><ul>
-<li>name: string =&gt; constructor</li>
-<li>left: number =&gt; constructor</li>
-<li>top: number =&gt; constructor</li>
-<li>_visible: boolean | true</li>
-<li>_open: boolean | true</li>
-<li>_draggable: boolean | false | <Future></li>
-<li>_panel: HTMLElement</li>
-<li>_controls: array<Control></li>
-<li>_sections: array<Section></li>
-</ul>
-<h2>Control spec (regardless the type)</h2><ul>
-<li>name: string</li>
-<li>type: string | ['button', 'select', 'range', 'boolean', 'text', 'textarea']</li>
-<li>element: HTMLElement</li>
-<li>value?: number|string|boolean</li>
-<li>values?: Array<string|number></li>
 </ul></article>
     </section>
 
@@ -131,7 +107,7 @@ const settings = new Settings('Settings', 10, 10)</code></pre><p>In the browser:
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri May 04 2018 16:48:45 GMT+0200 (CEST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri May 04 2018 17:10:09 GMT+0200 (CEST)
 </footer>
 
 <script> prettyPrint(); </script>

@@ -1,81 +1,63 @@
 # smartsettings.js
-## A JavaScript library for creating simply and advanced setting panels.
----
+Yet another JavaScript library for creating (smart) setting panels.
+
 ## Installation
+
+```html
+<script src="./smartsettings.umd.js"></script>
+```
+
+or (in ES modules):
 
 ```
 npm install --save-dev smartsettings
 ```
-
-## Usage
-
-Import in ES Modules
+and then
 ```js
 import SmartSettings from 'smartsettings'
-
-const settings = new Settings('Settings', 10, 10)
 ```
-In the browser:
+and then just:
+
 ```js
 const settings = new SmartSettings('Settings', 10, 10)
 ```
 
 ## API overview
-1. Panel methods:
-    - ~~`show()`~~
-    - ~~`hide()`~~
-    - ~~`open()`~~
-    - ~~`close()`~~
-    - ~~`toggle()`~~
-    - ~~`destroy()`~~ - removes specific settings panel from the DOM
-    - ~~`getValue()` - returns current value of the specific control~~
-    - ~~`setValue()` - sets new active value of the specific control~~
-    - ~~`getActiveValues()` - returns object active values of all controls~~
-    - ~~`setName()` - sets new name of the control~~
-    - ~~`remove(name)` - removes specific control from the panel~~
-    - **Note** - creation method remains private and is invoked each time the new `SmartSettings` instance is being constructed. To create new `SmartSettings` panel, use the constructor function.
-2. Control methods:
-    - ~~`enable()`~~
-    - ~~`disable()`~~
-    - ~~`show()`~~
-    - ~~`hide()`~~
-    - ~~`getValue()` - returns active value~~
-    - ~~`setValue()` - sets new active value~~
-    - ~~`setItems()` - for `select`, `progressbar` and `range`~~
-    - ~~`getItems()` - for `select`, `progressbar` and `range`~~
-
-3. Controls:
-    - ~~`button(name, callback)`~~
-    - ~~`range(name, items, callback)`~~
-    - ~~`select(name, items, callback)`~~
-    - ~~`checkbox(name, value)`~~
-    - ~~`color(name, value)`~~
-    - ~~`text(name, value, callback)`~~
-    - ~~`textarea(name, value, callback)`~~
-    - `progressbar(name, items, callback)`
+- Controls:
+    - `button(name, callback)` ✅
+    - `range(name, items, callback)` ✅
+    - `select(name, items, callback)` ✅
+    - `checkbox(name, value)` ✅
+    - `color(name, value)` ✅
+    - `text(name, value, callback)` ✅
+    - `textarea(name, value, callback)` ✅
+    - `progressbar(name, items, callback)` ❌
+    - `file()` ❌
+    - `number()` ❌
+    - `time()` ❌
+- Methods:
+    - `show(name)` - show settings panel or control (if the name is provided) 
+    - `hide(name)` - hide settings panel or control (if the name is provided)
+    - `enable(name)` - enable specific control
+    - `disable(name)` - disable specific control
+    - `open()` - open settings panel
+    - `close()` - close settings panel
+    - `toggle()` - open/close settings panel
+    - `destroy()` - remove current panel from the DOM
+    - `remove(name)` - removes specific control from the panel
+    - `getValue(name)` - returns active value of the specific control
+    - `setValue()` - sets new active value of the specific control
+    - `getActiveValues()` - returns object with active values of all controls (except buttons)
+    - `setItems(name, items)` - set new dropdown, range or progressbar control items
+    - `getItems(name)` - get items of the specific dropdown, range or progressbar control   
 
 ## TBD:
-- Drag & drop position
+- `progressbar(name, items, callback)` ❌
+- `file()` ❌
+- `number()` ❌
+- `time()` ❌
+- Drag & drop panel
 - set & get position - update panel's position on each this._top and this._left change
-- `progressbar()`
 - styling enhancements
 - prepare npm publish script
 - more tests
-
-## Panel spec
-- name: string => constructor
-- left: number => constructor
-- top: number => constructor
-- _visible: boolean | true
-- _open: boolean | true
-- _draggable: boolean | false | <Future>
-- _panel: HTMLElement
-- _controls: array<Control>
-- _sections: array<Section>
-
-## Control spec (regardless the type)
-- name: string
-- type: string | ['button', 'select', 'range', 'boolean', 'text', 'textarea']
-- element: HTMLElement
-- value?: number|string|boolean
-- values?: Array<string|number>

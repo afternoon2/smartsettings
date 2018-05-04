@@ -194,6 +194,20 @@
               this._hidden = true;
           }
       }, {
+          key: 'enable',
+          value: function enable(name) {
+              if (name && this._controls[name]) {
+                  return this._controls[name].enable();
+              }
+          }
+      }, {
+          key: 'disable',
+          value: function disable(name) {
+              if (name && this._controls[name]) {
+                  return this._controls[name].disable();
+              }
+          }
+      }, {
           key: 'open',
           value: function open() {
               var panelBody = this._panel.childNodes[1];

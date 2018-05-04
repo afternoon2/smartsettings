@@ -131,3 +131,16 @@ test('Set and get items of specific control', () => {
     s.setItems('Select', values)
     expect(s.getItems('Select')).toEqual(expectedValues)
 })
+
+test('Disable and enable specific control', () => {
+    let s = new SmartSettings()
+    let control = s.textarea('Area', 'Hello world!')
+    s.disable('Area')
+
+    expect(control.element().disabled).toBe(true)
+    expect(control.disabled).toBe(true)
+
+    s.enable('Area')
+    expect(control.element().disabled).toBe(false)
+    expect(control.disabled).toBe(false)
+})

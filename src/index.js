@@ -212,6 +212,32 @@ class SmartSettings {
     }
 
     /**
+     * Enables specific control
+     * @param {string} name
+     * @returns {void}
+     * @example
+     * mySettings.enable('Checkbox control')
+     */
+    enable(name) {
+        if (name && this._controls[name]) {
+            return this._controls[name].enable()
+        }
+    }
+
+    /**
+     * Disables specific control
+     * @param {string} name
+     * @returns {void}
+     * @example
+     * mySettings.enable('Checkbox control')
+     */
+    disable(name) {
+        if (name && this._controls[name]) {
+            return this._controls[name].disable()
+        }
+    }
+
+    /**
      * Open settings panel
      * @example
      * mySettings.open()
