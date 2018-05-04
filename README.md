@@ -1,6 +1,8 @@
 # smartsettings.js
 Yet another JavaScript library for creating (smart) setting panels.
 
+<img src="./2docs/usage-gif.gif" alt="usage gif" style="width: 300px; height: auto;">
+
 ## Installation
 
 ```html
