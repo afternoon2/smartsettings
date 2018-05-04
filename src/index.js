@@ -717,7 +717,7 @@ class SmartSettings {
         })
         select.value = items[0]
         select.addEventListener('change', e => {
-            base.value = e.target.value
+            base.value = parseFloat(e.target.value)
             if (callback) {
                 callback(e)
             }
@@ -751,6 +751,53 @@ class SmartSettings {
         }
         this._controls[name] = base
         return this._controls[name]
+    }
+
+    /**
+     * Creates number control
+     * @param {string} name - name of the control
+     * @param {array} items - array with initial and step value
+     * @param {function} [callback] - function executed on each change
+     * @returns {object}
+     * @example
+     * let number = mySettings.number('Number', [10, 1], e => {})
+     */
+    number(name, items, callback) {
+        let self = this
+        let body = this._panel.childNodes[1]
+        let base = this._createControlBasics()
+        let wrapper = this._createElement('div', { class: 'sms-control' })
+        let label = this._createElement('label', { class: 'sms-label' })
+        label.innerText = name
+        label.value = name
+        let input = this._createElement('input', {
+            class: 'sms-number',
+            id: base.id,
+            type: 'number',
+            value: items[0],
+            step: items[1]
+        })
+        input.addEventListener('input', e => {
+            base.value = parseFloat(e.target.value)
+            if (callback) {
+                callback(e)
+            }
+        })
+        base.type = 'number'
+        base.name = name
+        base.value = items[0]
+        base.getValue = function() {
+            return parseFloat(base.element().value)
+        }
+        base.setValue = function(v) {
+            base.element().value = v
+            base.value = v
+        }
+        wrapper.appendChild(label)
+        wrapper.appendChild(input)
+        body.appendChild(wrapper)
+        this._controls[name] = base
+        return this._controls[name] = base
     }
 }
 

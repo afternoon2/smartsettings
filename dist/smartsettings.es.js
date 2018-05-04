@@ -547,7 +547,7 @@ var SmartSettings = function () {
             });
             select.value = items[0];
             select.addEventListener('change', function (e) {
-                base.value = e.target.value;
+                base.value = parseFloat(e.target.value);
                 if (callback) {
                     callback(e);
                 }
@@ -581,6 +581,44 @@ var SmartSettings = function () {
             };
             this._controls[name] = base;
             return this._controls[name];
+        }
+    }, {
+        key: 'number',
+        value: function number(name, items, callback) {
+            var body = this._panel.childNodes[1];
+            var base = this._createControlBasics();
+            var wrapper = this._createElement('div', { class: 'sms-control' });
+            var label = this._createElement('label', { class: 'sms-label' });
+            label.innerText = name;
+            label.value = name;
+            var input = this._createElement('input', {
+                class: 'sms-number',
+                id: base.id,
+                type: 'number',
+                value: items[0],
+                step: items[1]
+            });
+            input.addEventListener('input', function (e) {
+                base.value = parseFloat(e.target.value);
+                if (callback) {
+                    callback(e);
+                }
+            });
+            base.type = 'number';
+            base.name = name;
+            base.value = items[0];
+            base.getValue = function () {
+                return parseFloat(base.element().value);
+            };
+            base.setValue = function (v) {
+                base.element().value = v;
+                base.value = v;
+            };
+            wrapper.appendChild(label);
+            wrapper.appendChild(input);
+            body.appendChild(wrapper);
+            this._controls[name] = base;
+            return this._controls[name] = base;
         }
     }]);
     return SmartSettings;
