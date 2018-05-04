@@ -319,9 +319,9 @@ class SmartSettings {
      * Get all active values
      * @returns {object} - an object with values from all currently set controls
      * @example
-     * let values = mySettings.getValues()
+     * let values = mySettings.getActiveValues()
      */
-    getValues() {
+    getActiveValues() {
         let values = {}
         for (let i in this._controls) {
             if (this._controls[i].getValue) {
@@ -329,6 +329,47 @@ class SmartSettings {
             }
         }
         return values
+    }
+
+    /**
+     * Get select/range/progressbar items
+     * @param {string} name - name of the control
+     * @returns {array}
+     * @example
+     * let selectValues = mySettings.
+     */
+    getItems(name) {
+        let typeCondition = (
+            this._controls[name].type === 'range' || 
+            this._controls[name].type === 'select' || 
+            this._controls[name].type === 'progressbar'
+        )
+        if (this._controls[name] && typeCondition) {
+            return this._controls[name].getItems()
+        } else {
+            throw new Error('Chosen control is not a range, select or progressbar type')
+        }
+    }
+
+    /**
+     * Set (update) select/range/progressbar items
+     * @param {string} name - name of the control
+     * @param {array} items - array of new items
+     * @returns {void}
+     * @example
+     * mySettings.setItems('Select', [1, 2, 3, 4])
+     */
+    setItems(name, items) {
+        let typeCondition = (
+            this._controls[name].type === 'range' ||
+            this._controls[name].type === 'select' ||
+            this._controls[name].type === 'progressbar'
+        )
+        if (this._controls[name] && typeCondition) {
+            return this._controls[name].setItems(items)
+        } else {
+            throw new Error('Chosen control is not a range, select or progressbar type')
+        }
     }
 
     /**

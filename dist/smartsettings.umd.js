@@ -252,8 +252,8 @@
               }
           }
       }, {
-          key: 'getValues',
-          value: function getValues() {
+          key: 'getActiveValues',
+          value: function getActiveValues() {
               var values = {};
               for (var i in this._controls) {
                   if (this._controls[i].getValue) {
@@ -261,6 +261,26 @@
                   }
               }
               return values;
+          }
+      }, {
+          key: 'getItems',
+          value: function getItems(name) {
+              var typeCondition = this._controls[name].type === 'range' || this._controls[name].type === 'select' || this._controls[name].type === 'progressbar';
+              if (this._controls[name] && typeCondition) {
+                  return this._controls[name].getItems();
+              } else {
+                  throw new Error('Chosen control is not a range, select or progressbar type');
+              }
+          }
+      }, {
+          key: 'setItems',
+          value: function setItems(name, items) {
+              var typeCondition = this._controls[name].type === 'range' || this._controls[name].type === 'select' || this._controls[name].type === 'progressbar';
+              if (this._controls[name] && typeCondition) {
+                  return this._controls[name].setItems(items);
+              } else {
+                  throw new Error('Chosen control is not a range, select or progressbar type');
+              }
           }
       }, {
           key: 'button',

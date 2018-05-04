@@ -46,3 +46,13 @@ test('Remove select control', () => {
     s.remove(name)
     expect(s._controls[name]).toBe(undefined)
 })
+
+test('Show and hide select control', () => {
+    s.hide(name)
+    expect(s._controls[name].element().classList[1]).toBe('hide')
+    expect(s._controls[name].hidden).toBe(true)
+
+    s.show(name)
+    expect(s._controls[name].element().classList[1]).toBe(undefined)
+    expect(s._controls[name].hidden).toBe(false)
+})

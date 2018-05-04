@@ -92,7 +92,7 @@ test('Get current values', () => {
     let t = new SmartSettings()
     t.button(name)
     t.text(name2, value)
-    let values = t.getValues()
+    let values = t.getActiveValues()
     let expectedValues = {
         [name2]: value
     }
@@ -120,4 +120,14 @@ test('Set value of a specific control', () => {
 
     expect(range.getValue()).toBe(3)
     expect(range.element().value).toBe('3')
+})
+
+
+test('Set and get items of specific control', () => {
+    let values = [1, 2, 3, 4]
+    let expectedValues = values.map(v => v.toString())
+    let s = new SmartSettings()
+    let select = s.select('Select', ['a', 'b'])
+    s.setItems('Select', values)
+    expect(s.getItems('Select')).toEqual(expectedValues)
 })
