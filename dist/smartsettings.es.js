@@ -151,6 +151,16 @@ var SmartSettings = function () {
             return basics;
         }
     }, {
+        key: '_createSelectOption',
+        value: function _createSelectOption(item) {
+            var option = this._createElement('option', {
+                class: 'sms-select-option',
+                value: item
+            });
+            option.innerText = item;
+            return option;
+        }
+    }, {
         key: 'destroy',
         value: function destroy() {
             if (this._panel && this._panel.parentElement) {
@@ -477,6 +487,63 @@ var SmartSettings = function () {
                 base.element().value = v;
                 base.value = v;
                 span.innerText = v;
+            };
+            this._controls[name] = base;
+            return this._controls[name];
+        }
+    }, {
+        key: 'select',
+        value: function select(name, items, callback) {
+            var self = this;
+            var body = this._panel.childNodes[1];
+            var base = this._createControlBasics();
+            var wrapper = this._createElement('div', { class: 'sms-control' });
+            var label = this._createElement('label', { class: 'sms-label' });
+            var select = this._createElement('select', {
+                class: 'sms-select',
+                id: base.id,
+                name: name
+            });
+            label.innerText = name;
+            label.value = name;
+            wrapper.appendChild(label);
+            items.map(function (item) {
+                var option = self._createSelectOption(item);
+                select.options.add(option);
+            });
+            select.value = items[0];
+            select.addEventListener('change', function (e) {
+                base.value = e.target.value;
+                if (callback) {
+                    callback(e);
+                }
+            });
+            wrapper.appendChild(select);
+            body.appendChild(wrapper);
+            base.value = items[0];
+            base.name = name;
+            base.type = 'select';
+            base.getValue = function () {
+                var _select = base.element();
+                return _select.options[_select.selectedIndex].value;
+            };
+            base.setValue = function (v) {
+                base.value = v;
+                var _select = base.element();
+                select.options[select.selectedIndex] = self._createSelectOption(v);
+                _select.value = v;
+            };
+            base.getItems = function () {
+                return Array.from(base.element().options).map(function (option) {
+                    return option.value;
+                });
+            };
+            base.setItems = function (items) {
+                var _select = base.element();
+                items.forEach(function (item) {
+                    var _index = items.indexOf(item);
+                    _select.options[_index] = self._createSelectOption(item);
+                });
             };
             this._controls[name] = base;
             return this._controls[name];

@@ -150,6 +150,21 @@ class SmartSettings {
         return basics
     }
 
+    /**
+     * Returns select option
+     * @param {(string|number)} item - option value
+     * @returns {Node}
+     * @private
+     */
+    _createSelectOption(item) {
+        let option = this._createElement('option', {
+            class: 'sms-select-option',
+            value: item
+        })
+        option.innerText = item
+        return option
+    }
+
     /* Basic methods */
 
     /**
@@ -352,7 +367,7 @@ class SmartSettings {
      * @param {string} name - name of the control
      * @param {string} value - value of the control
      * @param {function} [callback] - function executed on each change
-     * @returns {void}
+     * @returns {object}
      * @example
      * let textInput = mySettings.text('Text input', 'Hello world')
      */
@@ -396,7 +411,7 @@ class SmartSettings {
      * @param {string} name - name of the control
      * @param {string} value - value of the control
      * @param {function} [callback] - function executed on each change
-     * @returns {void}
+     * @returns {object}
      * @example
      * let textarea = mySettings.textarea('Text input', 'Hello world')
      */
@@ -442,7 +457,7 @@ class SmartSettings {
      * @param {string} name - name of the control
      * @param {array} items - array with min, max, default and step values
      * @param {function} [callback] - function executed on each change
-     * @returns {void}
+     * @returns {object}
      * @example
      * let range = mySettings.range('Range', [1, 100, 40, 1], e => console.log(e.target.value))
      */
@@ -512,7 +527,7 @@ class SmartSettings {
      * @param {string} name - name of the control
      * @param {boolean} value - value of the control
      * @param {function} [callback] - function executed on each change
-     * @returns {void}
+     * @returns {object}
      * @example
      * let checkbox = mySettings.checkbox('Check this out!', true, e => {
      *      console.log(e.target.value)
@@ -561,7 +576,7 @@ class SmartSettings {
      * @param {string} name - name of the control
      * @param {string} value -hexadecimal string value of initial color
      * @param {function} [callback] - function executed afer each change
-     * @returns {void}
+     * @returns {object}
      * @example
      * let color = mySettings.color('Color control', '#fcfcfc', e => someCallbackFunction())
      */
@@ -601,6 +616,71 @@ class SmartSettings {
             base.element().value = v
             base.value = v
             span.innerText = v
+        }
+        this._controls[name] = base
+        return this._controls[name]
+    }
+
+    /**
+     * Creates select control
+     * @param {string} name - name of the control
+     * @param {array} items - array with option values
+     * @param {function} [callback] - function executed on each change
+     * @returns {object}
+     * @example
+     * let select = mySettings.select('Select', ['Option 1', 'Option 2', 'Option 3'])
+     */
+    select(name, items, callback) {
+        let self = this
+        let body = this._panel.childNodes[1]
+        let base = this._createControlBasics()
+        let wrapper = this._createElement('div', { class: 'sms-control' })
+        let label = this._createElement('label', { class: 'sms-label' })
+        let select = this._createElement('select', {
+            class: 'sms-select',
+            id: base.id,
+            name: name
+        })
+        label.innerText = name
+        label.value = name
+        wrapper.appendChild(label)
+        items.map(item => {
+            let option = self._createSelectOption(item)
+            select.options.add(option)
+        })
+        select.value = items[0]
+        select.addEventListener('change', e => {
+            base.value = e.target.value
+            if (callback) {
+                callback(e)
+            }
+        })
+        wrapper.appendChild(select)
+        body.appendChild(wrapper)
+        base.value = items[0]
+        base.name = name
+        base.type = 'select'
+        base.getValue = function() {
+            let _select = base.element()
+            return _select.options[_select.selectedIndex].value
+        }
+        base.setValue = function(v) {
+            base.value = v
+            let _select = base.element()
+            select.options[select.selectedIndex] = self._createSelectOption(v)
+            _select.value = v
+        }
+        base.getItems = function() {
+            return Array
+                .from(base.element().options)
+                .map(option => option.value)
+        }
+        base.setItems = function(items) {
+            let _select = base.element()
+            items.forEach(item => {
+                let _index = items.indexOf(item)
+                _select.options[_index] = self._createSelectOption(item)
+            })
         }
         this._controls[name] = base
         return this._controls[name]

@@ -48,11 +48,19 @@ const settings = new SmartSettings('Settings', 10, 10)
     - ~~`button(name, callback)`~~
     - `progressbar(name, items, callback)`
     - ~~`range(name, items, callback)`~~
-    - `select(name, items, callback)`
+    - ~~`select(name, items, callback)`~~
     - ~~`checkbox(name, value)`~~
-    - `color(name, value)`
+    - ~~`color(name, value)`~~
     - ~~`text(name, value, callback)`~~
     - ~~`textarea(name, value, callback)`~~
+
+## TBD:
+- Drag & drop position
+- set & get position - update panel's position on each this._top and this._left change
+- `progressbar()`
+- styling enhancements
+- prepare npm publish script
+- more tests
 
 ## Panel spec
 - name: string => constructor
