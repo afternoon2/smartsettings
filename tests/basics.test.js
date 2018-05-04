@@ -81,8 +81,8 @@ test('Get current position', () => {
 test('Set current position', () => {
     let t = new SmartSettings()
     t.setPosition(300, 400)
-    expect(t.left).toBe(300)
-    expect(t.top).toBe(400)
+    expect(t.initialLeft).toBe(300)
+    expect(t.initialTop).toBe(400)
 })
 
 test('Get current values', () => {

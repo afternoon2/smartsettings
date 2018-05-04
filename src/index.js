@@ -12,8 +12,8 @@ import style from './index.css'
 class SmartSettings {
     constructor(name = 'SmartSettings', left = 0, top = 0) {
         this.name = name
-        this.left = left
-        this.top = top
+        this.initialLeft = left
+        this.initialTop = top
 
         /**
          * @property {boolean} _hidden
@@ -46,7 +46,7 @@ class SmartSettings {
         this._controls = {}
 
         this._createUniqueId()
-        this._create(this.name, this.top, this.left)
+        this._create(this.name, this.initialTop, this.initialLeft)
     }
 
     /* Utility methods */
@@ -92,7 +92,7 @@ class SmartSettings {
         let panelAttributes = {
             class: 'sms-panel',
             id: uniqueId(),
-            style: `top: ${this.top}px; left: ${this.left}px; z-index: 2`
+            style: `top: ${this.initialTop}px; left: ${this.initialLeft}px; z-index: 2`
         }
         let panel = this._createElement('div', panelAttributes)
         let header = this._createElement('div', { class: 'sms-panel-header' })
@@ -283,7 +283,7 @@ class SmartSettings {
      * let position = mySettings.getPosition() // [0, 0]
      */
     getPosition() {
-        return [this.left, this.top]
+        return [this.initialLeft, this.initialTop]
     }
 
     /**
@@ -294,8 +294,8 @@ class SmartSettings {
      * mySettings.setPosition(400, 400)
      */
     setPosition(left, top) {
-        this.left = left
-        this.top = top
+        this.initialLeft = left
+        this.initialTop = top
     }
 
     /**

@@ -34,7 +34,6 @@ const settings = new SmartSettings('Settings', 10, 10)
     - `text(name, value, callback)` ✅
     - `textarea(name, value, callback)` ✅
     - `number()` ✅
-    - `progressbar(name, items, callback)` ❌
 - Methods:
     - `show(name)` - show settings panel or control (if the name is provided) 
     - `hide(name)` - hide settings panel or control (if the name is provided)
@@ -50,7 +49,7 @@ const settings = new SmartSettings('Settings', 10, 10)
     - `getActiveValues()` - returns object with active values of all controls (except buttons)
     - `setItems(name, items)` - set new dropdown, range or progressbar control items
     - `getItems(name)` - get items of the specific dropdown, range or progressbar control
-    - `watch(callback, name)` - watch panel (or specific control, if the name is provided) and fire callback on each change ❌
+    - `watch(callback, name)` - watch panel for changes and fire callback on each change ❌
     - `loadConfig(config)` - load controls in the settings panel from the given object. ❌ 
 
 ## Config template for `loadConfig` method
@@ -80,8 +79,8 @@ const config = {
 ```
 
 ## TBD:
-- `progressbar(name, items, callback)`
 - Drag & drop panel
+- Sections
 - set & get position - update panel's position on each this._top and this._left change
 - styling enhancements
 - prepare npm publish script

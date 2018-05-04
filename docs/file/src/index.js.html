@@ -61,12 +61,12 @@ class SmartSettings {
         /**
          * @type {number} left
          */
-        this.left = left || 0
+        this.initialLeft = left || 0
 
         /**
          * @type {number} top
          */
-        this.top = top || 0
+        this.initialTop = top || 0
 
         /**
          * @type {boolean} _visible
@@ -103,7 +103,7 @@ class SmartSettings {
          */
         this._sections = []
 
-        this._create(this.name, this.top, this.left)
+        this._create(this.name, this.initialTop, this.initialLeft)
 
     }
 

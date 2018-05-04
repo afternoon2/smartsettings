@@ -57,15 +57,15 @@ var SmartSettings = function () {
         var top = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
         classCallCheck(this, SmartSettings);
         this.name = name;
-        this.left = left;
-        this.top = top;
+        this.initialLeft = left;
+        this.initialTop = top;
         this._hidden = false;
         this._open = true;
         this._draggable = false;
         this._panel = null;
         this._controls = {};
         this._createUniqueId();
-        this._create(this.name, this.top, this.left);
+        this._create(this.name, this.initialTop, this.initialLeft);
     }
     createClass(SmartSettings, [{
         key: '_createUniqueId',
@@ -97,7 +97,7 @@ var SmartSettings = function () {
             var panelAttributes = {
                 class: 'sms-panel',
                 id: uniqueId(),
-                style: 'top: ' + this.top + 'px; left: ' + this.left + 'px; z-index: 2'
+                style: 'top: ' + this.initialTop + 'px; left: ' + this.initialLeft + 'px; z-index: 2'
             };
             var panel = this._createElement('div', panelAttributes);
             var header = this._createElement('div', { class: 'sms-panel-header' });
@@ -227,13 +227,13 @@ var SmartSettings = function () {
     }, {
         key: 'getPosition',
         value: function getPosition() {
-            return [this.left, this.top];
+            return [this.initialLeft, this.initialTop];
         }
     }, {
         key: 'setPosition',
         value: function setPosition(left, top) {
-            this.left = left;
-            this.top = top;
+            this.initialLeft = left;
+            this.initialTop = top;
         }
     }, {
         key: 'remove',

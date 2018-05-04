@@ -40,6 +40,6 @@ test('New panel correctly mounts in the DOM', () => {
 test('Load default name and position when there are no parameters', () => {
     let test = new SmartSettings()
     expect(test.name).toBe('SmartSettings')
-    expect(test.left).toBe(0)
-    expect(test.top).toBe(0)
+    expect(test.initialLeft).toBe(0)
+    expect(test.initialTop).toBe(0)
 })
