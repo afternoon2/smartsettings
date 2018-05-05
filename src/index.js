@@ -45,6 +45,12 @@ class SmartSettings {
          */
         this._controls = {}
 
+        /**
+         * @property {?function} _globalWatcher
+         * @private
+         */
+        this._globalWatcher = null
+
         this._createUniqueId()
         this._create(this.name, this.initialTop, this.initialLeft)
     }
@@ -79,6 +85,18 @@ class SmartSettings {
             }
         }
         return element
+    }
+
+    /**
+     * Calls the global watcher
+     * @param {EventListenerObject} event - an event
+     * @returns {void}
+     * @private
+     */
+    _callGlobalWatcher(e) {
+        if (this._globalWatcher) {
+            this._globalWatcher(e)
+        }
     }
 
     /* Helper methods */
@@ -407,6 +425,7 @@ class SmartSettings {
      * let button = mySettings.button('Button Name', () => console.log('This is the button'))
      */
     button(name, callback) {
+        let self = this
         let base = this._createControlBasics()
         let body = this._panel.childNodes[1]
         let wrapper = this._createElement('div', {
@@ -423,7 +442,10 @@ class SmartSettings {
         button.addEventListener('click', e => {
             if (callback) {
                 callback(e)
-            }  
+            }
+            if (self._globalWatcher !== null) {
+                self._callGlobalWatcher(e)
+            }
         })
         wrapper.appendChild(button)
         body.appendChild(wrapper)
@@ -441,6 +463,7 @@ class SmartSettings {
      * let textInput = mySettings.text('Text input', 'Hello world')
      */
     text(name, value, callback) {
+        let self = this
         let body = this._panel.childNodes[1]
         let base = this._createControlBasics()
         let wrapper = this._createElement('div', { class: 'sms-control' })
@@ -463,6 +486,9 @@ class SmartSettings {
             base.value = e.target.value
             if (callback) {
                 callback(e)
+            }
+            if (self._globalWatcher !== null) {
+                self._callGlobalWatcher(e)
             }
         })
         body.appendChild(wrapper)
@@ -488,6 +514,7 @@ class SmartSettings {
      * let textarea = mySettings.textarea('Text input', 'Hello world')
      */
     textarea(name, value, callback) {
+        let self = this
         let body = this._panel.childNodes[1]
         let base = this._createControlBasics()
         let wrapper = this._createElement('div', { class: 'sms-control' })
@@ -509,6 +536,9 @@ class SmartSettings {
             base.value = e.target.value
             if (callback) {
                 callback(e)
+            }
+            if (self._globalWatcher !== null) {
+                self._callGlobalWatcher(e)
             }
         })
         body.appendChild(wrapper)
@@ -534,6 +564,7 @@ class SmartSettings {
      * let range = mySettings.range('Range', [1, 100, 40, 1], e => console.log(e.target.value))
      */
     range(name, items, callback) {
+        let self = this
         let body = this._panel.childNodes[1]
         let base = this._createControlBasics()
         let wrapper = this._createElement('div', { class: 'sms-control' })
@@ -557,6 +588,9 @@ class SmartSettings {
             span.innerText = base.value
             if (callback) {
                 callback(e)
+            }
+            if (self._globalWatcher !== null) {
+                self._callGlobalWatcher(e)
             }
         })
         span.innerText = base.value
@@ -606,6 +640,7 @@ class SmartSettings {
      * })
      */
     checkbox(name, value, callback) {
+        let self = this
         let body = this._panel.childNodes[1]
         let base = this._createControlBasics()
         let wrapper = this._createElement('div', { class: 'sms-control' })
@@ -627,6 +662,9 @@ class SmartSettings {
             base.value = e.target.checked
             if (callback) {
                 callback(e)
+            }
+            if (self._globalWatcher !== null) {
+                self._callGlobalWatcher(e)
             }
         })
         wrapper.appendChild(label)
@@ -653,6 +691,7 @@ class SmartSettings {
      * let color = mySettings.color('Color control', '#fcfcfc', e => someCallbackFunction())
      */
     color(name, value, callback) {
+        let self = this
         let body = this._panel.childNodes[1]
         let base = this._createControlBasics()
         let wrapper = this._createElement('div', { class: 'sms-control' })
@@ -672,6 +711,9 @@ class SmartSettings {
             span.innerText = e.target.value
             if (callback) {
                 callback(e)
+            }
+            if (self._globalWatcher !== null) {
+                self._callGlobalWatcher(e)
             }
         })
         span.innerText = value
@@ -725,6 +767,9 @@ class SmartSettings {
             base.value = e.target.value
             if (callback) {
                 callback(e)
+            }
+            if (self._globalWatcher !== null) {
+                self._callGlobalWatcher(e)
             }
         })
         wrapper.appendChild(select)
@@ -787,6 +832,9 @@ class SmartSettings {
             if (callback) {
                 callback(parseFloat(e))
             }
+            if (self._globalWatcher !== null) {
+                self._callGlobalWatcher(e)
+            }
         })
         base.type = 'number'
         base.name = name
@@ -803,6 +851,16 @@ class SmartSettings {
         body.appendChild(wrapper)
         this._controls[name] = base
         return this._controls[name] = base
+    }
+    /**
+     * Watch panel for changes and fire callback on each change
+     * @param {function} callback - function executed on each change in the panel
+     * @returns {void}
+     * @example
+     * mySettings.watch(callback)
+     */
+    watch(callback) {
+        this._globalWatcher = callback
     }
 }
 

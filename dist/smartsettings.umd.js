@@ -70,6 +70,7 @@
           this._draggable = false;
           this._panel = null;
           this._controls = {};
+          this._globalWatcher = null;
           this._createUniqueId();
           this._create(this.name, this.initialTop, this.initialLeft);
       }
@@ -95,6 +96,13 @@
                   }
               }
               return element;
+          }
+      }, {
+          key: '_callGlobalWatcher',
+          value: function _callGlobalWatcher(e) {
+              if (this._globalWatcher) {
+                  this._globalWatcher(e);
+              }
           }
       }, {
           key: '_create',
@@ -299,6 +307,7 @@
       }, {
           key: 'button',
           value: function button(name, callback) {
+              var self = this;
               var base = this._createControlBasics();
               var body = this._panel.childNodes[1];
               var wrapper = this._createElement('div', {
@@ -316,6 +325,9 @@
                   if (callback) {
                       callback(e);
                   }
+                  if (self._globalWatcher !== null) {
+                      self._callGlobalWatcher(e);
+                  }
               });
               wrapper.appendChild(button);
               body.appendChild(wrapper);
@@ -325,6 +337,7 @@
       }, {
           key: 'text',
           value: function text(name, value, callback) {
+              var self = this;
               var body = this._panel.childNodes[1];
               var base = this._createControlBasics();
               var wrapper = this._createElement('div', { class: 'sms-control' });
@@ -348,6 +361,9 @@
                   if (callback) {
                       callback(e);
                   }
+                  if (self._globalWatcher !== null) {
+                      self._callGlobalWatcher(e);
+                  }
               });
               body.appendChild(wrapper);
               base.getValue = function () {
@@ -364,6 +380,7 @@
       }, {
           key: 'textarea',
           value: function textarea(name, value, callback) {
+              var self = this;
               var body = this._panel.childNodes[1];
               var base = this._createControlBasics();
               var wrapper = this._createElement('div', { class: 'sms-control' });
@@ -386,6 +403,9 @@
                   if (callback) {
                       callback(e);
                   }
+                  if (self._globalWatcher !== null) {
+                      self._callGlobalWatcher(e);
+                  }
               });
               body.appendChild(wrapper);
               base.getValue = function () {
@@ -402,6 +422,7 @@
       }, {
           key: 'range',
           value: function range(name, items, callback) {
+              var self = this;
               var body = this._panel.childNodes[1];
               var base = this._createControlBasics();
               var wrapper = this._createElement('div', { class: 'sms-control' });
@@ -424,6 +445,9 @@
                   span.innerText = base.value;
                   if (callback) {
                       callback(e);
+                  }
+                  if (self._globalWatcher !== null) {
+                      self._callGlobalWatcher(e);
                   }
               });
               span.innerText = base.value;
@@ -458,6 +482,7 @@
       }, {
           key: 'checkbox',
           value: function checkbox(name, value, callback) {
+              var self = this;
               var body = this._panel.childNodes[1];
               var base = this._createControlBasics();
               var wrapper = this._createElement('div', { class: 'sms-control' });
@@ -480,6 +505,9 @@
                   if (callback) {
                       callback(e);
                   }
+                  if (self._globalWatcher !== null) {
+                      self._callGlobalWatcher(e);
+                  }
               });
               wrapper.appendChild(label);
               wrapper.appendChild(checkbox);
@@ -497,6 +525,7 @@
       }, {
           key: 'color',
           value: function color(name, value, callback) {
+              var self = this;
               var body = this._panel.childNodes[1];
               var base = this._createControlBasics();
               var wrapper = this._createElement('div', { class: 'sms-control' });
@@ -516,6 +545,9 @@
                   span.innerText = e.target.value;
                   if (callback) {
                       callback(e);
+                  }
+                  if (self._globalWatcher !== null) {
+                      self._callGlobalWatcher(e);
                   }
               });
               span.innerText = value;
@@ -562,6 +594,9 @@
                   if (callback) {
                       callback(e);
                   }
+                  if (self._globalWatcher !== null) {
+                      self._callGlobalWatcher(e);
+                  }
               });
               wrapper.appendChild(select);
               body.appendChild(wrapper);
@@ -596,6 +631,7 @@
       }, {
           key: 'number',
           value: function number(name, items, callback) {
+              var self = this;
               var body = this._panel.childNodes[1];
               var base = this._createControlBasics();
               var wrapper = this._createElement('div', { class: 'sms-control' });
@@ -614,6 +650,9 @@
                   if (callback) {
                       callback(parseFloat(e));
                   }
+                  if (self._globalWatcher !== null) {
+                      self._callGlobalWatcher(e);
+                  }
               });
               base.type = 'number';
               base.name = name;
@@ -630,6 +669,11 @@
               body.appendChild(wrapper);
               this._controls[name] = base;
               return this._controls[name] = base;
+          }
+      }, {
+          key: 'watch',
+          value: function watch(callback) {
+              this._globalWatcher = callback;
           }
       }]);
       return SmartSettings;
