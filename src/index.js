@@ -420,9 +420,11 @@ class SmartSettings {
         base.name = name
         button.innerText = name
         button.value = name
-        if (callback) {
-            button.addEventListener('click', callback)
-        }
+        button.addEventListener('click', e => {
+            if (callback) {
+                callback(e)
+            }  
+        })
         wrapper.appendChild(button)
         body.appendChild(wrapper)
         this._controls[name] = base
@@ -457,9 +459,12 @@ class SmartSettings {
         label.innerText = name
         wrapper.appendChild(label)
         wrapper.appendChild(input)
-        if (callback) {
-            input.addEventListener('input', callback)
-        }
+        input.addEventListener('input', e => {
+            base.value = e.target.value
+            if (callback) {
+                callback(e)
+            }
+        })
         body.appendChild(wrapper)
         base.getValue = function() {
             return this.element().value
@@ -500,12 +505,12 @@ class SmartSettings {
         label.innerText = name
         wrapper.appendChild(label)
         wrapper.appendChild(textarea)
-        if (callback) {
-            textarea.addEventListener('input', e => {
-                base.value = e.target.value
+        textarea.addEventListener('input', e => {
+            base.value = e.target.value
+            if (callback) {
                 callback(e)
-            })
-        }
+            }
+        })
         body.appendChild(wrapper)
         base.getValue = function () {
             return this.element().value
@@ -717,7 +722,7 @@ class SmartSettings {
         })
         select.value = items[0]
         select.addEventListener('change', e => {
-            base.value = parseFloat(e.target.value)
+            base.value = e.target.value
             if (callback) {
                 callback(e)
             }
@@ -780,7 +785,7 @@ class SmartSettings {
         input.addEventListener('input', e => {
             base.value = parseFloat(e.target.value)
             if (callback) {
-                callback(e)
+                callback(parseFloat(e))
             }
         })
         base.type = 'number'

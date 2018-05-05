@@ -312,9 +312,11 @@
               base.name = name;
               button.innerText = name;
               button.value = name;
-              if (callback) {
-                  button.addEventListener('click', callback);
-              }
+              button.addEventListener('click', function (e) {
+                  if (callback) {
+                      callback(e);
+                  }
+              });
               wrapper.appendChild(button);
               body.appendChild(wrapper);
               this._controls[name] = base;
@@ -341,9 +343,12 @@
               label.innerText = name;
               wrapper.appendChild(label);
               wrapper.appendChild(input);
-              if (callback) {
-                  input.addEventListener('input', callback);
-              }
+              input.addEventListener('input', function (e) {
+                  base.value = e.target.value;
+                  if (callback) {
+                      callback(e);
+                  }
+              });
               body.appendChild(wrapper);
               base.getValue = function () {
                   return this.element().value;
@@ -376,12 +381,12 @@
               label.innerText = name;
               wrapper.appendChild(label);
               wrapper.appendChild(textarea);
-              if (callback) {
-                  textarea.addEventListener('input', function (e) {
-                      base.value = e.target.value;
+              textarea.addEventListener('input', function (e) {
+                  base.value = e.target.value;
+                  if (callback) {
                       callback(e);
-                  });
-              }
+                  }
+              });
               body.appendChild(wrapper);
               base.getValue = function () {
                   return this.element().value;
@@ -553,7 +558,7 @@
               });
               select.value = items[0];
               select.addEventListener('change', function (e) {
-                  base.value = parseFloat(e.target.value);
+                  base.value = e.target.value;
                   if (callback) {
                       callback(e);
                   }
@@ -607,7 +612,7 @@
               input.addEventListener('input', function (e) {
                   base.value = parseFloat(e.target.value);
                   if (callback) {
-                      callback(e);
+                      callback(parseFloat(e));
                   }
               });
               base.type = 'number';
