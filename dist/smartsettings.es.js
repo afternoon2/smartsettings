@@ -669,6 +669,46 @@ var SmartSettings = function () {
         value: function watch(callback) {
             this._globalWatcher = callback;
         }
+    }, {
+        key: 'loadConfig',
+        value: function loadConfig(config) {
+            if (!config) {
+                throw new Error('There is no config provided');
+            }
+            if (typeof config === 'string') {
+                config = JSON.parse(config);
+            }
+            for (var key in config) {
+                var _entry = config[key];
+                var _isCallback = _entry.callback ? _entry.callback : null;
+                switch (_entry.type) {
+                    case 'button':
+                        this.button(_entry.name, _isCallback);
+                        break;
+                    case 'range':
+                        this.range(_entry.name, _entry.items, _isCallback);
+                        break;
+                    case 'select':
+                        this.select(_entry.name, _entry.items, _isCallback);
+                        break;
+                    case 'text':
+                        this.text(_entry.name, _entry.value, _isCallback);
+                        break;
+                    case 'textarea':
+                        this.text(_entry.name, _entry.value, _isCallback);
+                        break;
+                    case 'checkbox':
+                        this.checkbox(_entry.name, _entry.value, _isCallback);
+                        break;
+                    case 'number':
+                        this.number(_entry.name, _entry.items, _isCallback);
+                        break;
+                    case 'color':
+                        this.color(_entry.name, _entry.value, _isCallback);
+                        break;
+                }
+            }
+        }
     }]);
     return SmartSettings;
 }();

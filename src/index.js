@@ -852,6 +852,7 @@ class SmartSettings {
         this._controls[name] = base
         return this._controls[name] = base
     }
+
     /**
      * Watch panel for changes and fire callback on each change
      * @param {function} callback - function executed on each change in the panel
@@ -861,6 +862,61 @@ class SmartSettings {
      */
     watch(callback) {
         this._globalWatcher = callback
+    }
+
+    /**
+     * Load controls from the configuration object.
+     * @param {(object|string)} config - configuration object or JSON string
+     * @returns {void}
+     * @example
+     * const mySettings = new SmartSettings('Name', 10, 10)
+     * mySettings.loadConfig({
+     *      control1: {
+     *          type: 'color',
+     *          name: 'Color',
+     *          value: '#fd3ef4',
+     *          callback: someCallbackFunction
+     *      },
+     *      // etc.
+     * })
+     */
+    loadConfig(config) {
+        if (!config) {
+            throw new Error('There is no config provided')
+        }
+        if (typeof config === 'string') {
+            config = JSON.parse(config)
+        }
+        for (let key in config) {
+            let _entry = config[key]
+            let _isCallback = _entry.callback ? _entry.callback : null
+            switch(_entry.type) {
+            case 'button':
+                this.button(_entry.name, _isCallback)
+                break
+            case 'range':
+                this.range(_entry.name, _entry.items, _isCallback)
+                break
+            case 'select':
+                this.select(_entry.name, _entry.items, _isCallback)
+                break
+            case 'text':
+                this.text(_entry.name, _entry.value, _isCallback)
+                break
+            case 'textarea':
+                this.text(_entry.name, _entry.value, _isCallback)
+                break
+            case 'checkbox':
+                this.checkbox(_entry.name, _entry.value, _isCallback)
+                break
+            case 'number':
+                this.number(_entry.name, _entry.items, _isCallback)
+                break
+            case 'color':
+                this.color(_entry.name, _entry.value, _isCallback)
+                break
+            }
+        }
     }
 }
 
