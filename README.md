@@ -1,7 +1,7 @@
 # smartsettings.js
 Yet another JavaScript library for creating (smart) setting panels.
 
-<img src="./2docs/usage-gif.gif" alt="usage gif" style="width: 300px; height: auto;">
+<img src="https://github.com/afternoon2/smartsettings/blob/master/2docs/usage-gif.gif" alt="usage gif" style="width: 300px; height: auto;">
 
 ## Installation
 
@@ -34,6 +34,7 @@ const settings = new SmartSettings('Settings', 10, 10)
     - `text(name, value, callback)` ✅
     - `textarea(name, value, callback)` ✅
     - `number()` ✅
+    - `file()` ❌ 
 - Methods:
     - `show(name)` - show settings panel or control (if the name is provided) 
     - `hide(name)` - hide settings panel or control (if the name is provided)
@@ -50,9 +51,9 @@ const settings = new SmartSettings('Settings', 10, 10)
     - `setItems(name, items)` - set new dropdown, range or progressbar control items
     - `getItems(name)` - get items of the specific dropdown, range or progressbar control
     - `watch(callback, name)` - watch panel for changes and fire callback on each change
-    - `loadConfig(config)` - load controls in the settings panel from the given object.
+    - `loadConfig(config)` - load controls in the settings panel from the given object/JSON string/array of objects.
 
-## Config template for `loadConfig` method
+### Config template for `loadConfig` method
 
 Basically, each entry in the config object should contain values specific for the control you want to load + type of the control. So in the `color` example it should be the `name` and `value` strings, 'color' `type` and (optionally) a `callback` function, etc. All types are written with small letters.
 
@@ -78,7 +79,10 @@ const config = {
 }
 ```
 
+But you can go with the JSON string or array of objects like the entries described above!
+
 ## TBD:
+- `file()` method
 - Drag & drop panel
 - Sections
 - set & get position - update panel's position on each this._top and this._left change
