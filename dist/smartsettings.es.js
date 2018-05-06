@@ -99,6 +99,37 @@ var SmartSettings = function () {
             }
         }
     }, {
+        key: '_assignEntryToMethod',
+        value: function _assignEntryToMethod(_entry) {
+            var _isCallback = _entry.callback ? _entry.callback : null;
+            switch (_entry.type) {
+                case 'button':
+                    this.button(_entry.name, _isCallback);
+                    break;
+                case 'range':
+                    this.range(_entry.name, _entry.items, _isCallback);
+                    break;
+                case 'select':
+                    this.select(_entry.name, _entry.items, _isCallback);
+                    break;
+                case 'text':
+                    this.text(_entry.name, _entry.value, _isCallback);
+                    break;
+                case 'textarea':
+                    this.text(_entry.name, _entry.value, _isCallback);
+                    break;
+                case 'checkbox':
+                    this.checkbox(_entry.name, _entry.value, _isCallback);
+                    break;
+                case 'number':
+                    this.number(_entry.name, _entry.items, _isCallback);
+                    break;
+                case 'color':
+                    this.color(_entry.name, _entry.value, _isCallback);
+                    break;
+            }
+        }
+    }, {
         key: '_create',
         value: function _create() {
             var _this = this;
@@ -672,41 +703,23 @@ var SmartSettings = function () {
     }, {
         key: 'loadConfig',
         value: function loadConfig(config) {
+            var _this2 = this;
             if (!config) {
                 throw new Error('There is no config provided');
             }
-            if (typeof config === 'string') {
-                config = JSON.parse(config);
-            }
-            for (var key in config) {
-                var _entry = config[key];
-                var _isCallback = _entry.callback ? _entry.callback : null;
-                switch (_entry.type) {
-                    case 'button':
-                        this.button(_entry.name, _isCallback);
-                        break;
-                    case 'range':
-                        this.range(_entry.name, _entry.items, _isCallback);
-                        break;
-                    case 'select':
-                        this.select(_entry.name, _entry.items, _isCallback);
-                        break;
-                    case 'text':
-                        this.text(_entry.name, _entry.value, _isCallback);
-                        break;
-                    case 'textarea':
-                        this.text(_entry.name, _entry.value, _isCallback);
-                        break;
-                    case 'checkbox':
-                        this.checkbox(_entry.name, _entry.value, _isCallback);
-                        break;
-                    case 'number':
-                        this.number(_entry.name, _entry.items, _isCallback);
-                        break;
-                    case 'color':
-                        this.color(_entry.name, _entry.value, _isCallback);
-                        break;
+            if (typeof config === 'string' || !Array.isArray(config)) {
+                if (typeof config === 'string') {
+                    config = JSON.parse(config);
                 }
+                for (var key in config) {
+                    var _entry = config[key];
+                    this._assignEntryToMethod(_entry);
+                }
+            }
+            if (Array.isArray(config) === true) {
+                config.forEach(function (entry) {
+                    return _this2._assignEntryToMethod(entry);
+                });
             }
         }
     }]);

@@ -99,6 +99,41 @@ class SmartSettings {
         }
     }
 
+    /**
+     * Assigns config entry to the specific control creation method
+     * @param {object} entry - entry of the config object|array
+     * @private
+     */
+    _assignEntryToMethod(_entry) {
+        let _isCallback = _entry.callback ? _entry.callback : null
+        switch (_entry.type) {
+        case 'button':
+            this.button(_entry.name, _isCallback)
+            break
+        case 'range':
+            this.range(_entry.name, _entry.items, _isCallback)
+            break
+        case 'select':
+            this.select(_entry.name, _entry.items, _isCallback)
+            break
+        case 'text':
+            this.text(_entry.name, _entry.value, _isCallback)
+            break
+        case 'textarea':
+            this.text(_entry.name, _entry.value, _isCallback)
+            break
+        case 'checkbox':
+            this.checkbox(_entry.name, _entry.value, _isCallback)
+            break
+        case 'number':
+            this.number(_entry.name, _entry.items, _isCallback)
+            break
+        case 'color':
+            this.color(_entry.name, _entry.value, _isCallback)
+            break
+        }
+    }
+
     /* Helper methods */
 
     /**
@@ -866,7 +901,7 @@ class SmartSettings {
 
     /**
      * Load controls from the configuration object.
-     * @param {(object|string)} config - configuration object or JSON string
+     * @param {(object|string|array)} config - configuration object or JSON string or configuration array of objects
      * @returns {void}
      * @example
      * const mySettings = new SmartSettings('Name', 10, 10)
@@ -879,43 +914,44 @@ class SmartSettings {
      *      },
      *      // etc.
      * })
+     * 
+     * // or
+     * mySettings.loadConfig('{
+     *      "control1": {
+     *          "type": "color",
+     *          "name": "Color",
+     *          "value": "#fd3ef4",
+     *          "callback": "someCallbackFunction"
+     *      },
+     *      // etc.
+     * })
+     * 
+     * // or
+     * mySettings.loadConfig([{
+     *      {
+     *          type: 'color',
+     *          name: 'Color',
+     *          value: '#fd3ef4',
+     *          callback: someCallbackFunction
+     *      },
+     *      // etc.
+     * ])
      */
     loadConfig(config) {
         if (!config) {
             throw new Error('There is no config provided')
         }
-        if (typeof config === 'string') {
-            config = JSON.parse(config)
-        }
-        for (let key in config) {
-            let _entry = config[key]
-            let _isCallback = _entry.callback ? _entry.callback : null
-            switch(_entry.type) {
-            case 'button':
-                this.button(_entry.name, _isCallback)
-                break
-            case 'range':
-                this.range(_entry.name, _entry.items, _isCallback)
-                break
-            case 'select':
-                this.select(_entry.name, _entry.items, _isCallback)
-                break
-            case 'text':
-                this.text(_entry.name, _entry.value, _isCallback)
-                break
-            case 'textarea':
-                this.text(_entry.name, _entry.value, _isCallback)
-                break
-            case 'checkbox':
-                this.checkbox(_entry.name, _entry.value, _isCallback)
-                break
-            case 'number':
-                this.number(_entry.name, _entry.items, _isCallback)
-                break
-            case 'color':
-                this.color(_entry.name, _entry.value, _isCallback)
-                break
+        if (typeof config === 'string' || !Array.isArray(config)) {
+            if (typeof config === 'string') {
+                config = JSON.parse(config)
             }
+            for (let key in config) {
+                let _entry = config[key]
+                this._assignEntryToMethod(_entry)
+            }
+        }
+        if (Array.isArray(config) === true) {
+            config.forEach(entry => this._assignEntryToMethod(entry))
         }
     }
 }

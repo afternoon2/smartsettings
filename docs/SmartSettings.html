@@ -371,7 +371,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line427">line 427</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line462">line 462</a>
     </li></ul></dd>
     
 
@@ -607,7 +607,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line642">line 642</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line677">line 677</a>
     </li></ul></dd>
     
 
@@ -718,7 +718,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line277">line 277</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line312">line 312</a>
     </li></ul></dd>
     
 
@@ -932,7 +932,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line693">line 693</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line728">line 728</a>
     </li></ul></dd>
     
 
@@ -1041,7 +1041,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line194">line 194</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line229">line 229</a>
     </li></ul></dd>
     
 
@@ -1199,7 +1199,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line252">line 252</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line287">line 287</a>
     </li></ul></dd>
     
 
@@ -1357,7 +1357,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line239">line 239</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line274">line 274</a>
     </li></ul></dd>
     
 
@@ -1466,7 +1466,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line368">line 368</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line403">line 403</a>
     </li></ul></dd>
     
 
@@ -1628,7 +1628,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line385">line 385</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line420">line 420</a>
     </li></ul></dd>
     
 
@@ -1737,7 +1737,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line303">line 303</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line338">line 338</a>
     </li></ul></dd>
     
 
@@ -1895,7 +1895,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line342">line 342</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line377">line 377</a>
     </li></ul></dd>
     
 
@@ -2071,7 +2071,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line224">line 224</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line259">line 259</a>
     </li></ul></dd>
     
 
@@ -2182,6 +2182,9 @@
 |
 
 <span class="param-type">string</span>
+|
+
+<span class="param-type">array</span>
 
 
             
@@ -2191,7 +2194,7 @@
 
             
 
-            <td class="description last">configuration object or JSON string</td>
+            <td class="description last">configuration object or JSON string or configuration array of objects</td>
         </tr>
 
     
@@ -2232,7 +2235,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line883">line 883</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line940">line 940</a>
     </li></ul></dd>
     
 
@@ -2288,7 +2291,29 @@ mySettings.loadConfig({
          callback: someCallbackFunction
      },
      // etc.
-})</code></pre>
+})
+
+// or
+mySettings.loadConfig('{
+     "control1": {
+         "type": "color",
+         "name": "Color",
+         "value": "#fd3ef4",
+         "callback": "someCallbackFunction"
+     },
+     // etc.
+})
+
+// or
+mySettings.loadConfig([{
+     {
+         type: 'color',
+         name: 'Color',
+         value: '#fd3ef4',
+         callback: someCallbackFunction
+     },
+     // etc.
+])</code></pre>
 
 
 
@@ -2473,7 +2498,7 @@ mySettings.loadConfig({
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line815">line 815</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line850">line 850</a>
     </li></ul></dd>
     
 
@@ -2582,7 +2607,7 @@ mySettings.loadConfig({
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line263">line 263</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line298">line 298</a>
     </li></ul></dd>
     
 
@@ -2796,7 +2821,7 @@ mySettings.loadConfig({
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line566">line 566</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line601">line 601</a>
     </li></ul></dd>
     
 
@@ -2954,7 +2979,7 @@ mySettings.loadConfig({
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line326">line 326</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line361">line 361</a>
     </li></ul></dd>
     
 
@@ -3186,7 +3211,7 @@ mySettings.loadConfig({
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line747">line 747</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line782">line 782</a>
     </li></ul></dd>
     
 
@@ -3367,7 +3392,7 @@ mySettings.loadConfig({
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line406">line 406</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line441">line 441</a>
     </li></ul></dd>
     
 
@@ -3548,7 +3573,7 @@ mySettings.loadConfig({
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line314">line 314</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line349">line 349</a>
     </li></ul></dd>
     
 
@@ -3717,7 +3742,7 @@ mySettings.loadConfig({
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line356">line 356</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line391">line 391</a>
     </li></ul></dd>
     
 
@@ -3887,7 +3912,7 @@ mySettings.loadConfig({
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line209">line 209</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line244">line 244</a>
     </li></ul></dd>
     
 
@@ -4119,7 +4144,7 @@ mySettings.loadConfig({
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line465">line 465</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line500">line 500</a>
     </li></ul></dd>
     
 
@@ -4351,7 +4376,7 @@ mySettings.loadConfig({
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line516">line 516</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line551">line 551</a>
     </li></ul></dd>
     
 
@@ -4460,7 +4485,7 @@ mySettings.loadConfig({
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line289">line 289</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line324">line 324</a>
     </li></ul></dd>
     
 
@@ -4618,7 +4643,7 @@ mySettings.loadConfig({
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line863">line 863</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line898">line 898</a>
     </li></ul></dd>
     
 
@@ -4691,7 +4716,7 @@ mySettings.loadConfig({
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sun May 06 2018 00:50:19 GMT+0200 (CEST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sun May 06 2018 09:51:01 GMT+0200 (CEST)
 </footer>
 
 <script> prettyPrint(); </script>

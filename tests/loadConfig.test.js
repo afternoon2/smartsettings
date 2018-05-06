@@ -30,6 +30,7 @@ beforeEach(() => {
         }
     }
     configJSON = JSON.stringify(config)
+    configArray = Object.values(config)
     s = new SmartSettings()
 })
 
@@ -49,6 +50,15 @@ test('Load controls from the config object', () => {
 
 test('Load controls from the config JSON', () => {
     s.loadConfig(configJSON)
+    expect(s._controls['Btn'].element()).toBe(document.getElementById('sms-id-1'))
+    expect(s._controls['Text input'].element()).toBe(document.getElementById('sms-id-2'))
+    expect(s._controls['Textarea'].element()).toBe(document.getElementById('sms-id-3'))
+    expect(s._controls['Color'].element()).toBe(document.getElementById('sms-id-4'))
+    expect(s._controls['Range'].element()).toBe(document.getElementById('sms-id-5'))
+})
+
+test('Load controls from the config array', () => {
+    s.loadConfig(configArray)
     expect(s._controls['Btn'].element()).toBe(document.getElementById('sms-id-1'))
     expect(s._controls['Text input'].element()).toBe(document.getElementById('sms-id-2'))
     expect(s._controls['Textarea'].element()).toBe(document.getElementById('sms-id-3'))
