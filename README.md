@@ -26,15 +26,15 @@ const settings = new SmartSettings('Settings', 10, 10)
 
 ## API overview
 - Controls:
-    - `button(name, callback)` ✅
-    - `range(name, items, callback)` ✅
-    - `select(name, items, callback)` ✅
-    - `checkbox(name, value, callback)` ✅
-    - `color(name, value, callback)` ✅
-    - `text(name, value, callback)` ✅
-    - `textarea(name, value, callback)` ✅
-    - `number()` ✅
-    - `file()` ❌ 
+    - `button(name, callback)`
+    - `range(name, items, callback)`
+    - `select(name, items, callback)`
+    - `checkbox(name, value, callback)`
+    - `color(name, value, callback)`
+    - `text(name, value, callback)`
+    - `textarea(name, value, callback)`
+    - `number()`
+    - `file()`
 - Methods:
     - `show(name)` - show settings panel or control (if the name is provided) 
     - `hide(name)` - hide settings panel or control (if the name is provided)
@@ -82,7 +82,7 @@ const config = {
 But you can go with the JSON string or array of objects like the entries described above!
 
 ## TBD:
-- `file()` method
+- Multiple selection for select() and file()
 - Drag & drop panel
 - Sections
 - set & get position - update panel's position on each this._top and this._left change

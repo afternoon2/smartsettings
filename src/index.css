@@ -265,6 +265,12 @@ $sms-button-border-color: #C0C0C0;
     }
 }
 
+/* file */
+.sms-file {
+    font-size: 10px;
+    color: $sms-g-text-color;
+}
+
 /* utilities */
 .sms-label {
     font-family: $sms-g-font;

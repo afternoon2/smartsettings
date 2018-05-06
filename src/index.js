@@ -131,6 +131,8 @@ class SmartSettings {
         case 'color':
             this.color(_entry.name, _entry.value, _isCallback)
             break
+        case 'file':
+            this.file(_entry.name, _isCallback)
         }
     }
 
@@ -883,6 +885,49 @@ class SmartSettings {
         }
         wrapper.appendChild(label)
         wrapper.appendChild(input)
+        body.appendChild(wrapper)
+        this._controls[name] = base
+        return this._controls[name] = base
+    }
+
+    /**
+     * Creates file input control
+     * @param {string} name - name of the control
+     * @param {function} [callback] - function executed on each change
+     */
+    file(name, callback) {
+        let self = this
+        let body = this._panel.childNodes[1]
+        let base = this._createControlBasics()
+        let wrapper = this._createElement('div', { class: 'sms-control' })
+        let label = this._createElement('label', { class: 'sms-label' })
+        let upload = this._createElement('input', {
+            class: 'sms-file',
+            id: base.id,
+            type: 'file'
+        })
+        base.name = name
+        base.type = 'file'
+        label.innerText = name
+        label.value = name
+        upload.addEventListener('change', e => {
+            base.value = e.target.value
+            if (callback) {
+                callback(e)
+            }
+            if (self._globalWatcher) {
+                self._callGlobalWatcher(e)
+            }
+        })
+        wrapper.appendChild(label)
+        wrapper.appendChild(upload)
+        base.getValue = function() {
+            return base.element().files[0]
+        }
+        base.setValue = function(v) {
+            base.value = v
+            base.element().files[0] = v
+        }
         body.appendChild(wrapper)
         this._controls[name] = base
         return this._controls[name] = base
