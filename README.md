@@ -1,5 +1,5 @@
 # smartsettings.js
-Yet another JavaScript library for creating (smart) setting panels.
+Yet another JS library for creating setting panels.
 
 ## Installation
 
@@ -53,7 +53,7 @@ const settings = new SmartSettings('Settings', 10, 10)
 
 ### Config template for `loadConfig` method
 
-Basically, each entry in the config object should contain values specific for the control you want to load + type of the control. So in the `color` example it should be the `name` and `value` strings, 'color' `type` and (optionally) a `callback` function, etc. All types are written with small letters.
+Each entry in the config object should contain values specific for the control you want to load + type of the control. So in the `color` example it should be the `name` and `value` strings, 'color' `type` and (optionally) a `callback` function, etc. All types are written with small letters.
 
 ```js
 const config = {
@@ -61,28 +61,14 @@ const config = {
         name: 'Button',
         type: 'button',
         callback: () => { /* some function */ }
-    },
-    color: {
-        name: 'Color',
-        type: 'color',
-        value: '#fcffc4'
-    },
-    range: {
-        name: 'Range',
-        type: 'range',
-        items: [0, 100, 50, 1],
-        callback: () => { /* some function */ }
     }
-    // etc.
 }
+// or
+const configArray = [{
+    name: 'Buton',
+    type: 'button',
+    callback: () => { /* some function */ }
+}]
+// or
+const configJSON = "{ "Btn": { "name": "Button", "type": "button" } }" // etc.
 ```
-
-But you can go with the JSON string or array of objects like the entries described above!
-
-## TBD:
-- Multiple selection for select() and file()
-- Sections
-- set & get position - update panel's position on each this._top and this._left change
-- styling enhancements
-- prepare npm publish script
-- more tests

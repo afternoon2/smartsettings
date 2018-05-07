@@ -1,7 +1,14 @@
 {
     "name": "smartsettings",
-    "version": "0.1.0",
-    "main": "dist/smartsettings.umd.js",
+    "description": "Yet another JavaScript library for creating (smart) setting panels",
+    "version": "1.0.0",
+    "author": "Jakub Antolak <poprostuantolak@gmail.com>",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/afternoon2/smartsettings"
+    },
+    "browser": "dist/smartsettings.umd.js",
+    "module": "dist/smartsettings.es.js",
     "devDependencies": {
         "autoprefixer": "^8.4.1",
         "babel-plugin-external-helpers": "^6.22.0",
@@ -24,7 +31,7 @@
         "rollup-plugin-uglify": "^3.0.0"
     },
     "scripts": {
-        "build": "rollup -c",
+        "build": "rollup -c && npm run docs",
         "dev": "rollup -c && npm run docs",
         "test": "jest",
         "pretest": "npm run build",
