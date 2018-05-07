@@ -1,8 +1,6 @@
 # smartsettings.js
 Yet another JS library for creating setting panels.
 
-![alt text](./2docs/usage-gif.gif "Usage gif")
-
 ## Installation
 
 ```
@@ -32,6 +30,8 @@ Or in the browser:
 <script src="./smartsettings.umd.js"></script>
 ```
 
+[Documentation](https://afternoon2.github.io/smartsettings/)
+
 ## API overview
 - Controls:
     - `button(name, callback)`
@@ -60,7 +60,11 @@ Or in the browser:
     - `setItems(name, items)` - set new dropdown, range or progressbar control items
     - `getItems(name)` - get items of the specific dropdown, range or progressbar control
     - `watch(callback)` - watch panel for changes and fire callback on each change (real or artificial - from `setItems` or `setValue`).
-    - `loadConfig(config)` - load controls in the settings panel from the given object/JSON string/array of objects.
+    - `loadConfig(config)` - load controls in the settings panel from the given object/JSON string/array of objects (config description below).
+
+## Demo
+
+<p data-height="527" data-theme-id="0" data-slug-hash="08a144fdad89d6a44e956ce96c783873" data-default-tab="js,result" data-user="jakub_antolak" data-embed-version="2" data-pen-title="SmartSettings demo" class="codepen"><a href="https://codepen.io/jakub_antolak/pen/08a144fdad89d6a44e956ce96c783873/">SmartSettings demo</a> by Kuba (<a href="https://codepen.io/jakub_antolak">@jakub_antolak</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 
 ### Config template for `loadConfig` method
 
@@ -83,7 +87,3 @@ const configArray = [{
 // or
 const configJSON = "{ "Btn": { "name": "Button", "type": "button" } }" // etc.
 ```
-
-## Demo
-
-<p data-height="527" data-theme-id="0" data-slug-hash="08a144fdad89d6a44e956ce96c783873" data-default-tab="js,result" data-user="jakub_antolak" data-embed-version="2" data-pen-title="SmartSettings demo" class="codepen"><a href="https://codepen.io/jakub_antolak/pen/08a144fdad89d6a44e956ce96c783873/">SmartSettings demo</a> by Kuba (<a href="https://codepen.io/jakub_antolak">@jakub_antolak</a>) on <a href="https://codepen.io">CodePen</a>.</p>
