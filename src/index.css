@@ -271,6 +271,25 @@ $sms-button-border-color: #C0C0C0;
     color: $sms-g-text-color;
 }
 
+/* select */
+.sms-select {
+    font-size: 10px;
+}
+
+/* color */
+.sms-color {
+    width: 100%;
+    border: none;
+}
+
+.sms-color::-webkit-color-swatch {
+	border: none;
+}
+
+.sms-color::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
 /* utilities */
 .sms-label {
     font-family: $sms-g-font;

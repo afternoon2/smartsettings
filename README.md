@@ -1,38 +1,49 @@
 # smartsettings.js
 Yet another JS library for creating setting panels.
 
+![alt text](https://github.com/afternoon2/smartsettings/blob/master/2docs/usage-gif.gif "Usage gif")
+
 ## Installation
-
-```html
-<script src="./smartsettings.umd.js"></script>
-```
-
-or (in ES modules):
 
 ```
 npm install --save-dev smartsettings
 ```
-and then
+
+## Usage
+
+For ES modules:
 ```js
 import SmartSettings from 'smartsettings'
 ```
-and then just:
+
+For UMD modules
+```js
+const SmartSettings = require('smartsettings')
+```
+
+And then just:
 
 ```js
 const settings = new SmartSettings('Settings', 10, 10)
 ```
 
+Or in the browser:
+```html
+<script src="./smartsettings.umd.js"></script>
+```
+
 ## API overview
 - Controls:
     - `button(name, callback)`
-    - `range(name, items, callback)`
-    - `select(name, items, callback)`
+    - `range(name, items, callback)` - items are min, max, default and step
+    - `select(name, items, callback)` - items are strings or numbers with option values
     - `checkbox(name, value, callback)`
     - `color(name, value, callback)`
     - `text(name, value, callback)`
     - `textarea(name, value, callback)`
-    - `number()`
-    - `file()`
+    - `number(name, items, callback)` - items are default and step value
+    - `file(name, callback)`
+    - **In all cases the `callback` parameter (function executed on each change in the control) is optional**
 - Methods:
     - `show(name)` - show settings panel or control (if the name is provided) 
     - `hide(name)` - hide settings panel or control (if the name is provided)
@@ -48,7 +59,7 @@ const settings = new SmartSettings('Settings', 10, 10)
     - `getActiveValues()` - returns object with active values of all controls (except buttons)
     - `setItems(name, items)` - set new dropdown, range or progressbar control items
     - `getItems(name)` - get items of the specific dropdown, range or progressbar control
-    - `watch(callback, name)` - watch panel for changes and fire callback on each change (real or artificial - from `setItems` or `setValue`).
+    - `watch(callback)` - watch panel for changes and fire callback on each change (real or artificial - from `setItems` or `setValue`).
     - `loadConfig(config)` - load controls in the settings panel from the given object/JSON string/array of objects.
 
 ### Config template for `loadConfig` method
@@ -72,3 +83,8 @@ const configArray = [{
 // or
 const configJSON = "{ "Btn": { "name": "Button", "type": "button" } }" // etc.
 ```
+
+## Demo
+
+<p data-height="527" data-theme-id="0" data-slug-hash="08a144fdad89d6a44e956ce96c783873" data-default-tab="js,result" data-user="jakub_antolak" data-embed-version="2" data-pen-title="SmartSettings demo" class="codepen">See the Pen <a href="https://codepen.io/jakub_antolak/pen/08a144fdad89d6a44e956ce96c783873/">SmartSettings demo</a> by Kuba (<a href="https://codepen.io/jakub_antolak">@jakub_antolak</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
