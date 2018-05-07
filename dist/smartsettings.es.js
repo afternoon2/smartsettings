@@ -67,6 +67,7 @@ var SmartSettings = function () {
         this._globalWatcher = null;
         this._createUniqueId();
         this._create(this.name, this.initialTop, this.initialLeft);
+        this._body = this._panel ? this._panel.childNodes[1] : null;
     }
     createClass(SmartSettings, [{
         key: '_createUniqueId',
@@ -90,6 +91,15 @@ var SmartSettings = function () {
                 }
             }
             return element;
+        }
+    }, {
+        key: '_createLabel',
+        value: function _createLabel(name) {
+            return this._createElement('label', {
+                class: 'sms-label',
+                innerText: name,
+                value: name
+            });
         }
     }, {
         key: '_callGlobalWatcher',
@@ -245,24 +255,21 @@ var SmartSettings = function () {
     }, {
         key: 'open',
         value: function open() {
-            var panelBody = this._panel.childNodes[1];
-            if (panelBody.classList[1] === 'hide') {
-                panelBody.classList.remove('hide');
+            if (this._body.classList[1] === 'hide') {
+                this._body.classList.remove('hide');
             }
             this._open = true;
         }
     }, {
         key: 'close',
         value: function close() {
-            var panelBody = this._panel.childNodes[1];
-            panelBody.classList.add('hide');
+            this._body.classList.add('hide');
             this._open = false;
         }
     }, {
         key: 'toggle',
         value: function toggle() {
-            var panelBody = this._panel.childNodes[1];
-            panelBody.classList[1] === 'hide' ? panelBody.classList.remove('hide') : panelBody.classList.add('hide');
+            this._body.classList[1] === 'hide' ? this._body.classList.remove('hide') : this._body.classList.add('hide');
             this._open = !this._open;
         }
     }, {
@@ -336,18 +343,17 @@ var SmartSettings = function () {
         value: function button(name, callback) {
             var self = this;
             var base = this._createControlBasics();
-            var body = this._panel.childNodes[1];
             var wrapper = this._createElement('div', {
                 class: 'sms-control'
             });
             var button = this._createElement('button', {
                 class: 'sms-button',
-                id: base.id
+                id: base.id,
+                innerText: name,
+                value: name
             });
             base.type = 'button';
             base.name = name;
-            button.innerText = name;
-            button.value = name;
             button.addEventListener('click', function (e) {
                 if (callback) {
                     callback(e);
@@ -357,7 +363,7 @@ var SmartSettings = function () {
                 }
             });
             wrapper.appendChild(button);
-            body.appendChild(wrapper);
+            this._body.appendChild(wrapper);
             this._controls[name] = base;
             return this._controls[name];
         }
@@ -365,22 +371,20 @@ var SmartSettings = function () {
         key: 'text',
         value: function text(name, value, callback) {
             var self = this;
-            var body = this._panel.childNodes[1];
             var base = this._createControlBasics();
             var wrapper = this._createElement('div', { class: 'sms-control' });
-            var label = this._createElement('label', { class: 'sms-label' });
+            var label = this._createLabel(name);
             var input = this._createElement('input', {
                 class: 'sms-text',
                 id: base.id,
-                type: 'text'
+                type: 'text',
+                innerText: value,
+                placeholder: value,
+                value: value
             });
-            input.innerText = value;
-            input.value = value;
-            input.placeholder = value;
             base.name = name;
             base.value = value;
             base.type = 'text';
-            label.innerText = name;
             wrapper.appendChild(label);
             wrapper.appendChild(input);
             input.addEventListener('input', function (e) {
@@ -392,7 +396,7 @@ var SmartSettings = function () {
                     self._callGlobalWatcher(e);
                 }
             });
-            body.appendChild(wrapper);
+            this._body.appendChild(wrapper);
             base.getValue = function () {
                 return this.element().value;
             };
@@ -408,21 +412,19 @@ var SmartSettings = function () {
         key: 'textarea',
         value: function textarea(name, value, callback) {
             var self = this;
-            var body = this._panel.childNodes[1];
             var base = this._createControlBasics();
             var wrapper = this._createElement('div', { class: 'sms-control' });
-            var label = this._createElement('label', { class: 'sms-label' });
+            var label = this._createLabel(name);
             var textarea = this._createElement('textarea', {
                 class: 'sms-textarea',
-                id: base.id
+                id: base.id,
+                innerText: value,
+                value: value,
+                placeholder: value
             });
-            textarea.innerText = value;
-            textarea.value = value;
-            textarea.placeholder = value;
             base.name = name;
             base.value = value;
             base.type = 'text';
-            label.innerText = name;
             wrapper.appendChild(label);
             wrapper.appendChild(textarea);
             textarea.addEventListener('input', function (e) {
@@ -434,7 +436,6 @@ var SmartSettings = function () {
                     self._callGlobalWatcher(e);
                 }
             });
-            body.appendChild(wrapper);
             base.getValue = function () {
                 return this.element().value;
             };
@@ -443,6 +444,7 @@ var SmartSettings = function () {
                 base.element().innerText = value;
                 base.element().value = value;
             };
+            this._body.appendChild(wrapper);
             this._controls[name] = base;
             return this._controls[name];
         }
@@ -450,10 +452,9 @@ var SmartSettings = function () {
         key: 'range',
         value: function range(name, items, callback) {
             var self = this;
-            var body = this._panel.childNodes[1];
             var base = this._createControlBasics();
             var wrapper = this._createElement('div', { class: 'sms-control' });
-            var label = this._createElement('label', { class: 'sms-label' });
+            var label = this._createLabel(name);
             var span = this._createElement('span', { class: 'sms-label-span' });
             var input = this._createElement('input', {
                 class: 'sms-range',
@@ -478,12 +479,10 @@ var SmartSettings = function () {
                 }
             });
             span.innerText = base.value;
-            label.value = name;
-            label.innerText = name;
             label.appendChild(span);
             wrapper.appendChild(label);
             wrapper.appendChild(input);
-            body.appendChild(wrapper);
+            this._body.appendChild(wrapper);
             base.getValue = function () {
                 return parseFloat(base.element().value);
             };
@@ -510,10 +509,9 @@ var SmartSettings = function () {
         key: 'checkbox',
         value: function checkbox(name, value, callback) {
             var self = this;
-            var body = this._panel.childNodes[1];
             var base = this._createControlBasics();
             var wrapper = this._createElement('div', { class: 'sms-control' });
-            var label = this._createElement('label', { class: 'sms-label' });
+            var label = this._createLabel(name);
             var checkbox = this._createElement('input', {
                 class: 'sms-checkbox',
                 id: base.id,
@@ -522,8 +520,6 @@ var SmartSettings = function () {
             base.name = name;
             base.type = 'checkbox';
             base.value = value;
-            label.innerText = name;
-            label.value = name;
             if (value === true) {
                 checkbox.setAttribute('checked', true);
             }
@@ -538,7 +534,6 @@ var SmartSettings = function () {
             });
             wrapper.appendChild(label);
             wrapper.appendChild(checkbox);
-            body.appendChild(wrapper);
             base.getValue = function () {
                 return base.element().checked;
             };
@@ -546,6 +541,7 @@ var SmartSettings = function () {
                 base.element().checked = v;
                 base.value = v;
             };
+            this._body.appendChild(wrapper);
             this._controls[name] = base;
             return this._controls[name];
         }
@@ -553,10 +549,9 @@ var SmartSettings = function () {
         key: 'color',
         value: function color(name, value, callback) {
             var self = this;
-            var body = this._panel.childNodes[1];
             var base = this._createControlBasics();
             var wrapper = this._createElement('div', { class: 'sms-control' });
-            var label = this._createElement('label', { class: 'sms-label' });
+            var label = this._createLabel(name);
             var span = this._createElement('span', { class: 'sms-label-span' });
             var input = this._createElement('input', {
                 class: 'sms-color',
@@ -578,12 +573,9 @@ var SmartSettings = function () {
                 }
             });
             span.innerText = value;
-            label.value = name;
-            label.innerText = name;
             label.appendChild(span);
             wrapper.appendChild(label);
             wrapper.appendChild(input);
-            body.appendChild(wrapper);
             base.getValue = function () {
                 return base.element().value;
             };
@@ -592,6 +584,7 @@ var SmartSettings = function () {
                 base.value = v;
                 span.innerText = v;
             };
+            this._body.appendChild(wrapper);
             this._controls[name] = base;
             return this._controls[name];
         }
@@ -599,23 +592,20 @@ var SmartSettings = function () {
         key: 'select',
         value: function select(name, items, callback) {
             var self = this;
-            var body = this._panel.childNodes[1];
             var base = this._createControlBasics();
             var wrapper = this._createElement('div', { class: 'sms-control' });
-            var label = this._createElement('label', { class: 'sms-label' });
+            var label = this._createLabel(name);
             var select = this._createElement('select', {
                 class: 'sms-select',
                 id: base.id,
-                name: name
+                name: name,
+                value: items[0]
             });
-            label.innerText = name;
-            label.value = name;
             wrapper.appendChild(label);
             items.map(function (item) {
                 var option = self._createSelectOption(item);
                 select.options.add(option);
             });
-            select.value = items[0];
             select.addEventListener('change', function (e) {
                 base.value = e.target.value;
                 if (callback) {
@@ -626,7 +616,6 @@ var SmartSettings = function () {
                 }
             });
             wrapper.appendChild(select);
-            body.appendChild(wrapper);
             base.value = items[0];
             base.name = name;
             base.type = 'select';
@@ -652,6 +641,7 @@ var SmartSettings = function () {
                     _select.options[_index] = self._createSelectOption(item);
                 });
             };
+            this._body.appendChild(wrapper);
             this._controls[name] = base;
             return this._controls[name];
         }
@@ -659,12 +649,9 @@ var SmartSettings = function () {
         key: 'number',
         value: function number(name, items, callback) {
             var self = this;
-            var body = this._panel.childNodes[1];
             var base = this._createControlBasics();
             var wrapper = this._createElement('div', { class: 'sms-control' });
-            var label = this._createElement('label', { class: 'sms-label' });
-            label.innerText = name;
-            label.value = name;
+            var label = this._createLabel(name);
             var input = this._createElement('input', {
                 class: 'sms-number',
                 id: base.id,
@@ -693,7 +680,7 @@ var SmartSettings = function () {
             };
             wrapper.appendChild(label);
             wrapper.appendChild(input);
-            body.appendChild(wrapper);
+            this._body.appendChild(wrapper);
             this._controls[name] = base;
             return this._controls[name] = base;
         }
@@ -701,10 +688,9 @@ var SmartSettings = function () {
         key: 'file',
         value: function file(name, callback) {
             var self = this;
-            var body = this._panel.childNodes[1];
             var base = this._createControlBasics();
             var wrapper = this._createElement('div', { class: 'sms-control' });
-            var label = this._createElement('label', { class: 'sms-label' });
+            var label = this._createLabel(name);
             var upload = this._createElement('input', {
                 class: 'sms-file',
                 id: base.id,
@@ -712,8 +698,6 @@ var SmartSettings = function () {
             });
             base.name = name;
             base.type = 'file';
-            label.innerText = name;
-            label.value = name;
             upload.addEventListener('change', function (e) {
                 base.value = e.target.value;
                 if (callback) {
@@ -732,7 +716,7 @@ var SmartSettings = function () {
                 base.value = v;
                 base.element().files[0] = v;
             };
-            body.appendChild(wrapper);
+            this._body.appendChild(wrapper);
             this._controls[name] = base;
             return this._controls[name] = base;
         }

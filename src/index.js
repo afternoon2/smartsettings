@@ -53,6 +53,12 @@ class SmartSettings {
 
         this._createUniqueId()
         this._create(this.name, this.initialTop, this.initialLeft)
+
+        /**
+         * @property {?Node} _panelBody - body div
+         * @private
+         */
+        this._body = this._panel ? this._panel.childNodes[1] : null
     }
 
     /* Utility methods */
@@ -87,6 +93,19 @@ class SmartSettings {
         return element
     }
 
+    /**
+     * Creates label element
+     * @param {string} name - name in the label
+     * @returns {Node}
+     * @private
+     */
+    _createLabel(name) {
+        return this._createElement('label', {
+            class: 'sms-label',
+            innerText: name,
+            value: name
+        })
+    }
     /**
      * Calls the global watcher
      * @param {EventListenerObject} event - an event
@@ -298,9 +317,8 @@ class SmartSettings {
      * mySettings.open()
      */
     open() {
-        let panelBody = this._panel.childNodes[1]
-        if (panelBody.classList[1] === 'hide') {
-            panelBody.classList.remove('hide')
+        if (this._body.classList[1] === 'hide') {
+            this._body.classList.remove('hide')
         } 
         this._open = true
     }
@@ -312,8 +330,7 @@ class SmartSettings {
      * 
      */
     close() {
-        let panelBody = this._panel.childNodes[1]
-        panelBody.classList.add('hide')
+        this._body.classList.add('hide')
         this._open = false
     }
 
@@ -324,10 +341,9 @@ class SmartSettings {
      * mySettings.toggle()
      */
     toggle() {
-        let panelBody = this._panel.childNodes[1]
-        panelBody.classList[1] === 'hide' ?
-            panelBody.classList.remove('hide') :
-            panelBody.classList.add('hide')
+        this._body.classList[1] === 'hide' ?
+            this._body.classList.remove('hide') :
+            this._body.classList.add('hide')
         this._open = !this._open
     }
 
@@ -464,18 +480,17 @@ class SmartSettings {
     button(name, callback) {
         let self = this
         let base = this._createControlBasics()
-        let body = this._panel.childNodes[1]
         let wrapper = this._createElement('div', {
             class: 'sms-control'
         })
         let button = this._createElement('button', {
             class: 'sms-button',
-            id: base.id
+            id: base.id,
+            innerText: name,
+            value: name
         })
         base.type = 'button'
         base.name = name
-        button.innerText = name
-        button.value = name
         button.addEventListener('click', e => {
             if (callback) {
                 callback(e)
@@ -485,7 +500,7 @@ class SmartSettings {
             }
         })
         wrapper.appendChild(button)
-        body.appendChild(wrapper)
+        this._body.appendChild(wrapper)
         this._controls[name] = base
         return this._controls[name]
     }
@@ -501,22 +516,20 @@ class SmartSettings {
      */
     text(name, value, callback) {
         let self = this
-        let body = this._panel.childNodes[1]
         let base = this._createControlBasics()
         let wrapper = this._createElement('div', { class: 'sms-control' })
-        let label = this._createElement('label', { class: 'sms-label' })
+        let label = this._createLabel(name)
         let input = this._createElement('input', {
             class: 'sms-text',
             id: base.id,
-            type: 'text'
+            type: 'text',
+            innerText: value,
+            placeholder: value,
+            value: value
         })
-        input.innerText = value
-        input.value = value
-        input.placeholder = value
         base.name = name
         base.value = value
         base.type = 'text'
-        label.innerText = name
         wrapper.appendChild(label)
         wrapper.appendChild(input)
         input.addEventListener('input', e => {
@@ -528,7 +541,7 @@ class SmartSettings {
                 self._callGlobalWatcher(e)
             }
         })
-        body.appendChild(wrapper)
+        this._body.appendChild(wrapper)
         base.getValue = function() {
             return this.element().value
         }
@@ -552,21 +565,19 @@ class SmartSettings {
      */
     textarea(name, value, callback) {
         let self = this
-        let body = this._panel.childNodes[1]
         let base = this._createControlBasics()
         let wrapper = this._createElement('div', { class: 'sms-control' })
-        let label = this._createElement('label', { class: 'sms-label' })
+        let label = this._createLabel(name)
         let textarea = this._createElement('textarea', {
             class: 'sms-textarea',
-            id: base.id
+            id: base.id,
+            innerText: value,
+            value: value,
+            placeholder: value
         })
-        textarea.innerText = value
-        textarea.value = value
-        textarea.placeholder = value
         base.name = name
         base.value = value
         base.type = 'text'
-        label.innerText = name
         wrapper.appendChild(label)
         wrapper.appendChild(textarea)
         textarea.addEventListener('input', e => {
@@ -578,7 +589,6 @@ class SmartSettings {
                 self._callGlobalWatcher(e)
             }
         })
-        body.appendChild(wrapper)
         base.getValue = function () {
             return this.element().value
         }
@@ -587,6 +597,7 @@ class SmartSettings {
             base.element().innerText = value
             base.element().value = value
         }
+        this._body.appendChild(wrapper)
         this._controls[name] = base
         return this._controls[name]
     }
@@ -602,10 +613,9 @@ class SmartSettings {
      */
     range(name, items, callback) {
         let self = this
-        let body = this._panel.childNodes[1]
         let base = this._createControlBasics()
         let wrapper = this._createElement('div', { class: 'sms-control' })
-        let label = this._createElement('label', { class: 'sms-label' })
+        let label = this._createLabel(name)
         let span = this._createElement('span', { class: 'sms-label-span' })
         let input = this._createElement('input', {
             class: 'sms-range',
@@ -631,12 +641,10 @@ class SmartSettings {
             }
         })
         span.innerText = base.value
-        label.value = name
-        label.innerText = name
         label.appendChild(span)
         wrapper.appendChild(label)
         wrapper.appendChild(input)
-        body.appendChild(wrapper)
+        this._body.appendChild(wrapper)
         base.getValue = function() {
             return parseFloat(base.element().value)
         }
@@ -678,10 +686,9 @@ class SmartSettings {
      */
     checkbox(name, value, callback) {
         let self = this
-        let body = this._panel.childNodes[1]
         let base = this._createControlBasics()
         let wrapper = this._createElement('div', { class: 'sms-control' })
-        let label = this._createElement('label', { class: 'sms-label' })
+        let label = this._createLabel(name)
         let checkbox = this._createElement('input', {
             class: 'sms-checkbox',
             id: base.id,
@@ -690,8 +697,6 @@ class SmartSettings {
         base.name = name
         base.type = 'checkbox'
         base.value = value
-        label.innerText = name
-        label.value = name
         if (value === true) {
             checkbox.setAttribute('checked', true)
         }
@@ -706,7 +711,6 @@ class SmartSettings {
         })
         wrapper.appendChild(label)
         wrapper.appendChild(checkbox)
-        body.appendChild(wrapper)
         base.getValue = function() {
             return base.element().checked
         }
@@ -714,6 +718,7 @@ class SmartSettings {
             base.element().checked = v
             base.value = v
         }
+        this._body.appendChild(wrapper)
         this._controls[name] = base
         return this._controls[name]
     }
@@ -729,10 +734,9 @@ class SmartSettings {
      */
     color(name, value, callback) {
         let self = this
-        let body = this._panel.childNodes[1]
         let base = this._createControlBasics()
         let wrapper = this._createElement('div', { class: 'sms-control' })
-        let label = this._createElement('label', { class: 'sms-label' })
+        let label = this._createLabel(name)
         let span = this._createElement('span', { class: 'sms-label-span' })
         let input = this._createElement('input', {
             class: 'sms-color',
@@ -754,12 +758,9 @@ class SmartSettings {
             }
         })
         span.innerText = value
-        label.value = name
-        label.innerText = name
         label.appendChild(span)
         wrapper.appendChild(label)
         wrapper.appendChild(input)
-        body.appendChild(wrapper)
         base.getValue = function() {
             return base.element().value
         }
@@ -768,6 +769,7 @@ class SmartSettings {
             base.value = v
             span.innerText = v
         }
+        this._body.appendChild(wrapper)
         this._controls[name] = base
         return this._controls[name]
     }
@@ -783,23 +785,20 @@ class SmartSettings {
      */
     select(name, items, callback) {
         let self = this
-        let body = this._panel.childNodes[1]
         let base = this._createControlBasics()
         let wrapper = this._createElement('div', { class: 'sms-control' })
-        let label = this._createElement('label', { class: 'sms-label' })
+        let label = this._createLabel(name)
         let select = this._createElement('select', {
             class: 'sms-select',
             id: base.id,
-            name: name
+            name: name,
+            value: items[0]
         })
-        label.innerText = name
-        label.value = name
         wrapper.appendChild(label)
         items.map(item => {
             let option = self._createSelectOption(item)
             select.options.add(option)
         })
-        select.value = items[0]
         select.addEventListener('change', e => {
             base.value = e.target.value
             if (callback) {
@@ -810,7 +809,6 @@ class SmartSettings {
             }
         })
         wrapper.appendChild(select)
-        body.appendChild(wrapper)
         base.value = items[0]
         base.name = name
         base.type = 'select'
@@ -836,6 +834,7 @@ class SmartSettings {
                 _select.options[_index] = self._createSelectOption(item)
             })
         }
+        this._body.appendChild(wrapper)
         this._controls[name] = base
         return this._controls[name]
     }
@@ -851,12 +850,9 @@ class SmartSettings {
      */
     number(name, items, callback) {
         let self = this
-        let body = this._panel.childNodes[1]
         let base = this._createControlBasics()
         let wrapper = this._createElement('div', { class: 'sms-control' })
-        let label = this._createElement('label', { class: 'sms-label' })
-        label.innerText = name
-        label.value = name
+        let label = this._createLabel(name)
         let input = this._createElement('input', {
             class: 'sms-number',
             id: base.id,
@@ -885,7 +881,7 @@ class SmartSettings {
         }
         wrapper.appendChild(label)
         wrapper.appendChild(input)
-        body.appendChild(wrapper)
+        this._body.appendChild(wrapper)
         this._controls[name] = base
         return this._controls[name] = base
     }
@@ -894,13 +890,15 @@ class SmartSettings {
      * Creates file input control
      * @param {string} name - name of the control
      * @param {function} [callback] - function executed on each change
+     * @returns {object}
+     * @example
+     * let fileControl = mySettings.file('File control', someCallbackFunction)
      */
     file(name, callback) {
         let self = this
-        let body = this._panel.childNodes[1]
         let base = this._createControlBasics()
         let wrapper = this._createElement('div', { class: 'sms-control' })
-        let label = this._createElement('label', { class: 'sms-label' })
+        let label = this._createLabel(name)
         let upload = this._createElement('input', {
             class: 'sms-file',
             id: base.id,
@@ -908,8 +906,6 @@ class SmartSettings {
         })
         base.name = name
         base.type = 'file'
-        label.innerText = name
-        label.value = name
         upload.addEventListener('change', e => {
             base.value = e.target.value
             if (callback) {
@@ -928,7 +924,7 @@ class SmartSettings {
             base.value = v
             base.element().files[0] = v
         }
-        body.appendChild(wrapper)
+        this._body.appendChild(wrapper)
         this._controls[name] = base
         return this._controls[name] = base
     }
