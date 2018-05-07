@@ -167,6 +167,37 @@ class SmartSettings {
         }
     }
 
+    /**
+     * Dispatches an event after setting new items or new value to the control
+     * @param {Node} element - DOM element dispatcher
+     * @param {string} type - type of the control
+     * @returns {void}
+     * @private
+     */
+    _dispatchEvent(element, type) {
+        let _eventType
+        if (type === 'button') {
+            _eventType = 'click'
+        }
+        if (
+            type === 'text' || 
+            type === 'textarea' || 
+            type === 'range' ||
+            type === 'color' ||
+            type === 'number'
+        ) {
+            _eventType = 'input'
+        }
+        if (
+            type === 'checkbox' ||
+            type === 'select' ||
+            type === 'file'
+        ) {
+            _eventType = 'change'
+        }
+        element.dispatchEvent(new Event(_eventType))
+    }
+
     /* Helper methods */
 
     /**
@@ -565,6 +596,7 @@ class SmartSettings {
             base.value = value
             base.element().innerText = value
             base.element().value = value
+            self._dispatchEvent(base.element(), base.type)
         }
         this._controls[name] = base
         return this._controls[name]
@@ -612,6 +644,7 @@ class SmartSettings {
             base.value = value
             base.element().innerText = value
             base.element().value = value
+            self._dispatchEvent(base.element(), base.type)
         }
         this._body.appendChild(wrapper)
         this._controls[name] = base
@@ -647,7 +680,7 @@ class SmartSettings {
         base.name = name
         base.value = items[2]
         input.addEventListener('input', e => {
-            base.value = e.target.value
+            base.value = parseFloat(e.target.value)
             span.innerText = base.value
             if (callback) {
                 callback(e)
@@ -667,6 +700,7 @@ class SmartSettings {
         base.setValue = function(v) {
             base.value = v
             base.element().value = v
+            self._dispatchEvent(base.element(), base.type)
         }
         base.getItems = function() {
             let e = base.element()
@@ -684,6 +718,7 @@ class SmartSettings {
             e.value = items[2]
             e.step = items[3]
             base.value = parseFloat(e.value)
+            self._dispatchEvent(base.element(), base.type)
         }
         this._controls[name] = base
         return this._controls[name]
@@ -733,6 +768,7 @@ class SmartSettings {
         base.setValue = function(v) {
             base.element().checked = v
             base.value = v
+            self._dispatchEvent(base.element(), base.type)
         }
         this._body.appendChild(wrapper)
         this._controls[name] = base
@@ -784,6 +820,7 @@ class SmartSettings {
             base.element().value = v
             base.value = v
             span.innerText = v
+            self._dispatchEvent(base.element(), base.type)
         }
         this._body.appendChild(wrapper)
         this._controls[name] = base
@@ -837,6 +874,7 @@ class SmartSettings {
             let _select = base.element()
             select.options[select.selectedIndex] = self._createSelectOption(v)
             _select.value = v
+            self._dispatchEvent(base.element(), base.type)
         }
         base.getItems = function() {
             return Array
@@ -849,6 +887,7 @@ class SmartSettings {
                 let _index = items.indexOf(item)
                 _select.options[_index] = self._createSelectOption(item)
             })
+            self._dispatchEvent(base.element(), base.type)
         }
         this._body.appendChild(wrapper)
         this._controls[name] = base
@@ -894,6 +933,7 @@ class SmartSettings {
         base.setValue = function(v) {
             base.element().value = v
             base.value = v
+            self._dispatchEvent(base.element(), base.type)
         }
         wrapper.appendChild(label)
         wrapper.appendChild(input)
@@ -939,6 +979,7 @@ class SmartSettings {
         base.setValue = function(v) {
             base.value = v
             base.element().files[0] = v
+            self._dispatchEvent(base.element(), base.type)
         }
         this._body.appendChild(wrapper)
         this._controls[name] = base
