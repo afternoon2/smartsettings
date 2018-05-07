@@ -24,7 +24,7 @@ const SmartSettings = require('smartsettings')
 And then just:
 
 ```js
-const settings = new SmartSettings('Settings', 10, 10)
+const settings = new SmartSettings('Settings', 10 /* left */, 10 /* top */)
 ```
 
 Or in the browser:
