@@ -1,7 +1,7 @@
 # smartsettings.js
 Yet another JS library for creating setting panels.
 
-![alt text](https://github.com/afternoon2/smartsettings/blob/master/2docs/usage-gif.gif "Usage gif")
+![alt text](./2docs/usage-gif.gif "Usage gif")
 
 ## Installation
 
