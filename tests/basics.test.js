@@ -73,8 +73,8 @@ test('Close, open and toggle settings panel', () => {
 test('Get current position', () => {
     let t = new SmartSettings()
     let position = t.getPosition()
-    expect(position[0]).toBe(0)
-    expect(position[1]).toBe(0)
+    expect(position[0]).toBe('0px')
+    expect(position[1]).toBe('0px')
     expect(position[2]).toBe(undefined)
 })
 

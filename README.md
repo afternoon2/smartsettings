@@ -1,8 +1,6 @@
 # smartsettings.js
 Yet another JavaScript library for creating (smart) setting panels.
 
-<img src="https://github.com/afternoon2/smartsettings/blob/master/2docs/usage-gif.gif" alt="usage gif" style="width: 300px; height: auto;">
-
 ## Installation
 
 ```html
@@ -83,7 +81,6 @@ But you can go with the JSON string or array of objects like the entries describ
 
 ## TBD:
 - Multiple selection for select() and file()
-- Drag & drop panel
 - Sections
 - set & get position - update panel's position on each this._top and this._left change
 - styling enhancements

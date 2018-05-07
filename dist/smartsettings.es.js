@@ -68,6 +68,8 @@ var SmartSettings = function () {
         this._createUniqueId();
         this._create(this.name, this.initialTop, this.initialLeft);
         this._body = this._panel ? this._panel.childNodes[1] : null;
+        this._top = this.initialTop;
+        this._left = this.initialLeft;
     }
     createClass(SmartSettings, [{
         key: '_createUniqueId',
@@ -275,13 +277,15 @@ var SmartSettings = function () {
     }, {
         key: 'getPosition',
         value: function getPosition() {
-            return [this.initialLeft, this.initialTop];
+            return [this._panel.style.left, this._panel.style.top];
         }
     }, {
         key: 'setPosition',
         value: function setPosition(left, top) {
             this.initialLeft = left;
             this.initialTop = top;
+            this._panel.style.left = left + 'px';
+            this._panel.style.top = top + 'px';
         }
     }, {
         key: 'remove',

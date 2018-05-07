@@ -59,6 +59,18 @@ class SmartSettings {
          * @private
          */
         this._body = this._panel ? this._panel.childNodes[1] : null
+
+        /**
+         * @property {?number} _top
+         * @private
+         */
+        this._top = this.initialTop
+
+        /**
+         * @property {number} _left
+         * @private
+         */
+        this._left = this.initialLeft
     }
 
     /* Utility methods */
@@ -163,6 +175,7 @@ class SmartSettings {
      * @private
      */
     _create() {
+        let self = this
         let panelAttributes = {
             class: 'sms-panel',
             id: uniqueId(),
@@ -172,9 +185,7 @@ class SmartSettings {
         let header = this._createElement('div', { class: 'sms-panel-header' })
         let body = this._createElement('div', { class: 'sms-panel-body' })
         let paragraph = this._createElement('p', { class: 'sms-panel-header-name' })
-
         header.addEventListener('click', e => this.toggle())
-
         paragraph.innerText = this.name
         header.appendChild(paragraph)
         panel.appendChild(header)
@@ -349,12 +360,15 @@ class SmartSettings {
 
     /**
      * Returns panel position [left, top]
-     * @return {array<number>}
+     * @return {array<string>}
      * @example
      * let position = mySettings.getPosition() // [0, 0]
      */
     getPosition() {
-        return [this.initialLeft, this.initialTop]
+        return [
+            this._panel.style.left,
+            this._panel.style.top
+        ]
     }
 
     /**
@@ -367,6 +381,8 @@ class SmartSettings {
     setPosition(left, top) {
         this.initialLeft = left
         this.initialTop = top
+        this._panel.style.left = `${left}px`
+        this._panel.style.top = `${top}px`
     }
 
     /**
