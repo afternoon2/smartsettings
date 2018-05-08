@@ -59,18 +59,6 @@ class SmartSettings {
          * @private
          */
         this._body = this._panel ? this._panel.childNodes[1] : null
-
-        /**
-         * @property {?number} _top
-         * @private
-         */
-        this._top = this.initialTop
-
-        /**
-         * @property {number} _left
-         * @private
-         */
-        this._left = this.initialLeft
     }
 
     /* Utility methods */
@@ -151,7 +139,7 @@ class SmartSettings {
             this.text(_entry.name, _entry.value, _isCallback)
             break
         case 'textarea':
-            this.text(_entry.name, _entry.value, _isCallback)
+            this.textarea(_entry.name, _entry.value, _isCallback)
             break
         case 'checkbox':
             this.checkbox(_entry.name, _entry.value, _isCallback)
@@ -239,6 +227,7 @@ class SmartSettings {
             value: null,
             name: null,
             type: null,
+            callback: null,
             element: function() {
                 return document.getElementById(this.id)
             },
@@ -410,8 +399,6 @@ class SmartSettings {
      * mySettings.setPosition(400, 400)
      */
     setPosition(left, top) {
-        this.initialLeft = left
-        this.initialTop = top
         this._panel.style.left = `${left}px`
         this._panel.style.top = `${top}px`
     }
@@ -538,6 +525,7 @@ class SmartSettings {
         })
         base.type = 'button'
         base.name = name
+        base.callback = callback || null
         button.addEventListener('click', e => {
             if (callback) {
                 callback(e)
@@ -577,6 +565,7 @@ class SmartSettings {
         base.name = name
         base.value = value
         base.type = 'text'
+        base.callback = callback || null
         wrapper.appendChild(label)
         wrapper.appendChild(input)
         input.addEventListener('input', e => {
@@ -626,6 +615,7 @@ class SmartSettings {
         base.name = name
         base.value = value
         base.type = 'text'
+        base.callback = callback || null
         wrapper.appendChild(label)
         wrapper.appendChild(textarea)
         textarea.addEventListener('input', e => {
@@ -675,10 +665,10 @@ class SmartSettings {
             value: items[2],
             step: items[3]
         })
-
         base.type = 'range'
         base.name = name
         base.value = items[2]
+        base.callback = callback || null
         input.addEventListener('input', e => {
             base.value = parseFloat(e.target.value)
             span.innerText = base.value
@@ -748,6 +738,7 @@ class SmartSettings {
         base.name = name
         base.type = 'checkbox'
         base.value = value
+        base.callback = callback || null
         if (value === true) {
             checkbox.setAttribute('checked', true)
         }
@@ -798,6 +789,7 @@ class SmartSettings {
         base.name = name
         base.type = 'color'
         base.value = value
+        base.callback = callback || null
         input.setAttribute('value', value)
         input.addEventListener('input', e => {
             base.value = e.target.value
@@ -865,6 +857,7 @@ class SmartSettings {
         base.value = items[0]
         base.name = name
         base.type = 'select'
+        base.callback = callback || null
         base.getValue = function() {
             let _select = base.element()
             return _select.options[_select.selectedIndex].value
@@ -927,6 +920,7 @@ class SmartSettings {
         base.type = 'number'
         base.name = name
         base.value = items[0]
+        base.callback = callback || null
         base.getValue = function() {
             return parseFloat(base.element().value)
         }
@@ -962,6 +956,7 @@ class SmartSettings {
         })
         base.name = name
         base.type = 'file'
+        base.callback = callback || null
         upload.addEventListener('change', e => {
             base.value = e.target.value
             if (callback) {
@@ -1022,7 +1017,7 @@ class SmartSettings {
      *          "callback": "someCallbackFunction"
      *      },
      *      // etc.
-     * })
+     * }')
      * 
      * // or
      * mySettings.loadConfig([{
