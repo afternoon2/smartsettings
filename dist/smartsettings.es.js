@@ -666,6 +666,9 @@ var SmartSettings = function () {
             };
             base.setItems = function (items) {
                 var _select = base.element();
+                for (var i = 0; i < _select.options.length; i++) {
+                    _select.options[i].remove();
+                }
                 items.forEach(function (item) {
                     var _index = items.indexOf(item);
                     _select.options[_index] = self._createSelectOption(item);

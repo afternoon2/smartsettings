@@ -876,6 +876,9 @@ class SmartSettings {
         }
         base.setItems = function(items) {
             let _select = base.element()
+            for (let i = 0; i < _select.options.length; i++) {
+                _select.options[i].remove()
+            }
             items.forEach(item => {
                 let _index = items.indexOf(item)
                 _select.options[_index] = self._createSelectOption(item)
