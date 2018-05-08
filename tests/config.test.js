@@ -4,26 +4,26 @@ let s, config
 
 beforeEach(() => {
     config = {
-        1: {
+        'Btn': {
             type: 'button',
             name: 'Btn'
         },
-        2: {
+        'Text input': {
             type: 'text',
             name: 'Text input',
             value: 'Hello!'
         },
-        3: {
+        'Textarea': {
             name: 'Textarea',
             type: 'textarea',
             value: 'Hellllllo'
         },
-        4: {
+        'Color': {
             name: 'Color',
             type: 'color',
             value: '#ffcc00'
         },
-        5: {
+        'Range': {
             name: 'Range',
             type: 'range',
             items: [0, 100, 1, 1]
