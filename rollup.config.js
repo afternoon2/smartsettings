@@ -55,7 +55,7 @@ export default {
             comments: 'none',
             extensions: '.js'
         }),
-        commonjs(),
-        uglify()
+        commonjs()
+        // uglify()
     ]
 }
