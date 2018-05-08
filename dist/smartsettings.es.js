@@ -666,6 +666,10 @@ var SmartSettings = function () {
             };
             base.setItems = function (items) {
                 var _select = base.element();
+                var _state = {
+                    currentIndex: _select.selectedIndex,
+                    newIndex: null
+                };
                 for (var i = 0; i < _select.options.length; i++) {
                     _select.options[i].remove();
                 }
@@ -673,6 +677,15 @@ var SmartSettings = function () {
                     var _index = items.indexOf(item);
                     _select.options[_index] = self._createSelectOption(item);
                 });
+                if (_state.currentIndex > items.length - 1) {
+                    _state.newIndex = items.length - 1;
+                }
+                if (_state.currentIndex < items.length) {
+                    _state.newIndex = _state.currentIndex;
+                }
+                _select.selectedIndex = _state.newIndex;
+                _select.value = items[_state.newIndex];
+                base.value = items[_state.newIndex];
                 self._dispatchEvent(base.element(), base.type);
             };
             this._body.appendChild(wrapper);
