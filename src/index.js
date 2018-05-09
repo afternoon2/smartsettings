@@ -258,15 +258,17 @@ class SmartSettings {
     /**
      * Returns select option
      * @param {(string|number)} item - option value
+     * @param {boolean} [selected] - is option selected
      * @returns {Node}
      * @private
      */
-    _createSelectOption(item) {
+    _createSelectOption(item, selected) {
         let option = this._createElement('option', {
             class: 'sms-select-option',
-            value: item
+            value: item,
+            innerText: item,
+            selected: selected ? selected : false
         })
-        option.innerText = item
         return option
     }
 
@@ -875,27 +877,43 @@ class SmartSettings {
                 .map(option => option.value)
         }
         base.setItems = function(items) {
-            let _select = base.element()
-            let _state = {
-                currentIndex: _select.selectedIndex,
-                newIndex: null
+            const _current = {
+                selected: base.element().selectedIndex,
+                length: base.getItems().length
             }
-            for (let i = 0; i < _select.options.length; i++) {
-                _select.options[i].remove()
+            const _new = {
+                selected: -1,
+                length: items.length
+            }
+
+            if (_new.length > _current.length) {
+                if (_current.selected === -1 || _current.selected === '') {
+                    _new.selected = 0
+                }
+                if (_current.selected > -1) {
+                    _new.selected = _new.length - 1
+                }
+            }
+            if (_new.length < _current.length) {
+                if (_current.selected > - 1 && _current.selected < _new.length) {
+                    _new.selected = _current.selected
+                }
+                if (_current.selected > _new.length - 1) {
+                    _new.selected = _new.length - 1
+                }
+            }
+
+            for (let i = 0; i < base.element().options.length; i++) {
+                base.element().options[i].remove()
             }
             items.forEach(item => {
                 let _index = items.indexOf(item)
-                _select.options[_index] = self._createSelectOption(item)
+                base.element().options[_index] = self._createSelectOption(
+                    item,
+                    _index = _new.selected ? true : false
+                )
             })
-            if (_state.currentIndex > items.length - 1) {
-                _state.newIndex = items.length - 1
-            }
-            if (_state.currentIndex < items.length) {
-                _state.newIndex = _state.currentIndex
-            }
-            _select.selectedIndex = _state.newIndex
-            _select.value = items[_state.newIndex]
-            base.value = items[_state.newIndex]
+            base.value = items[_new.selected]
             self._dispatchEvent(base.element(), base.type)
         }
         this._body.appendChild(wrapper)

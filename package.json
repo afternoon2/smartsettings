@@ -14,6 +14,8 @@
         "autoprefixer": "^8.4.1",
         "babel-plugin-external-helpers": "^6.22.0",
         "babel-preset-env": "^1.6.0",
+        "commitizen": "^2.9.6",
+        "cz-conventional-changelog": "^2.1.0",
         "jest": "^22.4.3",
         "jsdoc": "^3.5.5",
         "postcss-advanced-variables": "^2.3.3",
@@ -36,9 +38,15 @@
         "dev": "rollup -c && npm run docs",
         "test": "jest",
         "pretest": "npm run build",
-        "docs": "./node_modules/.bin/jsdoc ./src -d ./docs --readme ./README.md"
+        "docs": "./node_modules/.bin/jsdoc ./src -d ./docs --readme ./README.md",
+        "commit": "git-cz"
     },
     "files": [
         "dist"
-    ]
+    ],
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/cz-conventional-changelog"
+        }
+    }
 }
