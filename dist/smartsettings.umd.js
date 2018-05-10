@@ -70,6 +70,7 @@
           this._draggable = false;
           this._panel = null;
           this._controls = {};
+          this._localString = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
           this._globalWatcher = null;
           this._createUniqueId();
           this._create(this.name, this.initialTop, this.initialLeft);
@@ -78,9 +79,10 @@
       createClass(SmartSettings, [{
           key: '_createUniqueId',
           value: function _createUniqueId() {
+              var _this = this;
               var counter = 0;
-              window.uniqueId = function () {
-                  return 'sms-id-' + counter++;
+              this.uniqueID = function () {
+                  return _this._localString + '-' + counter++;
               };
           }
       }, {
@@ -165,10 +167,10 @@
       }, {
           key: '_create',
           value: function _create() {
-              var _this = this;
+              var _this2 = this;
               var panelAttributes = {
                   class: 'sms-panel',
-                  id: uniqueId(),
+                  id: this.uniqueID(),
                   style: 'top: ' + this.initialTop + 'px; left: ' + this.initialLeft + 'px; z-index: 2'
               };
               var panel = this._createElement('div', panelAttributes);
@@ -176,7 +178,7 @@
               var body = this._createElement('div', { class: 'sms-panel-body' });
               var paragraph = this._createElement('p', { class: 'sms-panel-header-name' });
               header.addEventListener('click', function (e) {
-                  return _this.toggle();
+                  return _this2.toggle();
               });
               paragraph.innerText = this.name;
               header.appendChild(paragraph);
@@ -188,7 +190,7 @@
       }, {
           key: '_createControlBasics',
           value: function _createControlBasics() {
-              var id = uniqueId();
+              var id = this.uniqueID();
               var basics = {
                   id: id,
                   disabled: false,
@@ -797,7 +799,7 @@
       }, {
           key: 'loadConfig',
           value: function loadConfig(config) {
-              var _this2 = this;
+              var _this3 = this;
               if (!config) {
                   throw new Error('There is no config provided');
               }
@@ -812,7 +814,7 @@
               }
               if (Array.isArray(config) === true) {
                   config.forEach(function (entry) {
-                      return _this2._assignEntryToMethod(entry);
+                      return _this3._assignEntryToMethod(entry);
                   });
               }
           }

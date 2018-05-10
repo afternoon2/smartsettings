@@ -20,11 +20,11 @@ afterEach(() => {
 })
 
 test('Create text input control', () => {
-    let _input = document.getElementById('sms-id-1')
+    let _input = document.getElementById(`${s._localString}-1`)
 
     expect(input.element()).toBe(s._controls[name].element())
     expect(input.type).toBe('text')
-    expect(input.id).toBe('sms-id-1')
+    expect(input.id).toBe(`${s._localString}-1`)
     expect(_input).toBe(input.element())
 })
 

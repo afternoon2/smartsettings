@@ -22,9 +22,9 @@ afterEach(() => {
 })
 
 test('Create range control', () => {
-    let _range = document.getElementById('sms-id-1')
+    let _range = document.getElementById(`${s._localString}-1`)
     expect(_range).toBe(range.element())
-    expect(range.id).toBe('sms-id-1')
+    expect(range.id).toBe(`${s._localString}-1`)
     expect(range.name).toBe(name)
     expect(range.value).toBe(items[2])
     expect(range.element().value).toBe(items[2].toString())

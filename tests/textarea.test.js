@@ -20,11 +20,11 @@ afterEach(() => {
 })
 
 test('Create text textarea control', () => {
-    let _textarea = document.getElementById('sms-id-1')
+    let _textarea = document.getElementById(`${s._localString}-1`)
 
     expect(textarea.element()).toBe(s._controls[name].element())
     expect(textarea.type).toBe('text')
-    expect(textarea.id).toBe('sms-id-1')
+    expect(textarea.id).toBe(`${s._localString}-1`)
     expect(_textarea).toBe(textarea.element())
 })
 

@@ -46,6 +46,13 @@ class SmartSettings {
         this._controls = {}
 
         /**
+         * @property {string} _localString
+         * It lets creating unique identifier for the panels
+         * @private
+         */
+        this._localString = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
+
+        /**
          * @property {?function} _globalWatcher
          * @private
          */
@@ -64,12 +71,13 @@ class SmartSettings {
     /* Utility methods */
 
     /**
-     * Creates unique element identifier
+     * Inits function that creates unique element identifier
+     * @returns {string}
      * @private
      */
     _createUniqueId() {
         let counter = 0
-        window.uniqueId = () => `sms-id-${counter++}`
+        this.uniqueID = () => `${this._localString}-${counter++}`
     }
      
     /**
@@ -197,7 +205,7 @@ class SmartSettings {
         let self = this
         let panelAttributes = {
             class: 'sms-panel',
-            id: uniqueId(),
+            id: this.uniqueID(),
             style: `top: ${this.initialTop}px; left: ${this.initialLeft}px; z-index: 2`
         }
         let panel = this._createElement('div', panelAttributes)
@@ -219,7 +227,7 @@ class SmartSettings {
      * @private
      */
     _createControlBasics() {
-        let id = uniqueId()
+        let id = this.uniqueID()
         let basics = {
             id: id,
             disabled: false,

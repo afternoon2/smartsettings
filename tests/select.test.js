@@ -20,7 +20,7 @@ afterEach(() => {
 })
 
 test('Add select input', () => {
-    let _select = document.getElementById('sms-id-1')
+    let _select = document.getElementById(`${s._localString}-1`)
     expect(select.element()).toBe(_select)
     expect(s._controls[name]).toBe(select)
 })

@@ -21,8 +21,8 @@ afterEach(() => {
 
 test('Add number control', () => {
     expect(input).toBe(s._controls[name])
-    expect(input.element()).toBe(document.getElementById('sms-id-1'))
-    expect(input.id).toBe('sms-id-1')
+    expect(input.element()).toBe(document.getElementById(`${s._localString}-1`))
+    expect(input.id).toBe(`${s._localString}-1`)
     expect(input.type).toBe('number')
     expect(input.value).toBe(items[0])
     expect(input.element().value).toBe(items[0].toString())
