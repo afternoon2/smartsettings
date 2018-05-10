@@ -56,3 +56,8 @@ test('Show and hide select control', () => {
     expect(s._controls[name].element().classList[1]).toBe(undefined)
     expect(s._controls[name].hidden).toBe(false)
 })
+
+test('Get selected index of the select control', () => {
+    let current = s.getIndex(name)
+    expect(current).toBe(0)
+})

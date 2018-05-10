@@ -473,6 +473,19 @@ class SmartSettings {
     }
 
     /**
+     * Get selected index of the select control
+     * @param {string} name - name of the control
+     * @returns {number}
+     * @example
+     * let currentIndex = mySettings.getIndex('Select control')
+     */
+    getIndex(name) {
+        if (name && this._controls[name].getIndex) {
+            return this._controls[name].getIndex()
+        }
+    }
+
+    /**
      * Get select/range/progressbar items
      * @param {string} name - name of the control
      * @returns {array}
@@ -923,6 +936,9 @@ class SmartSettings {
             })
             base.value = items[_new.selected]
             self._dispatchEvent(base.element(), base.type)
+        }
+        base.getIndex = function() {
+            return parseInt(base.element().selectedIndex)
         }
         this._body.appendChild(wrapper)
         this._controls[name] = base

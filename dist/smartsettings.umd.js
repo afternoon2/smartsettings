@@ -344,6 +344,13 @@
               return values;
           }
       }, {
+          key: 'getIndex',
+          value: function getIndex(name) {
+              if (name && this._controls[name].getIndex) {
+                  return this._controls[name].getIndex();
+              }
+          }
+      }, {
           key: 'getItems',
           value: function getItems(name) {
               var typeCondition = this._controls[name].type === 'range' || this._controls[name].type === 'select' || this._controls[name].type === 'progressbar';
@@ -707,6 +714,9 @@
                   });
                   base.value = items[_new.selected];
                   self._dispatchEvent(base.element(), base.type);
+              };
+              base.getIndex = function () {
+                  return parseInt(base.element().selectedIndex);
               };
               this._body.appendChild(wrapper);
               this._controls[name] = base;

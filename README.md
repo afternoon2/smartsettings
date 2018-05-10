@@ -56,6 +56,7 @@ Or in the browser:
     - `remove(name)` - removes specific control from the panel
     - `getValue(name)` - returns active value of the specific control
     - `setValue()` - sets new active value of the specific control
+    - `getIndex()` - returns selected index of the select control
     - `getActiveValues()` - returns object with active values of all controls (except buttons)
     - `setItems(name, items)` - set new dropdown, range or progressbar control items
     - `getItems(name)` - get items of the specific dropdown, range or progressbar control
