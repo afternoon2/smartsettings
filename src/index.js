@@ -446,13 +446,15 @@ class SmartSettings {
      * Sets new active value of the specific control. (Changing button control value does not change its' id property)
      * @param {string} name - name of the control
      * @param {(number|string|boolean)} name - new value
+     * @param {boolean} [syntheticEvent] - specify, if method should dispatch syntethic event after items update. Default value is false
      * @returns {void}
      * @example
      * mySettings.setValue('Control name', 'value')
      */
-    setValue(name, value) {
-        if (name && this._controls[name] && this._controls[name].setValue) {
-            return this._controls[name].setValue(value)
+    setValue(name, value, syntheticEvent = false) {
+        let _control = this._controls[name]
+        if (name && _control && _control.setValue) {
+            return _control.setValue(value, syntheticEvent)
         }
     }
 
@@ -486,7 +488,7 @@ class SmartSettings {
     }
 
     /**
-     * Get select/range/progressbar items
+     * Get select/range items
      * @param {string} name - name of the control
      * @returns {array}
      * @example
@@ -506,21 +508,22 @@ class SmartSettings {
     }
 
     /**
-     * Set (update) select/range/progressbar items
+     * Set (update) select/range items
      * @param {string} name - name of the control
      * @param {array} items - array of new items
+     * @param {boolean} [syntheticEvent] - specify, if method should dispatch syntethic event after items update. Default value is false
      * @returns {void}
      * @example
      * mySettings.setItems('Select', [1, 2, 3, 4])
      */
-    setItems(name, items) {
+    setItems(name, items, syntheticEvent = false) {
         let typeCondition = (
             this._controls[name].type === 'range' ||
             this._controls[name].type === 'select' ||
             this._controls[name].type === 'progressbar'
         )
         if (this._controls[name] && typeCondition) {
-            return this._controls[name].setItems(items)
+            return this._controls[name].setItems(items, syntheticEvent)
         } else {
             throw new Error('Chosen control is not a range, select or progressbar type')
         }
@@ -604,11 +607,12 @@ class SmartSettings {
         base.getValue = function() {
             return this.element().value
         }
-        base.setValue = function(value) {
+        base.setValue = function (value, syntheticEvent) {
             base.value = value
             base.element().innerText = value
             base.element().value = value
-            self._dispatchEvent(base.element(), base.type)
+            if (syntheticEvent === true)
+                self._dispatchEvent(base.element(), base.type)
         }
         this._controls[name] = base
         return this._controls[name]
@@ -653,11 +657,12 @@ class SmartSettings {
         base.getValue = function () {
             return this.element().value
         }
-        base.setValue = function (value) {
+        base.setValue = function (value, syntheticEvent) {
             base.value = value
             base.element().innerText = value
             base.element().value = value
-            self._dispatchEvent(base.element(), base.type)
+            if (syntheticEvent === true)
+                self._dispatchEvent(base.element(), base.type)
         }
         this._body.appendChild(wrapper)
         this._controls[name] = base
@@ -710,10 +715,11 @@ class SmartSettings {
         base.getValue = function() {
             return parseFloat(base.element().value)
         }
-        base.setValue = function(v) {
+        base.setValue = function(v, syntheticEvent) {
             base.value = v
             base.element().value = v
-            self._dispatchEvent(base.element(), base.type)
+            if (syntheticEvent === true)
+                self._dispatchEvent(base.element(), base.type)
         }
         base.getItems = function() {
             let e = base.element()
@@ -724,14 +730,15 @@ class SmartSettings {
                 parseFloat(e.step),
             ]
         }
-        base.setItems = function(items) {
+        base.setItems = function(items, syntheticEvent) {
             let e = base.element()
             e.min = items[0]
             e.max = items[1]
             e.value = items[2]
             e.step = items[3]
             base.value = parseFloat(e.value)
-            self._dispatchEvent(base.element(), base.type)
+            if (syntheticEvent === true)
+                self._dispatchEvent(base.element(), base.type)
         }
         this._controls[name] = base
         return this._controls[name]
@@ -779,10 +786,11 @@ class SmartSettings {
         base.getValue = function() {
             return base.element().checked
         }
-        base.setValue = function(v) {
+        base.setValue = function(v, syntheticEvent) {
             base.element().checked = v
             base.value = v
-            self._dispatchEvent(base.element(), base.type)
+            if (syntheticEvent === true)
+                self._dispatchEvent(base.element(), base.type)
         }
         this._body.appendChild(wrapper)
         this._controls[name] = base
@@ -831,11 +839,12 @@ class SmartSettings {
         base.getValue = function() {
             return base.element().value
         }
-        base.setValue = function(v) {
+        base.setValue = function(v, syntheticEvent) {
             base.element().value = v
             base.value = v
             span.innerText = v
-            self._dispatchEvent(base.element(), base.type)
+            if (syntheticEvent === true)
+                self._dispatchEvent(base.element(), base.type)
         }
         this._body.appendChild(wrapper)
         this._controls[name] = base
@@ -885,19 +894,20 @@ class SmartSettings {
             let _select = base.element()
             return _select.options[_select.selectedIndex].value
         }
-        base.setValue = function(v) {
+        base.setValue = function(v, syntheticEvent) {
             base.value = v
             let _select = base.element()
             select.options[select.selectedIndex] = self._createSelectOption(v)
             _select.value = v
-            self._dispatchEvent(base.element(), base.type)
+            if (syntheticEvent === true)
+                self._dispatchEvent(base.element(), base.type)
         }
         base.getItems = function() {
             return Array
                 .from(base.element().options)
                 .map(option => option.value)
         }
-        base.setItems = function(items) {
+        base.setItems = function(items, syntheticEvent) {
             const _current = {
                 selected: base.element().selectedIndex,
                 length: base.getItems().length
@@ -935,7 +945,8 @@ class SmartSettings {
                 )
             })
             base.value = items[_new.selected]
-            self._dispatchEvent(base.element(), base.type)
+            if (syntheticEvent === true)
+                self._dispatchEvent(base.element(), base.type)
         }
         base.getIndex = function() {
             return parseInt(base.element().selectedIndex)
@@ -982,10 +993,11 @@ class SmartSettings {
         base.getValue = function() {
             return parseFloat(base.element().value)
         }
-        base.setValue = function(v) {
+        base.setValue = function(v, syntheticEvent) {
             base.element().value = v
             base.value = v
-            self._dispatchEvent(base.element(), base.type)
+            if (syntheticEvent === true)
+                self._dispatchEvent(base.element(), base.type)
         }
         wrapper.appendChild(label)
         wrapper.appendChild(input)
@@ -1029,10 +1041,11 @@ class SmartSettings {
         base.getValue = function() {
             return base.element().files[0]
         }
-        base.setValue = function(v) {
+        base.setValue = function(v, syntheticEvent) {
             base.value = v
             base.element().files[0] = v
-            self._dispatchEvent(base.element(), base.type)
+            if (syntheticEvent === true)
+                self._dispatchEvent(base.element(), base.type)
         }
         this._body.appendChild(wrapper)
         this._controls[name] = base
