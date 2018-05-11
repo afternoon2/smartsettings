@@ -1,7 +1,7 @@
 {
   "name": "smartsettings",
   "description": "Yet another JavaScript library for creating (smart) setting panels",
-  "version": "1.0.4",
+  "version": "0.0.0-development",
   "license": "MIT",
   "author": "Jakub Antolak <poprostuantolak@gmail.com>",
   "repository": {
