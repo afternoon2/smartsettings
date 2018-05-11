@@ -306,9 +306,10 @@ class SmartSettings {
     show(name) {
         if (name) {
             this._controls[name].show()
+        } else {
+            this._panel.classList.remove('hide')
+            this._hidden = false
         }
-        this._panel.classList.remove('hide')
-        this._hidden = false
     }
 
     /**
@@ -321,9 +322,10 @@ class SmartSettings {
     hide(name) {
         if (name) {
             this._controls[name].hide()
+        } else {
+            this._panel.classList.add('hide')
+            this._hidden = true
         }
-        this._panel.classList.add('hide')
-        this._hidden = true
     }
 
     /**
@@ -426,6 +428,19 @@ class SmartSettings {
             elem.parentElement.remove()
             elem.remove()
             delete this._controls[name]
+        }
+    }
+
+    /**
+     * Removes all controls from the panel
+     * @param {boolean} [removeName] - set to true if you want to clean the panel's name. Default set to false
+     * @returns {void}
+     * @example
+     * mySettings.removeAll()
+     */
+    removeAll(removeName = false) {
+        for (let key in this._controls) {
+            delete this._controls[key]
         }
     }
 

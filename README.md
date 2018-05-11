@@ -54,6 +54,7 @@ Or in the browser:
     - `toggle()` - open/close settings panel
     - `destroy()` - remove current panel from the DOM
     - `remove(name)` - removes specific control from the panel
+    - `removeAll() - removes all controls from the panel
     - `getValue(name)` - returns active value of the specific control
     - `setValue(name, value, [synthetic event])` - sets new active value of the specific control. Set syntheticEvent to true if you want to dispatch an event after change.
     - `getIndex(name)` - returns selected index of the select control
