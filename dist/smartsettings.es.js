@@ -244,18 +244,20 @@ var SmartSettings = function () {
         value: function show(name) {
             if (name) {
                 this._controls[name].show();
+            } else {
+                this._panel.classList.remove('hide');
+                this._hidden = false;
             }
-            this._panel.classList.remove('hide');
-            this._hidden = false;
         }
     }, {
         key: 'hide',
         value: function hide(name) {
             if (name) {
                 this._controls[name].hide();
+            } else {
+                this._panel.classList.add('hide');
+                this._hidden = true;
             }
-            this._panel.classList.add('hide');
-            this._hidden = true;
         }
     }, {
         key: 'enable',
