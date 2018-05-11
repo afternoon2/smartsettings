@@ -41,9 +41,7 @@
     "test": "jest",
     "pretest": "npm run build",
     "docs": "./node_modules/.bin/jsdoc ./src -d ./docs --readme ./README.md",
-    "commit": "git-cz",
-    "travis-deploy-once": "travis-deploy-once",
-    "semantic-release": "semantic-release"
+    "commit": "git-cz"
   },
   "files": [
     "dist"
