@@ -319,6 +319,13 @@
               }
           }
       }, {
+          key: 'removeAll',
+          value: function removeAll() {
+              for (var key in this._controls) {
+                  delete this._controls[key];
+              }
+          }
+      }, {
           key: 'getValue',
           value: function getValue(name) {
               if (name && this._controls[name] && this._controls[name].getValue) {

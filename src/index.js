@@ -430,6 +430,19 @@ class SmartSettings {
     }
 
     /**
+     * Removes all controls from the panel
+     * @param {boolean} [removeName] - set to true if you want to clean the panel's name. Default set to false
+     * @returns {void}
+     * @example
+     * mySettings.removeAll()
+     */
+    removeAll(removeName = false) {
+        for (let key in this._controls) {
+            delete this._controls[key]
+        }
+    }
+
+    /**
      * Get value of specific control
      * @param {string} name - name of the control
      * @returns {(number|string|boolean)}
