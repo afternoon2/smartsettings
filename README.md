@@ -27,7 +27,7 @@ const settings = new SmartSettings('Settings', 10 /* left */, 10 /* top */)
 
 Or in the browser:
 ```html
-<script src="https://unpkg.com/smartsettings@1.0.4/dist/smartsettings.umd.js"></script>
+<script src="https://unpkg.com/smartsettings@1.0.5/dist/smartsettings.umd.js"></script>
 ```
 
 [Documentation](https://afternoon2.github.io/smartsettings/)
