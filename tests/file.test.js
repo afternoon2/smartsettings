@@ -18,5 +18,5 @@ afterEach(() => {
 
 test('Add file control', () => {
     expect(upload).toBeInstanceOf(Object)
-    expect(upload.element()).toBe(document.getElementById('sms-id-1'))
+    expect(upload.element()).toBe(document.getElementById(`${s._localString}-1`))
 })

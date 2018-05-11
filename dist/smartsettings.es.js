@@ -64,6 +64,7 @@ var SmartSettings = function () {
         this._draggable = false;
         this._panel = null;
         this._controls = {};
+        this._localString = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
         this._globalWatcher = null;
         this._createUniqueId();
         this._create(this.name, this.initialTop, this.initialLeft);
@@ -72,9 +73,10 @@ var SmartSettings = function () {
     createClass(SmartSettings, [{
         key: '_createUniqueId',
         value: function _createUniqueId() {
+            var _this = this;
             var counter = 0;
-            window.uniqueId = function () {
-                return 'sms-id-' + counter++;
+            this.uniqueID = function () {
+                return _this._localString + '-' + counter++;
             };
         }
     }, {
@@ -159,10 +161,10 @@ var SmartSettings = function () {
     }, {
         key: '_create',
         value: function _create() {
-            var _this = this;
+            var _this2 = this;
             var panelAttributes = {
                 class: 'sms-panel',
-                id: uniqueId(),
+                id: this.uniqueID(),
                 style: 'top: ' + this.initialTop + 'px; left: ' + this.initialLeft + 'px; z-index: 2'
             };
             var panel = this._createElement('div', panelAttributes);
@@ -170,7 +172,7 @@ var SmartSettings = function () {
             var body = this._createElement('div', { class: 'sms-panel-body' });
             var paragraph = this._createElement('p', { class: 'sms-panel-header-name' });
             header.addEventListener('click', function (e) {
-                return _this.toggle();
+                return _this2.toggle();
             });
             paragraph.innerText = this.name;
             header.appendChild(paragraph);
@@ -182,7 +184,7 @@ var SmartSettings = function () {
     }, {
         key: '_createControlBasics',
         value: function _createControlBasics() {
-            var id = uniqueId();
+            var id = this.uniqueID();
             var basics = {
                 id: id,
                 disabled: false,
@@ -320,8 +322,10 @@ var SmartSettings = function () {
     }, {
         key: 'setValue',
         value: function setValue(name, value) {
-            if (name && this._controls[name] && this._controls[name].setValue) {
-                return this._controls[name].setValue(value);
+            var syntheticEvent = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+            var _control = this._controls[name];
+            if (name && _control && _control.setValue) {
+                return _control.setValue(value, syntheticEvent);
             }
         }
     }, {
@@ -336,6 +340,13 @@ var SmartSettings = function () {
             return values;
         }
     }, {
+        key: 'getIndex',
+        value: function getIndex(name) {
+            if (name && this._controls[name].getIndex) {
+                return this._controls[name].getIndex();
+            }
+        }
+    }, {
         key: 'getItems',
         value: function getItems(name) {
             var typeCondition = this._controls[name].type === 'range' || this._controls[name].type === 'select' || this._controls[name].type === 'progressbar';
@@ -348,9 +359,10 @@ var SmartSettings = function () {
     }, {
         key: 'setItems',
         value: function setItems(name, items) {
+            var syntheticEvent = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
             var typeCondition = this._controls[name].type === 'range' || this._controls[name].type === 'select' || this._controls[name].type === 'progressbar';
             if (this._controls[name] && typeCondition) {
-                return this._controls[name].setItems(items);
+                return this._controls[name].setItems(items, syntheticEvent);
             } else {
                 throw new Error('Chosen control is not a range, select or progressbar type');
             }
@@ -419,11 +431,11 @@ var SmartSettings = function () {
             base.getValue = function () {
                 return this.element().value;
             };
-            base.setValue = function (value) {
+            base.setValue = function (value, syntheticEvent) {
                 base.value = value;
                 base.element().innerText = value;
                 base.element().value = value;
-                self._dispatchEvent(base.element(), base.type);
+                if (syntheticEvent === true) self._dispatchEvent(base.element(), base.type);
             };
             this._controls[name] = base;
             return this._controls[name];
@@ -460,11 +472,11 @@ var SmartSettings = function () {
             base.getValue = function () {
                 return this.element().value;
             };
-            base.setValue = function (value) {
+            base.setValue = function (value, syntheticEvent) {
                 base.value = value;
                 base.element().innerText = value;
                 base.element().value = value;
-                self._dispatchEvent(base.element(), base.type);
+                if (syntheticEvent === true) self._dispatchEvent(base.element(), base.type);
             };
             this._body.appendChild(wrapper);
             this._controls[name] = base;
@@ -509,23 +521,23 @@ var SmartSettings = function () {
             base.getValue = function () {
                 return parseFloat(base.element().value);
             };
-            base.setValue = function (v) {
+            base.setValue = function (v, syntheticEvent) {
                 base.value = v;
                 base.element().value = v;
-                self._dispatchEvent(base.element(), base.type);
+                if (syntheticEvent === true) self._dispatchEvent(base.element(), base.type);
             };
             base.getItems = function () {
                 var e = base.element();
                 return [parseFloat(e.min), parseFloat(e.max), parseFloat(e.value), parseFloat(e.step)];
             };
-            base.setItems = function (items) {
+            base.setItems = function (items, syntheticEvent) {
                 var e = base.element();
                 e.min = items[0];
                 e.max = items[1];
                 e.value = items[2];
                 e.step = items[3];
                 base.value = parseFloat(e.value);
-                self._dispatchEvent(base.element(), base.type);
+                if (syntheticEvent === true) self._dispatchEvent(base.element(), base.type);
             };
             this._controls[name] = base;
             return this._controls[name];
@@ -563,10 +575,10 @@ var SmartSettings = function () {
             base.getValue = function () {
                 return base.element().checked;
             };
-            base.setValue = function (v) {
+            base.setValue = function (v, syntheticEvent) {
                 base.element().checked = v;
                 base.value = v;
-                self._dispatchEvent(base.element(), base.type);
+                if (syntheticEvent === true) self._dispatchEvent(base.element(), base.type);
             };
             this._body.appendChild(wrapper);
             this._controls[name] = base;
@@ -607,11 +619,11 @@ var SmartSettings = function () {
             base.getValue = function () {
                 return base.element().value;
             };
-            base.setValue = function (v) {
+            base.setValue = function (v, syntheticEvent) {
                 base.element().value = v;
                 base.value = v;
                 span.innerText = v;
-                self._dispatchEvent(base.element(), base.type);
+                if (syntheticEvent === true) self._dispatchEvent(base.element(), base.type);
             };
             this._body.appendChild(wrapper);
             this._controls[name] = base;
@@ -653,19 +665,19 @@ var SmartSettings = function () {
                 var _select = base.element();
                 return _select.options[_select.selectedIndex].value;
             };
-            base.setValue = function (v) {
+            base.setValue = function (v, syntheticEvent) {
                 base.value = v;
                 var _select = base.element();
                 select.options[select.selectedIndex] = self._createSelectOption(v);
                 _select.value = v;
-                self._dispatchEvent(base.element(), base.type);
+                if (syntheticEvent === true) self._dispatchEvent(base.element(), base.type);
             };
             base.getItems = function () {
                 return Array.from(base.element().options).map(function (option) {
                     return option.value;
                 });
             };
-            base.setItems = function (items) {
+            base.setItems = function (items, syntheticEvent) {
                 var _current = {
                     selected: base.element().selectedIndex,
                     length: base.getItems().length
@@ -698,7 +710,10 @@ var SmartSettings = function () {
                     base.element().options[_index] = self._createSelectOption(item, _index = _new.selected ? true : false);
                 });
                 base.value = items[_new.selected];
-                self._dispatchEvent(base.element(), base.type);
+                if (syntheticEvent === true) self._dispatchEvent(base.element(), base.type);
+            };
+            base.getIndex = function () {
+                return parseInt(base.element().selectedIndex);
             };
             this._body.appendChild(wrapper);
             this._controls[name] = base;
@@ -734,10 +749,10 @@ var SmartSettings = function () {
             base.getValue = function () {
                 return parseFloat(base.element().value);
             };
-            base.setValue = function (v) {
+            base.setValue = function (v, syntheticEvent) {
                 base.element().value = v;
                 base.value = v;
-                self._dispatchEvent(base.element(), base.type);
+                if (syntheticEvent === true) self._dispatchEvent(base.element(), base.type);
             };
             wrapper.appendChild(label);
             wrapper.appendChild(input);
@@ -774,10 +789,10 @@ var SmartSettings = function () {
             base.getValue = function () {
                 return base.element().files[0];
             };
-            base.setValue = function (v) {
+            base.setValue = function (v, syntheticEvent) {
                 base.value = v;
                 base.element().files[0] = v;
-                self._dispatchEvent(base.element(), base.type);
+                if (syntheticEvent === true) self._dispatchEvent(base.element(), base.type);
             };
             this._body.appendChild(wrapper);
             this._controls[name] = base;
@@ -791,7 +806,7 @@ var SmartSettings = function () {
     }, {
         key: 'loadConfig',
         value: function loadConfig(config) {
-            var _this2 = this;
+            var _this3 = this;
             if (!config) {
                 throw new Error('There is no config provided');
             }
@@ -806,7 +821,7 @@ var SmartSettings = function () {
             }
             if (Array.isArray(config) === true) {
                 config.forEach(function (entry) {
-                    return _this2._assignEntryToMethod(entry);
+                    return _this3._assignEntryToMethod(entry);
                 });
             }
         }

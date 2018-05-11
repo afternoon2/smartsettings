@@ -114,7 +114,7 @@ test('Get value of a specific control', () => {
 test('Set value of a specific control', () => {
     let values = [1, 100, 50, 1]
     let s = new SmartSettings()
-    let range = s.range('Range', values, (e) => {})
+    let range = s.range('Range', values, e => {})
 
     range.setValue(3)
 

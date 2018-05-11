@@ -21,7 +21,7 @@ afterEach(() => {
 
 test('Add checkbox control', () => {
     expect(s._controls[name]).toBe(checkbox)
-    expect(document.getElementById('sms-id-1')).toBe(checkbox.element())
+    expect(document.getElementById(`${s._localString}-1`)).toBe(checkbox.element())
 })
 
 test('Set checkbox value', () => {

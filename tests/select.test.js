@@ -20,7 +20,7 @@ afterEach(() => {
 })
 
 test('Add select input', () => {
-    let _select = document.getElementById('sms-id-1')
+    let _select = document.getElementById(`${s._localString}-1`)
     expect(select.element()).toBe(_select)
     expect(s._controls[name]).toBe(select)
 })
@@ -55,4 +55,9 @@ test('Show and hide select control', () => {
     s.show(name)
     expect(s._controls[name].element().classList[1]).toBe(undefined)
     expect(s._controls[name].hidden).toBe(false)
+})
+
+test('Get selected index of the select control', () => {
+    let current = s.getIndex(name)
+    expect(current).toBe(0)
 })

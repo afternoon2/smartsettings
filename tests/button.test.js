@@ -19,9 +19,9 @@ test('Add button control', () => {
     }
     let button = s.button(name, () => callback())
     button.element().dispatchEvent(new Event('click'))
-    expect(button.id).toBe('sms-id-1')
+    expect(button.id).toBe(`${s._localString}-1`)
     expect(button.element).toBeInstanceOf(Function)
-    expect(button.element()).toBe(document.getElementById('sms-id-1'))
+    expect(button.element()).toBe(document.getElementById(`${s._localString}-1`))
     expect(button.element().innerText).toBe(name)
     expect(callbackVar).toBe(1)
 })

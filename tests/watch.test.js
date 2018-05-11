@@ -38,10 +38,10 @@ test('If callback reacts on change', () => {
 
 test('If callback reacts after articial update', () => {
     s.watch(watcher)
-    s.setItems('Range control', [4, 6, 2, 0.5])
+    s.setItems('Range control', [4, 6, 2, 0.5], true)
     expect(element).toBe(range.element())
 
-    s.setValue(area.name, 'This is a parrot!')
+    s.setValue(area.name, 'This is a parrot!', true)
     expect(element).toBe(area.element())
     expect(element.value).toBe(area.element().value)
 })

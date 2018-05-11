@@ -22,7 +22,7 @@ afterEach(() => {
 test('Add color control', () => {
     expect(color.value).toBe(value)
     expect(color.element().value).toBe(value)
-    expect(document.getElementById('sms-id-1')).toBe(color.element())
+    expect(document.getElementById(`${s._localString}-1`)).toBe(color.element())
 })
 
 test('Set color value', () => {

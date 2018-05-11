@@ -19,7 +19,7 @@ test('New panel correctly mounts in the DOM', () => {
 
     let _test = new SmartSettings(name, 10, 10)
     let smsPanel = document.querySelector('.sms-panel')
-    let id = 'sms-id-0'
+    let id = `${_test._localString}-0`
     let smsPanelHeader = document.querySelector('.sms-panel-header')
     let smsPanelBody = document.querySelector('.sms-panel-body')
     let smsPanelName = document.querySelector('.sms-panel-header-name')
