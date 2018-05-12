@@ -211,14 +211,14 @@
                       this.disabled = true;
                   },
                   show: function show() {
-                      if (this.element().classList[1] === 'hide') {
-                          this.element().classList.remove('hide');
+                      if (this.element().parentNode.classList[1] === 'hide') {
+                          this.element().parentNode.classList.remove('hide');
                           this.hidden = false;
                       }
                   },
                   hide: function hide() {
-                      if (this.element().classList[1] !== 'hide') {
-                          this.element().classList.add('hide');
+                      if (this.element().parentNode.classList[1] !== 'hide') {
+                          this.element().parentNode.classList.add('hide');
                           this.hidden = true;
                       }
                   }
