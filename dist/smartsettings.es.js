@@ -356,6 +356,14 @@ var SmartSettings = function () {
             }
         }
     }, {
+        key: 'setIndex',
+        value: function setIndex(name, index) {
+            var syntheticEvent = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+            if (name && this._controls[name].setIndex) {
+                return this._controls[name].setIndex(index, syntheticEvent);
+            }
+        }
+    }, {
         key: 'getItems',
         value: function getItems(name) {
             var typeCondition = this._controls[name].type === 'range' || this._controls[name].type === 'select' || this._controls[name].type === 'progressbar';
@@ -723,6 +731,13 @@ var SmartSettings = function () {
             };
             base.getIndex = function () {
                 return parseInt(base.element().selectedIndex);
+            };
+            base.setIndex = function (value, syntheticEvent) {
+                base.element().selectedIndex = value;
+                base.value = base.element().options[value].value;
+                if (syntheticEvent === true) {
+                    self.dispatchEvent(base.element(), base.type);
+                }
             };
             this._body.appendChild(wrapper);
             this._controls[name] = base;

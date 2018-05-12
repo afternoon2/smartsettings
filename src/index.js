@@ -503,6 +503,21 @@ class SmartSettings {
     }
 
     /**
+     * Set selected index of the select control
+     * @param {string} name - name of the control
+     * @param {number} index - new active index
+     * @param {boolean} [syntheticEvent] - specify, if method should dispatch syntethic event after items update. Default value is false
+     * @returns {void}
+     * @example
+     * mySettings.setIndex('Select', 4)
+     */
+    setIndex(name, index, syntheticEvent = false) {
+        if (name && this._controls[name].setIndex) {
+            return this._controls[name].setIndex(index, syntheticEvent)
+        }
+    }
+
+    /**
      * Get select/range items
      * @param {string} name - name of the control
      * @returns {array}
@@ -965,6 +980,13 @@ class SmartSettings {
         }
         base.getIndex = function() {
             return parseInt(base.element().selectedIndex)
+        }
+        base.setIndex = function(value, syntheticEvent) {
+            base.element().selectedIndex = value
+            base.value = base.element().options[value].value
+            if (syntheticEvent === true) {
+                self.dispatchEvent(base.element(), base.type)
+            }
         }
         this._body.appendChild(wrapper)
         this._controls[name] = base

@@ -54,10 +54,11 @@ Or in the browser:
     - `toggle()` - open/close settings panel
     - `destroy()` - remove current panel from the DOM
     - `remove(name)` - removes specific control from the panel
-    - `removeAll() - removes all controls from the panel
+    - `removeAll()` - removes all controls from the panel
     - `getValue(name)` - returns active value of the specific control
     - `setValue(name, value, [synthetic event])` - sets new active value of the specific control. Set syntheticEvent to true if you want to dispatch an event after change.
     - `getIndex(name)` - returns selected index of the select control
+    - `setIndex(name, value, [syntheticEvent])` - set new selected index of the select control. Set syntheticEvent to true if you want to dispatch an event after change.
     - `getActiveValues()` - returns object with active values of all controls (except buttons)
     - `setItems(name, items, [syntheticEvent])` - set new dropdown, range or progressbar control items. Set syntheticEvent to true if you want to dispatch an event after change.
     - `getItems(name)` - get items of the specific dropdown, range or progressbar control

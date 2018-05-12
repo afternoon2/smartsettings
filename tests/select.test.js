@@ -35,6 +35,12 @@ test('Set and get select value', () => {
     expect(select.value).toBe('d')
 })
 
+test('Set new selected index', () => {
+    s.setIndex(name, 2)
+    expect(select.element().selectedIndex).toBe(2)
+    expect(select.value).toBe('c')
+})
+
 test('Set and get select items', () => {
     let _newItems = ['1', '2', '3', '4']
     let _select = select.element()
