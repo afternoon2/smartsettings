@@ -547,6 +547,7 @@
               base.setValue = function (v, syntheticEvent) {
                   base.value = v;
                   base.element().value = v;
+                  span.innerText = v;
                   if (syntheticEvent === true) self._dispatchEvent(base.element(), base.type);
               };
               base.getItems = function () {
@@ -560,6 +561,7 @@
                   e.value = items[2];
                   e.step = items[3];
                   base.value = parseFloat(e.value);
+                  span.innerText = parseFloat(e.value);
                   if (syntheticEvent === true) self._dispatchEvent(base.element(), base.type);
               };
               this._controls[name] = base;
