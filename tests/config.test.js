@@ -14,28 +14,30 @@ beforeEach(() => {
             value: 'Hello!'
         },
         'Textarea': {
-            name: 'Textarea',
             type: 'textarea',
+            name: 'Textarea',
             value: 'Hellllllo'
         },
         'Color': {
-            name: 'Color',
             type: 'color',
+            name: 'Color',
             value: '#ffcc00'
         },
         'Range': {
-            name: 'Range',
             type: 'range',
+            name: 'Range',
             items: [0, 100, 1, 1]
         }
     }
-    configJSON = JSON.stringify(config)
+    configJSON = JSON.stringify(config, null, 4)
     configArray = Object.values(config)
     s = new SmartSettings()
 })
 
 afterEach(() => {
     config = undefined
+    configArray = undefined
+    configJSON = undefined
     s = undefined
 })
 
@@ -64,4 +66,16 @@ test('Load controls from the config array', () => {
     expect(s._controls['Textarea'].element()).toBe(document.getElementById(`${s._localString}-3`))
     expect(s._controls['Color'].element()).toBe(document.getElementById(`${s._localString}-4`))
     expect(s._controls['Range'].element()).toBe(document.getElementById(`${s._localString}-5`))
+})
+
+test('Set and get current configuration', () => {
+    s.loadConfig(configArray)
+    let confObj = s.getConfig()
+    let confObj2 = s.getConfig('object')
+    let confArray = s.getConfig('array')
+    let confString = s.getConfig('string')
+    expect(confObj).toEqual(config)
+    expect(confObj2).toEqual(config)
+    expect(confArray).toEqual(configArray)
+    expect(confString).toEqual(configJSON)
 })

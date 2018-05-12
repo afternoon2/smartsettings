@@ -27,7 +27,7 @@ const settings = new SmartSettings('Settings', 10 /* left */, 10 /* top */)
 
 Or in the browser:
 ```html
-<script src="https://unpkg.com/smartsettings@1.1.2/dist/smartsettings.umd.js"></script>
+<script src="https://unpkg.com/smartsettings@1.2.0/dist/smartsettings.umd.js"></script>
 ```
 
 [Documentation](https://afternoon2.github.io/smartsettings/)
@@ -63,6 +63,7 @@ Or in the browser:
     - `getItems(name)` - get items of the specific dropdown, range or progressbar control
     - `watch(callback)` - watch panel for changes and fire callback on each change (real or artificial - from `setItems` or `setValue`).
     - `loadConfig(config)` - load controls in the settings panel from the given object/JSON string/array of objects (config description below).
+    - `getConfig([output])` - returns current configuration. Unless there is an output parameter specified, this method returns an object. But you can set the output to be an 'array' or JSON 'string'
 
 ## Demo
 

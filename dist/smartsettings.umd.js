@@ -471,7 +471,7 @@
               });
               base.name = name;
               base.value = value;
-              base.type = 'text';
+              base.type = 'textarea';
               base.callback = callback || null;
               wrapper.appendChild(label);
               wrapper.appendChild(textarea);
@@ -838,6 +838,53 @@
                   config.forEach(function (entry) {
                       return _this3._assignEntryToMethod(entry);
                   });
+              }
+          }
+      }, {
+          key: 'getConfig',
+          value: function getConfig() {
+              var output = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'object';
+              var _obj = {};
+              var decide = function decide(ctrl) {
+                  if (ctrl.type === 'select' || ctrl.type === 'range' || ctrl.type === 'number') {
+                      return {
+                          items: ctrl.getItems()
+                      };
+                  } else {
+                      return {
+                          value: ctrl.getValue()
+                      };
+                  }
+              };
+              for (var key in this._controls) {
+                  var _control = this._controls[key];
+                  if (_control.type === 'button') {
+                      _obj[key] = {
+                          type: _control.type,
+                          name: _control.name
+                      };
+                      if (_control.callback !== null) {
+                          _obj[key].callback = _control.callback;
+                      }
+                  } else {
+                      var itemsOrValue = decide(_control);
+                      _obj[key] = Object.assign({
+                          type: _control.type,
+                          name: _control.name
+                      }, itemsOrValue);
+                      if (_control.callback !== null) {
+                          _obj[key].callback = _control.callback;
+                      }
+                  }
+              }
+              if (!output || output === 'object') {
+                  return _obj;
+              }
+              if (output === 'array') {
+                  return Object.values(_obj);
+              }
+              if (output === 'string') {
+                  return JSON.stringify(_obj, null, 4);
               }
           }
       }]);
