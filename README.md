@@ -1,6 +1,8 @@
 # smartsettings.js
 Yet another JS library for creating setting panels.
 
+![smartsettings-ui](./2docs/smartsettings-ui.png)
+
 ## Installation
 
 ```
@@ -29,8 +31,13 @@ Or in the browser:
 ```html
 <script src="https://unpkg.com/smartsettings@1.2.2/dist/smartsettings.umd.js"></script>
 ```
+## Docs & demos
 
 [Documentation](https://afternoon2.github.io/smartsettings/)
+
+<p data-height="500" data-theme-id="0" data-slug-hash="08a144fdad89d6a44e956ce96c783873" data-default-tab="js,result" data-user="jakub_antolak" data-embed-version="2" data-pen-title="SmartSettings demo" class="codepen"><a href="https://codepen.io/jakub_antolak/pen/08a144fdad89d6a44e956ce96c783873/">SmartSettings demo</a></p>
+
+<p data-height="500" data-theme-id="dark" data-slug-hash="PeaZKE" data-default-tab="js,result" data-user="jakub_antolak" data-embed-version="2" data-pen-title="css gradient maker 2" class="codepen"><a href="https://codepen.io/jakub_antolak/pen/PeaZKE/">css gradient maker 2</a></p>
 
 ## API overview
 - Controls:
@@ -65,10 +72,6 @@ Or in the browser:
     - `watch(callback)` - watch panel for changes and fire callback on each change (real or artificial - from `setItems` or `setValue`).
     - `loadConfig(config)` - load controls in the settings panel from the given object/JSON string/array of objects (config description below).
     - `getConfig([output])` - returns current configuration. Unless there is an output parameter specified, this method returns an object. But you can set the output to be an 'array' or JSON 'string'
-
-## Demo
-
-<p data-height="527" data-theme-id="0" data-slug-hash="08a144fdad89d6a44e956ce96c783873" data-default-tab="js,result" data-user="jakub_antolak" data-embed-version="2" data-pen-title="SmartSettings demo" class="codepen"><a href="https://codepen.io/jakub_antolak/pen/08a144fdad89d6a44e956ce96c783873/">SmartSettings demo</a> by Kuba (<a href="https://codepen.io/jakub_antolak">@jakub_antolak</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 
 ### Config template for `loadConfig` method
 
