@@ -28,12 +28,6 @@ class SmartSettings {
         this._open = true
 
         /**
-         * @property {boolean} _draggable
-         * @private
-         */
-        this._draggable = false
-
-        /**
          * @property {Node} _panel
          * @private
          */
