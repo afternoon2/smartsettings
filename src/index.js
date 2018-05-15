@@ -533,7 +533,7 @@ class SmartSettings {
         if (this._controls[name] && typeCondition) {
             return this._controls[name].getItems()
         } else {
-            throw new Error('Chosen control is not a range, select or progressbar type')
+            throw new Error('Chosen control is not a range or select type')
         }
     }
 
@@ -555,7 +555,7 @@ class SmartSettings {
         if (this._controls[name] && typeCondition) {
             return this._controls[name].setItems(items, syntheticEvent)
         } else {
-            throw new Error('Chosen control is not a range, select or progressbar type')
+            throw new Error('Chosen control is not a range or select type')
         }
     }
 
