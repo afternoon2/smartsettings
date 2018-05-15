@@ -28,12 +28,6 @@ class SmartSettings {
         this._open = true
 
         /**
-         * @property {boolean} _draggable
-         * @private
-         */
-        this._draggable = false
-
-        /**
          * @property {Node} _panel
          * @private
          */
@@ -212,13 +206,29 @@ class SmartSettings {
         let header = this._createElement('div', { class: 'sms-panel-header' })
         let body = this._createElement('div', { class: 'sms-panel-body' })
         let paragraph = this._createElement('p', { class: 'sms-panel-header-name' })
+        let toggleSpan = this._createElement('span', { 
+            class: 'sms-panel-header-span', 
+            id: `${this._localString}-toggle-span`
+        })
+        toggleSpan.innerText = '–'
         header.addEventListener('click', e => this.toggle())
         paragraph.innerText = this.name
         header.appendChild(paragraph)
+        header.appendChild(toggleSpan)
         panel.appendChild(header)
         panel.appendChild(body)
         this._panel = panel
         document.body.appendChild(this._panel)
+    }
+
+    /**
+     * Updates header span content depending on the _open property
+     * @returns {void}
+     * @private
+     */
+    _updateHeaderSpan() {
+        let span = document.getElementById(`${this._localString}-toggle-span`)
+        span.innerText = this._open === true ? '–' : '+'
     }
 
     /**
@@ -364,6 +374,7 @@ class SmartSettings {
             this._body.classList.remove('hide')
         } 
         this._open = true
+        this._updateHeaderSpan()
     }
 
     /**
@@ -375,6 +386,7 @@ class SmartSettings {
     close() {
         this._body.classList.add('hide')
         this._open = false
+        this._updateHeaderSpan()
     }
 
     /**
@@ -388,6 +400,7 @@ class SmartSettings {
             this._body.classList.remove('hide') :
             this._body.classList.add('hide')
         this._open = !this._open
+        this._updateHeaderSpan()
     }
 
     /**
