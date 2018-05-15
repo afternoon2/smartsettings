@@ -29,6 +29,7 @@ $sms-panel-header-height: 25px;
     box-shadow: $sms-g-box-shadow;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     &:hover {
         cursor: pointer;
     }
@@ -61,6 +62,11 @@ $sms-panel-header-height: 25px;
 }
 
 .sms-panel-header-name {
+    @mixin name;
+    font-weight: 500;
+}
+
+.sms-panel-header-span {
     @mixin name;
     font-weight: 500;
 }

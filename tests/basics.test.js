@@ -29,9 +29,9 @@ test('Hide settings panel', () => {
 
 test('Show settings panel', () => {
     let test = new SmartSettings()
+    let panel = document.querySelector('.sms-panel')
     test.hide()
     test.show()
-    let panel = document.querySelector('.sms-panel')
     expect(panel.classList[1]).toBe(undefined)
     expect(test._hidden).toBe(false)
 })
@@ -51,16 +51,19 @@ test('Close, open and toggle settings panel', () => {
     let test = new SmartSettings()
     let body = test._panel.childNodes[1]
     let header = test._panel.childNodes[0]
+    let span = header.childNodes[1]
     test.close()
-
+    expect(span.innerText).toBe('+')
     expect(test._open).toBe(false)
     expect(body.classList[1]).toBe('hide')
 
     test.open()
+    expect(span.innerText).toBe('–')
     expect(test._open).toBe(true)
     expect(body.classList[1]).toBe(undefined)
 
     test.toggle()
+    expect(span.innerText).toBe('+')
     expect(test._open).toBe(false)
     expect(body.classList[1]).toBe('hide')
 
@@ -121,7 +124,6 @@ test('Set value of a specific control', () => {
     expect(range.getValue()).toBe(3)
     expect(range.element().value).toBe('3')
 })
-
 
 test('Set and get items of specific control', () => {
     let values = [1, 2, 3, 4]
