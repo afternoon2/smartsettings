@@ -733,8 +733,8 @@ class SmartSettings {
             type: 'range',
             min: items[0],
             max: items[1],
-            value: items[2],
-            step: items[3]
+            step: items[3],
+            value: items[2]
         })
         base.type = 'range'
         base.name = name
