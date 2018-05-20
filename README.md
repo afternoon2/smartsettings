@@ -48,7 +48,7 @@ Or in the browser:
     - `color(name, value, callback)`
     - `text(name, value, callback)`
     - `textarea(name, value, callback)`
-    - `number(name, items, callback)` - items are default and step value
+    - `number(name, items, callback)` - items are initial, step, min and max values. Initial and step values are mandatory
     - `file(name, callback)`
     - **In all cases the `callback` parameter (function executed on each change in the control) is optional**
 - Methods:
