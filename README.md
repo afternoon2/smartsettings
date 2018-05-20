@@ -29,7 +29,7 @@ const settings = new SmartSettings('Settings', 10 /* left */, 10 /* top */)
 
 Or in the browser:
 ```html
-<script src="https://unpkg.com/smartsettings@1.2.2/dist/smartsettings.umd.js"></script>
+<script src="https://unpkg.com/smartsettings@1.2.3/dist/smartsettings.umd.js"></script>
 ```
 ## Docs & demos
 
