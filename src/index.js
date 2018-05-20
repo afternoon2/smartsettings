@@ -733,8 +733,8 @@ class SmartSettings {
             type: 'range',
             min: items[0],
             max: items[1],
-            value: items[2],
-            step: items[3]
+            step: items[3],
+            value: items[2]
         })
         base.type = 'range'
         base.name = name
@@ -1011,7 +1011,7 @@ class SmartSettings {
     /**
      * Creates number control
      * @param {string} name - name of the control
-     * @param {array} items - array with initial and step value
+     * @param {array} items - array with initial, step, min and max values. Initial and step values are mandatory
      * @param {function} [callback] - function executed on each change
      * @returns {object}
      * @example
@@ -1027,7 +1027,9 @@ class SmartSettings {
             id: base.id,
             type: 'number',
             value: items[0],
-            step: items[1]
+            step: items[1],
+            min: items[2],
+            max: items[3]
         })
         input.addEventListener('input', e => {
             base.value = parseFloat(e.target.value)

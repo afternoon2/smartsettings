@@ -5,7 +5,7 @@ let s, name, items, input
 beforeEach(() => {
     s = new SmartSettings()
     name = 'Number input'
-    items = [10, 1]
+    items = [10, 1, 0, 20]
     input = s.number(name, items)
 })
 
@@ -27,6 +27,8 @@ test('Add number control', () => {
     expect(input.value).toBe(items[0])
     expect(input.element().value).toBe(items[0].toString())
     expect(input.element().step).toBe(items[1].toString())
+    expect(input.element().min).toBe(items[2].toString())
+    expect(input.element().max).toBe(items[3].toString())
 })
 
 test('Set and get value of number control', () => {

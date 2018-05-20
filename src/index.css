@@ -296,6 +296,11 @@ $sms-button-border-color: #C0C0C0;
     padding: 0;
 }
 
+/* number */
+.sms-number {
+    font-size: 12px;
+}
+
 /* utilities */
 .sms-label {
     font-family: $sms-g-font;
