@@ -1,7 +1,8 @@
-# smartsettings.js
-Yet another JS library for creating setting panels.
+# smartsettings.js@2.0 [WIP]
 
-![smartsettings-ui](./2docs/smartsettings-ui.png)
+JS library for creating setting panels.
+
+# README for version 1.2.3
 
 ## Installation
 
