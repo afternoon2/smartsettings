@@ -6,6 +6,9 @@ module.exports = {
     sourceType: 'module',
     jsx: false,
   },
+  rules: {
+    'import/prefer-default-export': 0
+  },
   env: {
     browser: true
   },
