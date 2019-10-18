@@ -3,9 +3,9 @@ const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const { CheckerPlugin } = require('awesome-typescript-loader');
 
 module.exports = {
-  entry: './src/index.ts',
+  entry: path.resolve(__dirname, '../src/ts/index.ts'),
   output: {
-    filename: `smartsettings.js`,
+    filename: 'index.js',
     globalObject: 'typeof self !== \'undefined\' ? self : this',
     library: {
       amd: 'SmartSettings',
