@@ -1,0 +1,17 @@
+{
+  "name": "smartsettings",
+  "description": "Yet another JavaScript library for creating (smart) setting panels",
+  "version": "1.2.3",
+  "license": "MIT",
+  "author": "Jakub Antolak <poprostuantolak@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/afternoon2/smartsettings"
+  },
+  "devDependencies": {},
+  "scripts": {
+  },
+  "files": [
+    "dist"
+  ]
+}
