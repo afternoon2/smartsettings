@@ -40,7 +40,9 @@
     "build": "webpack --config=config/webpack.prod.js",
     "build:dev": "webpack --config=config/webpack.dev.js",
     "lint": "eslint -c .eslintrc.js src/index.ts",
-    "lint:fix": "eslint -c .eslintrc.js src/index.ts --fix"
+    "lint:fix": "eslint -c .eslintrc.js src/index.ts --fix",
+    "commit": "git-cz",
+    "test": "jest"
   },
   "files": [
     "dist"
