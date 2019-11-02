@@ -14,7 +14,6 @@ export type TextControlOptions = {
   autocomplete?: boolean,
   autofocus?: boolean,
   disabled?: boolean,
-  listener?: ControlListener,
   maxLength?: number,
   name?: string,
   pattern?: string,
@@ -28,7 +27,6 @@ export type TextAreaControlOptions = {
   autofocus?: boolean,
   cols?: number,
   disabled?: boolean,
-  listener?: ControlListener,
   maxLength?: number,
   minLength?: number,
   name?: string,
@@ -45,7 +43,6 @@ export type CheckboxControlOptions = {
   autofocus?: boolean,
   checked?: boolean,
   disabled?: boolean,
-  listener?: ControlListener,
   maxLength?: number,
   name?: string,
   pattern?: string,
@@ -57,7 +54,6 @@ export type ButtonControlOptions = {
   value: string,
   autofocus?: boolean,
   disabled?: boolean,
-  listener?: ControlListener,
   name?: string,
   type?: string,
 };
@@ -66,7 +62,6 @@ export type NumberControlOptions = {
   value: number,
   autofocus?: boolean,
   disabled?: boolean,
-  listener?: ControlListener,
   max?: number,
   min?: number,
   name?: string,
@@ -79,7 +74,6 @@ export type FileControlOptions = {
   accept?: string,
   autofocus?: boolean,
   disabled?: boolean,
-  listener?: ControlListener,
   multiple?: boolean,
   name?: string,
   placeholder?: string,
@@ -92,7 +86,6 @@ export type RangeControlOptions = {
   autofocus?: boolean,
   disabled?: boolean,
   labels?: boolean,
-  listener?: ControlListener,
   marks?: boolean,
   max?: number,
   min?: number,
@@ -112,8 +105,8 @@ export type ControlOptions = ButtonControlOptions
 
 export type ControlListenerUpdate = {
   id: string,
-  rootId: string,
-  options: ControlOptions,
+  key: string,
+  value: string | boolean | number,
 };
 
 export type ControlListener = (update: ControlListenerUpdate) => void;

@@ -1,7 +1,9 @@
 {
   "editor.fontSize": 14,
-  "editor.fontFamily": "SF Mono",
+  "editor.fontFamily": "Fira Code",
   "editor.tabSize": 2,
   "editor.renderWhitespace": "all",
-  "editor.fontLigatures": true
+  "editor.fontLigatures": true,
+  "editor.cursorStyle": "line-thin",
+  "editor.wordWrap": "on"
 }

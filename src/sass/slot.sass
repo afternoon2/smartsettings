@@ -1,0 +1,16 @@
+@import './variables.sass'
+@import './mixins.sass'
+
+.slot 
+  position: relative
+  
+  &__header 
+    @include header(0, darken($color1, 10%))
+    cursor: pointer
+  
+  &__name 
+    @include name
+  
+  &__link 
+    @include link
+    font-size: 10px

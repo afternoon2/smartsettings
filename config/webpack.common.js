@@ -7,12 +7,7 @@ module.exports = {
   output: {
     filename: 'index.js',
     globalObject: 'typeof self !== \'undefined\' ? self : this',
-    library: {
-      amd: 'SmartSettings',
-      commonjs: 'Smart',
-      root: 'SmartSettingsettings',
-    },
-    libraryExport: 'default',
+    library: 'SmartSettings',
     libraryTarget: 'umd',
   },
   resolve: {
@@ -32,11 +27,18 @@ module.exports = {
       },
       {
         test: /\.sass$/,
-        include: [path.resolve(__dirname, '../src/index.sass')],
         exclude: /node_modules/,
         use: [
           {
+            loader: 'style-loader',
+          }, {
             loader: 'css-loader',
+            options: {
+              modules: {
+                localIdentName: '[sha1:hash:hex:4]',
+              },
+              importLoaders: 1
+            },
           }, {
             loader: 'postcss-loader',
             options: {
@@ -49,11 +51,11 @@ module.exports = {
             options: {
               sassOptions: {
                 outputStyle: 'compressed'
-              }
+              },
             },
           }
-        ]
-      }
+        ],
+      },
     ],
   },
   plugins: [

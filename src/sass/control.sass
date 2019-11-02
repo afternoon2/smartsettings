@@ -1,0 +1,33 @@
+@import './variables.sass'
+@import './mixins.sass'
+
+.control 
+  @include node
+  border-radius: $radius
+  width: 100%
+  box-sizing: border-box
+  
+  &__body 
+    width: 100%
+    box-sizing: border-box
+    display: flex
+    align-items: center
+    padding: $padding
+    background-color: lighten($color, 20%)
+  
+  &__name 
+    margin: 0
+    box-sizing: border-box
+    width: 40%
+    color: $bright
+    font-size: $primarySize
+    font-family: $primary
+    padding: 0 $padding
+    align-self: flex-start
+    padding-top: $padding
+    @include ellipsis
+  
+  &__content 
+    width: 60%
+    display: flex
+  

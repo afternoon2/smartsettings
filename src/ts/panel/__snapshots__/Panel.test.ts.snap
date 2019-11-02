@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Panel If it mounts to the DOM correctly 1`] = `
+<div
+  class="panel locked"
+  data-draggable="true"
+  id="test_id"
+>
+  
+      
+  <header
+    class="panel__header"
+  >
+    
+        
+    <p
+      class="panel__name"
+      title="Panel"
+    >
+      
+          Panel
+        
+    </p>
+    
+        
+    <a
+      class="panel__link"
+    >
+      
+           ▾
+        
+    </a>
+    
+      
+  </header>
+  
+      
+  <main
+    class="panel__body hidden"
+  >
+    
+      
+  </main>
+  
+    
+</div>
+`;

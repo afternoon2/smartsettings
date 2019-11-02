@@ -25,16 +25,20 @@
     "eslint-plugin-react-hooks": "^1.7.0",
     "ghooks": "^2.0.4",
     "husky": "^3.0.9",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^24.9.0",
+    "jest-css-modules-transform": "^3.1.0",
     "lerna": "^3.18.1",
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.13.0",
     "postcss-loader": "^3.0.0",
     "sass-loader": "^8.0.0",
     "semantic-release": "^15.13.24",
+    "style-loader": "^1.0.0",
     "terser-webpack-plugin": "^2.1.3",
     "ts-jest": "^24.1.0",
     "tsconfig-paths-webpack-plugin": "^3.2.0",
     "typescript": "^3.6.4",
+    "typings-for-css-modules-loader": "^1.7.0",
     "utility-types": "^3.9.0",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.9",
@@ -71,7 +75,6 @@
     }
   },
   "dependencies": {
-    "cuid": "^2.1.6",
-    "lighterhtml": "^1.2.2"
+    "cuid": "^2.1.6"
   }
 }
