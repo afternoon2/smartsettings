@@ -8,7 +8,7 @@ describe('RootNode', () => {
     };
     class DerivedClass extends RootNode {
       constructor() {
-        super('title', options);
+        super('title', options, null, null);
       }
 
       validElement(parent: HTMLElement | string): boolean {

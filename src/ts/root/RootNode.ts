@@ -11,13 +11,13 @@ export abstract class RootNode {
   constructor(
     name: string,
     options: PanelOptions | ControlOptions,
-    listener?: ControlListener | null,
-    id?: string | null,
+    listener: ControlListener | null,
+    id: string | null,
   ) {
     const self = this;
     this.id = id || cuid();
     this.name = name;
-    this.listener = listener || null;
+    this.listener = listener;
     this.options = new Proxy(
       options,
       {
@@ -40,7 +40,7 @@ export abstract class RootNode {
     ) as (PanelOptions | ControlOptions);
   }
 
-  protected isValidElement(parent: HTMLElement | string): boolean {
+  protected isValidElement(parent: HTMLElement | string | null): boolean {
     if (typeof parent === 'string') {
       return Boolean(document.querySelector(parent));
     }

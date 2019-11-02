@@ -16,11 +16,11 @@ export class Panel extends RootNode {
   public element: HTMLDivElement;
 
   constructor(
-    title?: string,
-    parent?: HTMLElement | string,
-    options?: PanelOptions,
-    listener?: ControlListener | null,
-    id?: string | null,
+    title: string | null,
+    parent: HTMLElement | string | null,
+    options: PanelOptions | null,
+    listener: ControlListener | null,
+    id: string | null,
   ) {
     super(
       title || 'SmartSettings @2.0.0',
@@ -33,7 +33,7 @@ export class Panel extends RootNode {
     this.parentElement.appendChild(this.element);
   }
 
-  private assignParentElement(parent: HTMLElement | string | undefined) {
+  private assignParentElement(parent: HTMLElement | string | null) {
     if (parent && this.isValidElement(parent)) {
       this.parentElement = this.getParentElement(parent);
     }

@@ -4,12 +4,14 @@ describe('Panel', () => {
   test('If it initializes correctly', () => {
     const panel = new Panel(
       'Panel',
-      undefined,
+      null,
       {
         locked: true,
         collapsed: true,
         draggable: true,
       },
+      null,
+      null,
     );
     panel.id = 'id';
     expect(panel).toBeInstanceOf(Panel);
@@ -20,7 +22,7 @@ describe('Panel', () => {
   test('If it mounts to the DOM correctly', () => {
     const panel = new Panel(
       'Panel',
-      undefined,
+      null,
       {
         locked: true,
         collapsed: true,
@@ -35,7 +37,7 @@ describe('Panel', () => {
 
   test('If it invokes global listener on changes correctly', () => {
     const listener = jest.fn();
-    const panel = new Panel('Panel', undefined, undefined, listener);
+    const panel = new Panel('Panel', null, null, listener, null);
     panel.id = 'id';
     (<PanelOptions>panel.options).invisible = true;
     (<PanelOptions>panel.options).collapsed = true;

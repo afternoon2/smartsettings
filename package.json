@@ -49,7 +49,7 @@
     "build": "webpack --config=config/webpack.prod.js",
     "build:dev": "webpack --config=config/webpack.dev.js",
     "lint": "eslint -c .eslintrc.js src/ts/**/*.?*?.ts",
-    "lint:fix": "eslint -c .eslintrc.js src/ts/**/*(.*?).ts --fix",
+    "lint:fix": "eslint -c .eslintrc.js src/ts/**/*.?*?.ts --fix",
     "commit": "git-cz",
     "test": "jest"
   },
@@ -64,13 +64,11 @@
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
-    },
-    "ghooks": {
-      "pre-commit": "yarn lint:fix && yarn test"
     }
   },
   "husky": {
     "hooks": {
+      "pre-commit": "yarn lint:fix && yarn test",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
