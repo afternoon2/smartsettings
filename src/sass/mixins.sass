@@ -32,13 +32,13 @@
   color: $bright
   cursor: pointer
   font-size: 12px
-
+  transition: 120ms all ease-in-out
+  user-select: none
 
 @mixin ellipsis 
   white-space: nowrap
   overflow: hidden
   text-overflow: ellipsis
-
 
 @mixin name 
   width: 100%
@@ -47,6 +47,7 @@
   font-family: $primary
   padding: 0 $padding
   text-align: center
+  user-select: none
   @include ellipsis
 
 

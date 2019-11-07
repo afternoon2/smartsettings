@@ -10,7 +10,6 @@ export type ControlType = 'button'
 
 export type TextControlOptions = {
   value: string,
-  alt?: string,
   autocomplete?: boolean,
   autofocus?: boolean,
   disabled?: boolean,
@@ -29,7 +28,6 @@ export type TextAreaControlOptions = {
   disabled?: boolean,
   maxLength?: number,
   minLength?: number,
-  name?: string,
   placeholder?: string,
   readOnly?: boolean,
   rows?: number,
@@ -44,7 +42,6 @@ export type CheckboxControlOptions = {
   checked?: boolean,
   disabled?: boolean,
   maxLength?: number,
-  name?: string,
   pattern?: string,
   placeholder?: string,
   readOnly?: boolean,
@@ -54,7 +51,6 @@ export type ButtonControlOptions = {
   value: string,
   autofocus?: boolean,
   disabled?: boolean,
-  name?: string,
   type?: string,
 };
 
@@ -64,7 +60,6 @@ export type NumberControlOptions = {
   disabled?: boolean,
   max?: number,
   min?: number,
-  name?: string,
   placeholder?: string,
   readOnly?: boolean,
   step?: number,
@@ -75,7 +70,6 @@ export type FileControlOptions = {
   autofocus?: boolean,
   disabled?: boolean,
   multiple?: boolean,
-  name?: string,
   placeholder?: string,
   readOnly?: boolean,
   step?: number,
@@ -89,7 +83,6 @@ export type RangeControlOptions = {
   marks?: boolean,
   max?: number,
   min?: number,
-  name?: string,
   placeholder?: string,
   readOnly?: boolean,
   step?: number,

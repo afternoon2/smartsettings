@@ -1,59 +1,120 @@
-import cuid from 'cuid';
 import { PanelOptions } from '../panel/Panel';
-import { ControlOptions, ControlListener } from '../controls/controls.types';
+import {
+  ControlOptions,
+  ControlListener,
+  ControlListenerUpdate,
+} from '../controls/controls.types';
+
+export type InternalState = (PanelOptions | ControlOptions) & {
+  [key: string]: string | boolean | number,
+  readonly id: string,
+  name: string,
+};
+
+export type InternalStateSetter = (
+  target: InternalState,
+  key: string,
+  value: string | boolean | number,
+) => boolean;
 
 export abstract class RootNode {
-  public id: string;
-  public name: string;
-  public listener: ControlListener | null;
-  public options: PanelOptions | ControlOptions;
+  public abstract parentElement: HTMLElement;
+  public abstract element: HTMLElement;
+  
+  protected abstract state: InternalState;
+  protected abstract listeners: Map<string, ControlListener>;
 
-  constructor(
-    name: string,
-    options: PanelOptions | ControlOptions,
-    listener: ControlListener | null,
-    id: string | null,
-  ) {
-    const self = this;
-    this.id = id || cuid();
-    this.name = name;
-    this.listener = listener;
-    this.options = new Proxy(
-      options,
-      {
-        set(
-          // eslint-disable-next-line
-          target: PanelOptions | ControlOptions,
-          key: string,
-          value: string | boolean | number,
-        ) {
-          if (self.listener) {
-            self.listener({
-              id: self.id,
-              key,
-              value,
-            });
-          }
-          return true;
-        }
-      },
-    ) as (PanelOptions | ControlOptions);
+  get id(): string {
+    return this.state.id;
   }
 
-  protected isValidElement(parent: HTMLElement | string | null): boolean {
+  get name(): string {
+    return this.state.name;
+  }
+
+  get invisible(): boolean {
+    return Boolean(this.state.invisible);
+  }
+
+  get disabled(): boolean {
+    return Boolean(this.state.disabled);
+  }
+
+  rename(name: string) {
+    this.state.name = name;
+  }
+
+  show() {
+    this.state.invisible = false;
+  }
+
+  hide() {
+    this.state.invisible = true;
+  }
+
+  disable() {
+    this.state.disabled = true;
+  }
+
+  enable() {
+    this.state.disabled = false;
+  }
+
+  setListener(listener: ControlListener) {
+    this.listeners.set('user', listener);
+  }
+
+  protected isParentValid(parent: HTMLElement | string | null): boolean {
     if (typeof parent === 'string') {
       return Boolean(document.querySelector(parent));
-    }
-    if (parent instanceof HTMLElement && document.body.contains(parent)) {
+    } else if (parent instanceof HTMLElement && document.body.contains(parent)) {
       return true;
     }
     return false;
   }
 
-  protected getParentElement(parent: HTMLElement | string): HTMLElement {
+  protected getParentElement(parent: HTMLElement | string): HTMLElement | null {
     if (parent instanceof HTMLElement) {
       return parent;
     }
-    return <HTMLElement>document.querySelector(parent);
+    return document.querySelector(parent);
+  }
+
+  protected createState(
+    id: string,
+    name: string,
+    options: ControlOptions | PanelOptions,
+    handler: ProxyHandler<InternalState>,
+  ): InternalState {
+    const target: InternalState = {
+      ...options, id, name,
+    } as PanelOptions & InternalState;
+    return new Proxy(target, handler);
+  }
+
+  protected createStateSetter(): InternalStateSetter {
+    return (target: InternalState, key: string, value: string | boolean | number) => {
+      target[key] = value;
+      const userListener = this.listeners.get('user');
+      const builtInListener = this.listeners.get(key);
+      const update: ControlListenerUpdate = {
+        id: target.id,
+        key,
+        value,
+      };
+      if (builtInListener) {
+        builtInListener(update);
+      }
+      if (userListener) {
+        userListener(update);
+      }
+      return true;
+    };
+  }
+
+  protected checkParentElement(parent?: HTMLElement | string | null) {
+    if (parent && this.isParentValid(parent)) {
+      this.parentElement = <HTMLElement>this.getParentElement(parent);
+    }
   }
 }

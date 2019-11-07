@@ -59,7 +59,7 @@
   "main": "index.js",
   "private": true,
   "browserslist": [
-    "cover 99.5%"
+    "> 2%"
   ],
   "config": {
     "commitizen": {
