@@ -11,7 +11,8 @@ class DerivedControl extends Control {
   public controlElement: HTMLElement;
 
   protected state: InternalState;
-  protected template: string = `<input type="text" id="testId" />`;
+  protected template = (state: InternalState): string => `
+    <input type="text" id="testId" value="${state.value} />`;
   protected listeners: Map<string, ControlListener> = new Map();
 
   private stateHandler: ProxyHandler<InternalState> = {
@@ -24,7 +25,7 @@ class DerivedControl extends Control {
       'id', 'name', {}, this.stateHandler,
     );
     this.element = this.createControlElement(
-      this.template,
+      this.template(this.state),
       this.state.name,
       this.state.id,
     );
@@ -37,7 +38,7 @@ class DerivedControl extends Control {
 
   getControlElement() {
     return this.createControlElement(
-      this.template, this.state.name, this.state.id,
+      this.template(this.state), this.state.name, this.state.id,
     );
   }
 }

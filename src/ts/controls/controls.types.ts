@@ -14,7 +14,6 @@ export type TextControlOptions = {
   autofocus?: boolean,
   disabled?: boolean,
   maxLength?: number,
-  name?: string,
   pattern?: string,
   placeholder?: string,
   readOnly?: boolean,

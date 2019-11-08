@@ -1,10 +1,10 @@
-import { RootNode } from '../../root/RootNode';
+import { RootNode, InternalState } from '../../root/RootNode';
 
 import Styles from '../../../sass/control.sass';
 
 export abstract class Control extends RootNode {
-  abstract controlElement: HTMLElement;
-  protected abstract template: string;
+  public abstract controlElement: HTMLElement;
+  protected abstract template(state: InternalState): string;
 
   protected createRootDiv(): HTMLDivElement {
     const element = document.createElement('div');

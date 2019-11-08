@@ -1,1 +1,2 @@
-export * from './panel/Panel';
+
+export * from './controls/text/Text';
