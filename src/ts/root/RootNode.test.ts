@@ -1,5 +1,5 @@
 import { RootNode, InternalState, InternalStateSetter } from './RootNode';
-import { ControlListener, ControlOptions, ControlListenerUpdate } from '../controls/controls.types';
+import { ControlListener, ControlOptions, ControlListenerUpdate } from '../controls/control/Control.types';
 import { PanelOptions } from '../panel/Panel';
 
 const userListener = jest.fn();

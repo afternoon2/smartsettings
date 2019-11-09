@@ -3,7 +3,7 @@ import {
   ControlOptions,
   ControlListener,
   ControlListenerUpdate,
-} from '../controls/controls.types';
+} from '../controls/control/Control.types';
 
 export type InternalState = (PanelOptions | ControlOptions) & {
   [key: string]: string | boolean | number,

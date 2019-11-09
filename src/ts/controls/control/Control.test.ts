@@ -1,34 +1,27 @@
 import { Control } from './Control';
 import { InternalState } from '../../root/RootNode';
-import { ControlListener } from '../controls.types';
 
 // @ts-ignore
 import Styles from '../../../sass/control.sass';
+import { ControlProps, ControlListenerUpdate } from './Control.types';
 
+const props: ControlProps = {
+  id: 'id',
+  name: 'name',
+  options: {
+    value: 'test',
+  },
+  parentElement: document.body,
+  userListener: (update: ControlListenerUpdate) => update,
+};
 class DerivedControl extends Control {
-  public parentElement: HTMLElement = document.body;
-  public element: HTMLElement;
   public controlElement: HTMLElement;
 
-  protected state: InternalState;
-  protected template = (state: InternalState): string => `
+  protected static template = (state: InternalState): string => `
     <input type="text" id="testId" value="${state.value} />`;
-  protected listeners: Map<string, ControlListener> = new Map();
 
-  private stateHandler: ProxyHandler<InternalState> = {
-    set: this.createStateSetter(),
-  };
-
-  constructor() {
-    super();
-    this.state = this.createState(
-      'id', 'name', {}, this.stateHandler,
-    );
-    this.element = this.createControlElement(
-      this.template(this.state),
-      this.state.name,
-      this.state.id,
-    );
+  constructor(props: ControlProps) {
+    super(props, DerivedControl.template);
     this.controlElement = this.element.querySelector(`#testId`) as HTMLElement;
   }
 
@@ -38,7 +31,7 @@ class DerivedControl extends Control {
 
   getControlElement() {
     return this.createControlElement(
-      this.template(this.state), this.state.name, this.state.id,
+      DerivedControl.template(this.state), this.state.name, this.state.id,
     );
   }
 }
@@ -48,7 +41,7 @@ let instance: DerivedControl;
 describe('Abstract Control class', () => {
   describe('Control class methods', () => {
     beforeEach(() => {
-      instance = new DerivedControl();
+      instance = new DerivedControl(props);
     });
     
     test('createRootDiv', () => {

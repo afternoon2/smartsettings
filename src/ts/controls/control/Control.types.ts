@@ -1,17 +1,24 @@
-export type ControlType = 'button'
-| 'range'
-| 'select'
-| 'checkbox'
-| 'text'
-| 'textarea'
-| 'number'
-| 'file'
-| 'color';
+export type TextControlOptions = {
+  value: string,
+  autocomplete?: boolean,
+  disabled?: boolean,
+  maxLength?: number,
+  pattern?: string,
+  placeholder?: string,
+  readOnly?: boolean,
+};
+
+export type TextControlProps = {
+  id: string,
+  name: string,
+  options: TextControlOptions,
+  parentElement: HTMLElement,
+  userListener?: ControlListener,
+};
 
 export type TextAreaControlOptions = {
   value: string,
   autocomplete?: boolean,
-  autofocus?: boolean,
   cols?: number,
   disabled?: boolean,
   maxLength?: number,
@@ -20,6 +27,12 @@ export type TextAreaControlOptions = {
   readOnly?: boolean,
   rows?: number,
   wrap?: boolean,
+};
+
+export type ButtonControlOptions = {
+  value: string,
+  disabled?: boolean,
+  type?: string,
 };
 
 export type CheckboxControlOptions = {
@@ -33,13 +46,6 @@ export type CheckboxControlOptions = {
   pattern?: string,
   placeholder?: string,
   readOnly?: boolean,
-};
-
-export type ButtonControlOptions = {
-  value: string,
-  autofocus?: boolean,
-  disabled?: boolean,
-  type?: string,
 };
 
 export type NumberControlOptions = {
@@ -83,6 +89,8 @@ export type ControlOptions = ButtonControlOptions
 | FileControlOptions
 | TextAreaControlOptions
 | RangeControlOptions;
+
+export type ControlProps = TextControlProps;
 
 export type ControlListenerUpdate = {
   id: string,

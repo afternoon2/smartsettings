@@ -1,5 +1,5 @@
 import { RootNode } from '../root/RootNode';
-import { ControlListener } from '../controls/controls.types';
+import { ControlListener } from '../controls/control/Control.types';
 
 import Base from '../../sass/base.sass';
 import Styles from '../../sass/panel.sass';
