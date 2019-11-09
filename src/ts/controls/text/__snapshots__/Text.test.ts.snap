@@ -5,45 +5,30 @@ exports[`Text control Disable 1`] = `
   class="control disabled"
   disabled="true"
 >
-  
-      
   <main
     class="control__body"
     id="id"
   >
-    
-        
     <p
       class="control__name"
       title="name"
     >
-      
-          name
-        
+      name
     </p>
-    
+    <div
+      class="control__content"
+    >
       
+    
+      <input
+        class="text"
+        type="text"
+        value="test"
+      />
+      
+  
+    </div>
   </main>
-  
-      
-  <div
-    class="control__content"
-  >
-    
-        
-    
-    <input
-      autofocus="true"
-      class="text"
-      type="text"
-      value="test"
-    />
-    
-  
-      
-  </div>
-  
-  
 </div>
 `;
 
@@ -52,45 +37,30 @@ exports[`Text control Enable 1`] = `
   class="control"
   disabled="true"
 >
-  
-      
   <main
     class="control__body"
     id="id"
   >
-    
-        
     <p
       class="control__name"
       title="name"
     >
-      
-          name
-        
+      name
     </p>
-    
+    <div
+      class="control__content"
+    >
       
+    
+      <input
+        class="text"
+        type="text"
+        value="test"
+      />
+      
+  
+    </div>
   </main>
-  
-      
-  <div
-    class="control__content"
-  >
-    
-        
-    
-    <input
-      autofocus="true"
-      class="text"
-      type="text"
-      value="test"
-    />
-    
-  
-      
-  </div>
-  
-  
 </div>
 `;
 
@@ -98,44 +68,29 @@ exports[`Text control If it matches snapshot after initial load 1`] = `
 <div
   class="control"
 >
-  
-      
   <main
     class="control__body"
     id="id"
   >
-    
-        
     <p
       class="control__name"
       title="name"
     >
-      
-          name
-        
+      name
     </p>
-    
+    <div
+      class="control__content"
+    >
       
+    
+      <input
+        class="text"
+        type="text"
+        value="test"
+      />
+      
+  
+    </div>
   </main>
-  
-      
-  <div
-    class="control__content"
-  >
-    
-        
-    
-    <input
-      autofocus="true"
-      class="text"
-      type="text"
-      value="test"
-    />
-    
-  
-      
-  </div>
-  
-  
 </div>
 `;

@@ -12,7 +12,6 @@ describe('Text control', () => {
       name: 'name',
       options: {
         value: 'test',
-        autofocus: true,
         autocomplete: false,
         disabled: false,
       },
@@ -33,6 +32,7 @@ describe('Text control', () => {
   test('Enable', () => {
     control.disable();
     control.enable();
+    expect(control.controlElement.hasAttribute('disabled')).toBe(false);
     expect(control.element).toMatchSnapshot();
   });
 
@@ -44,8 +44,4 @@ describe('Text control', () => {
   test('If it assings user listener correctly', () => {
     expect(userListener).toHaveBeenCalledTimes(4);
   });
-
-  // test('If it binds event listeners correctly', () => {
-  //   con
-  // });
 });

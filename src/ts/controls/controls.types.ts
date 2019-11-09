@@ -8,17 +8,6 @@ export type ControlType = 'button'
 | 'file'
 | 'color';
 
-export type TextControlOptions = {
-  value: string,
-  autocomplete?: boolean,
-  autofocus?: boolean,
-  disabled?: boolean,
-  maxLength?: number,
-  pattern?: string,
-  placeholder?: string,
-  readOnly?: boolean,
-};
-
 export type TextAreaControlOptions = {
   value: string,
   autocomplete?: boolean,

@@ -4,33 +4,22 @@ exports[`Abstract Control class Control class methods createControlElement and w
 <div
   class="control"
 >
-  
-      
   <main
     class="control__body"
     id="id"
   >
-    
-        
     <p
       class="control__name"
       title="name"
     >
-      
-          name
-        
+      name
     </p>
-    
+    <div
+      class="control__content"
+    >
       
+    
+    </div>
   </main>
-  
-      
-  <div
-    class="control__content"
-  >
-    
-        
-    
-  </div>
 </div>
 `;

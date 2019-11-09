@@ -1,11 +1,21 @@
 import { Control } from '../control/Control';
 import {
-  TextControlOptions, ControlListener, ControlListenerUpdate,
+  ControlListener, ControlListenerUpdate,
 } from '../controls.types';
 import { InternalState } from '../../root/RootNode';
 
 import Styles from '../../../sass/text.sass';
 import Base from '../../../sass/base.sass';
+
+export type TextControlOptions = {
+  value: string,
+  autocomplete?: boolean,
+  disabled?: boolean,
+  maxLength?: number,
+  pattern?: string,
+  placeholder?: string,
+  readOnly?: boolean,
+};
 
 export type TextControlProps = {
   id: string,
@@ -22,17 +32,16 @@ export class Text extends Control {
   
   protected state: InternalState;
   protected listeners: Map<string, ControlListener> = new Map();
-  protected template = (state: InternalState) => `
+  protected template = (state: InternalState): string => `
     <input
       type="text"
       class="${Styles.text}" ${state.disabled ? 'disabled' : ''}
-      value="${this.state.value}"
+      ${this.state.value ? `value="${this.state.value}"` : ''}
       ${state.autocomplete ? 'autocomplete="true"' : ''}
-      ${state.autofocus ? 'autofocus="true"' : ''}
-      ${state.minLength ? `min-length="${state.minLength}` : ''}
-      ${state.maxLength ? `min-length="${state.maxLength}` : ''}
-      ${state.placeholder ? `placeholder="${state.placeholder}` : ''}
-      ${state.pattern ? `pattern="${state.pattern}` : ''}
+      ${state.minLength ? `min-length="${state.minLength}"` : ''}
+      ${state.maxLength ? `min-length="${state.maxLength}"` : ''}
+      ${state.placeholder ? `placeholder="${state.placeholder}"` : ''}
+      ${state.pattern ? `pattern="${state.pattern}"` : ''}
       ${state.readOnly ? `readonly` : ''}
     />
   `;

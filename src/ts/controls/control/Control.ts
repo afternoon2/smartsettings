@@ -12,23 +12,20 @@ export abstract class Control extends RootNode {
     return element;
   }
 
-  protected withControlTemplate(template: string, name: string, id: string): string {
-    return `
-      <main class="${Styles.control__body}" id="${id}">
-        <p class="${Styles.control__name}" title="${name}">
-          ${name}
-        </p>
-      </main>
-      <div class="${Styles.control__content}">
-        ${template}
-      </div>
-  `;
-  }
-
   protected createControlElement(template: string, name: string, id: string): HTMLDivElement {
-    const completeTemplate = this.withControlTemplate(template, name, id);
     const element = this.createRootDiv();
-    element.insertAdjacentHTML('beforeend', completeTemplate);
+    const main = document.createElement('main');
+    main.classList.add(Styles.control__body);
+    main.setAttribute('id', id);
+    main.insertAdjacentHTML(
+      'beforeend',
+      `<p class="${Styles.control__name}" title="${name}">${name}</p>`,
+    );
+    const content = document.createElement('div');
+    content.classList.add(Styles.control__content);
+    content.insertAdjacentHTML('beforeend', template);
+    main.appendChild(content);
+    element.appendChild(main);
     return element;
   }
 }
