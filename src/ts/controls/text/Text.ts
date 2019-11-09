@@ -5,7 +5,6 @@ import {
 import { InternalState } from '../../root/RootNode';
 
 import Styles from '../../../sass/text.sass';
-import Base from '../../../sass/base.sass';
 
 export class Text extends Control {
   public controlElement: HTMLInputElement;
@@ -13,7 +12,8 @@ export class Text extends Control {
   protected static template = (state: InternalState): string => `
     <input
       type="text"
-      class="${Styles.text}" ${state.disabled ? 'disabled' : ''}
+      class="${Styles.text}"
+      ${state.disabled ? 'disabled' : ''}
       ${state.value ? `value="${state.value}"` : ''}
       ${state.autocomplete ? 'autocomplete="true"' : ''}
       ${state.minLength ? `min-length="${state.minLength}"` : ''}
@@ -27,7 +27,6 @@ export class Text extends Control {
   constructor(props: TextControlProps) {
     super(props, Text.template);
     this.controlElement = this.element.querySelector('[type="text"]') as HTMLInputElement;
-    this.listeners.set('disabled', this.onDisabled);
     this.listeners.set('value', this.onValue);
     this.bindActionListeners();
   }
@@ -42,24 +41,6 @@ export class Text extends Control {
 
   private onValue: ControlListener = (update: ControlListenerUpdate) => {
     this.controlElement.value = update.value as string;
-  }
-
-  private onDisabled: ControlListener = (update: ControlListenerUpdate) => {
-    if (update.value === true) {
-      if (!this.element.classList.contains(Base.disabled)) {
-        this.element.classList.add(Base.disabled);
-      }
-      if (!this.controlElement.hasAttribute('disabled')) {
-        this.element.setAttribute('disabled', 'true');
-      }
-    } else {
-      if (this.element.classList.contains(Base.disabled)) {
-        this.element.classList.remove(Base.disabled);
-      }
-      if (this.controlElement.hasAttribute('disabled')) {
-        this.element.removeAttribute('disabled');
-      }
-    }
   }
 
   private bindActionListeners = () => {

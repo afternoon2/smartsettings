@@ -3,7 +3,6 @@
 exports[`Text control Disable 1`] = `
 <div
   class="control disabled"
-  disabled="true"
 >
   <main
     class="control__body"
@@ -22,6 +21,7 @@ exports[`Text control Disable 1`] = `
     
       <input
         class="text"
+        disabled="true"
         type="text"
         value="test"
       />
@@ -35,7 +35,6 @@ exports[`Text control Disable 1`] = `
 exports[`Text control Enable 1`] = `
 <div
   class="control"
-  disabled="true"
 >
   <main
     class="control__body"

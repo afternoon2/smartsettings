@@ -5,6 +5,8 @@ import {
   ControlListenerUpdate,
 } from '../controls/control/Control.types';
 
+import Base from '../../sass/base.sass';
+
 export type InternalState = (PanelOptions | ControlOptions) & {
   [key: string]: string | boolean | number,
   readonly id: string,
@@ -62,6 +64,18 @@ export abstract class RootNode {
 
   setListener(listener: ControlListener) {
     this.listeners.set('user', listener);
+  }
+
+  protected onInvisible: ControlListener = (update: ControlListenerUpdate) => {
+    if (update.value === true) {
+      if (!this.element.classList.contains(Base.hidden)) {
+        this.element.classList.add(Base.hidden);
+      }
+    } else {
+      if (this.element.classList.contains(Base.hidden)) {
+        this.element.classList.remove(Base.hidden);
+      }
+    }
   }
 
   protected isParentValid(parent: HTMLElement | string | null): boolean {

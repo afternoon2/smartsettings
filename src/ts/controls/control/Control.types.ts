@@ -1,3 +1,11 @@
+type Props<Options> = {
+  id: string,
+  name: string,
+  options: Options,
+  parentElement: HTMLElement,
+  userListener?: ControlListener,
+};
+
 export type TextControlOptions = {
   value: string,
   autocomplete?: boolean,
@@ -8,15 +16,9 @@ export type TextControlOptions = {
   readOnly?: boolean,
 };
 
-export type TextControlProps = {
-  id: string,
-  name: string,
-  options: TextControlOptions,
-  parentElement: HTMLElement,
-  userListener?: ControlListener,
-};
+export type TextControlProps = Props<TextControlOptions>;
 
-export type TextAreaControlOptions = {
+export type TextareaControlOptions = {
   value: string,
   autocomplete?: boolean,
   cols?: number,
@@ -28,6 +30,8 @@ export type TextAreaControlOptions = {
   rows?: number,
   wrap?: boolean,
 };
+
+export type TextareaControlProps = Props<TextareaControlOptions>;
 
 export type ButtonControlOptions = {
   value: string,
@@ -87,7 +91,7 @@ export type ControlOptions = ButtonControlOptions
 | CheckboxControlOptions
 | NumberControlOptions
 | FileControlOptions
-| TextAreaControlOptions
+| TextareaControlOptions
 | RangeControlOptions;
 
 export type ControlProps = TextControlProps;
