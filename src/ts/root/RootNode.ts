@@ -8,7 +8,7 @@ import {
 import Base from '../../sass/base.sass';
 
 export type InternalState = (PanelOptions | ControlOptions) & {
-  [key: string]: string | boolean | number,
+  [key: string]: string | boolean | number | EventListener,
   readonly id: string,
   name: string,
 };
@@ -16,7 +16,7 @@ export type InternalState = (PanelOptions | ControlOptions) & {
 export type InternalStateSetter = (
   target: InternalState,
   key: string,
-  value: string | boolean | number,
+  value: string | boolean | number | EventListener,
 ) => boolean;
 
 export abstract class RootNode {
@@ -135,7 +135,7 @@ export abstract class RootNode {
   }
 
   protected createStateSetter(): InternalStateSetter {
-    return (target: InternalState, key: string, value: string | boolean | number) => {
+    return (target: InternalState, key: string, value: string | boolean | number | EventListener) => {
       target[key] = value;
       const userListener = this.listeners.get('user');
       const builtInListener = this.listeners.get(key);

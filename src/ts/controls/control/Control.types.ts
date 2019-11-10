@@ -33,10 +33,13 @@ export type TextAreaControlOptions = {
 export type TextAreaControlProps = Props<TextAreaControlOptions>;
 
 export type ButtonControlOptions = {
-  value: string,
+  onClick: EventListener,
+  text?: string,
   disabled?: boolean,
   type?: string,
 };
+
+export type ButtonControlProps = Props<ButtonControlOptions>;
 
 export type CheckboxControlOptions = {
   value: string,
@@ -93,12 +96,14 @@ export type ControlOptions = ButtonControlOptions
 | TextAreaControlOptions
 | RangeControlOptions;
 
-export type ControlProps = TextControlProps;
+export type ControlProps = TextControlProps
+| TextAreaControlProps
+| ButtonControlProps;
 
 export type ControlListenerUpdate = {
   id: string,
   key: string,
-  value: string | boolean | number,
+  value: string | boolean | number | EventListener,
 };
 
 export type ControlListener = (update: ControlListenerUpdate) => void;
