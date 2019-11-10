@@ -1,12 +1,12 @@
-import { Text } from './Text';
+import { TextArea } from './TextArea';
 
-let control: Text;
+let control: TextArea;
 
 const userListener = jest.fn();
 
 describe('Text control', () => {
   beforeEach(() => {
-    control = new Text({
+    control = new TextArea({
       id: 'id',
       name: 'name',
       options: {

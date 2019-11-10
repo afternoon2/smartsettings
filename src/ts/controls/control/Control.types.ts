@@ -18,7 +18,7 @@ export type TextControlOptions = {
 
 export type TextControlProps = Props<TextControlOptions>;
 
-export type TextareaControlOptions = {
+export type TextAreaControlOptions = {
   value: string,
   autocomplete?: boolean,
   cols?: number,
@@ -31,7 +31,7 @@ export type TextareaControlOptions = {
   wrap?: boolean,
 };
 
-export type TextareaControlProps = Props<TextareaControlOptions>;
+export type TextAreaControlProps = Props<TextAreaControlOptions>;
 
 export type ButtonControlOptions = {
   value: string,
@@ -91,7 +91,7 @@ export type ControlOptions = ButtonControlOptions
 | CheckboxControlOptions
 | NumberControlOptions
 | FileControlOptions
-| TextareaControlOptions
+| TextAreaControlOptions
 | RangeControlOptions;
 
 export type ControlProps = TextControlProps;
