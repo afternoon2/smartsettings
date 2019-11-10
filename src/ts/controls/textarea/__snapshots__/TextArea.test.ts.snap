@@ -21,8 +21,9 @@ exports[`Text control Disable 1`] = `
     
       <textarea
         class="textarea"
-        cols="undefined"
-        rows="undefined"
+        cols="10"
+        rows="8"
+        wrap="hard"
       >
               test
     
@@ -55,8 +56,9 @@ exports[`Text control Enable 1`] = `
     
       <textarea
         class="textarea"
-        cols="undefined"
-        rows="undefined"
+        cols="10"
+        rows="8"
+        wrap="hard"
       >
               test
     
@@ -89,8 +91,9 @@ exports[`Text control If it matches snapshot after initial load 1`] = `
     
       <textarea
         class="textarea"
-        cols="undefined"
-        rows="undefined"
+        cols="10"
+        rows="8"
+        wrap="hard"
       >
               test
     

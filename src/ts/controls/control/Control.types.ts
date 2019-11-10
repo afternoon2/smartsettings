@@ -28,7 +28,6 @@ export type TextAreaControlOptions = {
   placeholder?: string,
   readOnly?: boolean,
   rows?: number,
-  wrap?: boolean,
 };
 
 export type TextAreaControlProps = Props<TextAreaControlOptions>;

@@ -9,17 +9,20 @@ import { InternalState } from '../../root/RootNode';
 export class TextArea extends Control {
   public controlElement: HTMLTextAreaElement;
 
+  protected static defaultRows: number = 8;
+  protected static defaultCols: number = 10;
+
   protected static template = (state: InternalState): string => `
     <textarea
+      wrap="hard"
       class="${Styles.textarea}"
-      cols="${state.cols}"
-      rows="${state.rows}"
+      cols="${state.cols || TextArea.defaultCols}"
+      rows="${state.rows || TextArea.defaultRows}"
       ${state.disabled ? 'disabled="true"' : ''}
       ${state.minLength ? `min-length="${state.minLength}"` : ''}
       ${state.maxLength ? `max-length="${state.maxLength}"` : ''}
       ${state.placeholder ? `placeholder="${state.placeholder}"` : ''}
       ${state.readonly ? 'readonly' : ''}
-      ${state.wrap ? 'wrap="true"' : ''}
       ${state.autocomplete ? 'autocomplete="true"' : ''}
     >
       ${state.value}
