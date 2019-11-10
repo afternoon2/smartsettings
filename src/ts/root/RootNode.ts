@@ -78,6 +78,34 @@ export abstract class RootNode {
     }
   }
 
+  protected onDisabled: ControlListener = (update: ControlListenerUpdate) => {
+    const controlElements = Array.from(this.element.querySelectorAll('input, button, select'));
+    const setDisabled = (element: Element, disabled: boolean) =>
+      disabled === true ?
+        element.setAttribute('disabled', 'true') :
+        element.removeAttribute('disabled');
+    const setDisabledAttrTo = (disabled: boolean) => controlElements
+      .forEach((el: Element) => setDisabled(el, disabled));
+    const hasDisabledElements = () => controlElements.find((el: Element) =>
+      el.getAttribute('disabled') === 'true',
+    );
+    if (update.value === true) {
+      if (!this.element.classList.contains(Base.disabled)) {
+        this.element.classList.add(Base.disabled);
+      }
+      if (!hasDisabledElements()) {
+        setDisabledAttrTo(true);
+      }
+    } else {
+      if (this.element.classList.contains(Base.disabled)) {
+        this.element.classList.remove(Base.disabled);
+      }
+      if (hasDisabledElements()) {
+        setDisabledAttrTo(false);
+      }
+    }
+  }
+
   protected isParentValid(parent: HTMLElement | string | null): boolean {
     if (typeof parent === 'string') {
       return Boolean(document.querySelector(parent));

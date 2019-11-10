@@ -31,14 +31,6 @@ export class Text extends Control {
     this.bindActionListeners();
   }
 
-  set value(value: string) {
-    this.state.value = value;
-  }
-
-  get value(): string {
-    return this.state.value as string;
-  }
-
   private onValue: ControlListener = (update: ControlListenerUpdate) => {
     this.controlElement.value = update.value as string;
   }

@@ -35,22 +35,12 @@ export abstract class Control extends RootNode {
     }
   }
 
-  private onDisabled: ControlListener = (update: ControlListenerUpdate) => {
-    if (update.value === true) {
-      if (!this.element.classList.contains(Base.disabled)) {
-        this.element.classList.add(Base.disabled);
-      }
-      if (!this.controlElement.hasAttribute('disabled')) {
-        this.controlElement.setAttribute('disabled', 'true');
-      }
-    } else {
-      if (this.element.classList.contains(Base.disabled)) {
-        this.element.classList.remove(Base.disabled);
-      }
-      if (this.controlElement.hasAttribute('disabled')) {
-        this.controlElement.removeAttribute('disabled');
-      }
-    }
+  set value(value: string) {
+    this.state.value = value;
+  }
+
+  get value(): string {
+    return this.state.value as string;
   }
 
   private createRootDiv(): HTMLDivElement {
