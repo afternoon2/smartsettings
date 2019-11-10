@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button control Disable 1`] = `
+<div
+  class="control disabled"
+>
+  <main
+    class="control__body"
+    id="id"
+  >
+    <p
+      class="control__name"
+      title="Button"
+    >
+      Button
+    </p>
+    <div
+      class="control__content"
+    >
+      
+    
+      <input
+        class="checkbox"
+        disabled="true"
+        title="Button"
+        type="checkbox"
+      />
+      
+  
+    </div>
+  </main>
+</div>
+`;
+
+exports[`Button control Enable 1`] = `
+<div
+  class="control"
+>
+  <main
+    class="control__body"
+    id="id"
+  >
+    <p
+      class="control__name"
+      title="Button"
+    >
+      Button
+    </p>
+    <div
+      class="control__content"
+    >
+      
+    
+      <input
+        class="checkbox"
+        title="Button"
+        type="checkbox"
+      />
+      
+  
+    </div>
+  </main>
+</div>
+`;
+
+exports[`Button control If it matches the snapshot 1`] = `
+<div
+  class="control"
+>
+  <main
+    class="control__body"
+    id="id"
+  >
+    <p
+      class="control__name"
+      title="Button"
+    >
+      Button
+    </p>
+    <div
+      class="control__content"
+    >
+      
+    
+      <input
+        class="checkbox"
+        title="Button"
+        type="checkbox"
+      />
+      
+  
+    </div>
+  </main>
+</div>
+`;

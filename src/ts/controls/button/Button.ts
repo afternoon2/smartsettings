@@ -1,6 +1,6 @@
 import { Control } from '../control/Control';
 import {
-  ButtonControlProps, ControlOptions, ControlListener,
+  ButtonControlProps, ControlListener,
 } from '../control/Control.types';
 import { InternalState } from '../../root/RootNode';
 

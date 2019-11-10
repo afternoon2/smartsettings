@@ -2,7 +2,6 @@ import { RootNode, InternalState } from '../../root/RootNode';
 import { ControlProps, ControlListener, ControlListenerUpdate } from './Control.types';
 
 import Styles from '../../../sass/control.sass';
-import Base from '../../../sass/base.sass';
 
 export abstract class Control extends RootNode {
   public parentElement: HTMLElement;

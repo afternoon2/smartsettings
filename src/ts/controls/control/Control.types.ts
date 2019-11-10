@@ -41,17 +41,12 @@ export type ButtonControlOptions = {
 export type ButtonControlProps = Props<ButtonControlOptions>;
 
 export type CheckboxControlOptions = {
-  value: string,
-  alt?: string,
-  autocomplete?: boolean,
-  autofocus?: boolean,
-  checked?: boolean,
+  checked: boolean,
   disabled?: boolean,
-  maxLength?: number,
-  pattern?: string,
-  placeholder?: string,
   readOnly?: boolean,
 };
+
+export type CheckboxControlProps = Props<CheckboxControlOptions>;
 
 export type NumberControlOptions = {
   value: number,
