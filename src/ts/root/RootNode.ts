@@ -16,7 +16,7 @@ export type InternalState = (PanelOptions | ControlOptions) & {
 export type InternalStateSetter = (
   target: InternalState,
   key: string,
-  value: string | boolean | number | EventListener,
+  value: string | boolean | number,
 ) => boolean;
 
 export abstract class RootNode {
@@ -135,7 +135,7 @@ export abstract class RootNode {
   }
 
   protected createStateSetter(): InternalStateSetter {
-    return (target: InternalState, key: string, value: string | boolean | number | EventListener) => {
+    return (target: InternalState, key: string, value: string | boolean | number) => {
       target[key] = value;
       const userListener = this.listeners.get('user');
       const builtInListener = this.listeners.get(key);

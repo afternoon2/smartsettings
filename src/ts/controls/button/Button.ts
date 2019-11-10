@@ -1,6 +1,6 @@
 import { Control } from '../control/Control';
 import {
-  ButtonControlProps,
+  ButtonControlProps, ControlOptions, ControlListener,
 } from '../control/Control.types';
 import { InternalState } from '../../root/RootNode';
 
@@ -22,19 +22,26 @@ export class Button extends Control {
     </button>
   `;
 
+  private clickHandler?: ControlListener;
+
   constructor(props: ButtonControlProps) {
     super(props, Button.template);
     this.controlElement = this.element.querySelector('button') as HTMLButtonElement;
+    if (props.userListener) {
+      this.clickHandler = props.userListener;
+    }
     this.bindActionListeners();
   }
 
-  set onClick(onClickFunc: EventListener) {
-    this.state.onClick = onClickFunc;
-  }
-
   private bindActionListeners() {
-    this.controlElement.addEventListener('click', (event: Event) => {
-      (this.state.onClick as EventListener)(event);
-    });
+    if (this.clickHandler) {
+      this.controlElement.addEventListener('click', () => {
+        (this.clickHandler as ControlListener)({
+          id: this.state.id,
+          key: '',
+          value: '',
+        });
+      });
+    }
   }
 }

@@ -33,7 +33,6 @@ export type TextAreaControlOptions = {
 export type TextAreaControlProps = Props<TextAreaControlOptions>;
 
 export type ButtonControlOptions = {
-  onClick: EventListener,
   text?: string,
   disabled?: boolean,
   type?: string,
@@ -103,7 +102,7 @@ export type ControlProps = TextControlProps
 export type ControlListenerUpdate = {
   id: string,
   key: string,
-  value: string | boolean | number | EventListener,
+  value: string | boolean | number,
 };
 
 export type ControlListener = (update: ControlListenerUpdate) => void;

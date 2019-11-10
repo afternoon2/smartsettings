@@ -2,7 +2,6 @@ import { Button } from './Button';
 
 let btn: Button;
 
-const onClick = jest.fn();
 const userListener = jest.fn();
 
 describe('Button control', () => {
@@ -11,7 +10,6 @@ describe('Button control', () => {
       id: 'id',
       name: 'Button',
       options: {
-        onClick,
         text: 'text',
       },
       parentElement: document.body,
@@ -37,7 +35,6 @@ describe('Button control', () => {
 
   test('Invoke onClick and userListener callback', () => {
     btn.controlElement.click();
-    expect(onClick).toHaveBeenCalledTimes(1);
-    expect(userListener).toHaveBeenCalledTimes(3);
+    expect(userListener).toHaveBeenCalledTimes(4);
   });
 });
