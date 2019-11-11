@@ -61,14 +61,15 @@ export type NumberControlOptions = {
 };
 
 export type FileControlOptions = {
+  fileInputId: string,
   accept?: string,
-  autofocus?: boolean,
   disabled?: boolean,
   multiple?: boolean,
   placeholder?: string,
   readOnly?: boolean,
-  step?: number,
 };
+
+export type FileControlProps = Props<FileControlOptions>;
 
 export type RangeControlOptions = {
   value: number,
