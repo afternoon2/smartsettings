@@ -1,3 +1,5 @@
+import cuid from 'cuid';
+
 import { Control } from '../control/Control';
 import {
   CheckboxControlProps, ControlListener, ControlListenerUpdate,
@@ -9,15 +11,19 @@ import Styles from '../../../sass/checkbox.sass';
 export class Checkbox extends Control {
   public controlElement: HTMLInputElement;
 
+  protected controlId: string = cuid();
+
   protected static template = (state: InternalState): string => `
-    <input
-      type="checkbox"
-      title="${state.name}"
-      class="${Styles.checkbox}"
-      ${state.checked ? 'checked' : ''}
-      ${state.disabled ? 'disabled' : ''}
-      ${state.readonly ? 'readonly' : ''}
-    />
+    <label class="${Styles.checkbox}" for="${state.checkboxId}">
+      <input
+        id="${state.checkboxId}"
+        type="checkbox"
+        title="${state.name}"
+        ${state.checked ? 'checked' : ''}
+        ${state.disabled ? 'disabled' : ''}
+        ${state.readonly ? 'readonly' : ''}
+      />
+    </label>
   `;
 
   constructor(props: CheckboxControlProps) {
@@ -44,7 +50,6 @@ export class Checkbox extends Control {
   }
 
   private onCheck: ControlListener = (update: ControlListenerUpdate) => {
-    console.log(update.value);
     if (update.value === true) {
       this.controlElement.setAttribute('checked', 'true');
     } else {

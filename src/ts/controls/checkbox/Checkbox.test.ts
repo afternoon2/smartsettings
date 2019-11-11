@@ -11,6 +11,7 @@ describe('Button control', () => {
       name: 'Button',
       options: {
         checked: false,
+        checkboxId: 'checkboxId',
       },
       parentElement: document.body,
       userListener,

@@ -19,12 +19,21 @@ exports[`Button control Disable 1`] = `
     >
       
     
-      <input
+      <label
         class="checkbox"
-        disabled="true"
-        title="Button"
-        type="checkbox"
-      />
+        for="checkboxId"
+      >
+        
+      
+        <input
+          disabled="true"
+          id="checkboxId"
+          title="Button"
+          type="checkbox"
+        />
+        
+    
+      </label>
       
   
     </div>
@@ -51,11 +60,20 @@ exports[`Button control Enable 1`] = `
     >
       
     
-      <input
+      <label
         class="checkbox"
-        title="Button"
-        type="checkbox"
-      />
+        for="checkboxId"
+      >
+        
+      
+        <input
+          id="checkboxId"
+          title="Button"
+          type="checkbox"
+        />
+        
+    
+      </label>
       
   
     </div>
@@ -82,11 +100,20 @@ exports[`Button control If it matches the snapshot 1`] = `
     >
       
     
-      <input
+      <label
         class="checkbox"
-        title="Button"
-        type="checkbox"
-      />
+        for="checkboxId"
+      >
+        
+      
+        <input
+          id="checkboxId"
+          title="Button"
+          type="checkbox"
+        />
+        
+    
+      </label>
       
   
     </div>

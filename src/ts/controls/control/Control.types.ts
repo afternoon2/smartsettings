@@ -42,6 +42,7 @@ export type ButtonControlProps = Props<ButtonControlOptions>;
 
 export type CheckboxControlOptions = {
   checked: boolean,
+  checkboxId: string,
   disabled?: boolean,
   readOnly?: boolean,
 };

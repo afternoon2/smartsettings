@@ -42,13 +42,13 @@ export abstract class Control extends RootNode {
     return this.state.value as string;
   }
 
-  private createRootDiv(): HTMLDivElement {
+  protected createRootDiv(): HTMLDivElement {
     const element = document.createElement('div');
     element.classList.add(Styles.control);
     return element;
   }
 
-  private createControlElement(template: string, name: string, id: string): HTMLDivElement {
+  protected createControlElement(template: string, name: string, id: string): HTMLDivElement {
     const element = this.createRootDiv();
     const main = document.createElement('main');
     main.classList.add(Styles.control__body);
