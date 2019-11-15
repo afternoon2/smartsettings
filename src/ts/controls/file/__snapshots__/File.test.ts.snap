@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Abstract Control class Control class methods createControlElement and withControlTemplate 1`] = `
+exports[`Name of the group If it matches the snapshot 1`] = `
 <div
   class="control"
 >
@@ -17,13 +17,23 @@ exports[`Abstract Control class Control class methods createControlElement and w
     <div
       class="control__content"
     >
+      <label
+        class="file"
+        for="controlId"
+      >
+        
+      Upload...
       
+        <input
+          id="controlId"
+          title="name"
+          type="file"
+        />
+        
     
-      <input
-        id="testId"
-        type="text"
-        value="test"
-      />
+      </label>
+      
+  
     </div>
   </main>
 </div>

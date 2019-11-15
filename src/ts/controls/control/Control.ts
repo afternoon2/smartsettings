@@ -29,6 +29,7 @@ export abstract class Control extends RootNode {
     this.parentElement.appendChild(this.element);
     this.listeners.set('invisible', this.onInvisible);
     this.listeners.set('disabled', this.onDisabled);
+    this.listeners.set('readonly', this.onReadonlyChange);
     if (props.userListener) {
       this.listeners.set('user', props.userListener);
     }
@@ -40,6 +41,14 @@ export abstract class Control extends RootNode {
 
   get value(): string {
     return this.state.value as string;
+  }
+
+  get readonly(): boolean {
+    return this.state.readonly  as boolean;
+  }
+
+  set readonly(readonly: boolean) {
+    this.state.readonly = readonly;
   }
 
   protected createRootDiv(): HTMLDivElement {
@@ -63,5 +72,17 @@ export abstract class Control extends RootNode {
     main.appendChild(content);
     element.appendChild(main);
     return element;
+  }
+
+  private onReadonlyChange: ControlListener = (update: ControlListenerUpdate) => {
+    if (update.value === true) {
+      if (!this.controlElement.hasAttribute('readonly')) {
+        this.controlElement.setAttribute('readonly', 'true');
+      }
+    } else {
+      if (this.controlElement.hasAttribute('readonly')) {
+        this.controlElement.removeAttribute('readonly');
+      }
+    }
   }
 }

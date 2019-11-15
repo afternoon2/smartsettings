@@ -8,7 +8,7 @@ import {
 import Base from '../../sass/base.sass';
 
 export type InternalState = (PanelOptions | ControlOptions) & {
-  [key: string]: string | boolean | number | EventListener,
+  [key: string]: string | boolean | number | EventListener | null,
   readonly id: string,
   name: string,
 };

@@ -61,11 +61,11 @@ export type NumberControlOptions = {
 };
 
 export type FileControlOptions = {
-  fileInputId: string,
+  controlId: string,
+  files?: FileList,
   accept?: string,
   disabled?: boolean,
-  multiple?: boolean,
-  placeholder?: string,
+  // multiple?: boolean,
   readOnly?: boolean,
 };
 

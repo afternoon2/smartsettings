@@ -18,7 +18,7 @@ class DerivedControl extends Control {
   public controlElement: HTMLElement;
 
   protected static template = (state: InternalState): string => `
-    <input type="text" id="testId" value="${state.value} />`;
+    <input type="text" id="testId" value="${state.value}" />`;
 
   constructor(props: ControlProps) {
     super(props, DerivedControl.template);
@@ -54,6 +54,15 @@ describe('Abstract Control class', () => {
       const controlElement = instance.getControlElement();
       expect(controlElement).toBeInstanceOf(HTMLElement);
       expect(controlElement).toMatchSnapshot();
+    });
+
+    test('readonly setter and getter', () => {
+      instance.readonly = true;
+      expect(instance.readonly).toBe(true);
+      expect(instance.controlElement.getAttribute('readonly')).toBe('true');
+      instance.readonly = false;
+      expect(instance.readonly).toBe(false);
+      expect(instance.controlElement.getAttribute('readonly')).toBe(null);
     });
   });
 });
