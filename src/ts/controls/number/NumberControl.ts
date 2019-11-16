@@ -13,9 +13,9 @@ export class NumberControl extends Control {
       type="number"
       class="${Styles.number}"
       ${state.value ? `value="${state.value}"` : ''}
-      ${state.min ? `min="${state.min}"` : ''}
-      ${state.max ? `max="${state.max}"` : ''}
-      ${state.step ? `step="${state.step}"` : ''}
+      ${typeof state.min === 'number' ? `min="${state.min}"` : ''}
+      ${typeof state.max === 'number' ? `max="${state.max}"` : ''}
+      ${typeof state.step === 'number' ? `step="${state.step}"` : ''}
       ${state.readonly ? 'readonly' : ''}
       ${state.disabled ? 'disabled' : ''}
       ${state.placeholder ? `placeholder="${state.placeholder}"` : ''}
