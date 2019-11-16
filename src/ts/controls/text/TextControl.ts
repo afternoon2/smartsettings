@@ -6,7 +6,7 @@ import { InternalState } from '../../root/RootNode';
 
 import Styles from '../../../sass/text.sass';
 
-export class Text extends Control {
+export class TextControl extends Control {
   public controlElement: HTMLInputElement;
 
   protected static template = (state: InternalState): string => `
@@ -25,7 +25,7 @@ export class Text extends Control {
   `;
 
   constructor(props: TextControlProps) {
-    super(props, Text.template);
+    super(props, TextControl.template);
     this.controlElement = this.element.querySelector('[type="text"]') as HTMLInputElement;
     this.listeners.set('value', this.onValue);
     this.bindActionListeners();

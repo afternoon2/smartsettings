@@ -1,12 +1,12 @@
-import { Number } from './Number';
+import { NumberControl } from './NumberControl';
 
-let control: Number;
+let control: NumberControl;
 
 const userListener = jest.fn();
 
 describe('Number control', () => {
   beforeEach(() => {
-    control = new Number({
+    control = new NumberControl({
       id: 'id',
       name: 'name',
       options: {

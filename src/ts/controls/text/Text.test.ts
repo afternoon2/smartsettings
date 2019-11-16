@@ -1,12 +1,12 @@
-import { Text } from './Text';
+import { TextControl } from './TextControl';
 
-let control: Text;
+let control: TextControl;
 
 const userListener = jest.fn();
 
 describe('Text control', () => {
   beforeEach(() => {
-    control = new Text({
+    control = new TextControl({
       id: 'id',
       name: 'name',
       options: {

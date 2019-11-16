@@ -6,7 +6,7 @@ import {
 import Styles from '../../../sass/textarea.sass';
 import { InternalState } from '../../root/RootNode';
 
-export class TextArea extends Control {
+export class TextAreaControl extends Control {
   public controlElement: HTMLTextAreaElement;
 
   protected static defaultRows: number = 8;
@@ -16,8 +16,8 @@ export class TextArea extends Control {
     <textarea
       wrap="hard"
       class="${Styles.textarea}"
-      cols="${state.cols || TextArea.defaultCols}"
-      rows="${state.rows || TextArea.defaultRows}"
+      cols="${state.cols || TextAreaControl.defaultCols}"
+      rows="${state.rows || TextAreaControl.defaultRows}"
       ${state.disabled ? 'disabled="true"' : ''}
       ${state.minLength ? `min-length="${state.minLength}"` : ''}
       ${state.maxLength ? `max-length="${state.maxLength}"` : ''}
@@ -30,7 +30,7 @@ export class TextArea extends Control {
   `;
 
   constructor(props: TextAreaControlProps) {
-    super(props, TextArea.template);
+    super(props, TextAreaControl.template);
     this.controlElement = this.element.querySelector('textarea') as HTMLTextAreaElement;
     this.listeners.set('value', this.onValue);
     this.bindActionListeners();

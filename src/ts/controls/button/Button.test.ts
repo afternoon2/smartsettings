@@ -1,12 +1,12 @@
-import { Button } from './Button';
+import { ButtonControl } from './ButtonControl';
 
-let btn: Button;
+let btn: ButtonControl;
 
 const userListener = jest.fn();
 
 describe('Button control', () => {
   beforeEach(() => {
-    btn = new Button({
+    btn = new ButtonControl({
       id: 'id',
       name: 'Button',
       options: {

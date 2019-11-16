@@ -1,12 +1,12 @@
-import { File } from './File';
+import { FileControl } from './FileControl';
 
-let file: File;
+let file: FileControl;
 let userListener: any;
 
 describe('Name of the group', () => {
   beforeEach(() => {
     userListener = jest.fn();
-    file = new File({
+    file = new FileControl({
       id: 'id',
       name: 'name',
       options: {

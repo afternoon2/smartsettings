@@ -6,7 +6,7 @@ import { InternalState } from '../../root/RootNode';
 
 import Styles from '../../../sass/number.sass';
 
-export class Number extends Control {
+export class NumberControl extends Control {
   public controlElement: HTMLInputElement;
 
   protected static template = (state: InternalState): string => `<input
@@ -23,7 +23,7 @@ export class Number extends Control {
   `;
 
   constructor(props: NumberControlProps) {
-    super(props, Number.template);
+    super(props, NumberControl.template);
     this.controlElement = this.element.querySelector('[type="number"]') as HTMLInputElement;
     this.listeners.set('value', this.onValue);
     this.bindActionListeners();

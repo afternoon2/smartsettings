@@ -1,12 +1,12 @@
-import { Checkbox } from './Checkbox';
+import { CheckboxControl } from './CheckboxControl';
 
-let checkbox: Checkbox;
+let checkbox: CheckboxControl;
 let userListener: any;
 
 describe('Button control', () => {
   beforeEach(() => {
     userListener = jest.fn();
-    checkbox = new Checkbox({
+    checkbox = new CheckboxControl({
       id: 'id',
       name: 'Button',
       options: {

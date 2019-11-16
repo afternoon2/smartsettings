@@ -8,7 +8,7 @@ import { InternalState } from '../../root/RootNode';
 
 import Styles from '../../../sass/file.sass';
 
-export class File extends Control {
+export class FileControl extends Control {
   public controlElement: HTMLInputElement;
 
   protected controlId: string = cuid();
@@ -29,7 +29,7 @@ export class File extends Control {
   `;
 
   constructor(props: FileControlProps) {
-    super(props, File.template);
+    super(props, FileControl.template);
     this.controlElement = this.element.querySelector('[type="file"]') as HTMLInputElement;
     this.listeners.set('accept', this.onAcceptChange);
     this.bindActionListeners();

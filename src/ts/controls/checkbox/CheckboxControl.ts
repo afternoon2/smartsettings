@@ -8,7 +8,7 @@ import { InternalState } from '../../root/RootNode';
 
 import Styles from '../../../sass/checkbox.sass';
 
-export class Checkbox extends Control {
+export class CheckboxControl extends Control {
   public controlElement: HTMLInputElement;
 
   protected controlId: string = cuid();
@@ -27,7 +27,7 @@ export class Checkbox extends Control {
   `;
 
   constructor(props: CheckboxControlProps) {
-    super(props, Checkbox.template);
+    super(props, CheckboxControl.template);
     this.controlElement = this.element.querySelector('[type="checkbox"]') as HTMLInputElement;
     this.listeners.set('checked', this.onCheck);
     this.bindActionListeners();
