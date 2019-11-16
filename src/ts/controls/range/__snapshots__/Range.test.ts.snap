@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Number control Disable 1`] = `
+exports[`Range control Disable 1`] = `
 <div
   class="control disabled"
 >
@@ -40,7 +40,7 @@ exports[`Number control Disable 1`] = `
 </div>
 `;
 
-exports[`Number control Enable 1`] = `
+exports[`Range control Enable 1`] = `
 <div
   class="control"
 >
@@ -79,7 +79,7 @@ exports[`Number control Enable 1`] = `
 </div>
 `;
 
-exports[`Number control If it matches snapshot after initial load 1`] = `
+exports[`Range control If it matches snapshot after initial load 1`] = `
 <div
   class="control"
 >

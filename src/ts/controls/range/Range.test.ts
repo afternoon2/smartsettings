@@ -4,7 +4,7 @@ let control: RangeControl;
 
 const userListener = jest.fn();
 
-describe('Number control', () => {
+describe('Range control', () => {
   beforeEach(() => {
     control = new RangeControl({
       id: 'id',
