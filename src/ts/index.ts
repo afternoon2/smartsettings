@@ -4,3 +4,4 @@ export * from './controls/button/ButtonControl';
 export * from './controls/checkbox/CheckboxControl';
 export * from './controls/file/FileControl';
 export * from './controls/number/NumberControl';
+export * from './controls/range/RangeControl';

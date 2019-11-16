@@ -74,16 +74,14 @@ export type FileControlProps = Props<FileControlOptions>;
 
 export type RangeControlOptions = {
   value: number,
-  autofocus?: boolean,
   disabled?: boolean,
-  labels?: boolean,
-  marks?: boolean,
   max?: number,
   min?: number,
-  placeholder?: string,
   readOnly?: boolean,
   step?: number,
 };
+
+export type RangeControlProps = Props<RangeControlOptions>;
 
 export type ControlOptions = ButtonControlOptions
 | TextControlOptions
