@@ -1,0 +1,11 @@
+@import './variables.sass'
+@import './mixins.sass'
+
+.number
+  @include controlElement
+  border-radius: $radius
+  padding: $padding
+  font-family: $code
+
+  &:focus
+    outline: 1px solid $accent

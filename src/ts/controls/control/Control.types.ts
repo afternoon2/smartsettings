@@ -51,7 +51,6 @@ export type CheckboxControlProps = Props<CheckboxControlOptions>;
 
 export type NumberControlOptions = {
   value: number,
-  autofocus?: boolean,
   disabled?: boolean,
   max?: number,
   min?: number,
@@ -59,6 +58,8 @@ export type NumberControlOptions = {
   readOnly?: boolean,
   step?: number,
 };
+
+export type NumberControlProps = Props<NumberControlOptions>;
 
 export type FileControlOptions = {
   controlId: string,

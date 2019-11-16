@@ -35,14 +35,6 @@ export abstract class Control extends RootNode {
     }
   }
 
-  set value(value: string) {
-    this.state.value = value;
-  }
-
-  get value(): string {
-    return this.state.value as string;
-  }
-
   get readonly(): boolean {
     return this.state.readonly  as boolean;
   }
