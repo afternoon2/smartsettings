@@ -11,7 +11,7 @@ describe('Section node', () => {
       name: 'name',
       options: {
         collapsed: false,
-        disabled: false,
+        disabled: true,
         invisible: false,
       },
       parentElement: document.body,

@@ -23,6 +23,16 @@ export class SectionNode extends ParentNode {
 
   constructor(props: SectionProps) {
     super(props, SectionNode.template);
+    this.fillInElement();
     this.bodyElement = this.element.querySelector(`.${Styles.section__body}`) as HTMLElement;
+  }
+
+  private fillInElement() {
+    this.element.classList.add(Styles.section);
+    this.onDisabled({
+      id: this.id,
+      key: 'disabled',
+      value: this.state.disabled as boolean,
+    });
   }
 }

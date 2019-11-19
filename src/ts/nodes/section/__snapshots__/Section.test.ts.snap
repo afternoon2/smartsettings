@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Section node If it matches the snapshot 1`] = `
-<div>
+<div
+  class="section disabled"
+>
   <header
     class="section__header"
   >
@@ -37,7 +39,9 @@ exports[`Section node If it matches the snapshot 1`] = `
 `;
 
 exports[`Section node Open and close 1`] = `
-<div>
+<div
+  class="section disabled"
+>
   <header
     class="section__header"
   >
@@ -73,7 +77,9 @@ exports[`Section node Open and close 1`] = `
 `;
 
 exports[`Section node Open and close 2`] = `
-<div>
+<div
+  class="section disabled"
+>
   <header
     class="section__header"
   >
