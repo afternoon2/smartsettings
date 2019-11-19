@@ -1,4 +1,4 @@
-type Props<Options> = {
+export type Props<Options> = {
   id: string,
   name: string,
   options: Options,

@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Section node If it matches the snapshot 1`] = `
+<div>
+  <header
+    class="section__header"
+  >
+    
+      
+    <p
+      class="section__name"
+    >
+      
+        name
+      
+    </p>
+    
+      
+    <a
+      class="section__link"
+    >
+      
+        ▾
+      
+    </a>
+    
+    
+  </header>
+  
+    
+  <main
+    class="section__body "
+  />
+  
+  
+</div>
+`;
+
+exports[`Section node Open and close 1`] = `
+<div>
+  <header
+    class="section__header"
+  >
+    
+      
+    <p
+      class="section__name"
+    >
+      
+        name
+      
+    </p>
+    
+      
+    <a
+      class="section__link"
+    >
+      
+        ▾
+      
+    </a>
+    
+    
+  </header>
+  
+    
+  <main
+    class="section__body hidden"
+  />
+  
+  
+</div>
+`;
+
+exports[`Section node Open and close 2`] = `
+<div>
+  <header
+    class="section__header"
+  >
+    
+      
+    <p
+      class="section__name"
+    >
+      
+        name
+      
+    </p>
+    
+      
+    <a
+      class="section__link"
+    >
+      
+        ▾
+      
+    </a>
+    
+    
+  </header>
+  
+    
+  <main
+    class="section__body"
+  />
+  
+  
+</div>
+`;

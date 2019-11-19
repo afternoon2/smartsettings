@@ -1,5 +1,5 @@
-import { RootNode } from '../root/RootNode';
-import { ControlListener } from '../controls/control/Control.types';
+import { RootNode, InternalState, InternalStateSetter } from '../root/RootNode';
+import { ControlListener, ControlListenerUpdate } from '../controls/control/Control.types';
 
 import Base from '../../sass/base.sass';
 import Styles from '../../sass/panel.sass';
@@ -22,53 +22,84 @@ export type PanelProps = {
   name: string,
   options: PanelOptions,
   parent: HTMLElement,
+  userListener?: ControlListener,
 };
 
-// export class Panel extends RootNode {
-//   public parentElement: HTMLElement = document.body;
-//   public element: HTMLDivElement;
+export class Panel extends RootNode {
+  public parentElement: HTMLElement;
+  public element: HTMLElement;
 
-//   constructor(props: PanelProps) {
-//     super();
-//     this.assignParentElement(parent);
-//     this.element = this.createPanelNode();
-//     this.parentElement.appendChild(this.element);
-//   }
+  protected state: InternalState;
+  protected listeners: Map<string, ControlListener> = new Map();
+  protected template = (state: InternalState): string => `<header
+    class="${Styles.panel__header}">
+      <p class="${Styles.panel__name}" title="${state.name}">
+        ${state.name}
+      </p>
+      <a class="${Styles.panel__link}">
+        ${state.collapsed ? ' &#9662;' : '&#9656'}
+      </a>
+    </header>
+    <main class="${Styles.panel__body} ${state.collapsed ? Base.hidden : ''}">
+    </main>`;
 
-//   private assignParentElement(parent: HTMLElement | string | null) {
-//     if (parent && this.isValidElement(parent)) {
-//       this.parentElement = this.getParentElement(parent);
-//     }
-//   }
+  private stateHandler: ProxyHandler<InternalState> = {
+    set: this.createStateSetter(),
+  }
 
-//   private createPanelNode(): HTMLDivElement {
-//     const { locked, invisible, draggable, collapsed } = this.options as PanelOptions;
-//     const { id, name } = this;
-//     const rootNode: HTMLDivElement = document.createElement('div');
-//     rootNode.classList.add(Styles.panel);
-//     if (locked) {
-//       rootNode.classList.add(Base.locked);
-//     }
-//     if (invisible) {
-//       rootNode.classList.add(Base.hidden);
-//     }
-//     if (draggable) {
-//       rootNode.setAttribute('data-draggable', "true");
-//     }
-//     rootNode.setAttribute('id', id);
-//     const template: string = `
-//       <header class="${Styles.panel__header}">
-//         <p class="${Styles.panel__name}" title="${name}">
-//           ${name}
-//         </p>
-//         <a class="${Styles.panel__link}">
-//           ${collapsed ? ' &#9662;' : '&#9656'}
-//         </a>
-//       </header>
-//       <main class="${Styles.panel__body} ${collapsed ? Base.hidden : ''}">
-//       </main>
-//     `;
-//     rootNode.insertAdjacentHTML('beforeend', template);
-//     return rootNode;
-//   }
-// }
+  constructor(props: PanelProps) {
+    super();
+    this.state = this.createState(props.id, props.name, props.options, this.stateHandler);
+    this.parentElement = props.parent;
+    this.element = this.createPanelElement();
+    
+    this.parentElement.appendChild(this.element);
+
+    this.listeners.set('invisible', this.onInvisible);
+    this.listeners.set('disabled', this.onDisabled);
+    this.listeners.set('collapsed', this.onCollapsed);
+    if (props.userListener) {
+      this.listeners.set('user', props.userListener);
+    }
+  }
+
+  open() {
+    this.state.collapsed = false;
+  }
+
+  close() {
+    this.state.collapsed = true;
+  }
+
+  private createPanelElement = (): HTMLElement => {
+    const { id, disabled, invisible, draggable } = this.state;
+    const panelElement = document.createElement('div');
+    if (disabled) {
+      panelElement.classList.add(Base.locked);
+    }
+    if (invisible) {
+      panelElement.classList.add(Base.hidden);
+    }
+    if (draggable) {
+      panelElement.setAttribute('data-draggable', "true");
+    }
+    panelElement.setAttribute('id', id);
+    const template: string = this.template(this.state);
+    panelElement.insertAdjacentHTML('beforeend', template);
+    return panelElement;
+  }
+
+  private onCollapsed: ControlListener = (update: ControlListenerUpdate) => {
+    const panelBody = this.element.querySelector(`.${Styles.panel__body}`) as HTMLElement;
+    const { classList } = panelBody;
+    if (update.value === true) {
+      if (!classList.contains(Base.hidden)) {
+        classList.add(Base.hidden);
+      }
+    } else {
+      if (classList.contains(Base.hidden)) {
+        classList.remove(Base.hidden);
+      }
+    }
+  }
+}
