@@ -11,7 +11,7 @@ describe('Section node', () => {
       name: 'name',
       options: {
         collapsed: false,
-        disabled: true,
+        disabled: false,
         invisible: false,
       },
       parentElement: document.body,
@@ -30,6 +30,12 @@ describe('Section node', () => {
     section.open();
     expect(section.collapsed).toBe(false);
     expect(userListener).toHaveBeenCalledTimes(2);
+    expect(section.element).toMatchSnapshot();
+  });
+
+  test('Open and close by click', () => {
+    (section.headerElement.querySelector('a') as HTMLAnchorElement).click();
+    expect(section.collapsed).toBe(true);
     expect(section.element).toMatchSnapshot();
   });
 });

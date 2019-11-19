@@ -8,6 +8,7 @@ export abstract class ParentNode extends RootNode {
   public parentElement: HTMLElement;
   public element: HTMLElement;
   public abstract bodyElement: HTMLElement;
+  public abstract headerElement: HTMLElement;
 
   protected state: InternalState;
   protected listeners: Map<string, ControlListener> = new Map();
@@ -47,14 +48,17 @@ export abstract class ParentNode extends RootNode {
 
   protected onCollapsed: ControlListener = (update: ControlListenerUpdate) => {
     const { classList } = this.bodyElement;
+    const toggle = this.headerElement.querySelector('a') as HTMLAnchorElement;
     if (update.value === true) {
       if (!classList.contains(Base.hidden)) {
         classList.add(Base.hidden);
       }
+      toggle.innerHTML = '&#9656;';
     } else {
       if (classList.contains(Base.hidden)) {
         classList.remove(Base.hidden);
       }
+      toggle.innerHTML = '&#9662;';
     }
   }
 

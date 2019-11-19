@@ -2,7 +2,7 @@
 
 exports[`Section node If it matches the snapshot 1`] = `
 <div
-  class="section disabled"
+  class="section"
 >
   <header
     class="section__header"
@@ -40,7 +40,7 @@ exports[`Section node If it matches the snapshot 1`] = `
 
 exports[`Section node Open and close 1`] = `
 <div
-  class="section disabled"
+  class="section"
 >
   <header
     class="section__header"
@@ -59,9 +59,7 @@ exports[`Section node Open and close 1`] = `
     <a
       class="section__link"
     >
-      
-        ▾
-      
+      ▸
     </a>
     
     
@@ -78,7 +76,7 @@ exports[`Section node Open and close 1`] = `
 
 exports[`Section node Open and close 2`] = `
 <div
-  class="section disabled"
+  class="section"
 >
   <header
     class="section__header"
@@ -97,9 +95,7 @@ exports[`Section node Open and close 2`] = `
     <a
       class="section__link"
     >
-      
-        ▾
-      
+      ▾
     </a>
     
     
@@ -108,6 +104,42 @@ exports[`Section node Open and close 2`] = `
     
   <main
     class="section__body"
+  />
+  
+  
+</div>
+`;
+
+exports[`Section node Open and close by click 1`] = `
+<div
+  class="section"
+>
+  <header
+    class="section__header"
+  >
+    
+      
+    <p
+      class="section__name"
+    >
+      
+        name
+      
+    </p>
+    
+      
+    <a
+      class="section__link"
+    >
+      ▸
+    </a>
+    
+    
+  </header>
+  
+    
+  <main
+    class="section__body hidden"
   />
   
   
