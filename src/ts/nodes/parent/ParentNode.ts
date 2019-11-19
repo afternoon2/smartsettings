@@ -63,4 +63,13 @@ export abstract class ParentNode extends RootNode {
     rootElement.insertAdjacentHTML('beforeend', template);
     return rootElement;
   }
+
+  protected fillInElement(className: string) {
+    this.element.classList.add(className);
+    this.onDisabled({
+      id: this.id,
+      key: 'disabled',
+      value: this.state.disabled as boolean,
+    });
+  }
 }
