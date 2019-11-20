@@ -1,4 +1,11 @@
 import { SectionNode } from './Section';
+import { ButtonControl } from '../../controls/button/ButtonControl';
+import { TextControl } from '../../controls/text/TextControl';
+import { TextAreaControl } from '../../controls/textarea/TextAreaControl';
+import { NumberControl } from '../../controls/number/NumberControl';
+import { RangeControl } from '../../controls/range/RangeControl';
+import { CheckboxControl } from '../../controls/checkbox/CheckboxControl';
+import { FileControl } from '../../controls/file/FileControl';
 
 let section: SectionNode;
 let userListener: any;
@@ -37,6 +44,44 @@ describe('Section node', () => {
     (section.headerElement.querySelector('a') as HTMLAnchorElement).click();
     expect(section.collapsed).toBe(true);
     expect(section.element).toMatchSnapshot();
+  });
+
+  test('Control creation', () => {
+    const btn = section.control('button', 'Button', {
+      text: 'Click me!',
+    });
+    const text = section.control('text', 'Text', {
+      placeholder: 'Write here!',
+      value: 'text input',
+    });
+    const textarea = section.control('textarea', 'Textarea', {
+      placeholder: 'textarea',
+      value: 'Textarea',
+    });
+    const range = section.control('range', 'Range', {
+      min: 0, max: 10, value: 1, step: 1,
+    });
+    const number = section.control('number', 'Range', {
+      min: 0, max: 10, value: 1, step: 1,
+    });
+    const checkbox = section.control('checkbox', 'Checkbox', {
+      checked: true,
+      checkboxId: 'checkboxId',
+    });
+    const file = section.control('file', 'Checkbox', {
+      controlId: 'fileId',
+    });
+    const falsyControl = section.control('falsy', 'Falsy', {
+      min: 1, max: 10, step: 1, value: 10,
+    });
+    expect(btn).toBeInstanceOf(ButtonControl);
+    expect(text).toBeInstanceOf(TextControl);
+    expect(textarea).toBeInstanceOf(TextAreaControl);
+    expect(number).toBeInstanceOf(NumberControl);
+    expect(range).toBeInstanceOf(RangeControl);
+    expect(checkbox).toBeInstanceOf(CheckboxControl);
+    expect(file).toBeInstanceOf(FileControl);
+    expect(falsyControl).toBe(null);
   });
 });
 

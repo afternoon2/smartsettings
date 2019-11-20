@@ -1,8 +1,36 @@
+import cuid from 'cuid';
+
 import { RootNode, InternalState } from '../../root/RootNode';
-import { ControlListener, ControlListenerUpdate } from '../../controls/control/Control.types';
+import {
+  ControlListener,
+  ControlListenerUpdate,
+  ControlOptions,
+  TextControlProps,
+  TextAreaControlProps,
+  CheckboxControlProps,
+  FileControlProps,
+  NumberControlProps,
+  RangeControlProps,
+  ButtonControlProps,
+} from '../../controls/control/Control.types';
 import { ParentProps } from '../nodes.types';
 
 import Base from '../../../sass/base.sass';
+import { ButtonControl } from '../../controls/button/ButtonControl';
+import { TextControl } from '../../controls/text/TextControl';
+import { TextAreaControl } from '../../controls/textarea/TextAreaControl';
+import { CheckboxControl } from '../../controls/checkbox/CheckboxControl';
+import { FileControl } from '../../controls/file/FileControl';
+import { NumberControl } from '../../controls/number/NumberControl';
+import { RangeControl } from '../../controls/range/RangeControl';
+
+export type AnyControl = ButtonControl
+| TextControl
+| TextAreaControl
+| CheckboxControl
+| FileControl
+| NumberControl
+| RangeControl;
 
 export abstract class ParentNode extends RootNode {
   public parentElement: HTMLElement;
@@ -15,6 +43,7 @@ export abstract class ParentNode extends RootNode {
   protected stateHandler: ProxyHandler<InternalState> = {
     set: this.createStateSetter(),
   };
+  protected registry: Map<string, AnyControl> = new Map();
 
   constructor(
     props: ParentProps,
@@ -44,6 +73,50 @@ export abstract class ParentNode extends RootNode {
 
   close() {
     this.state.collapsed = true;
+  }
+
+  control(
+    control: string, 
+    name: string, 
+    options: ControlOptions | null, 
+    userListener?: ControlListener
+  ): AnyControl | null {
+    const id: string = cuid();
+    const parentElement = this.bodyElement;
+    const props = {
+      id, name, options: options || {}, parentElement, userListener,
+    };
+    let instance;
+    switch (control) {
+      case 'button':
+        instance = new ButtonControl(props as ButtonControlProps);
+        break;
+      case 'checkbox':
+        instance = new CheckboxControl(props as CheckboxControlProps);
+        break;
+      case 'file':
+        instance = new FileControl(props as FileControlProps);
+        break;
+      case 'number':
+        instance = new NumberControl(props as NumberControlProps);
+        break;
+      case 'range':
+        instance = new RangeControl(props as RangeControlProps);
+        break;
+      case 'text':
+        instance = new TextControl(props as TextControlProps);
+        break;
+      case 'textarea':
+        instance = new TextAreaControl(props as TextAreaControlProps);
+        break;
+      default:
+        instance = null;
+        break;
+    }
+    if (instance !== null) {
+      this.registry.set(id, instance);
+    }
+    return instance;
   }
 
   protected onCollapsed: ControlListener = (update: ControlListenerUpdate) => {
