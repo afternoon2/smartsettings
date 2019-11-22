@@ -11,27 +11,22 @@ describe('Button control', () => {
       name: 'Button',
       options: {
         checked: false,
-        checkboxId: 'checkboxId',
       },
       parentElement: document.body,
       userListener,
     });
   });
 
-  test('If it matches the snapshot', () => {
-    expect(checkbox.element).toMatchSnapshot();
-  });
-
   test('Disable', () => {
     checkbox.disable();
-    expect(checkbox.element).toMatchSnapshot();
+    expect(checkbox.disabled).toBe(true);
+    expect(checkbox.controlElement.hasAttribute('disabled')).toBe(true);
   });
 
   test('Enable', () => {
     checkbox.disable();
     checkbox.enable();
     expect(checkbox.controlElement.hasAttribute('disabled')).toBe(false);
-    expect(checkbox.element).toMatchSnapshot();
   });
 
   test('Check and uncheck', () => {

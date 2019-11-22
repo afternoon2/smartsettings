@@ -7,7 +7,7 @@ export type Props<Options> = {
 };
 
 export type TextControlOptions = {
-  value: string,
+  value?: string,
   autocomplete?: boolean,
   disabled?: boolean,
   maxLength?: number,
@@ -19,7 +19,7 @@ export type TextControlOptions = {
 export type TextControlProps = Props<TextControlOptions>;
 
 export type TextAreaControlOptions = {
-  value: string,
+  value?: string,
   autocomplete?: boolean,
   cols?: number,
   disabled?: boolean,
@@ -41,8 +41,7 @@ export type ButtonControlOptions = {
 export type ButtonControlProps = Props<ButtonControlOptions>;
 
 export type CheckboxControlOptions = {
-  checked: boolean,
-  checkboxId: string,
+  checked?: boolean,
   disabled?: boolean,
   readOnly?: boolean,
 };
@@ -50,7 +49,7 @@ export type CheckboxControlOptions = {
 export type CheckboxControlProps = Props<CheckboxControlOptions>;
 
 export type NumberControlOptions = {
-  value: number,
+  value?: number,
   disabled?: boolean,
   max?: number,
   min?: number,
@@ -62,7 +61,6 @@ export type NumberControlOptions = {
 export type NumberControlProps = Props<NumberControlOptions>;
 
 export type FileControlOptions = {
-  controlId: string,
   files?: FileList,
   accept?: string,
   disabled?: boolean,
@@ -73,7 +71,7 @@ export type FileControlOptions = {
 export type FileControlProps = Props<FileControlOptions>;
 
 export type RangeControlOptions = {
-  value: number,
+  value?: number,
   disabled?: boolean,
   max?: number,
   min?: number,

@@ -9,16 +9,10 @@ describe('Name of the group', () => {
     file = new FileControl({
       id: 'id',
       name: 'name',
-      options: {
-        controlId: 'controlId',
-      },
+      options: {},
       parentElement: document.body,
       userListener,
     });
-  });
-
-  test('If it matches the snapshot', () => {
-    expect(file.element).toMatchSnapshot();
   });
 
   test('Get and set accept attribute', () => {

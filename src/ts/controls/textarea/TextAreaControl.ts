@@ -25,7 +25,7 @@ export class TextAreaControl extends Control {
       ${state.readonly ? 'readonly' : ''}
       ${state.autocomplete ? 'autocomplete="true"' : ''}
     >
-      ${state.value}
+      ${state.value || ''}
     </textarea>
   `;
 

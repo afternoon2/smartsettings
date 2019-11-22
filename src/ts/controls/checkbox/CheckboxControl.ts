@@ -11,20 +11,21 @@ import Styles from '../../../sass/checkbox.sass';
 export class CheckboxControl extends Control {
   public controlElement: HTMLInputElement;
 
-  protected controlId: string = cuid();
-
-  protected static template = (state: InternalState): string => `
-    <label class="${Styles.checkbox}" for="${state.checkboxId}">
-      <input
-        id="${state.checkboxId}"
-        type="checkbox"
-        title="${state.name}"
-        ${state.checked ? 'checked' : ''}
-        ${state.disabled ? 'disabled' : ''}
-        ${state.readonly ? 'readonly' : ''}
-      />
-    </label>
-  `;
+  protected static template = (state: InternalState): string => {
+    const id: string = cuid();
+    return `<label
+      class="${Styles.checkbox}" for="${id}">
+        <input
+          id="${id}"
+          type="checkbox"
+          title="${state.name}"
+          ${state.checked ? 'checked' : ''}
+          ${state.disabled ? 'disabled' : ''}
+          ${state.readonly ? 'readonly' : ''}
+        />
+      </label>
+    `;
+  }
 
   constructor(props: CheckboxControlProps) {
     super(props, CheckboxControl.template);

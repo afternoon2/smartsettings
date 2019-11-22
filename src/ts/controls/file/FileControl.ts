@@ -11,22 +11,23 @@ import Styles from '../../../sass/file.sass';
 export class FileControl extends Control {
   public controlElement: HTMLInputElement;
 
-  protected controlId: string = cuid();
-
-  protected static template = (state: InternalState): string => `<label
-      class="${Styles.file}"
-      for="${state.controlId}"
-    >
-      Upload...
-      <input
-        id="${state.controlId}"
-        type="file"
-        title="${state.name}"
-        ${state.disabled ? 'disabled' : ''}
-        ${state.readonly ? 'readonly' : ''}
-      />
-    </label>
-  `;
+  protected static template = (state: InternalState): string => {
+    const id: string = cuid();
+    return `<label
+        class="${Styles.file}"
+        for="${id}"
+      >
+        Upload...
+        <input
+          id="${id}"
+          type="file"
+          title="${state.name}"
+          ${state.disabled ? 'disabled' : ''}
+          ${state.readonly ? 'readonly' : ''}
+        />
+      </label>
+    `
+  };
 
   constructor(props: FileControlProps) {
     super(props, FileControl.template);

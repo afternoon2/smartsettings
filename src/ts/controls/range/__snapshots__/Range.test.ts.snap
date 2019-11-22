@@ -24,7 +24,6 @@ exports[`Range control Disable 1`] = `
         min="0"
         step="0.1"
         type="range"
-        value="0"
       />
       
   
@@ -63,7 +62,6 @@ exports[`Range control Enable 1`] = `
         min="0"
         step="0.1"
         type="range"
-        value="0"
       />
       
   
@@ -102,7 +100,6 @@ exports[`Range control If it matches snapshot after initial load 1`] = `
         min="0"
         step="0.1"
         type="range"
-        value="0"
       />
       
   

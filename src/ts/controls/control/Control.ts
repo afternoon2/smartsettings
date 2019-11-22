@@ -2,6 +2,7 @@ import { RootNode, InternalState } from '../../root/RootNode';
 import { ControlProps, ControlListener, ControlListenerUpdate } from './Control.types';
 
 import Styles from '../../../sass/control.sass';
+import Button from '../../../sass/button.sass';
 
 export abstract class Control extends RootNode {
   public parentElement: HTMLElement;
@@ -52,15 +53,21 @@ export abstract class Control extends RootNode {
   protected createControlElement(template: string, name: string, id: string): HTMLDivElement {
     const element = this.createRootDiv();
     const main = document.createElement('main');
+    const isButton = template.search(Button.button) > -1;
     main.classList.add(Styles.control__body);
     main.setAttribute('id', id);
-    main.insertAdjacentHTML(
-      'beforeend',
-      `<p class="${Styles.control__name}" title="${name}">${name}</p>`,
-    );
+    if (!isButton) {
+      main.insertAdjacentHTML(
+        'beforeend',
+        `<p class="${Styles.control__name}" title="${name}">${name}</p>`,
+      );
+    }
     const content = document.createElement('div');
     content.classList.add(Styles.control__content);
     content.insertAdjacentHTML('beforeend', template);
+    if (isButton) {
+      content.classList.add(Styles['control__content--button']);
+    }
     main.appendChild(content);
     element.appendChild(main);
     return element;

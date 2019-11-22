@@ -13,7 +13,7 @@ export class RangeControl extends Control {
   protected static template = (state: InternalState): string => `<input
       type="range"
       class="${Styles.range}"
-      ${typeof state.value === 'number' ? `value="${state.value}"` : ''}
+      ${state.value && typeof state.value === 'number' ? `value="${state.value}"` : ''}
       ${typeof state.min === 'number' ? `min="${state.min}"` : ''}
       ${typeof state.max === 'number' ? `max="${state.max}"` : ''}
       ${typeof state.step === 'number' ? `step="${state.step}"` : ''}
