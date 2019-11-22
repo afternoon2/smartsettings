@@ -16,7 +16,7 @@ export class SectionNode extends ParentNode {
         ${state.name}
       </p>
       <a class="${Styles.section__link}">
-        ${state.collapsed ? '&#9656;' : '&#9662;'}
+        ${state.collapsed ? '&#9662;' : '&#9656;'}
       </a>
     </header>
     <main class="${Styles.section__body} ${state.collapsed ? Base.hidden : ''}"></main>

@@ -23,6 +23,7 @@ import { CheckboxControl } from '../../controls/checkbox/CheckboxControl';
 import { FileControl } from '../../controls/file/FileControl';
 import { NumberControl } from '../../controls/number/NumberControl';
 import { RangeControl } from '../../controls/range/RangeControl';
+import { SectionNode } from '../section/Section';
 
 export type AnyControl = ButtonControl
 | TextControl
@@ -43,7 +44,7 @@ export abstract class ParentNode extends RootNode {
   protected stateHandler: ProxyHandler<InternalState> = {
     set: this.createStateSetter(),
   };
-  protected registry: Map<string, AnyControl> = new Map();
+  protected registry: Map<string, AnyControl | SectionNode> = new Map();
 
   constructor(
     props: ParentProps,
@@ -126,12 +127,12 @@ export abstract class ParentNode extends RootNode {
       if (!classList.contains(Base.hidden)) {
         classList.add(Base.hidden);
       }
-      toggle.innerHTML = '&#9656;';
+      toggle.innerHTML = '&#9662;';
     } else {
       if (classList.contains(Base.hidden)) {
         classList.remove(Base.hidden);
       }
-      toggle.innerHTML = '&#9662;';
+      toggle.innerHTML = '&#9656;';
     }
   }
 

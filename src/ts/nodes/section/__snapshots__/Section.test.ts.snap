@@ -22,7 +22,7 @@ exports[`Section node If it matches the snapshot 1`] = `
       class="section__link"
     >
       
-        ▾
+        ▸
       
     </a>
     
@@ -59,7 +59,7 @@ exports[`Section node Open and close 1`] = `
     <a
       class="section__link"
     >
-      ▸
+      ▾
     </a>
     
     
@@ -95,7 +95,7 @@ exports[`Section node Open and close 2`] = `
     <a
       class="section__link"
     >
-      ▾
+      ▸
     </a>
     
     
@@ -131,7 +131,7 @@ exports[`Section node Open and close by click 1`] = `
     <a
       class="section__link"
     >
-      ▸
+      ▾
     </a>
     
     

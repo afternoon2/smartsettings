@@ -10,8 +10,13 @@ export type SectionProps = Props<SectionOptions>;
 
 export type PanelOptions = SectionOptions & {
   draggable?: boolean,
-  left?: number,
   top?: number,
+  left?: number,
+};
+
+export type PanelPosition = {
+  top: number,
+  left: number,
 };
 
 export type PanelProps = Props<PanelOptions>;

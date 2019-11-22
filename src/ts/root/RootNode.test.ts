@@ -1,6 +1,6 @@
 import { RootNode, InternalState, InternalStateSetter } from './RootNode';
 import { ControlListener, ControlOptions, ControlListenerUpdate } from '../controls/control/Control.types';
-import { PanelOptions } from '../panel/Panel';
+import { PanelOptions } from '../nodes/nodes.types';
 
 const userListener = jest.fn();
 class DerivedClass extends RootNode {

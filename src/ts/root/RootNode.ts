@@ -1,4 +1,4 @@
-import { PanelOptions } from '../panel/Panel';
+import { PanelOptions } from '../nodes/nodes.types';
 import {
   ControlOptions,
   ControlListener,

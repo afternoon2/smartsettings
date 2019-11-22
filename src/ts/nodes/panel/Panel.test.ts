@@ -1,0 +1,87 @@
+import { PanelNode } from './Panel';
+import { ButtonControl } from '../../controls/button/ButtonControl';
+import { TextControl } from '../../controls/text/TextControl';
+import { TextAreaControl } from '../../controls/textarea/TextAreaControl';
+import { NumberControl } from '../../controls/number/NumberControl';
+import { RangeControl } from '../../controls/range/RangeControl';
+import { CheckboxControl } from '../../controls/checkbox/CheckboxControl';
+import { FileControl } from '../../controls/file/FileControl';
+
+let panel: PanelNode;
+let userListener: any;
+
+describe('Panel node', () => {
+  beforeEach(() => {
+    userListener = jest.fn();
+    panel = new PanelNode({
+      id: 'id',
+      name: 'name',
+      options: {
+        collapsed: false,
+        disabled: false,
+        invisible: false,
+      },
+      parentElement: document.body,
+      userListener,
+    });
+  });
+
+  test('If it matches the snapshot', () => {
+    expect(panel.element).toMatchSnapshot();
+  });
+
+  test('Open and close', () => {
+    panel.close();
+    expect(panel.collapsed).toBe(true);
+    expect(panel.element).toMatchSnapshot();
+    panel.open();
+    expect(panel.collapsed).toBe(false);
+    expect(userListener).toHaveBeenCalledTimes(4);
+    expect(panel.element).toMatchSnapshot();
+  });
+
+  test('Open and close by click', () => {
+    (panel.headerElement.querySelector('a') as HTMLAnchorElement).click();
+    expect(panel.collapsed).toBe(true);
+    expect(panel.element).toMatchSnapshot();
+  });
+
+  test('Control creation', () => {
+    const btn = panel.control('button', 'Button', {
+      text: 'Click me!',
+    });
+    const text = panel.control('text', 'Text', {
+      placeholder: 'Write here!',
+      value: 'text input',
+    });
+    const textarea = panel.control('textarea', 'Textarea', {
+      placeholder: 'textarea',
+      value: 'Textarea',
+    });
+    const range = panel.control('range', 'Range', {
+      min: 0, max: 10, value: 1, step: 1,
+    });
+    const number = panel.control('number', 'Range', {
+      min: 0, max: 10, value: 1, step: 1,
+    });
+    const checkbox = panel.control('checkbox', 'Checkbox', {
+      checked: true,
+      checkboxId: 'checkboxId',
+    });
+    const file = panel.control('file', 'Checkbox', {
+      controlId: 'fileId',
+    });
+    const falsyControl = panel.control('falsy', 'Falsy', {
+      min: 1, max: 10, step: 1, value: 10,
+    });
+    expect(btn).toBeInstanceOf(ButtonControl);
+    expect(text).toBeInstanceOf(TextControl);
+    expect(textarea).toBeInstanceOf(TextAreaControl);
+    expect(number).toBeInstanceOf(NumberControl);
+    expect(range).toBeInstanceOf(RangeControl);
+    expect(checkbox).toBeInstanceOf(CheckboxControl);
+    expect(file).toBeInstanceOf(FileControl);
+    expect(falsyControl).toBe(null);
+  });
+});
+
