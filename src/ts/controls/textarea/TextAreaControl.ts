@@ -9,7 +9,7 @@ import { InternalState } from '../../root/RootNode';
 export class TextAreaControl extends Control {
   public controlElement: HTMLTextAreaElement;
 
-  protected static defaultRows: number = 8;
+  protected static defaultRows: number = 4;
   protected static defaultCols: number = 10;
 
   protected static template = (state: InternalState): string => `

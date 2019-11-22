@@ -22,7 +22,7 @@ exports[`Text control Disable 1`] = `
       <textarea
         class="textarea"
         cols="10"
-        rows="8"
+        rows="4"
         wrap="hard"
       >
               test
@@ -57,7 +57,7 @@ exports[`Text control Enable 1`] = `
       <textarea
         class="textarea"
         cols="10"
-        rows="8"
+        rows="4"
         wrap="hard"
       >
               test
@@ -92,7 +92,7 @@ exports[`Text control If it matches snapshot after initial load 1`] = `
       <textarea
         class="textarea"
         cols="10"
-        rows="8"
+        rows="4"
         wrap="hard"
       >
               test
