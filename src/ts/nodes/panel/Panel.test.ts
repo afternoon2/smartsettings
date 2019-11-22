@@ -6,6 +6,8 @@ import { NumberControl } from '../../controls/number/NumberControl';
 import { RangeControl } from '../../controls/range/RangeControl';
 import { CheckboxControl } from '../../controls/checkbox/CheckboxControl';
 import { FileControl } from '../../controls/file/FileControl';
+import { SectionNode } from '../section/Section';
+import { PanelPosition } from '../nodes.types';
 
 let panel: PanelNode;
 let userListener: any;
@@ -82,6 +84,23 @@ describe('Panel node', () => {
     expect(checkbox).toBeInstanceOf(CheckboxControl);
     expect(file).toBeInstanceOf(FileControl);
     expect(falsyControl).toBe(null);
+  });
+
+  test('Section creation', () => {
+    const section = panel.section('Section', {});
+    expect(section).toBeInstanceOf(SectionNode);
+    expect(section.name).toBe('Section');
+  });
+
+  test('Set and get panel position', () => {
+    panel.setPosition({
+      top: 30,
+      left: 40,
+    });
+    expect(panel.element.style.top).toBe('30px');
+    expect(panel.element.style.left).toBe('40px');
+    expect((panel.position as PanelPosition).left).toBe(40);
+    expect((panel.position as PanelPosition).top).toBe(30);
   });
 });
 
