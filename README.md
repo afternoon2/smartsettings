@@ -2,40 +2,63 @@
 
 JS library for creating setting panels.
 
-## Version 2.x.x preview
+*Version 2.x.x preview*
 
 ![SmartSettings Preview](./images/smartsettings_screen.png)
 
-# README for version 1.2.3
+## Installation
 
 ## Installation
 
+### Yarn
 ```
-npm install --save-dev smartsettings
+yarn add smartsettings
+```
+
+### Npm
+
+```
+npm install --save smartsettings
 ```
 
 ## Usage
 
-For ES modules:
-```js
-import SmartSettings from 'smartsettings'
+### Default creation
+```javascript
+import SmartSettings from 'smartsettings';
+
+const settings = SmartSettings();
+const panel = settings.create();
 ```
 
-For UMD modules
-```js
-const SmartSettings = require('smartsettings')
+### Creation with parameters
+```javascript
+import SmartSettings from 'smartsettings';
+
+const settings = SmartSettings();
+const panel = settings.create('My panel', {
+    top: 40,
+    left: 300,
+    disabled: true,
+});
 ```
 
-And then just:
+### Control creation
 
-```js
-const settings = new SmartSettings('Settings', 10 /* left */, 10 /* top */)
+```javascript
+const settings = SmartSettings();
+const panel = settings.panel();
+const button = panel.control(
+    'button',
+    'Reset', 
+    { disabled: true },
+);
 ```
 
-Or in the browser:
-```html
-<script src="https://unpkg.com/smartsettings@1.2.3/dist/smartsettings.umd.js"></script>
-```
+
+
+------------------
+# @1.2.3 deprecated docs
 ## Docs & demos
 
 [Documentation](https://afternoon2.github.io/smartsettings/)
