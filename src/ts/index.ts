@@ -1,9 +1,35 @@
-export * from './controls/text/TextControl';
-export * from './controls/textarea/TextAreaControl';
-export * from './controls/button/ButtonControl';
-export * from './controls/checkbox/CheckboxControl';
-export * from './controls/file/FileControl';
-export * from './controls/number/NumberControl';
-export * from './controls/range/RangeControl';
-export * from './nodes/section/Section';
-export * from './nodes/panel/Panel';
+import cuid from 'cuid';
+
+import { PanelOptions } from './nodes/nodes.types';
+import { PanelNode } from './nodes/panel/Panel';
+import { ControlListener } from './controls/control/Control.types';
+
+export interface SmartSettingsInterface {
+  panel: (name?: string, options?: PanelOptions, listener?: ControlListener) => PanelNode;
+}
+
+export default function SmartSettings() {
+  const version: string = '2.0.0';
+  const defaultName: string = `SmartSettings v.${version}`;
+  const defaultOptions: PanelOptions = {
+    collapsed: false,
+    disabled: false,
+    draggable: false,
+    top: 10,
+    left: 10,
+  };
+  
+  return {
+    panel(name?: string, options?: PanelOptions, listener?: ControlListener): PanelNode {
+      const id = cuid();
+      const panel: PanelNode = new PanelNode({
+        id, 
+        name: name || defaultName, 
+        options: options || defaultOptions, 
+        listener,
+        parentElement: document.body,
+      });
+      return panel;
+    },
+  };
+}

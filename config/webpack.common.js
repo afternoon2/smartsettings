@@ -7,7 +7,12 @@ module.exports = {
   output: {
     filename: 'index.js',
     globalObject: 'typeof self !== \'undefined\' ? self : this',
-    library: 'SmartSettings',
+    library: {
+      amd: 'SmartSettings',
+      commonjs: 'SmartSettings',
+      root: 'SmartSettings',
+    },
+    libraryExport: 'default',
     libraryTarget: 'umd',
   },
   resolve: {

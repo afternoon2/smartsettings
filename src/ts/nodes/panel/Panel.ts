@@ -12,6 +12,7 @@ import { SectionNode } from '../section/Section';
 export class PanelNode extends ParentNode {
   public bodyElement: HTMLElement;
   public headerElement: HTMLElement;
+
   private toggleElement: HTMLAnchorElement;
   private nameElement: HTMLParagraphElement;
 
@@ -41,13 +42,11 @@ export class PanelNode extends ParentNode {
     if (props.listener) {
       this.listeners.set('panel', props.listener);
     }
-    this.bindEventListeners();
-    if (!this.state.top || !this.state.left) {
-      this.setPosition({
-        top: 10,
-        left: 10,
-      });
+    if (props.options.left && props.options.top) {
+      this.state.top = props.options.top;
+      this.state.left = props.options.left;
     }
+    this.bindEventListeners();
   }
 
   get position(): PanelPosition | null {
@@ -72,6 +71,8 @@ export class PanelNode extends ParentNode {
     this.registry.clear();
     this.listeners.clear();
     this.parentElement.removeChild(this.element);
+    Object.freeze(this.state);
+    Object.freeze(this);
   }
 
   remove(name: string) {

@@ -28,6 +28,10 @@ describe('Panel node', () => {
     });
   });
 
+  afterEach(() => {
+    document.body.innerHTML = '';
+  });
+
   test('If it matches the snapshot', () => {
     expect(panel.element).toMatchSnapshot();
   });
@@ -38,7 +42,7 @@ describe('Panel node', () => {
     expect(panel.element).toMatchSnapshot();
     panel.open();
     expect(panel.collapsed).toBe(false);
-    expect(listener).toHaveBeenCalledTimes(4);
+    expect(listener).toHaveBeenCalledTimes(2);
     expect(panel.element).toMatchSnapshot();
   });
 
@@ -100,7 +104,12 @@ describe('Panel node', () => {
 
   test('Destroy panel', () => {
     panel.destroy();
-    expect(document.getElementById('id')).toBe(null);
+    expect(document.getElementById(panel.id)).toBe(null);
+    expect(panel.parentElement.querySelector(`#${panel.id}`)).toBe(null);
+    
+    expect(() => {
+      panel.rename('Test');
+    }).toThrowError();
   });
 
   test('Remove method', () => {

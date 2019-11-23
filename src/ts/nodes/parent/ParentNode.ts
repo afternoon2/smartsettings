@@ -160,6 +160,7 @@ export abstract class ParentNode extends RootNode {
 
   protected fillInElement(className: string) {
     this.element.classList.add(className);
+    this.element.setAttribute('id', this.id);
     this.onDisabled({
       targetId: this.id,
       key: 'disabled',
