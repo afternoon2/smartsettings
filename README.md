@@ -2,9 +2,13 @@
 
 JS library for creating setting panels.
 
+<div style="text-align: center">
+
 *Version 2.x.x preview*
 
 ![SmartSettings Preview](./images/smartsettings_screen.png)
+
+</div>
 
 ## Installation
 
@@ -54,6 +58,82 @@ const button = panel.control(
 );
 ```
 
+### Control list
+
+#### Button
+
+```javascript
+const button = panel.control('button', {
+    name: 'Click me!',
+    listener: (update) => yourCallback()
+});
+```
+
+#### Checkbox
+
+```javascript
+const checkbox = panel.control('checkbox', {
+    name: 'Is Awesome',
+    checked: true,
+    listener: (update) => yourCallback(update.value)
+});
+```
+
+#### File
+
+```javascript
+const file = panel.control('file', {
+    name: 'Data',
+    listener: (update) => yourCallback(update.value)
+});
+```
+
+#### Number
+
+```javascript
+const number = panel.control('number', {
+    name: 'Humidity [%]',
+    min: 0,
+    max: 100,
+    step: 1,
+    value: 30,
+    listener: (update) => yourCallback(update.value)
+});
+```
+
+#### Range
+
+```javascript
+const range = panel.control('range', {
+    name: 'Gravity',
+    min: 0,
+    max: 100,
+    step: 1,
+    value: 10,
+    listener: (update) => yourCallback(update.value)
+});
+```
+
+#### Text
+
+```javascript
+const text = panel.control('text', {
+    name: 'Text input',
+    placeholder: 'Your value',
+    listener: (update) => yourCallback(update.value)
+});
+```
+
+#### TextArea
+
+```javascript
+const textarea = panel.control('textarea', {
+    name: 'Textarea input',
+    value: JSON.stringify(yourData),
+    readOnly: true,
+    listener: (update) => yourCallback(update.value)
+});
+```
 
 
 ------------------
