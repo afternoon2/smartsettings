@@ -68,8 +68,10 @@
 					<h1><a href="mailto:smartsettings.js@2.0">smartsettings.js@2.0</a> [WIP]</h1>
 				</a>
 				<p>JS library for creating setting panels.</p>
-				<p><em>Version 2.x.x preview</em></p>
-				<p><img src="./images/smartsettings_screen.png" alt="SmartSettings Preview"></p>
+				<div style="text-align: center">
+					<p><em>Version 2.x.x preview</em></p>
+					<p><img src="./images/smartsettings_screen.png" alt="SmartSettings Preview"></p>
+				</div>
 				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
 					<h2>Installation</h2>
 				</a>
@@ -113,6 +115,70 @@
         <span class="hljs-attr">disabled</span>: <span class="hljs-literal">true</span>
     },
 );</code></pre>
+				<a href="#control-list" id="control-list" style="color: inherit; text-decoration: none;">
+					<h3>Control list</h3>
+				</a>
+				<a href="#button" id="button" style="color: inherit; text-decoration: none;">
+					<h4>Button</h4>
+				</a>
+				<pre><code class="language-javascript"><span class="hljs-keyword">const</span> button = panel.control(<span class="hljs-string">'button'</span>, {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">'Click me!'</span>,
+    <span class="hljs-attr">listener</span>: <span class="hljs-function">(<span class="hljs-params">update</span>) =&gt;</span> yourCallback()
+});</code></pre>
+				<a href="#checkbox" id="checkbox" style="color: inherit; text-decoration: none;">
+					<h4>Checkbox</h4>
+				</a>
+				<pre><code class="language-javascript"><span class="hljs-keyword">const</span> checkbox = panel.control(<span class="hljs-string">'checkbox'</span>, {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">'Is Awesome'</span>,
+    <span class="hljs-attr">checked</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">listener</span>: <span class="hljs-function">(<span class="hljs-params">update</span>) =&gt;</span> yourCallback(update.value)
+});</code></pre>
+				<a href="#file" id="file" style="color: inherit; text-decoration: none;">
+					<h4>File</h4>
+				</a>
+				<pre><code class="language-javascript"><span class="hljs-keyword">const</span> file = panel.control(<span class="hljs-string">'file'</span>, {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">'Data'</span>,
+    <span class="hljs-attr">listener</span>: <span class="hljs-function">(<span class="hljs-params">update</span>) =&gt;</span> yourCallback(update.value)
+});</code></pre>
+				<a href="#number" id="number" style="color: inherit; text-decoration: none;">
+					<h4>Number</h4>
+				</a>
+				<pre><code class="language-javascript"><span class="hljs-keyword">const</span> number = panel.control(<span class="hljs-string">'number'</span>, {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">'Humidity [%]'</span>,
+    <span class="hljs-attr">min</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">max</span>: <span class="hljs-number">100</span>,
+    <span class="hljs-attr">step</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">value</span>: <span class="hljs-number">30</span>,
+    <span class="hljs-attr">listener</span>: <span class="hljs-function">(<span class="hljs-params">update</span>) =&gt;</span> yourCallback(update.value)
+});</code></pre>
+				<a href="#range" id="range" style="color: inherit; text-decoration: none;">
+					<h4>Range</h4>
+				</a>
+				<pre><code class="language-javascript"><span class="hljs-keyword">const</span> range = panel.control(<span class="hljs-string">'range'</span>, {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">'Gravity'</span>,
+    <span class="hljs-attr">min</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">max</span>: <span class="hljs-number">100</span>,
+    <span class="hljs-attr">step</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">value</span>: <span class="hljs-number">10</span>,
+    <span class="hljs-attr">listener</span>: <span class="hljs-function">(<span class="hljs-params">update</span>) =&gt;</span> yourCallback(update.value)
+});</code></pre>
+				<a href="#text" id="text" style="color: inherit; text-decoration: none;">
+					<h4>Text</h4>
+				</a>
+				<pre><code class="language-javascript"><span class="hljs-keyword">const</span> text = panel.control(<span class="hljs-string">'text'</span>, {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">'Text input'</span>,
+    <span class="hljs-attr">placeholder</span>: <span class="hljs-string">'Your value'</span>,
+    <span class="hljs-attr">listener</span>: <span class="hljs-function">(<span class="hljs-params">update</span>) =&gt;</span> yourCallback(update.value)
+});</code></pre>
+				<a href="#textarea" id="textarea" style="color: inherit; text-decoration: none;">
+					<h4>TextArea</h4>
+				</a>
+				<pre><code class="language-javascript"><span class="hljs-keyword">const</span> textarea = panel.control(<span class="hljs-string">'textarea'</span>, {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">'Textarea input'</span>,
+    <span class="hljs-attr">value</span>: <span class="hljs-built_in">JSON</span>.stringify(yourData),
+    <span class="hljs-attr">readOnly</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">listener</span>: <span class="hljs-function">(<span class="hljs-params">update</span>) =&gt;</span> yourCallback(update.value)
+});</code></pre>
 				<hr>
 				<a href="#123-deprecated-docs" id="123-deprecated-docs" style="color: inherit; text-decoration: none;">
 					<h1>@1.2.3 deprecated docs</h1>
