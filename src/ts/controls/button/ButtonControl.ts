@@ -18,7 +18,7 @@ export class ButtonControl extends Control {
       title="${state.name}"
       ${state.disabled ? 'disabled="true"' : ''}
     >
-      ${state.text || ''}
+      ${state.name || ''}
     </button>
   `;
 

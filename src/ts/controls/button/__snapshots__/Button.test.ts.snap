@@ -20,7 +20,7 @@ exports[`Button control Disable 1`] = `
         type="button"
       >
         
-      text
+      Button
     
       </button>
       
@@ -49,7 +49,7 @@ exports[`Button control Enable 1`] = `
         type="button"
       >
         
-      text
+      Button
     
       </button>
       
@@ -78,7 +78,7 @@ exports[`Button control If it matches the snapshot 1`] = `
         type="button"
       >
         
-      text
+      Button
     
       </button>
       

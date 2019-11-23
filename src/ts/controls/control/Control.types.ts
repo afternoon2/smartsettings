@@ -38,7 +38,6 @@ export type TextAreaControlOptions = {
 export type TextAreaControlProps = ControlPropsType<TextAreaControlOptions>;
 
 export type ButtonControlOptions = {
-  text?: string,
   disabled?: boolean,
   type?: string,
 };
