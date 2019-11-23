@@ -49,9 +49,7 @@ describe('Panel node', () => {
   });
 
   test('Control creation', () => {
-    const btn = panel.control('button', 'Button', {
-      text: 'Click me!',
-    });
+    const btn = panel.control('button', 'Button', {});
     const text = panel.control('text', 'Text', {
       placeholder: 'Write here!',
       value: 'text input',
@@ -106,12 +104,8 @@ describe('Panel node', () => {
   });
 
   test('Remove method', () => {
-    panel.control('button', 'Button', {
-      text: 'Click me!',
-    });
-    panel.control('button2', 'Button', {
-      text: 'Click me!',
-    });
+    panel.control('button', 'Button', {});
+    panel.control('button2', 'Button', {});
     panel.remove('Button');
     expect(panel.bodyElement.querySelector('#button')).toBe(null);
     expect(panel.bodyElement.querySelector('#button2')).toBe(null);
@@ -126,9 +120,7 @@ describe('Panel node', () => {
 
   test('Remove by id method', () => {
     const section = panel.section('Section', {});
-    const button = panel.control('button', 'Button', {
-      text: 'Click me!',
-    }) as ButtonControl;
+    const button = panel.control('button', 'Button', {}) as ButtonControl;
     const nestedButton = section.control('button', 'Button in section', {}) as ButtonControl;
 
     panel.removeById(button.id);
@@ -141,9 +133,7 @@ describe('Panel node', () => {
 
   test('Remove all', () => {
     const section = panel.section('Section', {});
-    panel.control('button', 'Button', {
-      text: 'Click me!',
-    }) as ButtonControl;
+    panel.control('button', 'Button', {}) as ButtonControl;
     section.control('button', 'Button in section', {}) as ButtonControl;
     panel.removeAll();
 

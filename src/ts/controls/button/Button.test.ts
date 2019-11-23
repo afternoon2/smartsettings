@@ -9,9 +9,7 @@ describe('Button control', () => {
     btn = new ButtonControl({
       id: 'id',
       name: 'Button',
-      options: {
-        text: 'text',
-      },
+      options: {},
       parentElement: document.body,
       listener,
     });

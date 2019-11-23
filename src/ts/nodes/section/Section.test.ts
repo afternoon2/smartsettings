@@ -50,9 +50,7 @@ describe('Section node', () => {
   });
 
   test('Control creation', () => {
-    const btn = section.control('button', 'Button', {
-      text: 'Click me!',
-    });
+    const btn = section.control('button', 'Button', {});
     const text = section.control('text', 'Text', {
       placeholder: 'Write here!',
       value: 'text input',
@@ -85,26 +83,18 @@ describe('Section node', () => {
   });
 
   test('Remove methods', () => {
-    section.control('button', 'Button', {
-      text: 'Click me!',
-    });
-    section.control('button2', 'Button', {
-      text: 'Click me!',
-    });
+    section.control('button', 'Button', {});
+    section.control('button2', 'Button', {});
     section.remove('Button');
     expect(section.element.querySelector('#button')).toBe(null);
     expect(section.element.querySelector('#button2')).toBe(null);
 
-    const btn = section.control('button', 'Button', {
-      text: 'Click me!',
-    }) as ButtonControl;
+    const btn = section.control('button', 'Button', {}) as ButtonControl;
 
     section.removeById(btn.id);
     expect(section.element.querySelector('button')).toBe(null);
 
-    section.control('button', 'Button', {
-      text: 'Click me!',
-    }) as ButtonControl;
+    section.control('button', 'Button', {}) as ButtonControl;
 
     section.removeAll();
     expect(section.bodyElement.childElementCount).toBe(0);
