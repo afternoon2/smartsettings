@@ -31,8 +31,14 @@ export abstract class Control extends RootNode {
     this.listeners.set('invisible', this.onInvisible);
     this.listeners.set('disabled', this.onDisabled);
     this.listeners.set('readonly', this.onReadonlyChange);
-    if (props.userListener) {
-      this.listeners.set('user', props.userListener);
+    if (props.listener) {
+      this.listeners.set('control', props.listener);
+    }
+    if (props.sectionListener) {
+      this.listeners.set('section', props.sectionListener);
+    }
+    if (props.panelListener) {
+      this.listeners.set('panel', props.panelListener);
     }
   }
 
@@ -42,6 +48,10 @@ export abstract class Control extends RootNode {
 
   set readonly(readonly: boolean) {
     this.state.readonly = readonly;
+  }
+
+  setListener(listener: ControlListener) {
+    this.listeners.set('control', listener);
   }
 
   protected createRootDiv(): HTMLDivElement {

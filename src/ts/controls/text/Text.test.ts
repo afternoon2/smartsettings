@@ -2,7 +2,7 @@ import { TextControl } from './TextControl';
 
 let control: TextControl;
 
-const userListener = jest.fn();
+const listener = jest.fn();
 
 describe('Text control', () => {
   beforeEach(() => {
@@ -15,7 +15,7 @@ describe('Text control', () => {
         disabled: false,
       },
       parentElement: document.body,
-      userListener,
+      listener,
     });
   });
 
@@ -41,6 +41,6 @@ describe('Text control', () => {
   });
 
   test('If it assings user listener correctly', () => {
-    expect(userListener).toHaveBeenCalledTimes(4);
+    expect(listener).toHaveBeenCalledTimes(4);
   });
 });

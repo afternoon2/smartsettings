@@ -2,7 +2,7 @@ import { RangeControl } from './RangeControl';
 
 let control: RangeControl;
 
-const userListener = jest.fn();
+const listener = jest.fn();
 
 describe('Range control', () => {
   beforeEach(() => {
@@ -17,7 +17,7 @@ describe('Range control', () => {
         disabled: false,
       },
       parentElement: document.body,
-      userListener,
+      listener,
     });
   });
 
@@ -43,6 +43,6 @@ describe('Range control', () => {
   });
 
   test('If it assings user listener correctly', () => {
-    expect(userListener).toHaveBeenCalledTimes(4);
+    expect(listener).toHaveBeenCalledTimes(4);
   });
 });

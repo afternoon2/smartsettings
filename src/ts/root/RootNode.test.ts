@@ -2,7 +2,7 @@ import { RootNode, InternalState, InternalStateSetter } from './RootNode';
 import { ControlListener, ControlOptions, ControlListenerUpdate } from '../controls/control/Control.types';
 import { PanelOptions } from '../nodes/nodes.types';
 
-const userListener = jest.fn();
+const listener = jest.fn();
 class DerivedClass extends RootNode {
   public parentElement: HTMLElement;
 
@@ -34,7 +34,7 @@ class DerivedClass extends RootNode {
         this.listenerInvoked = true;
       },
     );
-    this.listeners.set('user', userListener);
+    this.listeners.set('user', listener);
   }
 
   get internalState(): InternalState {
@@ -64,6 +64,10 @@ class DerivedClass extends RootNode {
 
   checkParent(parent?: HTMLElement | string | null) {
     this.checkParentElement(parent);
+  }
+
+  setListener(listenerFunc: ControlListener) {
+    this.listeners.set('control', listenerFunc);
   }
 }
 
@@ -139,7 +143,6 @@ describe('RootNode', () => {
     handler.set(state, 'id', 'test_id');
     expect(derived.listenerInvoked).toBe(true);
     expect(typeof handler.set).toBe('function');
-    expect(userListener).toHaveBeenCalledTimes(1);
   });
 
   test('checkParentElement', () => {

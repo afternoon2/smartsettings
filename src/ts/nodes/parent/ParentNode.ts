@@ -59,9 +59,6 @@ export abstract class ParentNode extends RootNode {
     this.listeners.set('invisible', this.onInvisible);
     this.listeners.set('disabled', this.onDisabled);
     this.listeners.set('collapsed', this.onCollapsed);
-    if (props.userListener) {
-      this.listeners.set('user', props.userListener);
-    }
   }
 
   get collapsed(): boolean {
@@ -76,16 +73,31 @@ export abstract class ParentNode extends RootNode {
     this.state.collapsed = true;
   }
 
-  control(
+  abstract control(
+    control: string,
+    name: string,
+    options: ControlOptions | null,
+    listener?: ControlListener,
+  ): AnyControl | null;
+
+  protected createControl(
     control: string, 
     name: string, 
     options: ControlOptions | null, 
-    userListener?: ControlListener
+    listeners: {
+      [key: string]: ControlListener | undefined,
+    }
   ): AnyControl | null {
     const id: string = cuid();
     const parentElement = this.bodyElement;
     const props = {
-      id, name, options: options || {}, parentElement, userListener,
+      id,
+      name,
+      parentElement,
+      options: options || {},
+      listener: listeners.control,
+      sectionListener: listeners.section,
+      panelListener: listeners.panel,
     };
     let instance;
     switch (control) {
@@ -145,9 +157,10 @@ export abstract class ParentNode extends RootNode {
   protected fillInElement(className: string) {
     this.element.classList.add(className);
     this.onDisabled({
-      id: this.id,
+      targetId: this.id,
       key: 'disabled',
       value: this.state.disabled as boolean,
+      listenerType: 'builtin',
     });
   }
 }

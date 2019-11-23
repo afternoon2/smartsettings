@@ -10,11 +10,11 @@ import { SectionNode } from '../section/Section';
 import { PanelPosition } from '../nodes.types';
 
 let panel: PanelNode;
-let userListener: any;
+let listener: any;
 
 describe('Panel node', () => {
   beforeEach(() => {
-    userListener = jest.fn();
+    listener = jest.fn();
     panel = new PanelNode({
       id: 'id',
       name: 'name',
@@ -24,7 +24,7 @@ describe('Panel node', () => {
         invisible: false,
       },
       parentElement: document.body,
-      userListener,
+      listener,
     });
   });
 
@@ -38,7 +38,7 @@ describe('Panel node', () => {
     expect(panel.element).toMatchSnapshot();
     panel.open();
     expect(panel.collapsed).toBe(false);
-    expect(userListener).toHaveBeenCalledTimes(4);
+    expect(listener).toHaveBeenCalledTimes(4);
     expect(panel.element).toMatchSnapshot();
   });
 
@@ -68,11 +68,8 @@ describe('Panel node', () => {
     });
     const checkbox = panel.control('checkbox', 'Checkbox', {
       checked: true,
-      checkboxId: 'checkboxId',
     });
-    const file = panel.control('file', 'Checkbox', {
-      controlId: 'fileId',
-    });
+    const file = panel.control('file', 'Checkbox', {});
     const falsyControl = panel.control('falsy', 'Falsy', {
       min: 1, max: 10, step: 1, value: 10,
     });

@@ -1,11 +1,11 @@
 import { CheckboxControl } from './CheckboxControl';
 
 let checkbox: CheckboxControl;
-let userListener: any;
+let listener: any;
 
 describe('Button control', () => {
   beforeEach(() => {
-    userListener = jest.fn();
+    listener = jest.fn();
     checkbox = new CheckboxControl({
       id: 'id',
       name: 'Button',
@@ -13,7 +13,7 @@ describe('Button control', () => {
         checked: false,
       },
       parentElement: document.body,
-      userListener,
+      listener,
     });
   });
 
@@ -36,8 +36,8 @@ describe('Button control', () => {
     expect(checkbox.checked).toBe(false);
   });
 
-  test('Invoke onClick and userListener callback', () => {
+  test('Invoke onClick and listener callback', () => {
     checkbox.check();
-    expect(userListener).toHaveBeenCalledTimes(1);
+    expect(listener).toHaveBeenCalledTimes(1);
   });
 });

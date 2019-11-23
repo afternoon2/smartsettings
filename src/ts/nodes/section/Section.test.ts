@@ -8,11 +8,11 @@ import { CheckboxControl } from '../../controls/checkbox/CheckboxControl';
 import { FileControl } from '../../controls/file/FileControl';
 
 let section: SectionNode;
-let userListener: any;
+let listener: any;
 
 describe('Section node', () => {
   beforeEach(() => {
-    userListener = jest.fn();
+    listener = jest.fn();
     section = new SectionNode({
       id: 'id',
       name: 'name',
@@ -22,7 +22,7 @@ describe('Section node', () => {
         invisible: false,
       },
       parentElement: document.body,
-      userListener,
+      listener,
     });
   });
 
@@ -36,7 +36,7 @@ describe('Section node', () => {
     expect(section.element).toMatchSnapshot();
     section.open();
     expect(section.collapsed).toBe(false);
-    expect(userListener).toHaveBeenCalledTimes(2);
+    expect(listener).toHaveBeenCalledTimes(2);
     expect(section.element).toMatchSnapshot();
   });
 
@@ -66,11 +66,8 @@ describe('Section node', () => {
     });
     const checkbox = section.control('checkbox', 'Checkbox', {
       checked: true,
-      checkboxId: 'checkboxId',
     });
-    const file = section.control('file', 'Checkbox', {
-      controlId: 'fileId',
-    });
+    const file = section.control('file', 'Checkbox', {});
     const falsyControl = section.control('falsy', 'Falsy', {
       min: 1, max: 10, step: 1, value: 10,
     });

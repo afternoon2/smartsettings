@@ -2,7 +2,7 @@ import { ButtonControl } from './ButtonControl';
 
 let btn: ButtonControl;
 
-const userListener = jest.fn();
+const listener = jest.fn();
 
 describe('Button control', () => {
   beforeEach(() => {
@@ -13,7 +13,7 @@ describe('Button control', () => {
         text: 'text',
       },
       parentElement: document.body,
-      userListener,
+      listener,
     });
   });
 
@@ -33,8 +33,8 @@ describe('Button control', () => {
     expect(btn.element).toMatchSnapshot();
   });
 
-  test('Invoke onClick and userListener callback', () => {
+  test('Invoke onClick and listener callback', () => {
     btn.controlElement.click();
-    expect(userListener).toHaveBeenCalledTimes(4);
+    expect(listener).toHaveBeenCalledTimes(4);
   });
 });

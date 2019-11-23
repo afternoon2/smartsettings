@@ -1,17 +1,17 @@
 import { FileControl } from './FileControl';
 
 let file: FileControl;
-let userListener: any;
+let listener: any;
 
 describe('Name of the group', () => {
   beforeEach(() => {
-    userListener = jest.fn();
+    listener = jest.fn();
     file = new FileControl({
       id: 'id',
       name: 'name',
       options: {},
       parentElement: document.body,
-      userListener,
+      listener,
     });
   });
 

@@ -2,7 +2,7 @@ import { NumberControl } from './NumberControl';
 
 let control: NumberControl;
 
-const userListener = jest.fn();
+const listener = jest.fn();
 
 describe('Number control', () => {
   beforeEach(() => {
@@ -17,7 +17,7 @@ describe('Number control', () => {
         disabled: false,
       },
       parentElement: document.body,
-      userListener,
+      listener,
     });
   });
 
@@ -43,6 +43,6 @@ describe('Number control', () => {
   });
 
   test('If it assings user listener correctly', () => {
-    expect(userListener).toHaveBeenCalledTimes(4);
+    expect(listener).toHaveBeenCalledTimes(4);
   });
 });

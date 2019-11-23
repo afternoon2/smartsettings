@@ -1,10 +1,15 @@
-export type Props<Options> = {
+export type PanelPropsType<Options> = {
   id: string,
   name: string,
   options: Options,
   parentElement: HTMLElement,
-  userListener?: ControlListener,
+  listener?: ControlListener,
 };
+
+export type ControlPropsType<Options> = PanelPropsType<Options> & {
+  sectionListener?: ControlListener,
+  panelListener?: ControlListener,
+}
 
 export type TextControlOptions = {
   value?: string,
@@ -16,7 +21,7 @@ export type TextControlOptions = {
   readOnly?: boolean,
 };
 
-export type TextControlProps = Props<TextControlOptions>;
+export type TextControlProps = ControlPropsType<TextControlOptions>;
 
 export type TextAreaControlOptions = {
   value?: string,
@@ -30,7 +35,7 @@ export type TextAreaControlOptions = {
   rows?: number,
 };
 
-export type TextAreaControlProps = Props<TextAreaControlOptions>;
+export type TextAreaControlProps = ControlPropsType<TextAreaControlOptions>;
 
 export type ButtonControlOptions = {
   text?: string,
@@ -38,7 +43,7 @@ export type ButtonControlOptions = {
   type?: string,
 };
 
-export type ButtonControlProps = Props<ButtonControlOptions>;
+export type ButtonControlProps = ControlPropsType<ButtonControlOptions>;
 
 export type CheckboxControlOptions = {
   checked?: boolean,
@@ -46,7 +51,7 @@ export type CheckboxControlOptions = {
   readOnly?: boolean,
 };
 
-export type CheckboxControlProps = Props<CheckboxControlOptions>;
+export type CheckboxControlProps = ControlPropsType<CheckboxControlOptions>;
 
 export type NumberControlOptions = {
   value?: number,
@@ -58,7 +63,7 @@ export type NumberControlOptions = {
   step?: number,
 };
 
-export type NumberControlProps = Props<NumberControlOptions>;
+export type NumberControlProps = ControlPropsType<NumberControlOptions>;
 
 export type FileControlOptions = {
   files?: FileList,
@@ -68,7 +73,7 @@ export type FileControlOptions = {
   readOnly?: boolean,
 };
 
-export type FileControlProps = Props<FileControlOptions>;
+export type FileControlProps = ControlPropsType<FileControlOptions>;
 
 export type RangeControlOptions = {
   value?: number,
@@ -79,7 +84,7 @@ export type RangeControlOptions = {
   step?: number,
 };
 
-export type RangeControlProps = Props<RangeControlOptions>;
+export type RangeControlProps = ControlPropsType<RangeControlOptions>;
 
 export type ControlOptions = ButtonControlOptions
 | TextControlOptions
@@ -94,9 +99,10 @@ export type ControlProps = TextControlProps
 | ButtonControlProps;
 
 export type ControlListenerUpdate = {
-  id: string,
+  targetId: string,
   key: string,
   value: string | boolean | number,
+  listenerType: 'control' | 'section' | 'panel' | 'builtin',
 };
 
 export type ControlListener = (update: ControlListenerUpdate) => void;

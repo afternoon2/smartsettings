@@ -1,4 +1,4 @@
-import { Props } from '../controls/control/Control.types';
+import { PanelPropsType, ControlListener } from '../controls/control/Control.types';
 
 export type SectionOptions = {
   collapsed?: boolean,
@@ -6,7 +6,9 @@ export type SectionOptions = {
   invisible?: boolean,
 };
 
-export type SectionProps = Props<SectionOptions>;
+export type SectionProps = PanelPropsType<SectionOptions> & {
+  panelListener?: ControlListener,
+};
 
 export type PanelOptions = SectionOptions & {
   draggable?: boolean,
@@ -19,8 +21,8 @@ export type PanelPosition = {
   left: number,
 };
 
-export type PanelProps = Props<PanelOptions>;
+export type PanelProps = PanelPropsType<PanelOptions>;
 
 export type ParentOptions = SectionOptions | PanelOptions;
 
-export type ParentProps = Props<ParentOptions>;
+export type ParentProps = PanelProps | SectionProps;

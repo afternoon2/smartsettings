@@ -22,26 +22,45 @@ export class ButtonControl extends Control {
     </button>
   `;
 
-  private clickHandler?: ControlListener;
+  private controlListener?: ControlListener;
+  private sectionListener?: ControlListener;
+  private panelListener?: ControlListener;
 
   constructor(props: ButtonControlProps) {
     super(props, ButtonControl.template);
     this.controlElement = this.element.querySelector('button') as HTMLButtonElement;
-    if (props.userListener) {
-      this.clickHandler = props.userListener;
-    }
+    this.controlListener = props.listener;
+    this.sectionListener = props.sectionListener;
+    this.panelListener = props.panelListener;
     this.bindActionListeners();
   }
 
   private bindActionListeners() {
-    if (this.clickHandler) {
-      this.controlElement.addEventListener('click', () => {
-        (this.clickHandler as ControlListener)({
-          id: this.state.id,
+    this.controlElement.addEventListener('click', () => {
+      if (this.controlListener) {
+        this.controlListener({
+          targetId: this.state.id,
           key: '',
           value: '',
+          listenerType: 'control'
         });
-      });
-    }
+      }
+      if (this.sectionListener) {
+        this.sectionListener({
+          targetId: this.state.id,
+          key: '',
+          value: '',
+          listenerType: 'section',
+        });
+      }
+      if (this.panelListener) {
+        this.panelListener({
+          targetId: this.state.id,
+          key: '',
+          value: '',
+          listenerType: 'panel'
+        });
+      }
+    });
   }
 }

@@ -12,7 +12,7 @@ const props: ControlProps = {
     value: 'test',
   },
   parentElement: document.body,
-  userListener: (update: ControlListenerUpdate) => update,
+  listener: (update: ControlListenerUpdate) => update,
 };
 class DerivedControl extends Control {
   public controlElement: HTMLElement;

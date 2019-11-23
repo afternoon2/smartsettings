@@ -1,12 +1,12 @@
 import cuid from 'cuid';
 
-import { ParentNode } from '../parent/ParentNode';
+import { ParentNode, AnyControl } from '../parent/ParentNode';
 import { PanelProps, PanelPosition, SectionOptions } from '../nodes.types';
 import { InternalState } from '../../root/RootNode';
 
 import Base from '../../../sass/base.sass';
 import Styles from '../../../sass/panel.sass';
-import { ControlListener, ControlListenerUpdate } from '../../controls/control/Control.types';
+import { ControlListener, ControlListenerUpdate, ControlOptions } from '../../controls/control/Control.types';
 import { SectionNode } from '../section/Section';
 
 export class PanelNode extends ParentNode {
@@ -38,6 +38,9 @@ export class PanelNode extends ParentNode {
     this.bodyElement = this.element.querySelector(`.${Styles.panel__body}`) as HTMLElement;
     this.listeners.set('top', this.onPositionChanged);
     this.listeners.set('left', this.onPositionChanged);
+    if (props.listener) {
+      this.listeners.set('panel', props.listener);
+    }
     this.bindEventListeners();
     if (!this.state.top || !this.state.left) {
       this.setPosition({
@@ -61,10 +64,31 @@ export class PanelNode extends ParentNode {
     this.state.left = position.left;
   }
 
+  setListener(listener: ControlListener) {
+    this.listeners.set('panel', listener);
+  }
+
+  control(
+    control: string,
+    name: string,
+    options: ControlOptions | null,
+    listener?: ControlListener,
+  ): AnyControl | null {
+    return this.createControl(
+      control,
+      name,
+      options,
+      {
+        control: listener,
+        panel: this.listeners.get('panel'),
+      },
+    );
+  }
+
   section(
     name: string, 
     options: SectionOptions, 
-    userListener?: ControlListener
+    listener?: ControlListener
   ): SectionNode {
     const id: string = cuid();
     const section = new SectionNode({
@@ -72,7 +96,8 @@ export class PanelNode extends ParentNode {
       name,
       options,
       parentElement: this.bodyElement,
-      userListener,
+      listener,
+      panelListener: this.listeners.get('panel'),
     });
     this.registry.set(id, section);
     return section;

@@ -26,6 +26,8 @@ export abstract class RootNode {
   protected abstract state: InternalState;
   protected abstract listeners: Map<string, ControlListener>;
 
+  abstract setListener(listener: ControlListener): void;
+
   get id(): string {
     return this.state.id;
   }
@@ -60,10 +62,6 @@ export abstract class RootNode {
 
   enable() {
     this.state.disabled = false;
-  }
-
-  setListener(listener: ControlListener) {
-    this.listeners.set('user', listener);
   }
 
   protected onInvisible: ControlListener = (update: ControlListenerUpdate) => {
@@ -137,18 +135,38 @@ export abstract class RootNode {
   protected createStateSetter(): InternalStateSetter {
     return (target: InternalState, key: string, value: string | boolean | number) => {
       target[key] = value;
-      const userListener = this.listeners.get('user');
+      const controlListener = this.listeners.get('control');
+      const sectionListener = this.listeners.get('section');
+      const panelListener = this.listeners.get('panel');
       const builtInListener = this.listeners.get(key);
-      const update: ControlListenerUpdate = {
-        id: target.id,
+      const update = {
+        targetId: target.id,
         key,
         value,
       };
       if (builtInListener) {
-        builtInListener(update);
+        builtInListener({
+          ...update,
+          listenerType: 'builtin',
+        });
       }
-      if (userListener) {
-        userListener(update);
+      if (controlListener) {
+        controlListener({
+          ...update,
+          listenerType: 'control',
+        });
+      }
+      if (sectionListener) {
+        sectionListener({
+          ...update,
+          listenerType: 'section',
+        });
+      }
+      if (panelListener) {
+        panelListener({
+          ...update,
+          listenerType: 'panel',
+        });
       }
       return true;
     };
