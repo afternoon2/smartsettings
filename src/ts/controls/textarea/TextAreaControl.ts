@@ -1,10 +1,15 @@
 import { Control } from '../control/Control';
-import {
-  ControlListener, ControlListenerUpdate, TextAreaControlProps,
-} from '../control/Control.types';
+import { InternalState, TextAreaControlOptions, Listener, ListenerUpdate } from '../../types';
 
 import Styles from '../../../sass/textarea.sass';
-import { InternalState } from '../../root/RootNode';
+
+export type TextAreaControlProps = {
+  id: string,
+  options: TextAreaControlOptions,
+  parentElement: HTMLElement,
+  sectionListener?: Listener,
+  panelListener?: Listener,
+};
 
 export class TextAreaControl extends Control {
   public controlElement: HTMLTextAreaElement;
@@ -30,7 +35,10 @@ export class TextAreaControl extends Control {
   `;
 
   constructor(props: TextAreaControlProps) {
-    super(props, TextAreaControl.template);
+    super({
+      ...props,
+      template: TextAreaControl.template
+    });
     this.controlElement = this.element.querySelector('textarea') as HTMLTextAreaElement;
     this.listeners.set('value', this.onValue);
     this.bindActionListeners();
@@ -44,7 +52,7 @@ export class TextAreaControl extends Control {
     return this.state.value as string;
   }
 
-  private onValue: ControlListener = (update: ControlListenerUpdate) => {
+  private onValue: Listener = (update: ListenerUpdate) => {
     this.controlElement.value = update.value as string;
   }
 

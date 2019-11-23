@@ -1,16 +1,24 @@
-import { RootNode, InternalState } from '../../root/RootNode';
-import { ControlProps, ControlListener, ControlListenerUpdate } from './Control.types';
+import { RootNode } from '../../root/RootNode';
+import { ControlOptions, Listener, InternalState, ListenerUpdate } from '../../types';
 
 import Styles from '../../../sass/control.sass';
 import Button from '../../../sass/button.sass';
 
+export type ControlProps = {
+  id: string,
+  options: ControlOptions,
+  parentElement: HTMLElement,
+  template: (state: InternalState) => string,
+  sectionListener?: Listener,
+  panelListener?: Listener,
+};
 export abstract class Control extends RootNode {
   public parentElement: HTMLElement;
   public element: HTMLElement;
   public abstract controlElement: HTMLElement;
 
   protected state: InternalState;
-  protected listeners: Map<string, ControlListener> = new Map();
+  protected listeners: Map<string, Listener> = new Map();
 
   private stateHandler: ProxyHandler<InternalState> = {
     set: this.createStateSetter(),
@@ -18,21 +26,19 @@ export abstract class Control extends RootNode {
 
   constructor(
     props: ControlProps,
-    template: (state: InternalState) => string
   ) {
     super();
     this.state = this.createState(
-      props.id, props.name, props.options,
-      this.stateHandler,
+      props.id, props.options, this.stateHandler,
     );
     this.parentElement = props.parentElement;
-    this.element = this.createControlElement(template(this.state), this.state.name, this.state.id);
+    this.element = this.createControlElement(props.template(this.state), this.state.name, this.state.id);
     this.parentElement.appendChild(this.element);
     this.listeners.set('invisible', this.onInvisible);
     this.listeners.set('disabled', this.onDisabled);
     this.listeners.set('readonly', this.onReadonlyChange);
-    if (props.listener) {
-      this.listeners.set('control', props.listener);
+    if (props.options.listener) {
+      this.listeners.set('control', props.options.listener);
     }
     if (props.sectionListener) {
       this.listeners.set('section', props.sectionListener);
@@ -43,14 +49,14 @@ export abstract class Control extends RootNode {
   }
 
   get readonly(): boolean {
-    return this.state.readonly  as boolean;
+    return this.state.readonly as boolean;
   }
 
   set readonly(readonly: boolean) {
     this.state.readonly = readonly;
   }
 
-  setListener(listener: ControlListener) {
+  setListener(listener: Listener) {
     this.listeners.set('control', listener);
   }
 
@@ -83,7 +89,7 @@ export abstract class Control extends RootNode {
     return element;
   }
 
-  private onReadonlyChange: ControlListener = (update: ControlListenerUpdate) => {
+  private onReadonlyChange: Listener = (update: ListenerUpdate) => {
     if (update.value === true) {
       if (!this.controlElement.hasAttribute('readonly')) {
         this.controlElement.setAttribute('readonly', 'true');

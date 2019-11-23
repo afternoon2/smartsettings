@@ -1,10 +1,15 @@
 import { Control } from '../control/Control';
-import {
-  ControlListener, ControlListenerUpdate, TextControlProps,
-} from '../control/Control.types';
-import { InternalState } from '../../root/RootNode';
+import { InternalState, TextControlOptions, Listener, ListenerUpdate } from '../../types';
 
 import Styles from '../../../sass/text.sass';
+
+export type TextControlProps = {
+  id: string,
+  options: TextControlOptions,
+  parentElement: HTMLElement,
+  sectionListener?: Listener,
+  panelListener?: Listener,
+};
 
 export class TextControl extends Control {
   public controlElement: HTMLInputElement;
@@ -25,7 +30,10 @@ export class TextControl extends Control {
   `;
 
   constructor(props: TextControlProps) {
-    super(props, TextControl.template);
+    super({
+      ...props,
+      template: TextControl.template
+    });
     this.controlElement = this.element.querySelector('[type="text"]') as HTMLInputElement;
     this.listeners.set('value', this.onValue);
     this.bindActionListeners();
@@ -39,7 +47,7 @@ export class TextControl extends Control {
     return this.state.value as string;
   }
 
-  private onValue: ControlListener = (update: ControlListenerUpdate) => {
+  private onValue: Listener = (update: ListenerUpdate) => {
     this.controlElement.value = update.value as string;
   }
 

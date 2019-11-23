@@ -8,10 +8,11 @@ describe('Button control', () => {
   beforeEach(() => {
     btn = new ButtonControl({
       id: 'id',
-      name: 'Button',
-      options: {},
+      options: {
+        name: 'Button',
+        listener,
+      },
       parentElement: document.body,
-      listener,
     });
   });
 

@@ -1,10 +1,15 @@
 import { Control } from '../control/Control';
-import {
-  NumberControlProps, ControlListener, ControlListenerUpdate,
-} from '../control/Control.types';
-import { InternalState } from '../../root/RootNode';
+import { InternalState, Listener, ListenerUpdate, NumberControlOptions } from '../../types';
 
 import Styles from '../../../sass/number.sass';
+
+export type NumberControlProps = {
+  id: string,
+  options: NumberControlOptions,
+  parentElement: HTMLElement,
+  sectionListener?: Listener,
+  panelListener?: Listener,
+};
 
 export class NumberControl extends Control {
   public controlElement: HTMLInputElement;
@@ -23,7 +28,10 @@ export class NumberControl extends Control {
   `;
 
   constructor(props: NumberControlProps) {
-    super(props, NumberControl.template);
+    super({
+      ...props,
+      template: NumberControl.template,
+    });
     this.controlElement = this.element.querySelector('[type="number"]') as HTMLInputElement;
     this.listeners.set('value', this.onValue);
     this.bindActionListeners();
@@ -37,7 +45,7 @@ export class NumberControl extends Control {
     return this.state.value as number;
   }
 
-  private onValue: ControlListener = (update: ControlListenerUpdate) => {
+  private onValue: Listener = (update: ListenerUpdate) => {
     this.controlElement.value = update.value as string;
   }
 

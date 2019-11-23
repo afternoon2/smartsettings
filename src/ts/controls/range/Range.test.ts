@@ -8,16 +8,16 @@ describe('Range control', () => {
     listener = jest.fn();
     control = new RangeControl({
       id: 'id',
-      name: 'name',
       options: {
+        name: 'name',
         value: 0,
         min: 0,
         max: 10,
         step: 0.1,
         disabled: false,
+        listener,
       },
       parentElement: document.body,
-      listener,
     });
   });
 

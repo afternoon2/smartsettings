@@ -7,7 +7,7 @@ import { RangeControl } from '../../controls/range/RangeControl';
 import { CheckboxControl } from '../../controls/checkbox/CheckboxControl';
 import { FileControl } from '../../controls/file/FileControl';
 import { SectionNode } from '../section/Section';
-import { PanelPosition } from '../nodes.types';
+import { PanelPosition } from '../../types';
 
 let panel: PanelNode;
 let listener: any;
@@ -17,14 +17,14 @@ describe('Panel node', () => {
     listener = jest.fn();
     panel = new PanelNode({
       id: 'id',
-      name: 'name',
       options: {
+        name: 'name',
         collapsed: false,
         disabled: false,
         invisible: false,
+        listener,
       },
       parentElement: document.body,
-      listener,
     });
   });
 
@@ -53,26 +53,36 @@ describe('Panel node', () => {
   });
 
   test('Control creation', () => {
-    const btn = panel.control('button', 'Button', {});
-    const text = panel.control('text', 'Text', {
+    const btn = panel.control('button', {
+      name: 'Button',
+    });
+    const text = panel.control('text', {
+      name: 'Text',
       placeholder: 'Write here!',
       value: 'text input',
     });
-    const textarea = panel.control('textarea', 'Textarea', {
+    const textarea = panel.control('textarea', {
+      name: 'Textarea',
       placeholder: 'textarea',
       value: 'Textarea',
     });
-    const range = panel.control('range', 'Range', {
+    const range = panel.control('range', {
+      name: 'Range',
       min: 0, max: 10, value: 1, step: 1,
     });
-    const number = panel.control('number', 'Range', {
+    const number = panel.control('number', {
+      name: 'Number',
       min: 0, max: 10, value: 1, step: 1,
     });
-    const checkbox = panel.control('checkbox', 'Checkbox', {
+    const checkbox = panel.control('checkbox', {
+      name: 'Checkbox',
       checked: true,
     });
-    const file = panel.control('file', 'Checkbox', {});
-    const falsyControl = panel.control('falsy', 'Falsy', {
+    const file = panel.control('file', {
+      name: 'File',
+    });
+    const falsyControl = panel.control('falsy', {
+      name: 'Falsy',
       min: 1, max: 10, step: 1, value: 10,
     });
     expect(btn).toBeInstanceOf(ButtonControl);
@@ -86,7 +96,9 @@ describe('Panel node', () => {
   });
 
   test('Section creation', () => {
-    const section = panel.section('Section', {});
+    const section = panel.section({
+      name: 'Section'
+    });
     expect(section).toBeInstanceOf(SectionNode);
     expect(section.name).toBe('Section');
   });
@@ -113,14 +125,18 @@ describe('Panel node', () => {
   });
 
   test('Remove method', () => {
-    panel.control('button', 'Button', {});
-    panel.control('button2', 'Button', {});
+    panel.control('button', { name: 'Button' });
+    panel.control('button2', { name: 'Button' });
     panel.remove('Button');
     expect(panel.bodyElement.querySelector('#button')).toBe(null);
     expect(panel.bodyElement.querySelector('#button2')).toBe(null);
 
-    const section = panel.section('Section', {});
-    const nestedButton = section.control('button', 'Button in section', {}) as ButtonControl;
+    const section = panel.section({
+      name: 'Section',
+    });
+    const nestedButton = section.control('button', {
+      name: 'Button in section',
+    }) as ButtonControl;
 
     panel.remove('Button in section');
 
@@ -128,9 +144,9 @@ describe('Panel node', () => {
   });
 
   test('Remove by id method', () => {
-    const section = panel.section('Section', {});
-    const button = panel.control('button', 'Button', {}) as ButtonControl;
-    const nestedButton = section.control('button', 'Button in section', {}) as ButtonControl;
+    const section = panel.section({ name: 'Section' });
+    const button = panel.control('button', { name: 'Button' }) as ButtonControl;
+    const nestedButton = section.control('button', { name: 'Button in section' }) as ButtonControl;
 
     panel.removeById(button.id);
     expect(panel.bodyElement.querySelector(`#${button.id}`)).toBe(null);
@@ -141,9 +157,9 @@ describe('Panel node', () => {
   });
 
   test('Remove all', () => {
-    const section = panel.section('Section', {});
-    panel.control('button', 'Button', {}) as ButtonControl;
-    section.control('button', 'Button in section', {}) as ButtonControl;
+    const section = panel.section({ name: 'Section' });
+    panel.control('button', { name: 'Button' }) as ButtonControl;
+    section.control('button', { name: 'Button in section' }) as ButtonControl;
     panel.removeAll();
 
     expect(panel.bodyElement.childElementCount).toBe(0);

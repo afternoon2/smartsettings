@@ -8,12 +8,12 @@ describe('Button control', () => {
     listener = jest.fn();
     checkbox = new CheckboxControl({
       id: 'id',
-      name: 'Button',
       options: {
+        name: 'Button',
         checked: false,
+        listener,
       },
       parentElement: document.body,
-      listener,
     });
   });
 

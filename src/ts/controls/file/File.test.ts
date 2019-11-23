@@ -8,10 +8,11 @@ describe('Name of the group', () => {
     listener = jest.fn();
     file = new FileControl({
       id: 'id',
-      name: 'name',
-      options: {},
+      options: {
+        name: 'name',
+        listener,
+      },
       parentElement: document.body,
-      listener,
     });
   });
 

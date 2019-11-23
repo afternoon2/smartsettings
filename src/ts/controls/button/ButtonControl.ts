@@ -1,10 +1,15 @@
 import { Control } from '../control/Control';
-import {
-  ButtonControlProps, ControlListener,
-} from '../control/Control.types';
-import { InternalState } from '../../root/RootNode';
+import { InternalState, ButtonControlOptions, Listener } from '../../types';
 
 import Styles from '../../../sass/button.sass';
+
+export type ButtonControlProps = {
+  id: string,
+  options: ButtonControlOptions,
+  parentElement: HTMLElement,
+  sectionListener?: Listener,
+  panelListener?: Listener,
+};
 
 export class ButtonControl extends Control {
   public controlElement: HTMLButtonElement;
@@ -22,16 +27,19 @@ export class ButtonControl extends Control {
     </button>
   `;
 
-  private controlListener?: ControlListener;
-  private sectionListener?: ControlListener;
-  private panelListener?: ControlListener;
+  private controlListener?: Listener;
+  private sectionListener?: Listener;
+  private panelListener?: Listener;
 
   constructor(props: ButtonControlProps) {
-    super(props, ButtonControl.template);
-    this.controlElement = this.element.querySelector('button') as HTMLButtonElement;
-    this.controlListener = props.listener;
+    super({
+      ...props,
+      template: ButtonControl.template,
+    });
     this.sectionListener = props.sectionListener;
     this.panelListener = props.panelListener;
+    this.controlElement = this.element.querySelector('button') as HTMLButtonElement;
+    this.controlListener = props.options.listener;
     this.bindActionListeners();
   }
 

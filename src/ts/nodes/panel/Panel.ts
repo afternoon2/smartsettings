@@ -1,13 +1,25 @@
 import cuid from 'cuid';
 
 import { ParentNode, AnyControl } from '../parent/ParentNode';
-import { PanelProps, PanelPosition, SectionOptions } from '../nodes.types';
-import { InternalState } from '../../root/RootNode';
+import {
+  InternalState,
+  PanelOptions,
+  SectionOptions,
+  PanelPosition,
+  Listener,
+  ListenerUpdate,
+  ControlOptions
+} from '../../types';
+import { SectionNode } from '../section/Section';
 
 import Base from '../../../sass/base.sass';
 import Styles from '../../../sass/panel.sass';
-import { ControlListener, ControlListenerUpdate, ControlOptions } from '../../controls/control/Control.types';
-import { SectionNode } from '../section/Section';
+
+export type PanelNodeProps = {
+  id: string,
+  options: PanelOptions,
+  parentElement: HTMLElement,
+};
 
 export class PanelNode extends ParentNode {
   public bodyElement: HTMLElement;
@@ -30,8 +42,11 @@ export class PanelNode extends ParentNode {
     <main class="${Styles.panel__body} ${state.collapsed ? Base.hidden : ''}">
     </main>`;
 
-  constructor(props: PanelProps) {
-    super(props, PanelNode.template);
+  constructor(props: PanelNodeProps) {
+    super({
+      ...props,
+      template: PanelNode.template,
+    });
     this.fillInElement(Styles.panel);
     this.headerElement = this.element.querySelector(`.${Styles.panel__header}`) as HTMLElement;
     this.nameElement = this.headerElement.querySelector('p') as HTMLParagraphElement;
@@ -39,8 +54,8 @@ export class PanelNode extends ParentNode {
     this.bodyElement = this.element.querySelector(`.${Styles.panel__body}`) as HTMLElement;
     this.listeners.set('top', this.onPositionChanged);
     this.listeners.set('left', this.onPositionChanged);
-    if (props.listener) {
-      this.listeners.set('panel', props.listener);
+    if (props.options.listener) {
+      this.listeners.set('panel', props.options.listener);
     }
     if (props.options.left && props.options.top) {
       this.state.top = props.options.top;
@@ -63,7 +78,7 @@ export class PanelNode extends ParentNode {
     this.state.left = position.left;
   }
 
-  setListener(listener: ControlListener) {
+  setListener(listener: Listener) {
     this.listeners.set('panel', listener);
   }
 
@@ -115,33 +130,24 @@ export class PanelNode extends ParentNode {
 
   control(
     control: string,
-    name: string,
-    options: ControlOptions | null,
-    listener?: ControlListener,
+    options: ControlOptions,
   ): AnyControl | null {
     return this.createControl(
       control,
-      name,
       options,
-      {
-        control: listener,
-        panel: this.listeners.get('panel'),
-      },
+      undefined,
+      this.listeners.get('panel'),
     );
   }
 
-  section(
-    name: string, 
-    options: SectionOptions, 
-    listener?: ControlListener
+  section( 
+    options: SectionOptions,
   ): SectionNode {
     const id: string = cuid();
     const section = new SectionNode({
       id,
-      name,
       options,
       parentElement: this.bodyElement,
-      listener,
       panelListener: this.listeners.get('panel'),
     });
     this.registry.set(id, section);
@@ -162,7 +168,7 @@ export class PanelNode extends ParentNode {
     }
   }
 
-  private onPositionChanged: ControlListener = (update: ControlListenerUpdate) => {
+  private onPositionChanged: Listener = (update: ListenerUpdate) => {
     const cssProp: string = update.key;
     // @ts-ignore
     this.element.style[cssProp] = `${update.value}px`;

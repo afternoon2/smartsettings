@@ -1,32 +1,31 @@
 import cuid from 'cuid';
 
-import { PanelOptions } from './nodes/nodes.types';
+import { PanelOptions, Listener } from './types';
 import { PanelNode } from './nodes/panel/Panel';
-import { ControlListener } from './controls/control/Control.types';
 
 export interface SmartSettingsInterface {
-  panel: (name?: string, options?: PanelOptions, listener?: ControlListener) => PanelNode;
+  panel: (options?: PanelOptions, listener?: Listener) => PanelNode;
 }
 
 export default function SmartSettings(): SmartSettingsInterface {
   const version: string = '2.0.0';
   const defaultName: string = `SmartSettings v.${version}`;
   const defaultOptions: PanelOptions = {
+    name: defaultName,
     collapsed: false,
     disabled: false,
     draggable: false,
+    invisible: false,
     top: 10,
     left: 10,
   };
   
   return {
-    panel(name?: string, options?: PanelOptions, listener?: ControlListener): PanelNode {
+    panel(options?: PanelOptions): PanelNode {
       const id = cuid();
       const panel: PanelNode = new PanelNode({
-        id, 
-        name: name || defaultName, 
-        options: options || defaultOptions, 
-        listener,
+        id,
+        options: options || defaultOptions,
         parentElement: document.body,
       });
       return panel;

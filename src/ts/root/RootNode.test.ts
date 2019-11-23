@@ -1,6 +1,7 @@
-import { RootNode, InternalState, InternalStateSetter } from './RootNode';
-import { ControlListener, ControlOptions, ControlListenerUpdate } from '../controls/control/Control.types';
-import { PanelOptions } from '../nodes/nodes.types';
+import { RootNode } from './RootNode';
+import {
+  InternalState, InternalStateSetter, Listener, ControlOptions, PanelOptions, ListenerUpdate,
+} from '../types';
 
 const listener = jest.fn();
 class DerivedClass extends RootNode {
@@ -10,7 +11,7 @@ class DerivedClass extends RootNode {
 
   protected state: InternalState;
 
-  protected listeners: Map<string, ControlListener> = new Map();
+  protected listeners: Map<string, Listener> = new Map();
 
   protected stateHandler: ProxyHandler<InternalState> = {
     set: this.createNewStateSetter(),
@@ -23,14 +24,15 @@ class DerivedClass extends RootNode {
     this.parentElement = document.createElement('div');
     this.element = document.createElement('div');
     this.state = this.createState(
-      'id', 'name', {
+      'id', {
+        name: 'name',
         collapsed: true,
       }, this.stateHandler,
     );
     this.listeners.set(
       'id',
       // eslint-disable-next-line
-      (update: ControlListenerUpdate) => {
+      (update: ListenerUpdate) => {
         this.listenerInvoked = true;
       },
     );
@@ -51,11 +53,10 @@ class DerivedClass extends RootNode {
 
   createInternalState(
     id: string,
-    name: string,
     options: ControlOptions | PanelOptions,
     handler: ProxyHandler<InternalState>,
   ): InternalState {
-    return this.createState(id, name, options, handler);
+    return this.createState(id, options, handler);
   }
 
   createNewStateSetter(): InternalStateSetter {
@@ -66,7 +67,7 @@ class DerivedClass extends RootNode {
     this.checkParentElement(parent);
   }
 
-  setListener(listenerFunc: ControlListener) {
+  setListener(listenerFunc: Listener) {
     this.listeners.set('control', listenerFunc);
   }
 }
@@ -114,8 +115,8 @@ describe('RootNode', () => {
   test('createState', () => {
     const testState = derived.createInternalState(
       'id',
-      'name',
       {
+        name: 'name',
         collapsed: true,
       },
       {

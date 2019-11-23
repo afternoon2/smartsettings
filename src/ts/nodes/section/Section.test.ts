@@ -15,14 +15,14 @@ describe('Section node', () => {
     listener = jest.fn();
     section = new SectionNode({
       id: 'id',
-      name: 'name',
       options: {
+        name: 'name',
         collapsed: false,
         disabled: false,
         invisible: false,
+        listener,
       },
       parentElement: document.body,
-      listener,
     });
   });
 
@@ -50,26 +50,34 @@ describe('Section node', () => {
   });
 
   test('Control creation', () => {
-    const btn = section.control('button', 'Button', {});
-    const text = section.control('text', 'Text', {
+    const btn = section.control('button', { name: 'Button'});
+    const text = section.control('text', {
+      name: 'Text',
       placeholder: 'Write here!',
       value: 'text input',
     });
-    const textarea = section.control('textarea', 'Textarea', {
+    const textarea = section.control('textarea', {
+      name: 'Textarea',
       placeholder: 'textarea',
       value: 'Textarea',
     });
-    const range = section.control('range', 'Range', {
+    const range = section.control('range', {
+      name: 'Range',
       min: 0, max: 10, value: 1, step: 1,
     });
-    const number = section.control('number', 'Range', {
+    const number = section.control('number', {
+      name: 'Number',
       min: 0, max: 10, value: 1, step: 1,
     });
-    const checkbox = section.control('checkbox', 'Checkbox', {
+    const checkbox = section.control('checkbox', {
+      name: 'Checkbox',
       checked: true,
     });
-    const file = section.control('file', 'Checkbox', {});
-    const falsyControl = section.control('falsy', 'Falsy', {
+    const file = section.control('file', {
+      name: 'Checkbox',
+    });
+    const falsyControl = section.control('falsy', {
+      name: 'Falsy',
       min: 1, max: 10, step: 1, value: 10,
     });
     expect(btn).toBeInstanceOf(ButtonControl);
@@ -83,18 +91,18 @@ describe('Section node', () => {
   });
 
   test('Remove methods', () => {
-    section.control('button', 'Button', {});
-    section.control('button2', 'Button', {});
+    section.control('button', { name: 'Button' });
+    section.control('button2', { name: 'Button' });
     section.remove('Button');
     expect(section.element.querySelector('#button')).toBe(null);
     expect(section.element.querySelector('#button2')).toBe(null);
 
-    const btn = section.control('button', 'Button', {}) as ButtonControl;
+    const btn = section.control('button', { name: 'Button' }) as ButtonControl;
 
     section.removeById(btn.id);
     expect(section.element.querySelector('button')).toBe(null);
 
-    section.control('button', 'Button', {}) as ButtonControl;
+    section.control('button', { name: 'Button' }) as ButtonControl;
 
     section.removeAll();
     expect(section.bodyElement.childElementCount).toBe(0);

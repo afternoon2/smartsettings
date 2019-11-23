@@ -1,32 +1,22 @@
-import { PanelOptions } from '../nodes/nodes.types';
 import {
+  PanelOptions,
   ControlOptions,
-  ControlListener,
-  ControlListenerUpdate,
-} from '../controls/control/Control.types';
+  Listener,
+  ListenerUpdate,
+  InternalState,
+  InternalStateSetter,
+} from '../types';
 
 import Base from '../../sass/base.sass';
-
-export type InternalState = (PanelOptions | ControlOptions) & {
-  [key: string]: string | boolean | number | EventListener | null,
-  readonly id: string,
-  name: string,
-};
-
-export type InternalStateSetter = (
-  target: InternalState,
-  key: string,
-  value: string | boolean | number,
-) => boolean;
 
 export abstract class RootNode {
   public abstract parentElement: HTMLElement;
   public abstract element: HTMLElement;
   
   protected abstract state: InternalState;
-  protected abstract listeners: Map<string, ControlListener>;
+  protected abstract listeners: Map<string, Listener>;
 
-  abstract setListener(listener: ControlListener): void;
+  abstract setListener(listener: Listener): void;
 
   get id(): string {
     return this.state.id;
@@ -64,7 +54,7 @@ export abstract class RootNode {
     this.state.disabled = false;
   }
 
-  protected onInvisible: ControlListener = (update: ControlListenerUpdate) => {
+  protected onInvisible: Listener = (update: ListenerUpdate) => {
     if (update.value === true) {
       if (!this.element.classList.contains(Base.hidden)) {
         this.element.classList.add(Base.hidden);
@@ -76,7 +66,7 @@ export abstract class RootNode {
     }
   }
 
-  protected onDisabled: ControlListener = (update: ControlListenerUpdate) => {
+  protected onDisabled: Listener = (update: ListenerUpdate) => {
     const controlElements = Array.from(this.element.querySelectorAll('input, button, select'));
     const setDisabled = (element: Element, disabled: boolean) =>
       disabled === true ?
@@ -122,18 +112,27 @@ export abstract class RootNode {
 
   protected createState(
     id: string,
-    name: string,
     options: ControlOptions | PanelOptions,
     handler: ProxyHandler<InternalState>,
   ): InternalState {
+    const copied: ControlOptions | PanelOptions = {
+      ...options,
+    };
+    if (copied.listener) {
+      delete copied.listener;
+    }
     const target: InternalState = {
-      ...options, id, name,
-    } as PanelOptions & InternalState;
+      ...copied, id,
+    } as InternalState;
     return new Proxy(target, handler);
   }
 
   protected createStateSetter(): InternalStateSetter {
-    return (target: InternalState, key: string, value: string | boolean | number) => {
+    return (
+      target: InternalState,
+      key: string,
+      value: string | boolean | number
+    ) => {
       target[key] = value;
       const controlListener = this.listeners.get('control');
       const sectionListener = this.listeners.get('section');

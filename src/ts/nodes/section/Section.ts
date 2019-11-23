@@ -1,11 +1,15 @@
-import { SectionProps } from '../nodes.types';
 import { ParentNode, AnyControl } from '../parent/ParentNode';
-import { InternalState } from '../../root/RootNode';
+import { InternalState, Listener, ControlOptions, SectionOptions } from '../../types';
 
 import Base from '../../../sass/base.sass';
 import Styles from '../../../sass/section.sass';
-import { ControlListener, ControlOptions } from '../../controls/control/Control.types';
 
+export type SectionProps = {
+  id: string,
+  options: SectionOptions,
+  parentElement: HTMLElement,
+  panelListener?: Listener,
+};
 export class SectionNode extends ParentNode {
   public headerElement: HTMLElement;
   public bodyElement: HTMLElement;
@@ -24,9 +28,12 @@ export class SectionNode extends ParentNode {
   `;
 
   constructor(props: SectionProps) {
-    super(props, SectionNode.template);
-    if (props.listener) {
-      this.listeners.set('section', props.listener);
+    super({
+      ...props,
+      template: SectionNode.template,
+    });
+    if (props.options.listener) {
+      this.listeners.set('section', props.options.listener);
     }
     if (props.panelListener) {
       this.listeners.set('panel', props.panelListener);
@@ -39,19 +46,13 @@ export class SectionNode extends ParentNode {
 
   control(
     control: string,
-    name: string,
-    options: ControlOptions | null,
-    listener?: ControlListener,
+    options: ControlOptions,
   ) {
     return this.createControl(
       control,
-      name,
       options,
-      {
-        control: listener,
-        section: this.listeners.get('section'),
-        panel: this.listeners.get('panel'),
-      }
+      this.listeners.get('section'),
+      this.listeners.get('panel'),
     );
   }
 
@@ -82,7 +83,7 @@ export class SectionNode extends ParentNode {
     this.registry.clear();
   }
 
-  setListener(listener: ControlListener) {
+  setListener(listener: Listener) {
     this.listeners.set('section', listener);
   }
 

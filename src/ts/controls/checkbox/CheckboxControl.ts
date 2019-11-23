@@ -1,12 +1,17 @@
 import cuid from 'cuid';
 
 import { Control } from '../control/Control';
-import {
-  CheckboxControlProps, ControlListener, ControlListenerUpdate,
-} from '../control/Control.types';
-import { InternalState } from '../../root/RootNode';
+import { InternalState, Listener, ListenerUpdate, CheckboxControlOptions } from '../../types';
 
 import Styles from '../../../sass/checkbox.sass';
+
+export type CheckboxControlProps = {
+  id: string,
+  options: CheckboxControlOptions,
+  parentElement: HTMLElement,
+  sectionListener?: Listener,
+  panelListener?: Listener,
+};
 
 export class CheckboxControl extends Control {
   public controlElement: HTMLInputElement;
@@ -28,7 +33,10 @@ export class CheckboxControl extends Control {
   }
 
   constructor(props: CheckboxControlProps) {
-    super(props, CheckboxControl.template);
+    super({
+      ...props,
+      template: CheckboxControl.template,
+    });
     this.controlElement = this.element.querySelector('[type="checkbox"]') as HTMLInputElement;
     this.listeners.set('checked', this.onCheck);
     this.bindActionListeners();
@@ -50,7 +58,7 @@ export class CheckboxControl extends Control {
     this.state.checked = !this.state.checked;
   }
 
-  private onCheck: ControlListener = (update: ControlListenerUpdate) => {
+  private onCheck: Listener = (update: ListenerUpdate) => {
     if (update.value === true) {
       this.controlElement.setAttribute('checked', 'true');
     } else {

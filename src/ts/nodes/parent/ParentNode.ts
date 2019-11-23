@@ -1,29 +1,23 @@
 import cuid from 'cuid';
 
-import { RootNode, InternalState } from '../../root/RootNode';
+import { RootNode } from '../../root/RootNode';
+import { ButtonControl, ButtonControlProps } from '../../controls/button/ButtonControl';
+import { TextControl, TextControlProps } from '../../controls/text/TextControl';
+import { TextAreaControl, TextAreaControlProps } from '../../controls/textarea/TextAreaControl';
+import { CheckboxControl, CheckboxControlProps } from '../../controls/checkbox/CheckboxControl';
+import { FileControl, FileControlProps } from '../../controls/file/FileControl';
+import { NumberControl, NumberControlProps } from '../../controls/number/NumberControl';
+import { RangeControl, RangeControlProps } from '../../controls/range/RangeControl';
+import { SectionNode } from '../section/Section';
 import {
-  ControlListener,
-  ControlListenerUpdate,
+  Listener,
+  ListenerUpdate,
+  InternalState,
   ControlOptions,
-  TextControlProps,
-  TextAreaControlProps,
-  CheckboxControlProps,
-  FileControlProps,
-  NumberControlProps,
-  RangeControlProps,
-  ButtonControlProps,
-} from '../../controls/control/Control.types';
-import { ParentProps } from '../nodes.types';
+  ParentOptions,
+} from '../../types';
 
 import Base from '../../../sass/base.sass';
-import { ButtonControl } from '../../controls/button/ButtonControl';
-import { TextControl } from '../../controls/text/TextControl';
-import { TextAreaControl } from '../../controls/textarea/TextAreaControl';
-import { CheckboxControl } from '../../controls/checkbox/CheckboxControl';
-import { FileControl } from '../../controls/file/FileControl';
-import { NumberControl } from '../../controls/number/NumberControl';
-import { RangeControl } from '../../controls/range/RangeControl';
-import { SectionNode } from '../section/Section';
 
 export type AnyControl = ButtonControl
 | TextControl
@@ -33,27 +27,31 @@ export type AnyControl = ButtonControl
 | NumberControl
 | RangeControl;
 
+export type ParentNodeProps = {
+  id: string,
+  options: ParentOptions,
+  template: (state: InternalState) => string,
+  parentElement: HTMLElement,
+}
 export abstract class ParentNode extends RootNode {
   public parentElement: HTMLElement;
   public element: HTMLElement;
+
   public abstract bodyElement: HTMLElement;
   public abstract headerElement: HTMLElement;
 
   protected state: InternalState;
-  protected listeners: Map<string, ControlListener> = new Map();
+  protected listeners: Map<string, Listener> = new Map();
   protected stateHandler: ProxyHandler<InternalState> = {
     set: this.createStateSetter(),
   };
   protected registry: Map<string, AnyControl | SectionNode> = new Map();
 
-  constructor(
-    props: ParentProps,
-    template: (state: InternalState) => string
-  ) {
+  constructor(props: ParentNodeProps) {
     super();
-    this.state = this.createState(props.id, props.name, props.options, this.stateHandler);
+    this.state = this.createState(props.id, props.options, this.stateHandler);
     this.parentElement = props.parentElement;
-    this.element = this.createRootElement(template(this.state));
+    this.element = this.createRootElement(props.template(this.state));
 
     this.parentElement.appendChild(this.element);
     this.listeners.set('invisible', this.onInvisible);
@@ -79,29 +77,23 @@ export abstract class ParentNode extends RootNode {
 
   abstract control(
     control: string,
-    name: string,
-    options: ControlOptions | null,
-    listener?: ControlListener,
+    options: ControlOptions,
   ): AnyControl | null;
 
-  protected createControl(
-    control: string, 
-    name: string, 
-    options: ControlOptions | null, 
-    listeners: {
-      [key: string]: ControlListener | undefined,
-    }
-  ): AnyControl | null {
+  protected createControl = (
+    control: string,
+    options: ControlOptions, 
+    sectionListener?: Listener,
+    panelListener?: Listener,
+  ): AnyControl | null => {
     const id: string = cuid();
     const parentElement = this.bodyElement;
     const props = {
       id,
-      name,
+      options,
       parentElement,
-      options: options || {},
-      listener: listeners.control,
-      sectionListener: listeners.section,
-      panelListener: listeners.panel,
+      sectionListener,
+      panelListener,
     };
     let instance;
     switch (control) {
@@ -136,7 +128,7 @@ export abstract class ParentNode extends RootNode {
     return instance;
   }
 
-  protected onCollapsed: ControlListener = (update: ControlListenerUpdate) => {
+  protected onCollapsed: Listener = (update: ListenerUpdate) => {
     const { classList } = this.bodyElement;
     const toggle = this.headerElement.querySelector('a') as HTMLAnchorElement;
     if (update.value === true) {

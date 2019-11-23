@@ -1,18 +1,17 @@
 import { Control } from './Control';
-import { InternalState } from '../../root/RootNode';
+import { InternalState, ListenerUpdate } from '../../types';
 
 // @ts-ignore
 import Styles from '../../../sass/control.sass';
-import { ControlProps, ControlListenerUpdate } from './Control.types';
 
-const props: ControlProps = {
+const props: any = {
   id: 'id',
-  name: 'name',
   options: {
     value: 'test',
+    name: 'name',
+    listener: (update: ListenerUpdate) => update,
   },
   parentElement: document.body,
-  listener: (update: ControlListenerUpdate) => update,
 };
 class DerivedControl extends Control {
   public controlElement: HTMLElement;
@@ -20,8 +19,11 @@ class DerivedControl extends Control {
   protected static template = (state: InternalState): string => `
     <input type="text" id="testId" value="${state.value}" />`;
 
-  constructor(props: ControlProps) {
-    super(props, DerivedControl.template);
+  constructor(props: any) {
+    super({
+      ...props,
+      template: DerivedControl.template
+    });
     this.controlElement = this.element.querySelector(`#testId`) as HTMLElement;
   }
 

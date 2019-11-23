@@ -8,14 +8,14 @@ describe('Text control', () => {
   beforeEach(() => {
     control = new TextControl({
       id: 'id',
-      name: 'name',
       options: {
+        name: 'name',
         value: 'test',
         autocomplete: false,
         disabled: false,
+        listener,
       },
       parentElement: document.body,
-      listener,
     });
   });
 

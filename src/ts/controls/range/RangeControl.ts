@@ -1,11 +1,16 @@
 import { Control } from '../control/Control';
-import {
-  RangeControlProps, ControlListener, ControlListenerUpdate,
-} from '../control/Control.types';
-import { InternalState } from '../../root/RootNode';
+import { InternalState, RangeControlOptions, Listener, ListenerUpdate } from '../../types';
 
 import Styles from '../../../sass/range.sass';
 import ControlStyles from '../../../sass/control.sass';
+
+export type RangeControlProps = {
+  id: string,
+  options: RangeControlOptions,
+  parentElement: HTMLElement,
+  sectionListener?: Listener,
+  panelListener?: Listener,
+};
 
 export class RangeControl extends Control {
   public controlElement: HTMLInputElement;
@@ -23,7 +28,10 @@ export class RangeControl extends Control {
   `;
 
   constructor(props: RangeControlProps) {
-    super(props, RangeControl.template);
+    super({
+      ...props,
+      template: RangeControl.template,
+    })
     this.controlElement = this.element.querySelector('[type="range"]') as HTMLInputElement;
     this.updateMain();
     this.listeners.set('value', this.onValue);
@@ -65,12 +73,12 @@ export class RangeControl extends Control {
     this.state.step = step;
   }
 
-  private onValue: ControlListener = (update: ControlListenerUpdate) => {
+  private onValue: Listener = (update: ListenerUpdate) => {
     this.controlElement.value = update.value as string;
     (this.element.querySelector(`.${Styles.rangeValue}`) as HTMLSpanElement).textContent = update.value as string;
   }
 
-  private onMinMaxStep: ControlListener = (update: ControlListenerUpdate) => {
+  private onMinMaxStep: Listener = (update: ListenerUpdate) => {
     this.controlElement.setAttribute(update.key, `${update.value}`);
   }
 

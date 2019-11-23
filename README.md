@@ -8,8 +8,6 @@ JS library for creating setting panels.
 
 ## Installation
 
-## Installation
-
 ### Yarn
 ```
 yarn add smartsettings
@@ -28,7 +26,7 @@ npm install --save smartsettings
 import SmartSettings from 'smartsettings';
 
 const settings = SmartSettings();
-const panel = settings.create();
+const panel = settings.panel();
 ```
 
 ### Creation with parameters
@@ -36,10 +34,12 @@ const panel = settings.create();
 import SmartSettings from 'smartsettings';
 
 const settings = SmartSettings();
-const panel = settings.create('My panel', {
+const panel = settings.panel({
+    name: 'My panel',
     top: 40,
     left: 300,
     disabled: true,
+    listener: (update) => console.log(update),
 });
 ```
 
@@ -50,8 +50,10 @@ const settings = SmartSettings();
 const panel = settings.panel();
 const button = panel.control(
     'button',
-    'Reset', 
-    { disabled: true },
+    {
+        name: 'Init',
+        disabled: true
+    },
 );
 ```
 

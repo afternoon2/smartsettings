@@ -1,12 +1,17 @@
 import cuid from 'cuid';
 
 import { Control } from '../control/Control';
-import {
-  FileControlProps, ControlListener, ControlListenerUpdate,
-} from '../control/Control.types';
-import { InternalState } from '../../root/RootNode';
+import { InternalState, Listener, ListenerUpdate, FileControlOptions } from '../../types';
 
 import Styles from '../../../sass/file.sass';
+
+export type FileControlProps = {
+  id: string,
+  options: FileControlOptions,
+  parentElement: HTMLElement,
+  sectionListener?: Listener,
+  panelListener?: Listener,
+};
 
 export class FileControl extends Control {
   public controlElement: HTMLInputElement;
@@ -30,7 +35,10 @@ export class FileControl extends Control {
   };
 
   constructor(props: FileControlProps) {
-    super(props, FileControl.template);
+    super({
+      ...props,
+      template: FileControl.template,
+    });
     this.controlElement = this.element.querySelector('[type="file"]') as HTMLInputElement;
     this.listeners.set('accept', this.onAcceptChange);
     this.bindActionListeners();
@@ -48,7 +56,7 @@ export class FileControl extends Control {
     return this.state.files as FileList;
   }
 
-  private onAcceptChange: ControlListener = (update: ControlListenerUpdate) => {
+  private onAcceptChange: Listener = (update: ListenerUpdate) => {
     this.controlElement.setAttribute('accept', update.value as string);
   }
 
