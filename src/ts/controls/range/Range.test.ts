@@ -1,11 +1,11 @@
 import { RangeControl } from './RangeControl';
 
 let control: RangeControl;
-
-const listener = jest.fn();
+let listener: any;
 
 describe('Range control', () => {
   beforeEach(() => {
+    listener = jest.fn();
     control = new RangeControl({
       id: 'id',
       name: 'name',
@@ -42,7 +42,22 @@ describe('Range control', () => {
     expect(control.value).toBe(4);
   });
 
+  test('Get and set min, max and step', () => {
+    control.step = 0.1;
+    expect(control.step).toBe(0.1);
+    expect(control.controlElement.getAttribute('step')).toBe('0.1');
+
+    control.min = -4;
+    expect(control.min).toBe(-4);
+    expect(control.controlElement.getAttribute('min')).toBe('-4');
+
+    control.max = 4;
+    expect(control.max).toBe(4);
+    expect(control.controlElement.getAttribute('max')).toBe('4')
+  });
+
   test('If it assings user listener correctly', () => {
-    expect(listener).toHaveBeenCalledTimes(4);
+    control.step = 1;
+    expect(listener).toHaveBeenCalledTimes(1);
   });
 });
