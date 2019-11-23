@@ -84,12 +84,16 @@ describe('Section node', () => {
     expect(falsyControl).toBe(null);
   });
 
-  test('Remove method', () => {
+  test('Remove methods', () => {
     section.control('button', 'Button', {
       text: 'Click me!',
     });
+    section.control('button2', 'Button', {
+      text: 'Click me!',
+    });
     section.remove('Button');
-    expect(section.element.querySelector('button')).toBe(null);
+    expect(section.element.querySelector('#button')).toBe(null);
+    expect(section.element.querySelector('#button2')).toBe(null);
 
     const btn = section.control('button', 'Button', {
       text: 'Click me!',
@@ -97,6 +101,13 @@ describe('Section node', () => {
 
     section.removeById(btn.id);
     expect(section.element.querySelector('button')).toBe(null);
+
+    section.control('button', 'Button', {
+      text: 'Click me!',
+    }) as ButtonControl;
+
+    section.removeAll();
+    expect(section.bodyElement.childElementCount).toBe(0);
   });
 
   test('Set listener', () => {

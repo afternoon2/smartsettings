@@ -73,6 +73,15 @@ export class SectionNode extends ParentNode {
     }
   }
 
+  removeAll() {
+    while (this.bodyElement.firstChild) {
+      this.bodyElement.removeChild(
+        this.bodyElement.firstChild,
+      );
+    }
+    this.registry.clear();
+  }
+
   setListener(listener: ControlListener) {
     this.listeners.set('section', listener);
   }
