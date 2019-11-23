@@ -2,6 +2,10 @@
 
 JS library for creating setting panels.
 
+## Version 2.x.x preview
+
+![SmartSettings Preview](./images/smartsettings_screen.png)
+
 # README for version 1.2.3
 
 ## Installation
