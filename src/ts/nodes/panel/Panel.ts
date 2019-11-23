@@ -68,6 +68,12 @@ export class PanelNode extends ParentNode {
     this.listeners.set('panel', listener);
   }
 
+  destroy() {
+    this.registry.clear();
+    this.listeners.clear();
+    this.parentElement.removeChild(this.element);
+  }
+
   control(
     control: string,
     name: string,

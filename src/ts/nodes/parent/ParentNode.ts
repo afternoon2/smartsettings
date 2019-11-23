@@ -73,6 +73,10 @@ export abstract class ParentNode extends RootNode {
     this.state.collapsed = true;
   }
 
+  toggle() {
+    this.state.collapsed = !this.state.collapsed;
+  }
+
   abstract control(
     control: string,
     name: string,

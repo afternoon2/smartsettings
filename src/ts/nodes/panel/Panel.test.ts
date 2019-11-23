@@ -99,5 +99,10 @@ describe('Panel node', () => {
     expect((panel.position as PanelPosition).left).toBe(40);
     expect((panel.position as PanelPosition).top).toBe(30);
   });
+
+  test('Destroy panel', () => {
+    panel.destroy();
+    expect(document.getElementById('id')).toBe(null);
+  });
 });
 

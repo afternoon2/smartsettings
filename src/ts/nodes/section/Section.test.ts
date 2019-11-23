@@ -38,6 +38,9 @@ describe('Section node', () => {
     expect(section.collapsed).toBe(false);
     expect(listener).toHaveBeenCalledTimes(2);
     expect(section.element).toMatchSnapshot();
+    section.toggle();
+    expect(section.collapsed).toBe(true);
+    expect(section.element).toMatchSnapshot();
   });
 
   test('Open and close by click', () => {
