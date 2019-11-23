@@ -74,6 +74,44 @@ export class PanelNode extends ParentNode {
     this.parentElement.removeChild(this.element);
   }
 
+  remove(name: string) {
+    const toRemove = Array.from(this.registry.values())
+      .find((el: AnyControl | SectionNode) => el.name === name);
+    if (!toRemove) {
+      this.registry.forEach((value: AnyControl | SectionNode) => {
+        if (value instanceof SectionNode) {
+          value.remove(name);
+        };
+      });
+    } else {
+      this.bodyElement.removeChild(toRemove.element);
+      this.registry.delete(toRemove.id);
+    }
+  }
+
+  removeById(id: string) {
+    const localElement = this.registry.get(id);
+    if (localElement) {
+      this.bodyElement.removeChild(localElement.element);
+      this.registry.delete(id);
+    } else {
+      this.registry.forEach((value: AnyControl | SectionNode) => {
+        if (value instanceof SectionNode) {
+          value.removeById(id);
+        }
+      })
+    }
+  }
+
+  removeAll() {
+    while (this.bodyElement.firstChild) {
+      this.bodyElement.removeChild(
+        this.bodyElement.firstChild,
+      );
+    }
+    this.registry.clear();
+  }
+
   control(
     control: string,
     name: string,

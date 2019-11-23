@@ -104,5 +104,50 @@ describe('Panel node', () => {
     panel.destroy();
     expect(document.getElementById('id')).toBe(null);
   });
+
+  test('Remove method', () => {
+    panel.control('button', 'Button', {
+      text: 'Click me!',
+    });
+    panel.control('button2', 'Button', {
+      text: 'Click me!',
+    });
+    panel.remove('Button');
+    expect(panel.bodyElement.querySelector('#button')).toBe(null);
+    expect(panel.bodyElement.querySelector('#button2')).toBe(null);
+
+    const section = panel.section('Section', {});
+    const nestedButton = section.control('button', 'Button in section', {}) as ButtonControl;
+
+    panel.remove('Button in section');
+
+    expect(section.bodyElement.querySelector(nestedButton.id)).toBe(null);
+  });
+
+  test('Remove by id method', () => {
+    const section = panel.section('Section', {});
+    const button = panel.control('button', 'Button', {
+      text: 'Click me!',
+    }) as ButtonControl;
+    const nestedButton = section.control('button', 'Button in section', {}) as ButtonControl;
+
+    panel.removeById(button.id);
+    expect(panel.bodyElement.querySelector(`#${button.id}`)).toBe(null);
+
+    panel.removeById(nestedButton.id);
+    expect(section.bodyElement.querySelector(`#${nestedButton.id}`)).toBe(null);
+
+  });
+
+  test('Remove all', () => {
+    const section = panel.section('Section', {});
+    panel.control('button', 'Button', {
+      text: 'Click me!',
+    }) as ButtonControl;
+    section.control('button', 'Button in section', {}) as ButtonControl;
+    panel.removeAll();
+
+    expect(panel.bodyElement.childElementCount).toBe(0);
+  });
 });
 
