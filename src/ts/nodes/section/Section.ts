@@ -1,5 +1,5 @@
 import { SectionProps } from '../nodes.types';
-import { ParentNode } from '../parent/ParentNode';
+import { ParentNode, AnyControl } from '../parent/ParentNode';
 import { InternalState } from '../../root/RootNode';
 
 import Base from '../../../sass/base.sass';
@@ -53,6 +53,24 @@ export class SectionNode extends ParentNode {
         panel: this.listeners.get('panel'),
       }
     );
+  }
+
+  remove(name: string) {
+    this.registry.forEach((value: AnyControl | SectionNode) => {
+      if (value.name === name) {
+        const toRemove = value.element;
+        this.bodyElement.removeChild(toRemove);
+        this.registry.delete(value.id);
+      };
+    });
+  }
+
+  removeById(id: string) {
+    const toRemove = this.registry.get(id);
+    if (toRemove) {
+      this.bodyElement.removeChild(toRemove.element);
+      this.registry.delete(id);
+    }
   }
 
   setListener(listener: ControlListener) {

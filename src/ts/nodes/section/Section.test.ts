@@ -83,5 +83,27 @@ describe('Section node', () => {
     expect(file).toBeInstanceOf(FileControl);
     expect(falsyControl).toBe(null);
   });
+
+  test('Remove method', () => {
+    section.control('button', 'Button', {
+      text: 'Click me!',
+    });
+    section.remove('Button');
+    expect(section.element.querySelector('button')).toBe(null);
+
+    const btn = section.control('button', 'Button', {
+      text: 'Click me!',
+    }) as ButtonControl;
+
+    section.removeById(btn.id);
+    expect(section.element.querySelector('button')).toBe(null);
+  });
+
+  test('Set listener', () => {
+    const newListener = jest.fn();
+    section.setListener(newListener);
+    section.close();
+    expect(newListener).toHaveBeenCalledTimes(1);
+  });
 });
 
