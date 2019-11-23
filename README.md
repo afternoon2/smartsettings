@@ -44,8 +44,7 @@ const panel = new SmartSettings({
 ### Control creation
 
 ```javascript
-const settings = SmartSettings();
-const panel = settings.panel();
+const panel = SmartSettings();
 const button = panel.control(
     'button',
     {
