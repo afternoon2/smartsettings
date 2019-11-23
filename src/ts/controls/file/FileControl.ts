@@ -23,7 +23,7 @@ export class FileControl extends Control {
           type="file"
           title="${state.name}"
           ${state.disabled ? 'disabled' : ''}
-          ${state.readonly ? 'readonly' : ''}
+          ${state.readonly ? 'readonly="true"' : ''}
         />
       </label>
     `

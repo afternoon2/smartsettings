@@ -20,7 +20,7 @@ export class TextControl extends Control {
       ${state.maxLength ? `min-length="${state.maxLength}"` : ''}
       ${state.placeholder ? `placeholder="${state.placeholder}"` : ''}
       ${state.pattern ? `pattern="${state.pattern}"` : ''}
-      ${state.readOnly ? `readonly` : ''}
+      ${state.readOnly ? 'readonly="true"' : ''}
     />
   `;
 

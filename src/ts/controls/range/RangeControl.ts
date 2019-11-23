@@ -17,7 +17,7 @@ export class RangeControl extends Control {
       ${typeof state.min === 'number' ? `min="${state.min}"` : ''}
       ${typeof state.max === 'number' ? `max="${state.max}"` : ''}
       ${typeof state.step === 'number' ? `step="${state.step}"` : ''}
-      ${state.readonly ? 'readonly' : ''}
+      ${state.readonly ? 'readonly="true"' : ''}
       ${state.disabled ? 'disabled' : ''}
     />
   `;

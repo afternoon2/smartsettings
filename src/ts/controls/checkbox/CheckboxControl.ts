@@ -21,7 +21,7 @@ export class CheckboxControl extends Control {
           title="${state.name}"
           ${state.checked ? 'checked' : ''}
           ${state.disabled ? 'disabled' : ''}
-          ${state.readonly ? 'readonly' : ''}
+          ${state.readonly ? 'readonly="true"' : ''}
         />
       </label>
     `;

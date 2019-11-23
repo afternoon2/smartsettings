@@ -22,7 +22,7 @@ export class TextAreaControl extends Control {
       ${state.minLength ? `min-length="${state.minLength}"` : ''}
       ${state.maxLength ? `max-length="${state.maxLength}"` : ''}
       ${state.placeholder ? `placeholder="${state.placeholder}"` : ''}
-      ${state.readonly ? 'readonly' : ''}
+      ${state.readonly ? 'readonly="true"' : ''}
       ${state.autocomplete ? 'autocomplete="true"' : ''}
     >
       ${state.value || ''}
