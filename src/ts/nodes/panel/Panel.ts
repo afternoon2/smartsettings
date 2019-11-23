@@ -1,3 +1,4 @@
+import pkg from '../../../../package.json';
 import cuid from 'cuid';
 
 import { ParentNode, AnyControl } from '../parent/ParentNode';
@@ -15,15 +16,10 @@ import { SectionNode } from '../section/Section';
 import Base from '../../../sass/base.sass';
 import Styles from '../../../sass/panel.sass';
 
-export type PanelNodeProps = {
-  id: string,
-  options: PanelOptions,
-  parentElement: HTMLElement,
-};
-
 export class PanelNode extends ParentNode {
   public bodyElement: HTMLElement;
   public headerElement: HTMLElement;
+  public readonly version: string = pkg.version;
 
   private toggleElement: HTMLAnchorElement;
   private nameElement: HTMLParagraphElement;
@@ -42,11 +38,22 @@ export class PanelNode extends ParentNode {
     <main class="${Styles.panel__body} ${state.collapsed ? Base.hidden : ''}">
     </main>`;
 
-  constructor(props: PanelNodeProps) {
+  constructor(options?: PanelOptions) {
     super({
-      ...props,
+      id: cuid(),
+      options: options || {
+        name: `SmartSettings v. ${pkg.version}`,
+        collapsed: false,
+        disabled: false,
+        draggable: false,
+        invisible: false,
+        top: 10,
+        left: 10,
+      },
+      parentElement: document.body,
       template: PanelNode.template,
     });
+
     this.fillInElement(Styles.panel);
     this.headerElement = this.element.querySelector(`.${Styles.panel__header}`) as HTMLElement;
     this.nameElement = this.headerElement.querySelector('p') as HTMLParagraphElement;
@@ -54,12 +61,12 @@ export class PanelNode extends ParentNode {
     this.bodyElement = this.element.querySelector(`.${Styles.panel__body}`) as HTMLElement;
     this.listeners.set('top', this.onPositionChanged);
     this.listeners.set('left', this.onPositionChanged);
-    if (props.options.listener) {
-      this.listeners.set('panel', props.options.listener);
+    if (options && options.listener) {
+      this.listeners.set('panel', options.listener);
     }
-    if (props.options.left && props.options.top) {
-      this.state.top = props.options.top;
-      this.state.left = props.options.left;
+    if (options && options.left && options.top) {
+      this.state.top = options.top;
+      this.state.left = options.left;
     }
     this.bindEventListeners();
   }

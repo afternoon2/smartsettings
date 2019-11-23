@@ -16,15 +16,11 @@ describe('Panel node', () => {
   beforeEach(() => {
     listener = jest.fn();
     panel = new PanelNode({
-      id: 'id',
-      options: {
-        name: 'name',
-        collapsed: false,
-        disabled: false,
-        invisible: false,
-        listener,
-      },
-      parentElement: document.body,
+      name: 'name',
+      collapsed: false,
+      disabled: false,
+      invisible: false,
+      listener,
     });
   });
 
@@ -32,24 +28,17 @@ describe('Panel node', () => {
     document.body.innerHTML = '';
   });
 
-  test('If it matches the snapshot', () => {
-    expect(panel.element).toMatchSnapshot();
-  });
-
   test('Open and close', () => {
     panel.close();
     expect(panel.collapsed).toBe(true);
-    expect(panel.element).toMatchSnapshot();
     panel.open();
     expect(panel.collapsed).toBe(false);
     expect(listener).toHaveBeenCalledTimes(2);
-    expect(panel.element).toMatchSnapshot();
   });
 
   test('Open and close by click', () => {
     (panel.headerElement.querySelector('a') as HTMLAnchorElement).click();
     expect(panel.collapsed).toBe(true);
-    expect(panel.element).toMatchSnapshot();
   });
 
   test('Control creation', () => {

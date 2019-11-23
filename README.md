@@ -25,16 +25,14 @@ npm install --save smartsettings
 ```javascript
 import SmartSettings from 'smartsettings';
 
-const settings = SmartSettings();
-const panel = settings.panel();
+const panel = new SmartSettings();
 ```
 
 ### Creation with parameters
 ```javascript
 import SmartSettings from 'smartsettings';
 
-const settings = SmartSettings();
-const panel = settings.panel({
+const panel = new SmartSettings({
     name: 'My panel',
     top: 40,
     left: 300,
