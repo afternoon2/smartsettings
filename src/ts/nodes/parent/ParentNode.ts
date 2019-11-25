@@ -8,6 +8,7 @@ import { CheckboxControl, CheckboxControlProps } from '../../controls/checkbox/C
 import { FileControl, FileControlProps } from '../../controls/file/FileControl';
 import { NumberControl, NumberControlProps } from '../../controls/number/NumberControl';
 import { RangeControl, RangeControlProps } from '../../controls/range/RangeControl';
+import { DropDownControl, DropDownControlProps } from '../../controls/dropdown/DropDown';
 import { SectionNode } from '../section/Section';
 import {
   Listener,
@@ -25,7 +26,8 @@ export type AnyControl = ButtonControl
 | CheckboxControl
 | FileControl
 | NumberControl
-| RangeControl;
+| RangeControl
+| DropDownControl;
 
 export type ParentNodeProps = {
   id: string,
@@ -102,6 +104,9 @@ export abstract class ParentNode extends RootNode {
         break;
       case 'checkbox':
         instance = new CheckboxControl(props as CheckboxControlProps);
+        break;
+      case 'dropdown':
+        instance = new DropDownControl(props as DropDownControlProps);
         break;
       case 'file':
         instance = new FileControl(props as FileControlProps);

@@ -1,0 +1,70 @@
+@import './variables.sass'
+@import './mixins.sass'
+
+.dropdown
+  display: flex
+  flex-direction: column
+  width: 100%
+  position: relative
+
+  &__button
+    @include controlElement
+    background-color: $bright
+    display: flex
+    align-items: center
+    justify-content: space-between
+    cursor: pointer
+    border-radius: $radius
+
+  &__list
+    @include controlElement
+    position: absolute
+    cursor: pointer
+    top: 15px
+    left: 0
+    z-index: 4
+    min-height: $padding
+    height: auto
+    max-height: 90px
+    display: flex
+    flex-direction: column
+    list-style-type: none
+    margin: 0
+    padding: 0
+    background-color: lighten($dark, 20%)
+    overflow-y: auto
+
+  &__list-item
+    width: inherit
+    margin: 0
+    padding: 0
+
+  &__label
+    box-sizing: border-box
+    padding-top: $padding * 2
+    padding-bottom: $padding * 2
+    padding-left: $padding * 2
+    font-size: $primarySize
+    line-height: 1.2
+    display: flex
+    align-items: center
+    margin: 0
+    color: $bright
+    width: 100%
+    transition: 100ms all ease-in-out
+    
+    [type="checkbox"]:checked 
+      + span:after
+        position: absolute
+        content: '✔'
+        color: lightgreen
+        right: 0
+        font-size: $primarySize * 1.2
+    
+    &:hover
+      background-color: $accent
+      cursor: pointer
+      color: $dark
+
+  &__toggle
+    font-size: $primarySize;

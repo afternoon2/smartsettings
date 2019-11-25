@@ -133,7 +133,9 @@ export abstract class RootNode {
       key: string,
       value: string | boolean | number
     ) => {
-      target[key] = value;
+      if (value !== target[key]) {
+        target[key] = value;
+      }
       const controlListener = this.listeners.get('control');
       const sectionListener = this.listeners.get('section');
       const panelListener = this.listeners.get('panel');

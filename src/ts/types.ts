@@ -98,13 +98,29 @@ export type RangeControlOptions = RootOptions & {
 
 type RangeControlState = Omit<RangeControlOptions, 'listener'>;
 
+export type DropDownItem = {
+  id: string,
+  text: string,
+  value: string,
+};
+
+export type DropDownControlOptions = RootOptions & {
+  expanded?: boolean,
+  selected?: string,
+  items?: DropDownItem[],
+  // multi?: boolean,
+};
+
+type DropDownControlState = Omit<DropDownControlOptions, 'listener'>;
+
 export type ControlOptions = ButtonControlOptions
 | TextControlOptions
 | CheckboxControlOptions
 | NumberControlOptions
 | FileControlOptions
 | TextAreaControlOptions
-| RangeControlOptions;
+| RangeControlOptions
+| DropDownControlOptions;
 
 type ControlState = ButtonControlState
 | TextControlState
@@ -112,10 +128,11 @@ type ControlState = ButtonControlState
 | NumberControlState
 | FileControlState
 | TextAreaControlState
-| RangeControlState;
+| RangeControlState
+| DropDownControlState;
 
 export type InternalState = (PanelState | ControlState) & {
-  [key: string]: string | boolean | number,
+  [key: string]: string | boolean | number | DropDownItem[],
   readonly id: string,
 };
 
