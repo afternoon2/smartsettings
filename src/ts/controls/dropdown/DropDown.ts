@@ -17,9 +17,9 @@ export type DropDownControlProps = {
 export class DropDownControl extends Control {
   public controlElement: HTMLDivElement;
 
-  private static itemsTemplate = (items: DropDownItem[], state: InternalState): string =>
-    items.map((item: DropDownItem) => {
-      const name: string = cuid();
+  private static itemsTemplate = (items: DropDownItem[], state: InternalState): string => {
+    const name: string = cuid();
+    return items.map((item: DropDownItem) => {
       return `<li class="${Styles['dropdown__list-item']}">
           <label
             class="${Styles.dropdown__label}"
@@ -28,15 +28,16 @@ export class DropDownControl extends Control {
             <span>${item.text}</span>
             <input
               id="${item.id}"
-              class="${Base.hidden}"
               name="${name}"
+              class="${Styles.dropdown__radio}"
               type="${state.multiple === true ? 'checkbox' : 'radio'}"
-              value="${item.value}" ${state.selected === item.value ? 'checked' : ''}"
+              value="${item.value}"
             />
           </label>
         </li>
       `;
-    }).join('');
+    }).join('')
+  }
 
   protected static template = (state: InternalState): string => {
     const buttonId: string = cuid();
@@ -149,12 +150,9 @@ export class DropDownControl extends Control {
       (item: DropDownItem) => item.value === update.value,
     );
     if (newSelectedItem) {
-      const { id, text } = newSelectedItem;
-      (this.listElement.querySelector(`#${id}`) as HTMLInputElement)
-        .setAttribute('checked', 'true');
+      const { text } = newSelectedItem;
       (this.buttonElement.querySelector('span:first-child') as HTMLSpanElement)
         .innerHTML = text;
-      this.state.expanded = false;
     }
   }
 
@@ -180,16 +178,20 @@ export class DropDownControl extends Control {
   }
 
   private itemListener = (e: Event, item: HTMLLIElement) => {
-    e.preventDefault();
     const input = item.querySelector('input') as HTMLInputElement;
     this.select(input.value);
   }
 
   private bindItemsListener = () => {
-    this.listItems.forEach((listItem: HTMLLIElement) =>
-      listItem.addEventListener('click', (e) =>
+    this.listItems.forEach((listItem: HTMLLIElement) => {
+      const input = listItem.querySelector('input') as HTMLInputElement;
+      input.addEventListener('click', () => {
+        this.state.expanded = false;
+      });
+      input.addEventListener('change', (e) =>
         this.itemListener(e, listItem)
-      ));
+      );
+    });
   }
 
   private bindActionListeners() {

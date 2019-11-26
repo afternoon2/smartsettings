@@ -57,7 +57,7 @@ describe('Dropdown control', () => {
     expect(control.selected).toBe('item-1');
     control.select('item-2');
     expect(control.selected).toBe('item-2');
-    expect(listener).toHaveBeenCalledTimes(2);
+    expect(listener).toHaveBeenCalledTimes(1);
   });
 
   test('Replace items', () => {
@@ -80,7 +80,7 @@ describe('Dropdown control', () => {
     ];
     control.setItems(newItems);
     expect(control.controlElement.querySelectorAll('li').length).toBe(3);
-    expect(listener).toHaveBeenCalledTimes(3);
+    expect(listener).toHaveBeenCalledTimes(2);
     expect(control.selected).toBe('item-test-1');
   });
 });
