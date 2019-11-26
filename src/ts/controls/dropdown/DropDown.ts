@@ -17,28 +17,34 @@ export type DropDownControlProps = {
 export class DropDownControl extends Control {
   public controlElement: HTMLDivElement;
 
+  private static itemsTemplate = (items: DropDownItem[], state: InternalState): string =>
+    items.map((item: DropDownItem) => {
+      const name: string = cuid();
+      return `<li class="${Styles['dropdown__list-item']}">
+          <label
+            class="${Styles.dropdown__label}"
+            for="${item.id}"
+          >
+            <span>${item.text}</span>
+            <input
+              id="${item.id}"
+              class="${Base.hidden}"
+              name="${name}"
+              type="${state.multiple === true ? 'checkbox' : 'radio'}"
+              value="${item.value}" ${state.selected === item.value ? 'checked' : ''}"
+            />
+          </label>
+        </li>
+      `;
+    }).join('');
+
   protected static template = (state: InternalState): string => {
     const buttonId: string = cuid();
-    const name: string = cuid();
-    const renderOptions = (items: DropDownItem[]) =>
-      items.map((item: DropDownItem) => {
-        return `<li class="${Styles['dropdown__list-item']}">
-            <label
-              class="${Styles.dropdown__label}"
-              for="${item.id}"
-            >
-              <span>${item.text}</span>
-              <input
-                id="${item.id}"
-                class="${Base.hidden}"
-                name="${name}"
-                type="${state.multiple === true ? 'checkbox' : 'radio'}"
-                value="${item.value}" ${state.value === item.value ? 'checked' : ''}"
-              />
-            </label>
-          </li>
-        `;
-      });
+    const items = state.items as DropDownItem[];
+    const getSelectedText = (): string => {
+      const selected = items.find((item: DropDownItem) => item.value === state.selected);
+      return selected ? selected.text : 'Select item';
+    };
     return `<div
       id="${state.id}"
       class="${Styles.dropdown}"
@@ -46,19 +52,15 @@ export class DropDownControl extends Control {
       <button
         id="${buttonId}"
         class="${Styles.dropdown__button}"
-        ${state.disabled === true || typeof state.selected !== 'number' ? 'disabled' : ''}
+        ${state.disabled === true ? 'disabled' : ''}
       >
         <span>
-          ${
-            typeof state.selected === 'number' ?
-              (state.items as DropDownItem[])[state.selected as number].text :
-              'No value provided'
-          }
+          ${getSelectedText()}
         </span>
         <span class="${Styles.dropdown__toggle}">&#9662;</span>
       </button>
       <ul class="${Styles.dropdown__list} ${state.expanded === true ? '' : Base.hidden}">
-        ${state.items ? renderOptions(state.items as DropDownItem[]).join('') : ''}
+        ${state.items ? DropDownControl.itemsTemplate(items, state) : ''}
       </ul>
     </div>`;
   };
@@ -137,9 +139,7 @@ export class DropDownControl extends Control {
   }
 
   private onSelected: Listener = (update: ListenerUpdate) => {
-    
-    // const checkboxes = this.listElement.querySelectorAll('[type="checkbox"]');
-    if (!this.state.multiple) {
+    if (!this.state.multi) {
       this.onRadioSelected(update);
     }
   }
@@ -164,33 +164,11 @@ export class DropDownControl extends Control {
     this.removeDOMItems();
     this.listElement.insertAdjacentHTML(
       'beforeend',
-      this.createItemsTemplate(items, self.state),
+      DropDownControl.itemsTemplate(items, self.state),
     );
     this.listItems = this.listElement.querySelectorAll('li');
     this.bindItemsListener();
     this.select(items[0].value);
-  }
-
-  private createItemsTemplate = (items: DropDownItem[], state: InternalState): string => {
-    return items.map((item: DropDownItem) => {
-      const name = cuid();
-      return `<li class="${Styles['dropdown__list-item']}">
-        <label
-          class="${Styles.dropdown__label}"
-          for="${item.id}"
-        >
-          <span>${item.text}</span>
-          <input
-            id="${item.id}"
-            class="${Base.hidden}"
-            name="${name}"
-            type="${state.multiple === true ? 'checkbox' : 'radio'}"
-            value="${item.value}" ${state.value === item.value ? 'checked' : ''}"
-          />
-        </label>
-      </li>
-    `;
-    }).join('');
   }
 
   private removeDOMItems = () => {
@@ -203,7 +181,6 @@ export class DropDownControl extends Control {
 
   private itemListener = (e: Event, item: HTMLLIElement) => {
     e.preventDefault();
-    console.log(e.target);
     const input = item.querySelector('input') as HTMLInputElement;
     this.select(input.value);
   }
