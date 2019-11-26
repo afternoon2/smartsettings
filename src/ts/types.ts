@@ -3,7 +3,7 @@ import { Omit } from 'utility-types';
 export type ListenerUpdate = {
   targetId: string,
   key: string,
-  value: string | boolean | number,
+  value: string | boolean | number | DropDownItem[] | DropDownItem,
   listenerType: 'control' | 'section' | 'panel' | 'builtin',
 };
 

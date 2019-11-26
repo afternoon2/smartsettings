@@ -79,6 +79,7 @@ export class DropDownControl extends Control {
     this.bindAccessibilityAttributes();
     this.listeners.set('expanded', this.onExpanded);
     this.listeners.set('selected', this.onSelected);
+    this.listeners.set('items', this.onItemsChanged);
     this.bindActionListeners();
   }
 
@@ -102,6 +103,10 @@ export class DropDownControl extends Control {
     if (item) {
       this.state.selected = item.value;
     }
+  }
+
+  setItems(items: DropDownItem[]) {
+    this.state.items = items;
   }
 
   private bindAccessibilityAttributes() {
@@ -132,6 +137,7 @@ export class DropDownControl extends Control {
   }
 
   private onSelected: Listener = (update: ListenerUpdate) => {
+    
     // const checkboxes = this.listElement.querySelectorAll('[type="checkbox"]');
     if (!this.state.multiple) {
       this.onRadioSelected(update);
@@ -140,7 +146,7 @@ export class DropDownControl extends Control {
 
   private onRadioSelected: Listener = (update: ListenerUpdate) => {
     const newSelectedItem = (this.state.items as DropDownItem[]).find(
-      (item: DropDownItem, index: number) => index === update.value,
+      (item: DropDownItem) => item.value === update.value,
     );
     if (newSelectedItem) {
       const { id, text } = newSelectedItem;
@@ -152,13 +158,67 @@ export class DropDownControl extends Control {
     }
   }
 
+  private onItemsChanged: Listener = (update: ListenerUpdate) => {
+    const self = this;
+    const items = update.value as DropDownItem[];
+    this.removeDOMItems();
+    this.listElement.insertAdjacentHTML(
+      'beforeend',
+      this.createItemsTemplate(items, self.state),
+    );
+    this.listItems = this.listElement.querySelectorAll('li');
+    this.bindItemsListener();
+    this.select(items[0].value);
+  }
+
+  private createItemsTemplate = (items: DropDownItem[], state: InternalState): string => {
+    return items.map((item: DropDownItem) => {
+      const name = cuid();
+      return `<li class="${Styles['dropdown__list-item']}">
+        <label
+          class="${Styles.dropdown__label}"
+          for="${item.id}"
+        >
+          <span>${item.text}</span>
+          <input
+            id="${item.id}"
+            class="${Base.hidden}"
+            name="${name}"
+            type="${state.multiple === true ? 'checkbox' : 'radio'}"
+            value="${item.value}" ${state.value === item.value ? 'checked' : ''}"
+          />
+        </label>
+      </li>
+    `;
+    }).join('');
+  }
+
+  private removeDOMItems = () => {
+    while (this.listElement.firstChild) {
+      this.listElement.removeChild(
+        this.listElement.firstChild,
+      );
+    }
+  }
+
+  private itemListener = (e: Event, item: HTMLLIElement) => {
+    e.preventDefault();
+    console.log(e.target);
+    const input = item.querySelector('input') as HTMLInputElement;
+    this.select(input.value);
+  }
+
+  private bindItemsListener = () => {
+    this.listItems.forEach((listItem: HTMLLIElement) =>
+      listItem.addEventListener('click', (e) =>
+        this.itemListener(e, listItem)
+      ));
+  }
+
   private bindActionListeners() {
     this.buttonElement.addEventListener('click', () => {
       this.toggle();
     });
-    this.listItems.forEach((item: HTMLLIElement) => item.addEventListener('click', (e: Event) => {
-      const input = item.querySelector('input') as HTMLInputElement;
-      this.select(input.value);
-    }));
+    this.bindItemsListener();
   }
 }
