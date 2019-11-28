@@ -29,9 +29,7 @@ export class TextAreaControl extends Control {
       ${state.placeholder ? `placeholder="${state.placeholder}"` : ''}
       ${state.readonly ? 'readonly="true"' : ''}
       ${state.autocomplete ? 'autocomplete="true"' : ''}
-    >
-      ${state.value || ''}
-    </textarea>
+    >${state.value || ''}</textarea>
   `;
 
   constructor(props: TextAreaControlProps) {

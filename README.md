@@ -135,6 +135,42 @@ const textarea = panel.control('textarea', {
 });
 ```
 
+#### DropDown
+
+```javascript
+const dropdown = section.control('dropdown', {
+  name: 'Dropdown',
+  selected: 'first',
+  items: [
+    {
+      id: 'first',
+      text: 'First',
+      value: 'first',
+    },
+    {
+      id: 'second',
+      text: 'Second',
+      value: 'second',
+    },
+    {
+      id: 'third',
+      text: 'Third',
+      value: 'third',
+    },
+  ]
+});
+```
+
+#### Color
+
+```javascript
+const color = section.control('color', {
+  name: 'Color',
+  value: 'rgba(19, 29, 135, 1)',
+});
+```
+
+
 
 ------------------
 # @1.2.3 deprecated docs

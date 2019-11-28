@@ -25,8 +25,7 @@ exports[`Text control Disable 1`] = `
         rows="4"
         wrap="hard"
       >
-              test
-    
+        test
       </textarea>
       
   
@@ -60,8 +59,7 @@ exports[`Text control Enable 1`] = `
         rows="4"
         wrap="hard"
       >
-              test
-    
+        test
       </textarea>
       
   
@@ -95,8 +93,7 @@ exports[`Text control If it matches snapshot after initial load 1`] = `
         rows="4"
         wrap="hard"
       >
-              test
-    
+        test
       </textarea>
       
   
