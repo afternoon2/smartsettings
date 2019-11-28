@@ -1,4 +1,5 @@
 import { Omit } from 'utility-types';
+import Pickr from '@simonwep/pickr';
 
 export type ListenerUpdate = {
   targetId: string,
@@ -113,6 +114,13 @@ export type DropDownControlOptions = RootOptions & {
 
 type DropDownControlState = Omit<DropDownControlOptions, 'listener'>;
 
+export type ColorControlOptions = RootOptions & {
+  value?: string,
+  expanded?: boolean,
+};
+
+type ColorControlState = Omit<ColorControlOptions, 'listener'>;
+
 export type ControlOptions = ButtonControlOptions
 | TextControlOptions
 | CheckboxControlOptions
@@ -120,7 +128,8 @@ export type ControlOptions = ButtonControlOptions
 | FileControlOptions
 | TextAreaControlOptions
 | RangeControlOptions
-| DropDownControlOptions;
+| DropDownControlOptions
+| ColorControlOptions;
 
 type ControlState = ButtonControlState
 | TextControlState
@@ -129,7 +138,8 @@ type ControlState = ButtonControlState
 | FileControlState
 | TextAreaControlState
 | RangeControlState
-| DropDownControlState;
+| DropDownControlState
+| ColorControlState;
 
 export type InternalState = (PanelState | ControlState) & {
   [key: string]: string | boolean | number | DropDownItem[],

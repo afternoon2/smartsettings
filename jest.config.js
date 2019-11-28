@@ -13,7 +13,11 @@ module.exports = {
   coveragePathIgnorePatterns: ['/dist/', '/node_modules/', '/src/sass/'],
   transform: {
     '.+\\.sass$': '<rootDir>/node_modules/jest-css-modules-transform',
+    '.+\\.css$': '<rootDir>/node_modules/jest-css-modules-transform',
   },
-  modulePathIgnorePatterns: ['src/sass/*.sass'],
-  moduleFileExtensions: ['ts', 'js', 'sass'],
+  moduleNameMapper: {
+    '\\.css$': '<rootDir>/node_modules/jest-css-modules',
+  },
+  modulePathIgnorePatterns: ['src/sass/*.sass', 'node_modules'],
+  moduleFileExtensions: ['ts', 'js', 'sass', 'css'],
 };

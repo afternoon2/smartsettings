@@ -9,6 +9,7 @@ import { FileControl, FileControlProps } from '../../controls/file/FileControl';
 import { NumberControl, NumberControlProps } from '../../controls/number/NumberControl';
 import { RangeControl, RangeControlProps } from '../../controls/range/RangeControl';
 import { DropDownControl, DropDownControlProps } from '../../controls/dropdown/DropDown';
+import { ColorControl, ColorControlProps } from '../../controls/color/Color';
 import { SectionNode } from '../section/Section';
 import {
   Listener,
@@ -27,7 +28,8 @@ export type AnyControl = ButtonControl
 | FileControl
 | NumberControl
 | RangeControl
-| DropDownControl;
+| DropDownControl
+| ColorControl;
 
 export type ParentNodeProps = {
   id: string,
@@ -122,6 +124,9 @@ export abstract class ParentNode extends RootNode {
         break;
       case 'textarea':
         instance = new TextAreaControl(props as TextAreaControlProps);
+        break;
+      case 'color':
+        instance = new ColorControl(props as ColorControlProps);
         break;
       default:
         instance = null;
