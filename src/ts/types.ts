@@ -1,5 +1,4 @@
 import { Omit } from 'utility-types';
-import Pickr from '@simonwep/pickr';
 
 export type ListenerUpdate = {
   targetId: string,
@@ -157,4 +156,27 @@ export type ParentOptions = PanelOptions | SectionOptions;
 export type PanelPosition = {
   top: number,
   left: number,
+};
+
+export type ConfigControlNode = ControlOptions & {
+  displayType: string,
+};
+
+export type ConfigSectionOptions = SectionOptions & {
+  displayType: string,
+};
+
+export type ConfigSectionNode = {
+  options: ConfigSectionOptions,
+  children: {
+    [key: string]: ConfigControlNode,
+  },
+};
+
+export type SectionConfig = {
+  [key: string]: ConfigControlNode
+};
+
+export type PanelConfig = {
+  [key: string]: ConfigControlNode | ConfigSectionNode
 };

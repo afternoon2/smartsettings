@@ -9,7 +9,12 @@ import {
   PanelPosition,
   Listener,
   ListenerUpdate,
-  ControlOptions
+  ControlOptions,
+  PanelConfig,
+  SectionConfig,
+  ConfigSectionNode,
+  ConfigControlNode,
+  ConfigSectionOptions
 } from '../../types';
 import { SectionNode } from '../section/Section';
 

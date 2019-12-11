@@ -1,5 +1,5 @@
 import { ParentNode, AnyControl } from '../parent/ParentNode';
-import { InternalState, Listener, ControlOptions, SectionOptions } from '../../types';
+import { InternalState, Listener, ControlOptions, SectionOptions, SectionConfig, ConfigControlNode } from '../../types';
 
 import Base from '../../../sass/base.sass';
 import Styles from '../../../sass/section.sass';
@@ -54,6 +54,14 @@ export class SectionNode extends ParentNode {
       this.listeners.get('section'),
       this.listeners.get('panel'),
     );
+  }
+
+  loadConfig(config: SectionConfig) {
+    Object
+      .values(config)
+      .forEach((opts: ConfigControlNode) => {
+        this.control(opts.displayType, opts);
+      });
   }
 
   remove(name: string) {

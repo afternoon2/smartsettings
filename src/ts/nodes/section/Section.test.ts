@@ -6,6 +6,7 @@ import { NumberControl } from '../../controls/number/NumberControl';
 import { RangeControl } from '../../controls/range/RangeControl';
 import { CheckboxControl } from '../../controls/checkbox/CheckboxControl';
 import { FileControl } from '../../controls/file/FileControl';
+import { SectionConfig } from '../../types';
 
 let section: SectionNode;
 let listener: any;
@@ -113,6 +114,26 @@ describe('Section node', () => {
     section.setListener(newListener);
     section.close();
     expect(newListener).toHaveBeenCalledTimes(1);
+  });
+
+  test('Load config', () => {
+    const config: SectionConfig = {
+      buttonControl: {
+        type: 'button',
+        displayType: 'button',
+        name: 'btn',
+      },
+      textControl: {
+        displayType: 'text',
+        value: 'Incididunt ipsum laborum fugiat',
+        name: 'input',
+      },
+    };
+    section.loadConfig(config);
+    const btn = section.element.querySelector('button') as HTMLButtonElement;
+    const input = section.element.querySelector('input') as HTMLInputElement;
+    expect(btn).not.toBe(null);
+    expect(input).not.toBe(null);
   });
 });
 
