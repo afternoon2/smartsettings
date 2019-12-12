@@ -166,6 +166,27 @@ export class PanelNode extends ParentNode {
     return section;
   }
 
+  loadConfig(config: PanelConfig) {
+    function iterate(node: ConfigControlNode | ConfigSectionNode, parent: PanelNode | SectionNode) {
+      const nodeType: string = node.hasOwnProperty('children') ? 'section' : 'control';
+      if (nodeType === 'control') {
+        const controlNode = node as ConfigControlNode;
+        parent.control(controlNode.displayType, controlNode);
+      } else {
+        const panel = parent as PanelNode;
+        const { options, children } = node as ConfigSectionNode;
+        const section: SectionNode = panel.section(options);
+        Object.values(children)
+          .forEach((child: ConfigControlNode) => {
+            iterate(child, section);
+          });
+      }
+    }
+
+    Object.values(config)
+      .forEach((node: ConfigControlNode | ConfigSectionNode) => iterate(node, this));
+  }
+
   private bindEventListeners() {
     this.toggleElement.addEventListener('click', this.toggleClickListener);
     this.nameElement.addEventListener('click', this.toggleClickListener);

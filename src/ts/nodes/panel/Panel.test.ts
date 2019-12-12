@@ -7,7 +7,7 @@ import { RangeControl } from '../../controls/range/RangeControl';
 import { CheckboxControl } from '../../controls/checkbox/CheckboxControl';
 import { FileControl } from '../../controls/file/FileControl';
 import { SectionNode } from '../section/Section';
-import { PanelPosition } from '../../types';
+import { PanelPosition, PanelConfig } from '../../types';
 
 let panel: PanelNode;
 let listener: any;
@@ -152,6 +152,40 @@ describe('Panel node', () => {
     panel.removeAll();
 
     expect(panel.bodyElement.childElementCount).toBe(0);
+  });
+
+  test('Load config', () => {
+    const config: PanelConfig = {
+      button: {
+        displayType: 'button',
+        name: 'btn',
+        disabled: true,
+      },
+      section: {
+        options: {
+          displayType: 'section',
+          name: 'section',
+          collapsed: true,
+        },
+        children: {
+          nestedButton: {
+            displayType: 'button',
+            name: 'nested-btn',
+          },
+          input: {
+            displayType: 'text',
+            name: 'text-control',
+            disabled: true,
+          },
+        },
+      },
+    };
+    panel.loadConfig(config);
+    const btn = panel.bodyElement.querySelector('button[disabled]') as HTMLButtonElement;
+    const input = panel.bodyElement.querySelector('input[disabled]') as HTMLInputElement;
+    expect(btn).not.toBe(null);
+    expect(input).toBeInstanceOf(HTMLInputElement);
+
   });
 });
 
