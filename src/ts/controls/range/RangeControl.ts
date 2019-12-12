@@ -14,6 +14,7 @@ export type RangeControlProps = {
 
 export class RangeControl extends Control {
   public controlElement: HTMLInputElement;
+  public readonly displayType = 'range';
 
   protected static template = (state: InternalState): string => `<input
       type="range"

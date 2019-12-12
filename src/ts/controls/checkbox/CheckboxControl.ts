@@ -15,6 +15,7 @@ export type CheckboxControlProps = {
 
 export class CheckboxControl extends Control {
   public controlElement: HTMLInputElement;
+  public readonly displayType = 'checkbox';
 
   protected static template = (state: InternalState): string => {
     const id: string = cuid();

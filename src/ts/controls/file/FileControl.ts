@@ -15,6 +15,7 @@ export type FileControlProps = {
 
 export class FileControl extends Control {
   public controlElement: HTMLInputElement;
+  public readonly displayType = 'file';
 
   protected static template = (state: InternalState): string => {
     const id: string = cuid();

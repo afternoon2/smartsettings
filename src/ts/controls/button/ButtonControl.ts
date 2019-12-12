@@ -13,6 +13,7 @@ export type ButtonControlProps = {
 
 export class ButtonControl extends Control {
   public controlElement: HTMLButtonElement;
+  public readonly displayType = 'button';
 
   protected static defaultType: string = 'button';
 

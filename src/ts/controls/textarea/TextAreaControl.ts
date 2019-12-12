@@ -13,6 +13,7 @@ export type TextAreaControlProps = {
 
 export class TextAreaControl extends Control {
   public controlElement: HTMLTextAreaElement;
+  public readonly displayType = 'textarea';
 
   protected static defaultRows: number = 4;
   protected static defaultCols: number = 10;

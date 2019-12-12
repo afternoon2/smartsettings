@@ -13,6 +13,7 @@ export type NumberControlProps = {
 
 export class NumberControl extends Control {
   public controlElement: HTMLInputElement;
+  public readonly displayType = 'number';
 
   protected static template = (state: InternalState): string => `<input
       type="number"

@@ -18,6 +18,7 @@ export type ColorControlProps = {
 
 export class ColorControl extends Control {
   public controlElement: HTMLElement;
+  public readonly displayType = 'color';
 
   protected static template = (state: InternalState): string => {
     const containerId: string = cuid();

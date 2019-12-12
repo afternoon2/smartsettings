@@ -16,6 +16,7 @@ export type DropDownControlProps = {
 
 export class DropDownControl extends Control {
   public controlElement: HTMLDivElement;
+  public readonly displayType = 'dropdown';
 
   private static itemsTemplate = (items: DropDownItem[], state: InternalState): string => {
     const name: string = cuid();

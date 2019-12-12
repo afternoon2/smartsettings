@@ -24,6 +24,7 @@ import Styles from '../../../sass/panel.sass';
 export class PanelNode extends ParentNode {
   public bodyElement: HTMLElement;
   public headerElement: HTMLElement;
+  public readonly displayType = 'panel';
   public readonly version: string = pkg.version;
 
   private toggleElement: HTMLAnchorElement;

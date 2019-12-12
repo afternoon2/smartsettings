@@ -13,6 +13,7 @@ export type TextControlProps = {
 
 export class TextControl extends Control {
   public controlElement: HTMLInputElement;
+  public readonly displayType = 'text';
 
   protected static template = (state: InternalState): string => `
     <input

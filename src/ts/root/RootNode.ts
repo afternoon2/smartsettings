@@ -12,6 +12,7 @@ import Base from '../../sass/base.sass';
 export abstract class RootNode {
   public abstract parentElement: HTMLElement;
   public abstract element: HTMLElement;
+  public abstract readonly displayType: string;
   
   protected abstract state: InternalState;
   protected abstract listeners: Map<string, Listener>;

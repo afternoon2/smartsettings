@@ -13,6 +13,7 @@ export type SectionProps = {
 export class SectionNode extends ParentNode {
   public headerElement: HTMLElement;
   public bodyElement: HTMLElement;
+  public readonly displayType = 'section';
 
   protected static template = (state: InternalState): string => `<header
       class="${Styles.section__header}"
