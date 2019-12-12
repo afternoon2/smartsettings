@@ -116,7 +116,7 @@ describe('Section node', () => {
     expect(newListener).toHaveBeenCalledTimes(1);
   });
 
-  test('Load config', () => {
+  test('Set/get config', () => {
     const config: SectionConfig = {
       buttonControl: {
         type: 'button',
@@ -129,11 +129,12 @@ describe('Section node', () => {
         name: 'input',
       },
     };
-    section.loadConfig(config);
+    section.config = config;
     const btn = section.element.querySelector('button') as HTMLButtonElement;
     const input = section.element.querySelector('input') as HTMLInputElement;
     expect(btn).not.toBe(null);
     expect(input).not.toBe(null);
+    expect(section.config).toBeInstanceOf(Object);
   });
 });
 

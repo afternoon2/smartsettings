@@ -20,6 +20,7 @@ import { SectionNode } from '../section/Section';
 
 import Base from '../../../sass/base.sass';
 import Styles from '../../../sass/panel.sass';
+import { Control } from '../../controls/control/Control.js';
 
 export class PanelNode extends ParentNode {
   public bodyElement: HTMLElement;
@@ -167,12 +168,12 @@ export class PanelNode extends ParentNode {
     return section;
   }
 
-  loadConfig(config: PanelConfig) {
+  set config(config: PanelConfig) {
     function iterate(node: ConfigControlNode | ConfigSectionNode, parent: PanelNode | SectionNode) {
       const nodeType: string = node.hasOwnProperty('children') ? 'section' : 'control';
       if (nodeType === 'control') {
         const controlNode = node as ConfigControlNode;
-        parent.control(controlNode.displayType, controlNode);
+        parent.control(controlNode.displayType, controlNode as any);
       } else {
         const panel = parent as PanelNode;
         const { options, children } = node as ConfigSectionNode;
@@ -186,6 +187,28 @@ export class PanelNode extends ParentNode {
 
     Object.values(config)
       .forEach((node: ConfigControlNode | ConfigSectionNode) => iterate(node, this));
+  }
+
+  get config(): PanelConfig {
+    const entries: [string, any][] = [];
+    this.registry.forEach((value: Control | SectionNode) => {
+      entries.push([
+        value.id,
+        value instanceof SectionNode ?
+          {
+            options: {
+              ...value.properties,
+              displayType: value.displayType,
+            },
+            children: value.config,
+          } :
+          {
+            ...value.properties,
+            displayType: value.displayType,
+          }
+      ]);
+    });
+    return Object.fromEntries(entries);
   }
 
   private bindEventListeners() {

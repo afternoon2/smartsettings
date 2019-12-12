@@ -158,7 +158,7 @@ export type PanelPosition = {
   left: number,
 };
 
-export type ConfigControlNode = ControlOptions & {
+export type ConfigControlNode = Omit<InternalState, 'id'> & {
   displayType: string,
 };
 

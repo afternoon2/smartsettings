@@ -1,8 +1,9 @@
 import { ParentNode, AnyControl } from '../parent/ParentNode';
-import { InternalState, Listener, ControlOptions, SectionOptions, SectionConfig, ConfigControlNode } from '../../types';
+import { InternalState, Listener, ControlOptions, SectionOptions, SectionConfig, ConfigControlNode, ConfigSectionNode } from '../../types';
 
 import Base from '../../../sass/base.sass';
 import Styles from '../../../sass/section.sass';
+import { Control } from '../../controls/control/Control';
 
 export type SectionProps = {
   id: string,
@@ -57,12 +58,30 @@ export class SectionNode extends ParentNode {
     );
   }
 
-  loadConfig(config: SectionConfig) {
+  set config(config: SectionConfig) {
     Object
       .values(config)
       .forEach((opts: ConfigControlNode) => {
+        // @ts-ignore
         this.control(opts.displayType, opts);
       });
+  }
+
+  get config(): SectionConfig {
+    return Object.fromEntries(
+      Array.from(this.registry.entries())
+        .map((entry: [string, SectionNode | Control]) => {
+          const control: Control = entry[1] as Control;
+          const configNode: ConfigControlNode = {
+            displayType: control.displayType,
+            ...control.properties,
+          };
+          return [
+            entry[0],
+            configNode,
+          ];
+        }),
+    );
   }
 
   remove(name: string) {

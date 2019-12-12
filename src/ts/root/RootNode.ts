@@ -1,3 +1,5 @@
+import { Omit } from 'utility-types';
+
 import {
   PanelOptions,
   ControlOptions,
@@ -18,6 +20,12 @@ export abstract class RootNode {
   protected abstract listeners: Map<string, Listener>;
 
   abstract setListener(listener: Listener): void;
+
+  get properties(): Omit<InternalState, 'id'> {
+    const entries = Object.entries(this.state)
+      .filter((entry: [string, any]) => entry[0] !== 'id');
+    return Object.fromEntries(entries);
+  }
 
   get id(): string {
     return this.state.id;

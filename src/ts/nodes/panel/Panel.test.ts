@@ -180,12 +180,12 @@ describe('Panel node', () => {
         },
       },
     };
-    panel.loadConfig(config);
+    panel.config = config;
     const btn = panel.bodyElement.querySelector('button[disabled]') as HTMLButtonElement;
     const input = panel.bodyElement.querySelector('input[disabled]') as HTMLInputElement;
     expect(btn).not.toBe(null);
     expect(input).toBeInstanceOf(HTMLInputElement);
-
+    expect(panel.config).toBeInstanceOf(Object);
   });
 });
 
