@@ -15,6 +15,7 @@ const props: any = {
 };
 class DerivedControl extends Control {
   public controlElement: HTMLElement;
+  public displayType: string = '';
 
   protected static template = (state: InternalState): string => `
     <input type="text" id="testId" value="${state.value}" />`;

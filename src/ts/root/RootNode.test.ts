@@ -6,6 +6,7 @@ import {
 const listener = jest.fn();
 class DerivedClass extends RootNode {
   public parentElement: HTMLElement;
+  public displayType: string = '';
 
   public element: HTMLElement;
 
