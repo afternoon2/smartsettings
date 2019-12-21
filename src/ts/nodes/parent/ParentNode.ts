@@ -53,7 +53,7 @@ export abstract class ParentNode extends RootNode {
 
   constructor(props: ParentNodeProps) {
     super();
-    this.state = this.createState(props.id, props.options, this.stateHandler);
+    this.state = RootNode.createState(props.id, props.options, this.stateHandler);
     this.parentElement = props.parentElement;
     this.element = this.createRootElement(props.template(this.state));
 

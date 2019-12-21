@@ -13,10 +13,13 @@ import Base from '../../sass/base.sass';
 
 export abstract class RootNode {
   public abstract parentElement: HTMLElement;
+
   public abstract element: HTMLElement;
+
   public abstract readonly displayType: string;
-  
+
   protected abstract state: InternalState;
+
   protected abstract listeners: Map<string, Listener>;
 
   abstract setListener(listener: Listener): void;
@@ -68,24 +71,19 @@ export abstract class RootNode {
       if (!this.element.classList.contains(Base.hidden)) {
         this.element.classList.add(Base.hidden);
       }
-    } else {
-      if (this.element.classList.contains(Base.hidden)) {
-        this.element.classList.remove(Base.hidden);
-      }
+    } else if (this.element.classList.contains(Base.hidden)) {
+      this.element.classList.remove(Base.hidden);
     }
-  }
+  };
 
   protected onDisabled: Listener = (update: ListenerUpdate) => {
     const controlElements = Array.from(this.element.querySelectorAll('input, button, select'));
-    const setDisabled = (element: Element, disabled: boolean) =>
-      disabled === true ?
-        element.setAttribute('disabled', 'true') :
-        element.removeAttribute('disabled');
+    const setDisabled = (element: Element, disabled: boolean) => (disabled === true
+      ? element.setAttribute('disabled', 'true')
+      : element.removeAttribute('disabled'));
     const setDisabledAttrTo = (disabled: boolean) => controlElements
       .forEach((el: Element) => setDisabled(el, disabled));
-    const hasDisabledElements = () => controlElements.find((el: Element) =>
-      el.getAttribute('disabled') === 'true',
-    );
+    const hasDisabledElements = () => controlElements.find((el: Element) => el.getAttribute('disabled') === 'true');
     if (update.value === true) {
       if (!this.element.classList.contains(Base.disabled)) {
         this.element.classList.add(Base.disabled);
@@ -101,25 +99,25 @@ export abstract class RootNode {
         setDisabledAttrTo(false);
       }
     }
-  }
+  };
 
-  protected isParentValid(parent: HTMLElement | string | null): boolean {
+  protected static isParentValid(parent: HTMLElement | string | null): boolean {
     if (typeof parent === 'string') {
       return Boolean(document.querySelector(parent));
-    } else if (parent instanceof HTMLElement && document.body.contains(parent)) {
+    } if (parent instanceof HTMLElement && document.body.contains(parent)) {
       return true;
     }
     return false;
   }
 
-  protected getParentElement(parent: HTMLElement | string): HTMLElement | null {
+  protected static getParentElement(parent: HTMLElement | string): HTMLElement | null {
     if (parent instanceof HTMLElement) {
       return parent;
     }
     return document.querySelector(parent);
   }
 
-  protected createState(
+  protected static createState(
     id: string,
     options: ControlOptions | PanelOptions,
     handler: ProxyHandler<InternalState>,
@@ -140,7 +138,7 @@ export abstract class RootNode {
     return (
       target: InternalState,
       key: string,
-      value: string | boolean | number
+      value: string | boolean | number,
     ) => {
       if (value !== target[key]) {
         target[key] = value;
@@ -183,8 +181,8 @@ export abstract class RootNode {
   }
 
   protected checkParentElement(parent?: HTMLElement | string | null) {
-    if (parent && this.isParentValid(parent)) {
-      this.parentElement = <HTMLElement>this.getParentElement(parent);
+    if (parent && RootNode.isParentValid(parent)) {
+      this.parentElement = <HTMLElement> RootNode.getParentElement(parent);
     }
   }
 }

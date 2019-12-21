@@ -43,7 +43,6 @@
     "typedoc": "^0.15.3",
     "typescript": "^3.6.4",
     "typings-for-css-modules-loader": "^1.7.0",
-    "utility-types": "^3.9.0",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.9",
     "webpack-dev-server": "^3.8.2",
@@ -52,8 +51,8 @@
   "scripts": {
     "build": "webpack --config=config/webpack.prod.js",
     "build:dev": "webpack --config=config/webpack.dev.js",
-    "lint": "eslint -c .eslintrc.js src/ts/**/*.?*?.ts",
-    "lint:fix": "eslint -c .eslintrc.js src/ts/**/*.?*?.ts --fix",
+    "lint": "eslint -c .eslintrc.js src/ts/**/*?.ts",
+    "lint:fix": "eslint -c .eslintrc.js src/ts/**/*?.ts --fix",
     "commit": "git-cz",
     "test": "jest",
     "docs": "typedoc --out ./docs ./src/**/*.ts"
@@ -79,6 +78,7 @@
   },
   "dependencies": {
     "@simonwep/pickr": "^1.4.7",
-    "cuid": "^2.1.6"
+    "cuid": "^2.1.6",
+    "utility-types": "^3.10.0"
   }
 }

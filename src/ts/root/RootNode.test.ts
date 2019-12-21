@@ -6,6 +6,7 @@ import {
 const listener = jest.fn();
 class DerivedClass extends RootNode {
   public parentElement: HTMLElement;
+
   public displayType: string = '';
 
   public element: HTMLElement;
@@ -24,7 +25,7 @@ class DerivedClass extends RootNode {
     super();
     this.parentElement = document.createElement('div');
     this.element = document.createElement('div');
-    this.state = this.createState(
+    this.state = RootNode.createState(
       'id', {
         name: 'name',
         collapsed: true,
@@ -44,20 +45,23 @@ class DerivedClass extends RootNode {
     return this.state;
   }
 
+  // eslint-disable-next-line
   validElement(parent: HTMLElement | string): boolean {
-    return this.isParentValid(parent);
+    return RootNode.isParentValid(parent);
   }
 
+  // eslint-disable-next-line
   parentEl(parent: HTMLElement | string): HTMLElement | null {
-    return this.getParentElement(parent);
+    return RootNode.getParentElement(parent);
   }
 
+  // eslint-disable-next-line
   createInternalState(
     id: string,
     options: ControlOptions | PanelOptions,
     handler: ProxyHandler<InternalState>,
   ): InternalState {
-    return this.createState(id, options, handler);
+    return RootNode.createState(id, options, handler);
   }
 
   createNewStateSetter(): InternalStateSetter {

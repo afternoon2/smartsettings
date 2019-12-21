@@ -28,7 +28,7 @@ export abstract class Control extends RootNode {
     props: ControlProps,
   ) {
     super();
-    this.state = this.createState(
+    this.state = RootNode.createState(
       props.id, props.options, this.stateHandler,
     );
     this.parentElement = props.parentElement;

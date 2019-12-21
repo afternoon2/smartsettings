@@ -7,7 +7,8 @@ module.exports = {
     jsx: false,
   },
   rules: {
-    'import/prefer-default-export': 0
+    'import/prefer-default-export': 0,
+    'no-param-reassign': 0,
   },
   env: {
     browser: true,
