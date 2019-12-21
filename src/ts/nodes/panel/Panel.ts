@@ -11,10 +11,8 @@ import {
   ListenerUpdate,
   ControlOptions,
   PanelConfig,
-  SectionConfig,
   ConfigSectionNode,
   ConfigControlNode,
-  ConfigSectionOptions
 } from '../../types';
 import { SectionNode } from '../section/Section';
 

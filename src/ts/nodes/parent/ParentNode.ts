@@ -55,7 +55,7 @@ export abstract class ParentNode extends RootNode {
     super();
     this.state = RootNode.createState(props.id, props.options, this.stateHandler);
     this.parentElement = props.parentElement;
-    this.element = this.createRootElement(props.template(this.state));
+    this.element = RootNode.createRootElement(props.template(this.state));
 
     this.parentElement.appendChild(this.element);
     this.listeners.set('invisible', this.onInvisible);
@@ -152,12 +152,6 @@ export abstract class ParentNode extends RootNode {
       }
       toggle.innerHTML = '&#9656;';
     }
-  }
-
-  protected createRootElement(template: string): HTMLElement {
-    const rootElement = document.createElement('div');
-    rootElement.insertAdjacentHTML('beforeend', template);
-    return rootElement;
   }
 
   protected fillInElement(className: string) {

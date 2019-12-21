@@ -1,5 +1,12 @@
 import { ParentNode, AnyControl } from '../parent/ParentNode';
-import { InternalState, Listener, ControlOptions, SectionOptions, SectionConfig, ConfigControlNode, ConfigSectionNode } from '../../types';
+import { 
+  InternalState, 
+  Listener, 
+  ControlOptions, 
+  SectionOptions, 
+  SectionConfig,
+  ConfigControlNode,
+} from '../../types';
 
 import Base from '../../../sass/base.sass';
 import Styles from '../../../sass/section.sass';
@@ -11,6 +18,7 @@ export type SectionProps = {
   parentElement: HTMLElement,
   panelListener?: Listener,
 };
+
 export class SectionNode extends ParentNode {
   public headerElement: HTMLElement;
   public bodyElement: HTMLElement;

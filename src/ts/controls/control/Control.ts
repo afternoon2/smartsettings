@@ -12,6 +12,7 @@ export type ControlProps = {
   sectionListener?: Listener,
   panelListener?: Listener,
 };
+
 export abstract class Control extends RootNode {
   public parentElement: HTMLElement;
   public element: HTMLElement;

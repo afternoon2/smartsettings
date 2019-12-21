@@ -134,6 +134,12 @@ export abstract class RootNode {
     return new Proxy(target, handler);
   }
 
+  protected static createRootElement(template: string): HTMLElement {
+    const rootElement = document.createElement('div');
+    rootElement.insertAdjacentHTML('beforeend', template);
+    return rootElement;
+  }
+
   protected createStateSetter(): InternalStateSetter {
     return (
       target: InternalState,
