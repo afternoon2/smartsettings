@@ -1,10 +1,10 @@
-# smartsettings.js@2.0 [WIP]
+# smartsettings.js
 
 JS library for creating setting panels.
 
 <div style="text-align: center">
 
-*Version 2.x.x preview*
+*Version 2.x.x*
 
 ![SmartSettings Preview](./images/smartsettings_screen.png)
 
@@ -65,7 +65,7 @@ const section = panel.section({
     <summary>Slot</summary>
 
 ```js
-const section = panel.section({
+const section = panel.slot({
     name: 'Slot',
     collapsed: true,
     disabled: false,
