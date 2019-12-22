@@ -6,7 +6,7 @@ JS library for creating setting panels.
 
 *Version 2.x.x*
 
-![SmartSettings Preview](./images/smartsettings_screen.png)
+![SmartSettings Preview](https://raw.githubusercontent.com/afternoon2/smartsettings/assets/smartsettings_shot.png)
 
 </div>
 
