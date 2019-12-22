@@ -105,6 +105,14 @@ export class DropDownControl extends Control {
     return (selected as DropDownItem).value;
   }
 
+  set items(items: DropDownItem[]) {
+    this.state.items = items;
+  }
+
+  get items(): DropDownItem[] {
+    return this.state.items as DropDownItem[];
+  }
+
   select(value: string) {
     const item: DropDownItem | undefined = (this.state.items as DropDownItem[])
       .find((item: DropDownItem) => item.value === value);
@@ -113,9 +121,6 @@ export class DropDownControl extends Control {
     }
   }
 
-  setItems(items: DropDownItem[]) {
-    this.state.items = items;
-  }
 
   private bindAccessibilityAttributes() {
     const listItems = this.listElement.querySelectorAll('label');

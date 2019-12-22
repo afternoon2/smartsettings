@@ -111,7 +111,7 @@ export type DropDownItem = {
 export type DropDownControlOptions = RootOptions & {
   expanded?: boolean,
   selected?: string,
-  items?: DropDownItem[],
+  items: DropDownItem[],
   // multi?: boolean,
 };
 

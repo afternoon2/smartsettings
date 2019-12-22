@@ -78,9 +78,10 @@ describe('Dropdown control', () => {
         value: 'item-test-3'
       },
     ];
-    control.setItems(newItems);
+    control.items = newItems;
     expect(control.controlElement.querySelectorAll('li').length).toBe(3);
     expect(listener).toHaveBeenCalledTimes(2);
     expect(control.selected).toBe('item-test-1');
+    expect(control.items).toBe(newItems);
   });
 });

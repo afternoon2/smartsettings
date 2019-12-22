@@ -233,9 +233,10 @@ const dropdown = section.control('dropdown', {
 - `get expanded` - returns `expaned` value
 - `set expanded` - sets `expanded` value 
 - `get selected` - returns a value of the selected item
+- `get items` - returns the items list
+- `set items` - replaces the items list
 - `toggle` - toggles `expanded` value 
 - `select(value)` - selects an item with a specific value
-- `setItems(items)` - replaces the items list
 </details>
 
 <details>
