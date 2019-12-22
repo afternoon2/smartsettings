@@ -88,6 +88,10 @@ export class ColorControl extends Control {
     return Boolean(this.state.expanded);
   }
 
+  set expanded(value: boolean) {
+    this.state.expanded = value;
+  }
+
   toggle() {
     this.state.expanded = !this.state.expanded;
   }

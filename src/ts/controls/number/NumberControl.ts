@@ -46,6 +46,30 @@ export class NumberControl extends Control {
     return this.state.value as number;
   }
 
+  get min(): number {
+    return this.state.min as number;
+  }
+
+  set min(min: number) {
+    this.state.min = min;
+  }
+
+  get max(): number {
+    return this.state.max as number;
+  }
+
+  set max(max: number) {
+    this.state.max = max;
+  }
+
+  get step(): number {
+    return this.state.step as number;
+  }
+
+  set step(step: number) {
+    this.state.step = step;
+  }
+
   private onValue: Listener = (update: ListenerUpdate) => {
     this.controlElement.value = update.value as string;
   }

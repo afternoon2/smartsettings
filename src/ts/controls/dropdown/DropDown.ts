@@ -95,6 +95,10 @@ export class DropDownControl extends Control {
     return Boolean(this.state.expanded);
   }
 
+  set expanded(value: boolean) {
+    this.state.expanded = value;
+  }
+
   get selected(): string {
     const items = this.state.items as DropDownItem[];
     const selected = items.find((item: DropDownItem) => item.value === this.state.selected);

@@ -86,6 +86,8 @@ const button = panel.control('button', {
     listener: (update) => yourCallback()
 });
 ```
+
+*no custom methods or properties defined*
 </details>
 
 <details>
@@ -98,6 +100,11 @@ const checkbox = panel.control('checkbox', {
     listener: (update) => yourCallback(update.value)
 });
 ```
+
+- `get checked` - returns control's checked value
+- `check` - sets `checked` property to `true`
+- `uncheck` - sets `checked` property to `false`
+- `toggle` - toggles `checked` property
 </details>
 
 <details>
@@ -109,6 +116,10 @@ const file = panel.control('file', {
     listener: (update) => yourCallback(update.value)
 });
 ```
+
+- `get accept` - returns file input's `accept` value
+- `set accept` - sets file input's `accept` value
+- `get files` - returns a `FileList` bound to the control's input
 </details>
 
 <details>
@@ -123,7 +134,17 @@ const number = panel.control('number', {
     value: 30,
     listener: (update) => yourCallback(update.value)
 });
+
 ```
+
+- `get value` - returns value
+- `set value` - sets new value
+- `get min` - returns min value
+- `set min` - returns min value
+- `get max` - sets new max value
+- `set max` - sets new max value
+- `get step` - sets new step value
+- `set step` - sets new step value
 </details>
 
 <details>
@@ -139,6 +160,16 @@ const range = panel.control('range', {
     listener: (update) => yourCallback(update.value)
 });
 ```
+
+- `get value` - returns value
+- `set value` - sets new value
+- `get min` - returns min value
+- `set min` - returns min value
+- `get max` - sets new max value
+- `set max` - sets new max value
+- `get step` - sets new step value
+- `set step` - sets new step value
+
 </details>
 
 <details>
@@ -151,6 +182,9 @@ const text = panel.control('text', {
     listener: (update) => yourCallback(update.value)
 });
 ```
+
+- `get value` - returns value
+- `set value` - sets new value
 </details>
 
 <details>
@@ -164,6 +198,9 @@ const textarea = panel.control('textarea', {
     listener: (update) => yourCallback(update.value)
 });
 ```
+
+- `get value` - returns value
+- `set value` - sets new value
 </details>
 
 <details>
@@ -192,6 +229,13 @@ const dropdown = section.control('dropdown', {
   ]
 });
 ```
+
+- `get expanded` - returns `expaned` value
+- `set expanded` - sets `expanded` value 
+- `get selected` - returns a value of the selected item
+- `toggle` - toggles `expanded` value 
+- `select(value)` - selects an item with a specific value
+- `setItems(items)` - replaces the items list
 </details>
 
 <details>
@@ -203,13 +247,45 @@ const color = section.control('color', {
   value: 'rgba(19, 29, 135, 1)',
 });
 ```
+
+- `get color` - returns `color` value as a CSS RGBA string
+- `set color` - sets `color` value as a CSS RGBA string
+- `get expanded` - returns `expaned` value
+- `set expanded` - sets `expanded` value 
+- `toggle` - toggles `expanded` value 
 </details>
 
 ### API overview
 
-#### Panel
+#### Root methods and properties
 
-- `get position` returns `PanelPosition` object
+There are a few methods and properties that are available for all nodes and controls, and that are defined in the [RootNode abstract class](https://github.com/afternoon2/smartsettings/blob/%40next/src/ts/root/RootNode.ts):
+
+- `get id` - returns instance's identifier
+- `get name` - returns instance's name given to it during the creation
+- `get invisible`- returns an information about instance's visiblity
+- `set invisible` - specifies instance's visiblity status
+- `get disabled` - returns an information about instance's disability
+- `get properties` - returns instance's internal state object (without the `id` property) 
+- `rename(name)` - updates instance's name
+- `show` - show's the instance if it's invisible
+- `hide` - hide's the instance if it's visible
+- `disable` - disables the instance 
+- `enable` - enables the instance 
+- `setListener` - an abstract method defined individually on each class. It lets the user to define global/local listener function.
+
+#### Node methods and propeties
+
+There are also a few methods and properties that are available for nodes (such as Panel, Section and Node) only:
+
+- `get collapsed` - returns an information about instance's collapsed property
+- `open` - sets `collapsed` property to `false`
+- `close` - sets `collapsed` property to `true`
+- `toggle` - toggles `collapsed` property
+
+#### Panel methods and properties
+
+- `get position` - returns `PanelPosition` object
 - `setPosition(position)` sets new panel position
 - `setListener(listener)` sets global change listener on the panel
 - `destroy` - clears panel's registry and listeners list, removes its `element` from the `parentElement` (usually `document.body`) and performs `Object.freeze` on its state and on the panel instance itself
@@ -221,7 +297,7 @@ const color = section.control('color', {
 - `set config` - loads panel's children using provided config object (setter)
 - `get config` - returns panel's current config object. Returned config object will always consist of controls'/nodes' identifiers as the keys
 
-#### Section and Slot
+#### Section and Slot properties
 
 - `control(control, options)` creates new control
 - `set config` - loads section's children using provided config object (setter)
@@ -230,3 +306,8 @@ const color = section.control('color', {
 - `removeById(id)` - removes node with given id from the section
 - `removeAll` removes all controls and nodes from the section
 - `setListener(listener)` sets local change listener
+
+#### Common control's methods and properties
+
+- `get readonly` - informs if the control is readonly or not
+- `set readonly` - sets control's readonly property

@@ -42,7 +42,16 @@ describe('Number control', () => {
     expect(control.value).toBe(4);
   });
 
+  test('Min, max and step getters/setters', () => {
+    control.min = 2;
+    control.max = 2000;
+    control.step = 0.1;
+    expect(control.min).toBe(2);
+    expect(control.max).toBe(2000);
+    expect(control.step).toBe(0.1);
+  });
+
   test('If it assings user listener correctly', () => {
-    expect(listener).toHaveBeenCalledTimes(4);
+    expect(listener).toHaveBeenCalledTimes(7);
   });
 });
