@@ -1,29 +1,29 @@
 Arguments: 
-  /usr/local/bin/node /Users/jakub/.yarn/bin/yarn.js add --dev @types/pickr
+  /Users/jakubantolak/.nvm/versions/node/v10.17.0/bin/node /usr/local/Cellar/yarn/1.21.1/libexec/bin/yarn.js add --dev eslint-config-recommented
 
 PATH: 
-  /Users/jakub/.yarn/bin:/Users/jakub/.config/yarn/global/node_modules/.bin:/usr/local/opt/mysql@5.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/VMware Fusion.app/Contents/Public:/Users/jakub/.yarn/bin:/Users/jakub/.config/yarn/global/node_modules/.bin:/usr/local/opt/mysql@5.7/bin
+  /Users/jakubantolak/.nvm/versions/node/v10.17.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/jakubantolak/.nvm/versions/node/v10.17.0/bin
 
 Yarn version: 
-  1.19.1
+  1.21.1
 
 Node version: 
-  10.15.1
+  10.17.0
 
 Platform: 
   darwin x64
 
 Trace: 
-  Error: https://registry.npmjs.org/@types%2fpickr: Not found
-      at Request.params.callback [as _callback] (/Users/jakub/.yarn/lib/cli.js:66926:18)
-      at Request.self.callback (/Users/jakub/.yarn/lib/cli.js:140564:22)
-      at Request.emit (events.js:189:13)
-      at Request.<anonymous> (/Users/jakub/.yarn/lib/cli.js:141536:10)
-      at Request.emit (events.js:189:13)
-      at IncomingMessage.<anonymous> (/Users/jakub/.yarn/lib/cli.js:141458:12)
-      at Object.onceWrapper (events.js:277:13)
-      at IncomingMessage.emit (events.js:194:15)
-      at endReadableNT (_stream_readable.js:1103:12)
+  Error: https://registry.yarnpkg.com/eslint-config-recommented: Not found
+      at Request.params.callback [as _callback] (/usr/local/Cellar/yarn/1.21.1/libexec/lib/cli.js:66947:18)
+      at Request.self.callback (/usr/local/Cellar/yarn/1.21.1/libexec/lib/cli.js:140665:22)
+      at Request.emit (events.js:198:13)
+      at Request.<anonymous> (/usr/local/Cellar/yarn/1.21.1/libexec/lib/cli.js:141637:10)
+      at Request.emit (events.js:198:13)
+      at IncomingMessage.<anonymous> (/usr/local/Cellar/yarn/1.21.1/libexec/lib/cli.js:141559:12)
+      at Object.onceWrapper (events.js:286:20)
+      at IncomingMessage.emit (events.js:203:15)
+      at endReadableNT (_stream_readable.js:1143:12)
       at process._tickCallback (internal/process/next_tick.js:63:19)
 
 npm manifest: 
@@ -56,6 +56,7 @@ npm manifest:
       "husky": "^3.0.9",
       "identity-obj-proxy": "^3.0.0",
       "jest": "^24.9.0",
+      "jest-css-modules": "^2.1.0",
       "jest-css-modules-transform": "^3.1.0",
       "jest-puppeteer": "^4.3.0",
       "lerna": "^3.18.1",
@@ -71,7 +72,6 @@ npm manifest:
       "typedoc": "^0.15.3",
       "typescript": "^3.6.4",
       "typings-for-css-modules-loader": "^1.7.0",
-      "utility-types": "^3.9.0",
       "webpack": "^4.41.2",
       "webpack-cli": "^3.3.9",
       "webpack-dev-server": "^3.8.2",
@@ -80,8 +80,8 @@ npm manifest:
     "scripts": {
       "build": "webpack --config=config/webpack.prod.js",
       "build:dev": "webpack --config=config/webpack.dev.js",
-      "lint": "eslint -c .eslintrc.js src/ts/**/*.?*?.ts",
-      "lint:fix": "eslint -c .eslintrc.js src/ts/**/*.?*?.ts --fix",
+      "lint": "eslint -c .eslintrc.js src/ts/**/*.ts",
+      "lint:fix": "eslint -c .eslintrc.js src/ts/**/*.ts --fix",
       "commit": "git-cz",
       "test": "jest",
       "docs": "typedoc --out ./docs ./src/**/*.ts"
@@ -106,8 +106,9 @@ npm manifest:
       }
     },
     "dependencies": {
+      "@simonwep/pickr": "^1.4.7",
       "cuid": "^2.1.6",
-      "pickr": "^0.1.4"
+      "utility-types": "^3.10.0"
     }
   }
 
@@ -1476,6 +1477,13 @@ Lockfile:
       into-stream "^5.0.0"
       lodash "^4.17.4"
       read-pkg-up "^6.0.0"
+  
+  "@simonwep/pickr@^1.4.7":
+    version "1.4.7"
+    resolved "https://registry.yarnpkg.com/@simonwep/pickr/-/pickr-1.4.7.tgz#c65d51b8a7597011eed5ddcb072e3bc4f7e47ba4"
+    integrity sha512-dnx46+3KiZJ5YNXoWDdaOPLZGPCOFsFsa5uT3Eg+lYCUw8yZ+UxOGG9kEbUX+HgM35bJvAnOfq0l1qEr3CLVzw==
+    dependencies:
+      core-js "^3.3.6"
   
   "@types/babel__core@^7.1.0":
     version "7.1.3"
@@ -3436,6 +3444,11 @@ Lockfile:
     version "2.6.10"
     resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.10.tgz#8a5b8391f8cc7013da703411ce5b585706300d7f"
     integrity sha512-I39t74+4t+zau64EN1fE5v2W31Adtc/REhzWN+gWRRXg6WH5qAsZm62DHpQ1+Yhe4047T55jvzz7MUqF/dBBlA==
+  
+  core-js@^3.3.6:
+    version "3.4.4"
+    resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.4.4.tgz#e3d422f8a51adc4cae2bfa04cef26a5ccc046d29"
+    integrity sha512-vKea1DrcLA80Hrfc7AQgfoGvEaByfR5mH08t+zuWOWY94TFBmabdEL56mUbcijvadG9RxsXR2gUUFrfj4/iTcA==
   
   core-util-is@1.0.2, core-util-is@~1.0.0:
     version "1.0.2"
@@ -5834,7 +5847,7 @@ Lockfile:
     dependencies:
       postcss "^7.0.14"
   
-  identity-obj-proxy@^3.0.0:
+  identity-obj-proxy@3.0.0, identity-obj-proxy@^3.0.0:
     version "3.0.0"
     resolved "https://registry.yarnpkg.com/identity-obj-proxy/-/identity-obj-proxy-3.0.0.tgz#94d2bda96084453ef36fbc5aaec37e0f79f1fc14"
     integrity sha1-lNK9qWCERT7zb7xarsN+D3nx/BQ=
@@ -6617,6 +6630,13 @@ Lockfile:
       camelcase "^5.3.1"
       postcss "^7.0.18"
       postcss-nested "^4.1.2"
+  
+  jest-css-modules@^2.1.0:
+    version "2.1.0"
+    resolved "https://registry.yarnpkg.com/jest-css-modules/-/jest-css-modules-2.1.0.tgz#9c25ebe9d0214d8f55861a442268fdd4b01b4781"
+    integrity sha512-my3Scnt6l2tOll/eGwNZeh1KLAFkNzdl4MyZRdpl46GO6/93JcKKdTjNqK6Nokg8A8rT84MFLOpY1pzqKBEqMw==
+    dependencies:
+      identity-obj-proxy "3.0.0"
   
   jest-dev-server@^4.3.0:
     version "4.3.0"
@@ -9355,11 +9375,6 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
     integrity sha1-Ywn04OX6kT7BxpMHrjZLSzd8nns=
   
-  pickr@^0.1.4:
-    version "0.1.4"
-    resolved "https://registry.yarnpkg.com/pickr/-/pickr-0.1.4.tgz#c4d838d88f9fcc871539b6d90a5e713bd7424ffc"
-    integrity sha1-xNg42I+fzIcVObbZCl5xO9dCT/w=
-  
   picomatch@^2.0.4, picomatch@^2.0.5:
     version "2.0.7"
     resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.0.7.tgz#514169d8c7cd0bdbeecc8a2609e34a7163de69f6"
@@ -11979,10 +11994,10 @@ Lockfile:
     dependencies:
       inherits "2.0.3"
   
-  utility-types@^3.9.0:
-    version "3.9.0"
-    resolved "https://registry.yarnpkg.com/utility-types/-/utility-types-3.9.0.tgz#c322d974e7062ec967077384c3b75077a955d83b"
-    integrity sha512-bUUsGr7NuI1p/6GpDCI/PUCJ1y5KWO4xul8RWOcmUwXSjLoi6WoV9YLNqBF7lH4RRy/jgmhYCE49eM0bnaijMQ==
+  utility-types@^3.10.0:
+    version "3.10.0"
+    resolved "https://registry.yarnpkg.com/utility-types/-/utility-types-3.10.0.tgz#ea4148f9a741015f05ed74fd615e1d20e6bed82b"
+    integrity sha512-O11mqxmi7wMKCo6HKFt5AhO4BwY3VV68YU07tgxfz8zJTIxr4BpsezN49Ffwy9j3ZpwwJp4fkRwjRzq3uWE6Rg==
   
   utils-merge@1.0.1:
     version "1.0.1"

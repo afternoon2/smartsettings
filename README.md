@@ -52,7 +52,21 @@ const panel = new SmartSettings({
 
 ```js
 const section = panel.section({
-    name: 'Sections',
+    name: 'Section',
+    collapsed: true,
+    disabled: false,
+    invisible: false,
+    listener: (update) => console.log(update.value),
+});
+```
+</details>
+
+<details>
+    <summary>Slot</summary>
+
+```js
+const section = panel.section({
+    name: 'Slot',
     collapsed: true,
     disabled: false,
     invisible: false,
@@ -205,4 +219,14 @@ const color = section.control('color', {
 - `control(control, options)` creates new control
 - `section(options)` creates new section node
 - `set config` - loads panel's children using provided config object (setter)
-- `get config` - returns panel's current config object. Returned config object will always consist of controls'/nodes' identifiers as keys
+- `get config` - returns panel's current config object. Returned config object will always consist of controls'/nodes' identifiers as the keys
+
+#### Section and Slot
+
+- `control(control, options)` creates new control
+- `set config` - loads section's children using provided config object (setter)
+- `get config` - returns section's current config object. Returned config object will always consist of controls' identifiers as the keys
+- `remove(name)` - removes first node with given name from the section
+- `removeById(id)` - removes node with given id from the section
+- `removeAll` removes all controls and nodes from the section
+- `setListener(listener)` sets local change listener

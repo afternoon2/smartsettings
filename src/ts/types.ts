@@ -4,7 +4,7 @@ export type ListenerUpdate = {
   targetId: string,
   key: string,
   value: string | boolean | number | DropDownItem[] | DropDownItem,
-  listenerType: 'control' | 'section' | 'panel' | 'builtin',
+  listenerType: 'control' | 'section' | 'panel' | 'slot' | 'builtin',
 };
 
 export type Listener = (update: ListenerUpdate) => void;
@@ -20,9 +20,13 @@ export type SectionOptions = RootOptions & {
   collapsed?: boolean;
 };
 
+export type SlotOptions = SectionOptions;
+
 export type SectionState = Omit<SectionOptions, 'listener'>;
 
-export type PanelOptions = SectionOptions & {
+export type SlotState = SectionState;
+
+export type PanelOptions = (SectionOptions | SlotOptions) & {
   draggable?: boolean,
   top?: number,
   left?: number,
@@ -151,7 +155,7 @@ export type InternalStateSetter = (
   value: string | boolean | number,
 ) => boolean;
 
-export type ParentOptions = PanelOptions | SectionOptions;
+export type ParentOptions = PanelOptions | SectionOptions | SlotOptions;
 
 export type PanelPosition = {
   top: number,
@@ -166,17 +170,27 @@ export type ConfigSectionOptions = SectionOptions & {
   displayType: string,
 };
 
-export type ConfigSectionNode = {
-  options: ConfigSectionOptions,
+export type ConfigSlotOptions = SlotOptions & {
+  displayType: string,
+};
+
+export type ConfigParentNode<T> = {
+  options: T,
   children: {
     [key: string]: ConfigControlNode,
   },
 };
 
+export type ConfigSectionNode = ConfigParentNode<ConfigSectionOptions>;
+
+export type ConfigSlotNode = ConfigParentNode<ConfigSlotOptions>;
+
 export type SectionConfig = {
   [key: string]: ConfigControlNode
 };
 
+export type SlotConfig = SectionConfig;
+
 export type PanelConfig = {
-  [key: string]: ConfigControlNode | ConfigSectionNode
+  [key: string]: ConfigControlNode | ConfigSectionNode | ConfigSlotNode,
 };

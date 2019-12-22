@@ -13,12 +13,16 @@ import {
   PanelConfig,
   ConfigSectionNode,
   ConfigControlNode,
+  SlotOptions,
+  ConfigSlotNode,
+  ConfigSectionOptions,
 } from '../../types';
 import { SectionNode } from '../section/Section';
 
 import Base from '../../../sass/base.sass';
 import Styles from '../../../sass/panel.sass';
-import { Control } from '../../controls/control/Control.js';
+import { Control } from '../../controls/control/Control';
+import { SlotNode } from '../slot/Slot';
 
 export class PanelNode extends ParentNode {
   public bodyElement: HTMLElement;
@@ -104,9 +108,9 @@ export class PanelNode extends ParentNode {
 
   remove(name: string) {
     const toRemove = Array.from(this.registry.values())
-      .find((el: AnyControl | SectionNode) => el.name === name);
+      .find((el: SlotNode | SectionNode | AnyControl) => el.name === name);
     if (!toRemove) {
-      this.registry.forEach((value: AnyControl | SectionNode) => {
+      this.registry.forEach((value: SlotNode | SectionNode | AnyControl) => {
         if (value instanceof SectionNode) {
           value.remove(name);
         };
@@ -123,7 +127,7 @@ export class PanelNode extends ParentNode {
       this.bodyElement.removeChild(localElement.element);
       this.registry.delete(id);
     } else {
-      this.registry.forEach((value: AnyControl | SectionNode) => {
+      this.registry.forEach((value: SlotNode | SectionNode | AnyControl) => {
         if (value instanceof SectionNode) {
           value.removeById(id);
         }
@@ -166,33 +170,57 @@ export class PanelNode extends ParentNode {
     return section;
   }
 
+  slot(
+    options: SlotOptions,
+  ): SlotNode {
+    const id: string = cuid();
+    const slot = new SlotNode({
+      id,
+      options,
+      parentElement: this.bodyElement,
+      panelListener: this.listeners.get('panel'),
+    });
+    this.registry.set(id, slot);
+    return slot;
+  }
+
   set config(config: PanelConfig) {
-    function iterate(node: ConfigControlNode | ConfigSectionNode, parent: PanelNode | SectionNode) {
-      const nodeType: string = node.hasOwnProperty('children') ? 'section' : 'control';
-      if (nodeType === 'control') {
-        const controlNode = node as ConfigControlNode;
-        parent.control(controlNode.displayType, controlNode as any);
-      } else {
+    function iterate(
+      node: ConfigControlNode | ConfigSectionNode | ConfigSlotNode,
+      parent: PanelNode | SectionNode | SlotNode
+    ) {
+      const displayType = node.hasOwnProperty('options') ?
+        (node.options as ConfigSectionOptions).displayType :
+        (node as ConfigControlNode).displayType;
+      if (
+        displayType === 'section' ||
+        displayType === 'slot'
+      ) {
         const panel = parent as PanelNode;
-        const { options, children } = node as ConfigSectionNode;
-        const section: SectionNode = panel.section(options);
+        const { options, children } = node as ConfigSectionNode | ConfigSlotNode;
+        const resultNode = displayType === 'section' ?
+          panel.section(options) :
+          panel.slot(options);
         Object.values(children)
           .forEach((child: ConfigControlNode) => {
-            iterate(child, section);
+            iterate(child, resultNode);
           });
+      } else {
+        const controlNode = node as ConfigControlNode;
+        parent.control(controlNode.displayType, controlNode as any);
       }
     }
 
     Object.values(config)
-      .forEach((node: ConfigControlNode | ConfigSectionNode) => iterate(node, this));
+      .forEach((node: ConfigControlNode | ConfigSectionNode | ConfigSlotNode) => iterate(node, this));
   }
 
   get config(): PanelConfig {
     const entries: [string, any][] = [];
-    this.registry.forEach((value: Control | SectionNode) => {
+    this.registry.forEach((value: SlotNode | SectionNode | SlotNode | AnyControl) => {
       entries.push([
         value.id,
-        value instanceof SectionNode ?
+        value instanceof SectionNode || value instanceof SlotNode ?
           {
             options: {
               ...value.properties,

@@ -20,6 +20,7 @@ import {
 } from '../../types';
 
 import Base from '../../../sass/base.sass';
+import { SlotNode } from '../slot/Slot';
 
 export type AnyControl = ButtonControl
 | TextControl
@@ -49,7 +50,7 @@ export abstract class ParentNode extends RootNode {
   protected stateHandler: ProxyHandler<InternalState> = {
     set: this.createStateSetter(),
   };
-  protected registry: Map<string, AnyControl | SectionNode> = new Map();
+  protected registry: Map<string, AnyControl | SectionNode | SlotNode> = new Map();
 
   constructor(props: ParentNodeProps) {
     super();
@@ -89,9 +90,10 @@ export abstract class ParentNode extends RootNode {
     options: ControlOptions, 
     sectionListener?: Listener,
     panelListener?: Listener,
+    customParent?: HTMLElement,
   ): AnyControl | null => {
     const id: string = cuid();
-    const parentElement = this.bodyElement;
+    const parentElement = customParent || this.bodyElement;
     const props = {
       id,
       options,
@@ -145,12 +147,12 @@ export abstract class ParentNode extends RootNode {
       if (!classList.contains(Base.hidden)) {
         classList.add(Base.hidden);
       }
-      toggle.innerHTML = '&#9662;';
+      toggle.innerHTML = `&#9662;`;
     } else {
       if (classList.contains(Base.hidden)) {
         classList.remove(Base.hidden);
       }
-      toggle.innerHTML = '&#9656;';
+      toggle.innerHTML = `&#9656;`;
     }
   }
 

@@ -10,6 +10,7 @@ export type ControlProps = {
   parentElement: HTMLElement,
   template: (state: InternalState) => string,
   sectionListener?: Listener,
+  slotListener?: Listener,
   panelListener?: Listener,
 };
 
@@ -43,6 +44,9 @@ export abstract class Control extends RootNode {
     }
     if (props.sectionListener) {
       this.listeners.set('section', props.sectionListener);
+    }
+    if (props.slotListener) {
+      this.listeners.set('slot', props.slotListener);
     }
     if (props.panelListener) {
       this.listeners.set('panel', props.panelListener);

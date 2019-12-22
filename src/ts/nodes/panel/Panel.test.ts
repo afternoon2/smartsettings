@@ -8,6 +8,7 @@ import { CheckboxControl } from '../../controls/checkbox/CheckboxControl';
 import { FileControl } from '../../controls/file/FileControl';
 import { SectionNode } from '../section/Section';
 import { PanelPosition, PanelConfig } from '../../types';
+import { SlotNode } from '../slot/Slot';
 
 let panel: PanelNode;
 let listener: any;
@@ -91,6 +92,14 @@ describe('Panel node', () => {
     expect(section).toBeInstanceOf(SectionNode);
     expect(section.name).toBe('Section');
   });
+
+  test('Slot creation', () => {
+    const slot = panel.slot({
+      name: 'Slot',
+    });
+    expect(slot).toBeInstanceOf(SlotNode);
+    expect(slot.name).toBe('Slot');
+  })
 
   test('Set and get panel position', () => {
     panel.setPosition({

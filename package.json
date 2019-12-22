@@ -51,8 +51,8 @@
   "scripts": {
     "build": "webpack --config=config/webpack.prod.js",
     "build:dev": "webpack --config=config/webpack.dev.js",
-    "lint": "eslint -c .eslintrc.js src/ts/**/*?.ts",
-    "lint:fix": "eslint -c .eslintrc.js src/ts/**/*?.ts --fix",
+    "lint": "eslint -c .eslintrc.js src/ts/**/*.ts",
+    "lint:fix": "eslint -c .eslintrc.js src/ts/**/*.ts --fix",
     "commit": "git-cz",
     "test": "jest",
     "docs": "typedoc --out ./docs ./src/**/*.ts"

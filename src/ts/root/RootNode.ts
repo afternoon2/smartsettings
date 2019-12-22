@@ -151,6 +151,7 @@ export abstract class RootNode {
       }
       const controlListener = this.listeners.get('control');
       const sectionListener = this.listeners.get('section');
+      const slotListener = this.listeners.get('slot');
       const panelListener = this.listeners.get('panel');
       const builtInListener = this.listeners.get(key);
       const update = {
@@ -170,12 +171,19 @@ export abstract class RootNode {
           listenerType: 'control',
         });
       }
+      if (slotListener) {
+        slotListener({
+          ...update,
+          listenerType: 'slot',
+        });
+      }
       if (sectionListener) {
         sectionListener({
           ...update,
           listenerType: 'section',
         });
       }
+
       if (panelListener) {
         panelListener({
           ...update,

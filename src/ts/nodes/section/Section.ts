@@ -7,10 +7,11 @@ import {
   SectionConfig,
   ConfigControlNode,
 } from '../../types';
+import { Control } from '../../controls/control/Control';
 
 import Base from '../../../sass/base.sass';
 import Styles from '../../../sass/section.sass';
-import { Control } from '../../controls/control/Control';
+import { SlotNode } from '../slot/Slot';
 
 export type SectionProps = {
   id: string,
@@ -22,7 +23,7 @@ export type SectionProps = {
 export class SectionNode extends ParentNode {
   public headerElement: HTMLElement;
   public bodyElement: HTMLElement;
-  public readonly displayType = 'section';
+  public readonly displayType: string = 'section';
 
   protected static template = (state: InternalState): string => `<header
       class="${Styles.section__header}"
@@ -78,7 +79,7 @@ export class SectionNode extends ParentNode {
   get config(): SectionConfig {
     return Object.fromEntries(
       Array.from(this.registry.entries())
-        .map((entry: [string, SectionNode | Control]) => {
+        .map((entry: [string, SlotNode | SectionNode | AnyControl]) => {
           const control: Control = entry[1] as Control;
           const configNode: ConfigControlNode = {
             displayType: control.displayType,
@@ -93,7 +94,7 @@ export class SectionNode extends ParentNode {
   }
 
   remove(name: string) {
-    this.registry.forEach((value: AnyControl | SectionNode) => {
+    this.registry.forEach((value: SlotNode | SectionNode | AnyControl) => {
       if (value.name === name) {
         const toRemove = value.element;
         this.bodyElement.removeChild(toRemove);
