@@ -104,46 +104,57 @@
     <span class="hljs-attr">disabled</span>: <span class="hljs-literal">true</span>,
     <span class="hljs-attr">listener</span>: <span class="hljs-function">(<span class="hljs-params">update</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(update),
 });</code></pre>
-				<a href="#control-creation" id="control-creation" style="color: inherit; text-decoration: none;">
-					<h3>Control creation</h3>
+				<a href="#nodes" id="nodes" style="color: inherit; text-decoration: none;">
+					<h3>Nodes</h3>
 				</a>
-				<pre><code class="language-javascript"><span class="hljs-keyword">const</span> panel = SmartSettings();
-<span class="hljs-keyword">const</span> button = panel.control(
-    <span class="hljs-string">'button'</span>,
-    {
-        <span class="hljs-attr">name</span>: <span class="hljs-string">'Init'</span>,
-        <span class="hljs-attr">disabled</span>: <span class="hljs-literal">true</span>
-    },
-);</code></pre>
-				<a href="#control-list" id="control-list" style="color: inherit; text-decoration: none;">
-					<h3>Control list</h3>
+				<details>
+					<summary>Section</summary>
+					<pre><code class="language-js"><span class="hljs-keyword">const</span> section = panel.section({
+    <span class="hljs-attr">name</span>: <span class="hljs-string">'Section'</span>,
+    <span class="hljs-attr">collapsed</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">disabled</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">invisible</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">listener</span>: <span class="hljs-function">(<span class="hljs-params">update</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(update.value),
+});</code></pre>
+				</details>
+				<details>
+					<summary>Slot</summary>
+					<pre><code class="language-js"><span class="hljs-keyword">const</span> section = panel.section({
+    <span class="hljs-attr">name</span>: <span class="hljs-string">'Slot'</span>,
+    <span class="hljs-attr">collapsed</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">disabled</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">invisible</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">listener</span>: <span class="hljs-function">(<span class="hljs-params">update</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(update.value),
+});</code></pre>
+				</details>
+				<a href="#controls" id="controls" style="color: inherit; text-decoration: none;">
+					<h3>Controls</h3>
 				</a>
-				<a href="#button" id="button" style="color: inherit; text-decoration: none;">
-					<h4>Button</h4>
-				</a>
-				<pre><code class="language-javascript"><span class="hljs-keyword">const</span> button = panel.control(<span class="hljs-string">'button'</span>, {
+				<details>
+					<summary>Button</summary>
+					<pre><code class="language-javascript"><span class="hljs-keyword">const</span> button = panel.control(<span class="hljs-string">'button'</span>, {
     <span class="hljs-attr">name</span>: <span class="hljs-string">'Click me!'</span>,
     <span class="hljs-attr">listener</span>: <span class="hljs-function">(<span class="hljs-params">update</span>) =&gt;</span> yourCallback()
 });</code></pre>
-				<a href="#checkbox" id="checkbox" style="color: inherit; text-decoration: none;">
-					<h4>Checkbox</h4>
-				</a>
-				<pre><code class="language-javascript"><span class="hljs-keyword">const</span> checkbox = panel.control(<span class="hljs-string">'checkbox'</span>, {
+				</details>
+				<details>
+					<summary>Checkbox</summary>
+					<pre><code class="language-javascript"><span class="hljs-keyword">const</span> checkbox = panel.control(<span class="hljs-string">'checkbox'</span>, {
     <span class="hljs-attr">name</span>: <span class="hljs-string">'Is Awesome'</span>,
     <span class="hljs-attr">checked</span>: <span class="hljs-literal">true</span>,
     <span class="hljs-attr">listener</span>: <span class="hljs-function">(<span class="hljs-params">update</span>) =&gt;</span> yourCallback(update.value)
 });</code></pre>
-				<a href="#file" id="file" style="color: inherit; text-decoration: none;">
-					<h4>File</h4>
-				</a>
-				<pre><code class="language-javascript"><span class="hljs-keyword">const</span> file = panel.control(<span class="hljs-string">'file'</span>, {
+				</details>
+				<details>
+					<summary>File</summary>
+					<pre><code class="language-javascript"><span class="hljs-keyword">const</span> file = panel.control(<span class="hljs-string">'file'</span>, {
     <span class="hljs-attr">name</span>: <span class="hljs-string">'Data'</span>,
     <span class="hljs-attr">listener</span>: <span class="hljs-function">(<span class="hljs-params">update</span>) =&gt;</span> yourCallback(update.value)
 });</code></pre>
-				<a href="#number" id="number" style="color: inherit; text-decoration: none;">
-					<h4>Number</h4>
-				</a>
-				<pre><code class="language-javascript"><span class="hljs-keyword">const</span> number = panel.control(<span class="hljs-string">'number'</span>, {
+				</details>
+				<details>
+					<summary>Number</summary>
+					<pre><code class="language-javascript"><span class="hljs-keyword">const</span> number = panel.control(<span class="hljs-string">'number'</span>, {
     <span class="hljs-attr">name</span>: <span class="hljs-string">'Humidity [%]'</span>,
     <span class="hljs-attr">min</span>: <span class="hljs-number">0</span>,
     <span class="hljs-attr">max</span>: <span class="hljs-number">100</span>,
@@ -151,10 +162,10 @@
     <span class="hljs-attr">value</span>: <span class="hljs-number">30</span>,
     <span class="hljs-attr">listener</span>: <span class="hljs-function">(<span class="hljs-params">update</span>) =&gt;</span> yourCallback(update.value)
 });</code></pre>
-				<a href="#range" id="range" style="color: inherit; text-decoration: none;">
-					<h4>Range</h4>
-				</a>
-				<pre><code class="language-javascript"><span class="hljs-keyword">const</span> range = panel.control(<span class="hljs-string">'range'</span>, {
+				</details>
+				<details>
+					<summary>Range</summary>
+					<pre><code class="language-javascript"><span class="hljs-keyword">const</span> range = panel.control(<span class="hljs-string">'range'</span>, {
     <span class="hljs-attr">name</span>: <span class="hljs-string">'Gravity'</span>,
     <span class="hljs-attr">min</span>: <span class="hljs-number">0</span>,
     <span class="hljs-attr">max</span>: <span class="hljs-number">100</span>,
@@ -162,93 +173,86 @@
     <span class="hljs-attr">value</span>: <span class="hljs-number">10</span>,
     <span class="hljs-attr">listener</span>: <span class="hljs-function">(<span class="hljs-params">update</span>) =&gt;</span> yourCallback(update.value)
 });</code></pre>
-				<a href="#text" id="text" style="color: inherit; text-decoration: none;">
-					<h4>Text</h4>
-				</a>
-				<pre><code class="language-javascript"><span class="hljs-keyword">const</span> text = panel.control(<span class="hljs-string">'text'</span>, {
+				</details>
+				<details>
+					<summary>Text</summary>
+					<pre><code class="language-javascript"><span class="hljs-keyword">const</span> text = panel.control(<span class="hljs-string">'text'</span>, {
     <span class="hljs-attr">name</span>: <span class="hljs-string">'Text input'</span>,
     <span class="hljs-attr">placeholder</span>: <span class="hljs-string">'Your value'</span>,
     <span class="hljs-attr">listener</span>: <span class="hljs-function">(<span class="hljs-params">update</span>) =&gt;</span> yourCallback(update.value)
 });</code></pre>
-				<a href="#textarea" id="textarea" style="color: inherit; text-decoration: none;">
-					<h4>TextArea</h4>
-				</a>
-				<pre><code class="language-javascript"><span class="hljs-keyword">const</span> textarea = panel.control(<span class="hljs-string">'textarea'</span>, {
+				</details>
+				<details>
+					<summary>TextArea</summary>
+					<pre><code class="language-javascript"><span class="hljs-keyword">const</span> textarea = panel.control(<span class="hljs-string">'textarea'</span>, {
     <span class="hljs-attr">name</span>: <span class="hljs-string">'Textarea input'</span>,
     <span class="hljs-attr">value</span>: <span class="hljs-built_in">JSON</span>.stringify(yourData),
     <span class="hljs-attr">readOnly</span>: <span class="hljs-literal">true</span>,
     <span class="hljs-attr">listener</span>: <span class="hljs-function">(<span class="hljs-params">update</span>) =&gt;</span> yourCallback(update.value)
 });</code></pre>
-				<hr>
-				<a href="#123-deprecated-docs" id="123-deprecated-docs" style="color: inherit; text-decoration: none;">
-					<h1>@1.2.3 deprecated docs</h1>
-				</a>
-				<a href="#docs-amp-demos" id="docs-amp-demos" style="color: inherit; text-decoration: none;">
-					<h2>Docs &amp; demos</h2>
-				</a>
-				<p><a href="https://afternoon2.github.io/smartsettings/">Documentation</a></p>
-				<p data-height="500" data-theme-id="0" data-slug-hash="08a144fdad89d6a44e956ce96c783873" data-default-tab="js,result" data-user="jakub_antolak" data-embed-version="2" data-pen-title="SmartSettings demo" class="codepen"><a href="https://codepen.io/jakub_antolak/pen/08a144fdad89d6a44e956ce96c783873/">SmartSettings demo</a></p>
-				<p data-height="500" data-theme-id="dark" data-slug-hash="PeaZKE" data-default-tab="js,result" data-user="jakub_antolak" data-embed-version="2" data-pen-title="css gradient maker 2" class="codepen"><a href="https://codepen.io/jakub_antolak/pen/PeaZKE/">css gradient maker 2</a></p>
+				</details>
+				<details>
+					<summary>DropDown</summary>
+					<pre><code class="language-javascript"><span class="hljs-keyword">const</span> dropdown = section.control(<span class="hljs-string">'dropdown'</span>, {
+  <span class="hljs-attr">name</span>: <span class="hljs-string">'Dropdown'</span>,
+  <span class="hljs-attr">selected</span>: <span class="hljs-string">'first'</span>,
+  <span class="hljs-attr">items</span>: [
+    {
+      <span class="hljs-attr">id</span>: <span class="hljs-string">'first'</span>,
+      <span class="hljs-attr">text</span>: <span class="hljs-string">'First'</span>,
+      <span class="hljs-attr">value</span>: <span class="hljs-string">'first'</span>,
+    },
+    {
+      <span class="hljs-attr">id</span>: <span class="hljs-string">'second'</span>,
+      <span class="hljs-attr">text</span>: <span class="hljs-string">'Second'</span>,
+      <span class="hljs-attr">value</span>: <span class="hljs-string">'second'</span>,
+    },
+    {
+      <span class="hljs-attr">id</span>: <span class="hljs-string">'third'</span>,
+      <span class="hljs-attr">text</span>: <span class="hljs-string">'Third'</span>,
+      <span class="hljs-attr">value</span>: <span class="hljs-string">'third'</span>,
+    },
+  ]
+});</code></pre>
+				</details>
+				<details>
+					<summary>Color</summary>
+					<pre><code class="language-javascript"><span class="hljs-keyword">const</span> color = section.control(<span class="hljs-string">'color'</span>, {
+  <span class="hljs-attr">name</span>: <span class="hljs-string">'Color'</span>,
+  <span class="hljs-attr">value</span>: <span class="hljs-string">'rgba(19, 29, 135, 1)'</span>,
+});</code></pre>
+				</details>
 				<a href="#api-overview" id="api-overview" style="color: inherit; text-decoration: none;">
-					<h2>API overview</h2>
+					<h3>API overview</h3>
+				</a>
+				<a href="#panel" id="panel" style="color: inherit; text-decoration: none;">
+					<h4>Panel</h4>
 				</a>
 				<ul>
-					<li>Controls:<ul>
-							<li><code>button(name, callback)</code></li>
-							<li><code>range(name, items, callback)</code> - items are min, max, default and step</li>
-							<li><code>select(name, items, callback)</code> - items are strings or numbers with option values</li>
-							<li><code>checkbox(name, value, callback)</code></li>
-							<li><code>color(name, value, callback)</code></li>
-							<li><code>text(name, value, callback)</code></li>
-							<li><code>textarea(name, value, callback)</code></li>
-							<li><code>number(name, items, callback)</code> - items are initial, step, min and max values. Initial and step values are mandatory</li>
-							<li><code>file(name, callback)</code></li>
-							<li><strong>In all cases the <code>callback</code> parameter (function executed on each change in the control) is optional</strong></li>
-						</ul>
-					</li>
-					<li>Methods:<ul>
-							<li><code>show(name)</code> - show settings panel or control (if the name is provided) </li>
-							<li><code>hide(name)</code> - hide settings panel or control (if the name is provided)</li>
-							<li><code>enable(name)</code> - enable specific control</li>
-							<li><code>disable(name)</code> - disable specific control</li>
-							<li><code>open()</code> - open settings panel</li>
-							<li><code>close()</code> - close settings panel</li>
-							<li><code>toggle()</code> - open/close settings panel</li>
-							<li><code>destroy()</code> - remove current panel from the DOM</li>
-							<li><code>remove(name)</code> - removes specific control from the panel</li>
-							<li><code>removeAll()</code> - removes all controls from the panel</li>
-							<li><code>getValue(name)</code> - returns active value of the specific control</li>
-							<li><code>setValue(name, value, [synthetic event])</code> - sets new active value of the specific control. Set syntheticEvent to true if you want to dispatch an event after change.</li>
-							<li><code>getIndex(name)</code> - returns selected index of the select control</li>
-							<li><code>setIndex(name, value, [syntheticEvent])</code> - set new selected index of the select control. Set syntheticEvent to true if you want to dispatch an event after change.</li>
-							<li><code>getActiveValues()</code> - returns object with active values of all controls (except buttons)</li>
-							<li><code>setItems(name, items, [syntheticEvent])</code> - set new dropdown, range or progressbar control items. Set syntheticEvent to true if you want to dispatch an event after change.</li>
-							<li><code>getItems(name)</code> - get items of the specific dropdown, range or progressbar control</li>
-							<li><code>watch(callback)</code> - watch panel for changes and fire callback on each change (real or artificial - from <code>setItems</code> or <code>setValue</code>).</li>
-							<li><code>loadConfig(config)</code> - load controls in the settings panel from the given object/JSON string/array of objects (config description below).</li>
-							<li><code>getConfig([output])</code> - returns current configuration. Unless there is an output parameter specified, this method returns an object. But you can set the output to be an &#39;array&#39; or JSON &#39;string&#39;</li>
-						</ul>
-					</li>
+					<li><code>get position</code> returns <code>PanelPosition</code> object</li>
+					<li><code>setPosition(position)</code> sets new panel position</li>
+					<li><code>setListener(listener)</code> sets global change listener on the panel</li>
+					<li><code>destroy</code> - clears panel&#39;s registry and listeners list, removes its <code>element</code> from the <code>parentElement</code> (usually <code>document.body</code>) and performs <code>Object.freeze</code> on its state and on the panel instance itself</li>
+					<li><code>remove(name)</code> - removes first node with given name from the panel (this method works on the section&#39;s scope too)</li>
+					<li><code>removeById(id)</code> - removes node with given id from the panel (this method works in the section&#39;s scope too)</li>
+					<li><code>removeAll</code> removes all controls and nodes from the panel</li>
+					<li><code>control(control, options)</code> creates new control</li>
+					<li><code>section(options)</code> creates new section node</li>
+					<li><code>set config</code> - loads panel&#39;s children using provided config object (setter)</li>
+					<li><code>get config</code> - returns panel&#39;s current config object. Returned config object will always consist of controls&#39;/nodes&#39; identifiers as the keys</li>
 				</ul>
-				<a href="#config-template-for-codeloadconfigcode-method" id="config-template-for-codeloadconfigcode-method" style="color: inherit; text-decoration: none;">
-					<h3>Config template for <code>loadConfig</code> method</h3>
+				<a href="#section-and-slot" id="section-and-slot" style="color: inherit; text-decoration: none;">
+					<h4>Section and Slot</h4>
 				</a>
-				<p>Each entry in the config object should contain values specific for the control you want to load + type of the control. So in the <code>color</code> example it should be the <code>name</code> and <code>value</code> strings, &#39;color&#39; <code>type</code> and (optionally) a <code>callback</code> function, etc. All types are written with small letters.</p>
-				<pre><code class="language-js"><span class="hljs-keyword">const</span> config = {
-    <span class="hljs-attr">button</span>: {
-        <span class="hljs-attr">name</span>: <span class="hljs-string">'Button'</span>,
-        <span class="hljs-attr">type</span>: <span class="hljs-string">'button'</span>,
-        <span class="hljs-attr">callback</span>: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> { <span class="hljs-comment">/* some function */</span> }
-    }
-}
-<span class="hljs-comment">// or</span>
-<span class="hljs-keyword">const</span> configArray = [{
-    <span class="hljs-attr">name</span>: <span class="hljs-string">'Buton'</span>,
-    <span class="hljs-attr">type</span>: <span class="hljs-string">'button'</span>,
-    <span class="hljs-attr">callback</span>: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> { <span class="hljs-comment">/* some function */</span> }
-}]
-<span class="hljs-comment">// or</span>
-<span class="hljs-keyword">const</span> configJSON = <span class="hljs-string">"{ "</span>Btn<span class="hljs-string">": { "</span>name<span class="hljs-string">": "</span>Button<span class="hljs-string">", "</span>type<span class="hljs-string">": "</span>button<span class="hljs-string">" } }"</span> <span class="hljs-comment">// etc.</span></code></pre>
+				<ul>
+					<li><code>control(control, options)</code> creates new control</li>
+					<li><code>set config</code> - loads section&#39;s children using provided config object (setter)</li>
+					<li><code>get config</code> - returns section&#39;s current config object. Returned config object will always consist of controls&#39; identifiers as the keys</li>
+					<li><code>remove(name)</code> - removes first node with given name from the section</li>
+					<li><code>removeById(id)</code> - removes node with given id from the section</li>
+					<li><code>removeAll</code> removes all controls and nodes from the section</li>
+					<li><code>setListener(listener)</code> sets local change listener</li>
+				</ul>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -279,7 +283,13 @@
 						<a href="modules/_src_ts_controls_checkbox_checkboxcontrol_.html">&quot;src/ts/controls/checkbox/<wbr>Checkbox<wbr>Control&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module tsd-is-external">
+						<a href="modules/_src_ts_controls_color_color_.html">&quot;src/ts/controls/color/<wbr>Color&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module tsd-is-external">
 						<a href="modules/_src_ts_controls_control_control_.html">&quot;src/ts/controls/control/<wbr>Control&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module tsd-is-external">
+						<a href="modules/_src_ts_controls_dropdown_dropdown_.html">&quot;src/ts/controls/dropdown/<wbr>Drop<wbr>Down&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module tsd-is-external">
 						<a href="modules/_src_ts_controls_file_filecontrol_.html">&quot;src/ts/controls/file/<wbr>File<wbr>Control&quot;</a>
@@ -304,6 +314,9 @@
 					</li>
 					<li class=" tsd-kind-external-module tsd-is-external">
 						<a href="modules/_src_ts_nodes_section_section_.html">&quot;src/ts/nodes/section/<wbr>Section&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module tsd-is-external">
+						<a href="modules/_src_ts_nodes_slot_slot_.html">&quot;src/ts/nodes/slot/<wbr>Slot&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module tsd-is-external">
 						<a href="modules/_src_ts_root_rootnode_.html">&quot;src/ts/root/<wbr>Root<wbr>Node&quot;</a>

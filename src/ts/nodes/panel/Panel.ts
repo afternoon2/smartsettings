@@ -21,7 +21,6 @@ import { SectionNode } from '../section/Section';
 
 import Base from '../../../sass/base.sass';
 import Styles from '../../../sass/panel.sass';
-import { Control } from '../../controls/control/Control';
 import { SlotNode } from '../slot/Slot';
 
 export class PanelNode extends ParentNode {
