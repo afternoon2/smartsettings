@@ -101,6 +101,17 @@ export class SlotNode extends ParentNode {
     );
   }
 
+  find(name: string): AnyControl | undefined {
+    return Array.from(this.registry.values())
+      .find(
+        (node: AnyControl | SlotNode | SectionNode) => node.name === name
+      ) as AnyControl | undefined;
+  }
+
+  findById(id: string): AnyControl | undefined {
+    return this.registry.get(id) as AnyControl | undefined;
+  }
+
   remove(name: string) {
     this.registry.forEach((value: SlotNode | SectionNode | AnyControl) => {
       if (value.name === name) {

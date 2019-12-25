@@ -7,6 +7,7 @@ import { RangeControl } from '../../controls/range/RangeControl';
 import { CheckboxControl } from '../../controls/checkbox/CheckboxControl';
 import { FileControl } from '../../controls/file/FileControl';
 import { SectionConfig } from '../../types';
+import { AnyControl } from '../parent/ParentNode';
 
 let section: SectionNode;
 let listener: any;
@@ -135,6 +136,24 @@ describe('Section node', () => {
     expect(btn).not.toBe(null);
     expect(input).not.toBe(null);
     expect(section.config).toBeInstanceOf(Object);
+  });
+
+  test('Find and find by name', () => {
+    const text = section.control('text', {
+      name: 'Text',
+      placeholder: 'Write here!',
+      value: 'text input',
+    });
+    const textarea = section.control('textarea', {
+      name: 'Textarea',
+      placeholder: 'textarea',
+      value: 'Textarea',
+    }) as AnyControl;
+
+    expect(section.find('Text')).toBe(text);
+    expect(section.findById(textarea.id)).toBe(textarea);
+    expect(section.find('invalid name')).toBe(undefined);
+    expect(section.findById('invalid id')).toBe(undefined);
   });
 });
 

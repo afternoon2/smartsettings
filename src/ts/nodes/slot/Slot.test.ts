@@ -7,6 +7,7 @@ import { RangeControl } from '../../controls/range/RangeControl';
 import { CheckboxControl } from '../../controls/checkbox/CheckboxControl';
 import { FileControl } from '../../controls/file/FileControl';
 import { SlotConfig } from '../../types';
+import { AnyControl } from '../parent/ParentNode';
 
 let slot: SlotNode;
 let listener: any;
@@ -135,6 +136,24 @@ describe('Slot node', () => {
     expect(btn).not.toBe(null);
     expect(input).not.toBe(null);
     expect(slot.config).toBeInstanceOf(Object);
+  });
+
+  test('Find and find by name', () => {
+    const text = slot.control('text', {
+      name: 'Text',
+      placeholder: 'Write here!',
+      value: 'text input',
+    });
+    const textarea = slot.control('textarea', {
+      name: 'Textarea',
+      placeholder: 'textarea',
+      value: 'Textarea',
+    }) as AnyControl;
+
+    expect(slot.find('Text')).toBe(text);
+    expect(slot.findById(textarea.id)).toBe(textarea);
+    expect(slot.find('invalid name')).toBe(undefined);
+    expect(slot.findById('invalid id')).toBe(undefined);
   });
 });
 

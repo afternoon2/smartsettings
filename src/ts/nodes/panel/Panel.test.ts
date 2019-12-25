@@ -196,5 +196,37 @@ describe('Panel node', () => {
     expect(input).toBeInstanceOf(HTMLInputElement);
     expect(panel.config).toBeInstanceOf(Object);
   });
+
+  test('Find method', () => {
+    const config: PanelConfig = {
+      button: {
+        displayType: 'button',
+        name: 'btn',
+        disabled: true,
+      },
+      section: {
+        options: {
+          displayType: 'section',
+          name: 'section',
+          collapsed: true,
+        },
+        children: {
+          nestedButton: {
+            displayType: 'button',
+            name: 'nested-btn',
+          },
+          input: {
+            displayType: 'text',
+            name: 'text-control',
+            disabled: true,
+          },
+        },
+      },
+    };
+    panel.config = config;
+    expect(panel.find('nested-btn')).toBeInstanceOf(ButtonControl);
+    expect(panel.find('btn')).toBeInstanceOf(ButtonControl);
+    expect(panel.find('fake name')).toBe(undefined);
+  });
 });
 

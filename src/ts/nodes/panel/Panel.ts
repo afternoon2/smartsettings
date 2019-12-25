@@ -105,6 +105,25 @@ export class PanelNode extends ParentNode {
     Object.freeze(this);
   }
 
+  find(name: string): AnyControl | SlotNode | SectionNode | undefined {
+    const panelSearch: AnyControl | SlotNode | SectionNode | undefined = this.search(name);
+    if (!panelSearch) {
+      return this.nestedSearch('name', name);
+    } else {
+      return panelSearch;
+    }
+  }
+
+  findById(id: string): AnyControl | SlotNode | SectionNode | undefined {
+    const panelSearch: AnyControl | SlotNode | SectionNode | undefined = this
+      .registry.get(id);
+    if (!panelSearch) {
+      return this.nestedSearch('id', id);
+    } else {
+      return panelSearch;
+    }
+  }
+
   remove(name: string) {
     const toRemove = Array.from(this.registry.values())
       .find((el: SlotNode | SectionNode | AnyControl) => el.name === name);
@@ -254,5 +273,29 @@ export class PanelNode extends ParentNode {
     const cssProp: string = update.key;
     // @ts-ignore
     this.element.style[cssProp] = `${update.value}px`;
+  }
+
+  private search(name: string): AnyControl | SectionNode | SlotNode | undefined  {
+    return Array.from(this.registry.values())
+      .find((node: AnyControl | SectionNode | SlotNode) => node.name === name);
+  }
+
+  private nestedSearch(key: 'id' | 'name', value: string): AnyControl | undefined {
+    const registry: (AnyControl | SectionNode | SlotNode)[] = Array
+      .from(this.registry.values())
+      .filter((node: AnyControl | SlotNode | SectionNode) => {
+        return node instanceof SlotNode || node instanceof SectionNode;
+      });
+    let results: AnyControl[] = [];
+    registry
+      .forEach((node: any) => {
+        const nodeResult = key === 'name' ?
+          node.find(value) :
+          node.findById(value);
+        if (nodeResult) {
+          results.push(nodeResult);
+        }
+      });
+    return results[0];
   }
 }
