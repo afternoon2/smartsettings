@@ -83,7 +83,7 @@ export abstract class RootNode {
       : element.removeAttribute('disabled'));
     const setDisabledAttrTo = (disabled: boolean) => controlElements
       .forEach((el: Element) => setDisabled(el, disabled));
-    const hasDisabledElements = () => controlElements.find((el: Element) => el.getAttribute('disabled') === 'true');
+    const hasDisabledElements = () => controlElements.find((el: Element) => el.getAttribute('disabled') === 'true' || el.hasAttribute('disabled'));
     if (update.value === true) {
       if (!this.element.classList.contains(Base.disabled)) {
         this.element.classList.add(Base.disabled);
