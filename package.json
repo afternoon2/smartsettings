@@ -60,7 +60,7 @@
   "files": [
     "dist"
   ],
-  "main": "index.js",
+  "main": "dist/index.js",
   "browserslist": [
     "> 2%"
   ],
