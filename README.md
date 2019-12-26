@@ -45,6 +45,63 @@ const panel = new SmartSettings({
 });
 ```
 
+### API overview
+
+#### Root methods and properties
+
+There are a few methods and properties that are available for all nodes and controls, and that are defined in the [RootNode abstract class](https://github.com/afternoon2/smartsettings/blob/%40next/src/ts/root/RootNode.ts):
+
+- `get id` - returns instance's identifier
+- `get name` - returns instance's name given to it during the creation
+- `get invisible`- returns an information about instance's visiblity
+- `set invisible` - specifies instance's visiblity status
+- `get disabled` - returns an information about instance's disability
+- `get properties` - returns instance's internal state object (without the `id` property) 
+- `rename(name)` - updates instance's name
+- `show` - show's the instance if it's invisible
+- `hide` - hide's the instance if it's visible
+- `disable` - disables the instance 
+- `enable` - enables the instance 
+- `setListener` - an abstract method defined individually on each class. It lets the user to define global/local listener function.
+
+#### Node methods and propeties
+
+There are also a few methods and properties that are available for nodes (such as Panel, Section and Node) only:
+
+- `get collapsed` - returns an information about instance's collapsed property
+- `open` - sets `collapsed` property to `false`
+- `close` - sets `collapsed` property to `true`
+- `toggle` - toggles `collapsed` property
+
+#### Panel methods and properties
+
+- `get position` - returns `PanelPosition` object
+- `setPosition(position)` sets new panel position
+- `setListener(listener)` sets global change listener on the panel
+- `destroy` - clears panel's registry and listeners list, removes its `element` from the `parentElement` (usually `document.body`) and performs `Object.freeze` on its state and on the panel instance itself
+- `remove(name)` - removes first node with given name from the panel (this method works on the section's scope too)
+- `removeById(id)` - removes node with given id from the panel (this method works in the section's scope too)
+- `removeAll` removes all controls and nodes from the panel
+- `control(control, options)` creates new control
+- `section(options)` creates new section node
+- `set config` - loads panel's children using provided config object (setter)
+- `get config` - returns panel's current config object. Returned config object will always consist of controls'/nodes' identifiers as the keys
+
+#### Section and Slot properties
+
+- `control(control, options)` creates new control
+- `set config` - loads section's children using provided config object (setter)
+- `get config` - returns section's current config object. Returned config object will always consist of controls' identifiers as the keys
+- `remove(name)` - removes first node with given name from the section
+- `removeById(id)` - removes node with given id from the section
+- `removeAll` removes all controls and nodes from the section
+- `setListener(listener)` sets local change listener
+
+#### Common control's methods and properties
+
+- `get readonly` - informs if the control is readonly or not
+- `set readonly` - sets control's readonly property
+
 ### Nodes
 
 <details>
@@ -255,60 +312,3 @@ const color = section.control('color', {
 - `set expanded` - sets `expanded` value 
 - `toggle` - toggles `expanded` value 
 </details>
-
-### API overview
-
-#### Root methods and properties
-
-There are a few methods and properties that are available for all nodes and controls, and that are defined in the [RootNode abstract class](https://github.com/afternoon2/smartsettings/blob/%40next/src/ts/root/RootNode.ts):
-
-- `get id` - returns instance's identifier
-- `get name` - returns instance's name given to it during the creation
-- `get invisible`- returns an information about instance's visiblity
-- `set invisible` - specifies instance's visiblity status
-- `get disabled` - returns an information about instance's disability
-- `get properties` - returns instance's internal state object (without the `id` property) 
-- `rename(name)` - updates instance's name
-- `show` - show's the instance if it's invisible
-- `hide` - hide's the instance if it's visible
-- `disable` - disables the instance 
-- `enable` - enables the instance 
-- `setListener` - an abstract method defined individually on each class. It lets the user to define global/local listener function.
-
-#### Node methods and propeties
-
-There are also a few methods and properties that are available for nodes (such as Panel, Section and Node) only:
-
-- `get collapsed` - returns an information about instance's collapsed property
-- `open` - sets `collapsed` property to `false`
-- `close` - sets `collapsed` property to `true`
-- `toggle` - toggles `collapsed` property
-
-#### Panel methods and properties
-
-- `get position` - returns `PanelPosition` object
-- `setPosition(position)` sets new panel position
-- `setListener(listener)` sets global change listener on the panel
-- `destroy` - clears panel's registry and listeners list, removes its `element` from the `parentElement` (usually `document.body`) and performs `Object.freeze` on its state and on the panel instance itself
-- `remove(name)` - removes first node with given name from the panel (this method works on the section's scope too)
-- `removeById(id)` - removes node with given id from the panel (this method works in the section's scope too)
-- `removeAll` removes all controls and nodes from the panel
-- `control(control, options)` creates new control
-- `section(options)` creates new section node
-- `set config` - loads panel's children using provided config object (setter)
-- `get config` - returns panel's current config object. Returned config object will always consist of controls'/nodes' identifiers as the keys
-
-#### Section and Slot properties
-
-- `control(control, options)` creates new control
-- `set config` - loads section's children using provided config object (setter)
-- `get config` - returns section's current config object. Returned config object will always consist of controls' identifiers as the keys
-- `remove(name)` - removes first node with given name from the section
-- `removeById(id)` - removes node with given id from the section
-- `removeAll` removes all controls and nodes from the section
-- `setListener(listener)` sets local change listener
-
-#### Common control's methods and properties
-
-- `get readonly` - informs if the control is readonly or not
-- `set readonly` - sets control's readonly property
