@@ -1,7 +1,7 @@
 {
   "name": "smartsettings",
   "description": "Yet another JavaScript library for creating (smart) setting panels",
-  "version": "2.0",
+  "version": "0.0.0-development",
   "license": "MIT",
   "author": "Jakub Antolak <poprostuantolak@gmail.com>",
   "repository": "https://github.com/afternoon2/smartsettings",
@@ -33,7 +33,7 @@
     "node-sass": "^4.13.0",
     "postcss-loader": "^3.0.0",
     "sass-loader": "^8.0.0",
-    "semantic-release": "15.14.0",
+    "semantic-release": "^15.14.0",
     "style-loader": "^1.0.0",
     "terser-webpack-plugin": "^2.1.3",
     "ts-jest": "^24.1.0",
@@ -53,7 +53,8 @@
     "lint:fix": "eslint -c .eslintrc.js src/ts/**/*.ts --fix",
     "commit": "git-cz",
     "test": "jest",
-    "docs": "typedoc --out ./docs ./src/**/*.ts"
+    "docs": "typedoc --out ./docs ./src/**/*.ts",
+    "semantic-release": "semantic-release"
   },
   "files": [
     "dist"
