@@ -60,7 +60,6 @@
     "dist"
   ],
   "main": "index.js",
-  "private": true,
   "browserslist": [
     "> 2%"
   ],
