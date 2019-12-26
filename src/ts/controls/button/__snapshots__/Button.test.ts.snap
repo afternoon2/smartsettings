@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button control Disable 1`] = `
+<div
+  class="control disabled"
+>
+  <main
+    class="control__body"
+    id="id"
+  >
+    <div
+      class="control__content control__content--button"
+    >
+      
+    
+      <button
+        class="button"
+        disabled="true"
+        title="Button"
+        type="button"
+      >
+        
+      Button
+    
+      </button>
+      
+  
+    </div>
+  </main>
+</div>
+`;
+
+exports[`Button control Enable 1`] = `
+<div
+  class="control"
+>
+  <main
+    class="control__body"
+    id="id"
+  >
+    <div
+      class="control__content control__content--button"
+    >
+      
+    
+      <button
+        class="button"
+        title="Button"
+        type="button"
+      >
+        
+      Button
+    
+      </button>
+      
+  
+    </div>
+  </main>
+</div>
+`;
+
+exports[`Button control If it matches the snapshot 1`] = `
+<div
+  class="control"
+>
+  <main
+    class="control__body"
+    id="id"
+  >
+    <div
+      class="control__content control__content--button"
+    >
+      
+    
+      <button
+        class="button"
+        title="Button"
+        type="button"
+      >
+        
+      Button
+    
+      </button>
+      
+  
+    </div>
+  </main>
+</div>
+`;

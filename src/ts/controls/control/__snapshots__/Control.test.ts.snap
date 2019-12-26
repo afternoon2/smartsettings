@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Abstract Control class Control class methods createControlElement and withControlTemplate 1`] = `
+<div
+  class="control"
+>
+  <main
+    class="control__body"
+    id="id"
+  >
+    <p
+      class="control__name"
+      title="name"
+    >
+      name
+    </p>
+    <div
+      class="control__content"
+    >
+      
+    
+      <input
+        id="testId"
+        type="text"
+        value="test"
+      />
+    </div>
+  </main>
+</div>
+`;

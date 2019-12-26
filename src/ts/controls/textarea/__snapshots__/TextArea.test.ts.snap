@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Text control Disable 1`] = `
+<div
+  class="control disabled"
+>
+  <main
+    class="control__body"
+    id="id"
+  >
+    <p
+      class="control__name"
+      title="name"
+    >
+      name
+    </p>
+    <div
+      class="control__content"
+    >
+      
+    
+      <textarea
+        class="textarea"
+        cols="10"
+        rows="4"
+        wrap="hard"
+      >
+        test
+      </textarea>
+      
+  
+    </div>
+  </main>
+</div>
+`;
+
+exports[`Text control Enable 1`] = `
+<div
+  class="control"
+>
+  <main
+    class="control__body"
+    id="id"
+  >
+    <p
+      class="control__name"
+      title="name"
+    >
+      name
+    </p>
+    <div
+      class="control__content"
+    >
+      
+    
+      <textarea
+        class="textarea"
+        cols="10"
+        rows="4"
+        wrap="hard"
+      >
+        test
+      </textarea>
+      
+  
+    </div>
+  </main>
+</div>
+`;
+
+exports[`Text control If it matches snapshot after initial load 1`] = `
+<div
+  class="control"
+>
+  <main
+    class="control__body"
+    id="id"
+  >
+    <p
+      class="control__name"
+      title="name"
+    >
+      name
+    </p>
+    <div
+      class="control__content"
+    >
+      
+    
+      <textarea
+        class="textarea"
+        cols="10"
+        rows="4"
+        wrap="hard"
+      >
+        test
+      </textarea>
+      
+  
+    </div>
+  </main>
+</div>
+`;
