@@ -38,7 +38,6 @@ export class ColorControl extends Control {
 
   private swatchElement: HTMLAnchorElement;
   private picker: Pickr;
-  private rgbaRegexp: RegExp = /^rgba\((\d{1,3}%?),\s*(\d{1,3}%?),\s*(\d{1,3}%?),\s*(\d*(?:\.\d+)?)\)$/;
 
   constructor(props: ColorControlProps) {
     super({
@@ -59,6 +58,8 @@ export class ColorControl extends Control {
         hue: true,
         interaction: {
           rgba: true,
+          hex: true,
+          hsla: true,
           input: true,
         },
       },
@@ -75,13 +76,29 @@ export class ColorControl extends Control {
   }
 
   set color(color: string) {
-    if (this.rgbaRegexp.test(color)) {
+    this.picker.setColor(color);
+    if (!this.expanded) {
       this.state.value = color;
     }
   }
 
   get color(): string {
-    return this.state.value as string;
+    const mode: Pickr.Representation = this.picker.getColorRepresentation();
+    const rawColor: Pickr.HSVaColor = this.rawColor;
+    switch (mode) {
+      case 'RGBA':
+        // @ts-ignore
+        return rawColor.toRGBA().toString(0);
+      case 'HSLA':
+        // @ts-ignore
+        return rawColor.toHSLA().toString(0);
+      case 'HEXA':
+        // @ts-ignore
+        return rawColor.toHEXA().toString(0);
+      default:
+        // @ts-ignore
+        return rawColor.toRGBA().toString(0);
+    }
   }
 
   get expanded(): boolean {
@@ -99,10 +116,6 @@ export class ColorControl extends Control {
   private onValue: Listener = (update: ListenerUpdate) => {
     this.swatchElement.style.backgroundColor = update.value as string;
     (this.swatchElement.querySelector('span') as HTMLSpanElement).innerText = update.value as string;
-    const selectedColor: string = this.picker.getSelectedColor().toString();
-    if (update.value !== selectedColor) {
-      this.picker.setColor(update.value as string);
-    } 
   }
 
   private onExpanded: Listener = (update: ListenerUpdate) => {
@@ -125,9 +138,30 @@ export class ColorControl extends Control {
           this.state.expanded = false;
         }
       })
-      .on('change', (color: Pickr.HSVaColor) => {
+      .on('change', this.saveAndChangeHandler.bind(this));
+  }
+
+  private saveAndChangeHandler(color: Pickr.HSVaColor) {
+    switch (this.picker.getColorRepresentation()) {
+      case 'HEXA':
+        this.state.value = color.toHEXA().toString();
+        break;
+      case 'HSLA':
+        // @ts-ignore
+        this.state.value = color.toHSLA().toString(0);
+        break;
+      case 'RGBA':
         // @ts-ignore
         this.state.value = color.toRGBA().toString(0);
-      });
+        break;
+      default:
+        // @ts-ignore
+        this.state.value = color.toRGBA().toString(0);
+        break;
+    }
+  }
+
+  private get rawColor(): Pickr.HSVaColor {
+    return this.picker.getColor();
   }
 }

@@ -33,12 +33,11 @@ describe('Color control', () => {
 
   test('Get set color', () => {
     const newColor = 'rgba(20, 20, 20, 1)';
-    const newIncorrectColor = '#ffcc00';
+    const newerColor = '#FFCC00';
     control.color = newColor;
     expect(control.color).toBe(newColor);
-    control.color = newIncorrectColor;
-    expect(control.color).toBe(newColor);
-    expect(listener).toHaveBeenCalledTimes(1);
+    control.color = newerColor;
+    expect(control.color).toBe(newerColor);
   });
 
   test('Expand and toggle', () => {
