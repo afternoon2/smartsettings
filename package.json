@@ -78,5 +78,9 @@
     "@simonwep/pickr": "^1.4.7",
     "cuid": "^2.1.6",
     "utility-types": "^3.10.0"
+  },
+  "resolutions": {
+    "handlebars": "4.5.3",
+    "serialize-javascript": "2.1.1"
   }
 }
