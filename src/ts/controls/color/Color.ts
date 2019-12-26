@@ -84,21 +84,9 @@ export class ColorControl extends Control {
 
   get color(): string {
     const mode: Pickr.Representation = this.picker.getColorRepresentation();
-    const rawColor: Pickr.HSVaColor = this.rawColor;
-    switch (mode) {
-      case 'RGBA':
-        // @ts-ignore
-        return rawColor.toRGBA().toString(0);
-      case 'HSLA':
-        // @ts-ignore
-        return rawColor.toHSLA().toString(0);
-      case 'HEXA':
-        // @ts-ignore
-        return rawColor.toHEXA().toString(0);
-      default:
-        // @ts-ignore
-        return rawColor.toRGBA().toString(0);
-    }
+    const { rawColor } = this;
+    // @ts-ignore
+    return rawColor[`to${mode}`]().toString();
   }
 
   get expanded(): boolean {
@@ -142,23 +130,9 @@ export class ColorControl extends Control {
   }
 
   private saveAndChangeHandler(color: Pickr.HSVaColor) {
-    switch (this.picker.getColorRepresentation()) {
-      case 'HEXA':
-        this.state.value = color.toHEXA().toString();
-        break;
-      case 'HSLA':
-        // @ts-ignore
-        this.state.value = color.toHSLA().toString(0);
-        break;
-      case 'RGBA':
-        // @ts-ignore
-        this.state.value = color.toRGBA().toString(0);
-        break;
-      default:
-        // @ts-ignore
-        this.state.value = color.toRGBA().toString(0);
-        break;
-    }
+    const mode: Pickr.Representation = this.picker.getColorRepresentation();
+    // @ts-ignore
+    this.state.value = color[`to${mode}`]().toString(0);
   }
 
   private get rawColor(): Pickr.HSVaColor {
