@@ -1,0 +1,37 @@
+@import './variables.sass'
+@import './mixins.sass'
+
+.panel 
+  position: absolute
+  top: 40px
+  left: calc(50% - 130px)
+  z-index: 2
+  
+  min-width: $panelWidth
+  width: $panelWidth
+  box-shadow: 1px 1px 10px 0px rgba(0,0,0,0.25)
+  border-radius: $radius
+  @include node
+  
+  * 
+    @supports(font-smooth: auto) 
+      font-smooth: auto
+    
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
+  
+  &__header 
+    @include header($radius $radius 0 0, $dark)
+  
+  &__name 
+    @include name
+    cursor: pointer
+
+    &_Draggable
+      cursor: move
+  
+  &__link 
+    @include link
+  
+  &__body 
+    @include body

@@ -1,5 +1,2 @@
-node_modules/*
-dist/*
-docs/*
-src/*.css
-*.config.js
+config
+dist

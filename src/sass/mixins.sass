@@ -1,0 +1,67 @@
+@import './variables.sass'
+  
+@mixin node 
+  margin: 0
+  padding: 0
+  display: flex
+  flex-direction: column
+  border-bottom: 1px solid $dark
+  box-sizing: border-box
+
+
+@mixin header($borderRadius, $background) 
+  width: 100%
+  box-sizing: border-box
+  display: flex
+  align-items: center
+  justify-content: space-between
+  color: $bright
+  background-color: $background
+  padding: $padding
+  border-radius: $borderRadius
+
+
+@mixin link 
+  width: 15px
+  height: 100%
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  box-sizing: border-box
+  color: $bright
+  cursor: pointer
+  font-size: 12px
+  transition: 120ms all ease-in-out
+  user-select: none
+  font-weight: bold
+
+@mixin ellipsis 
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
+
+@mixin name 
+  width: 100%
+  margin: 0
+  font-size: 12px
+  font-family: $primary
+  padding: 0 $padding
+  text-align: center
+  user-select: none
+  @include ellipsis
+
+
+@mixin body 
+  background-color: lighten($dark, 10%)
+  border-radius: 0 0 $radius $radius
+  display: flex
+  flex-direction: column
+
+@mixin controlElement
+  width: 100%
+  height: auto
+  font-family: $primary
+  font-size: $primarySize
+  border: 1px solid transparent
+  transition: 120ms all ease-in-out
+  box-sizing: border-box

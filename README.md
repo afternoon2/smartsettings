@@ -1,96 +1,314 @@
 # smartsettings.js
-Yet another JS library for creating setting panels.
 
-![smartsettings-ui](./2docs/smartsettings-ui.png)
+JS library for creating setting panels.
+
+<div style="text-align: center">
+
+*Version 2.x.x*
+
+![SmartSettings Preview](https://raw.githubusercontent.com/afternoon2/smartsettings/assets/smartsettings_shot.png)
+
+</div>
 
 ## Installation
 
+### Yarn
 ```
-npm install --save-dev smartsettings
+yarn add smartsettings
+```
+
+### Npm
+
+```
+npm install --save smartsettings
 ```
 
 ## Usage
 
-For ES modules:
+### Default creation
+```javascript
+import SmartSettings from 'smartsettings';
+
+const panel = new SmartSettings();
+```
+
+### Creation with parameters
+```javascript
+import SmartSettings from 'smartsettings';
+
+const panel = new SmartSettings({
+    name: 'My panel',
+    top: 40,
+    left: 300,
+    disabled: true,
+    listener: (update) => console.log(update),
+});
+```
+
+### API overview
+
+#### Root methods and properties
+
+There are a few methods and properties that are available for all nodes and controls, and that are defined in the [RootNode abstract class](https://github.com/afternoon2/smartsettings/blob/%40next/src/ts/root/RootNode.ts):
+
+- `get id` - returns instance's identifier
+- `get name` - returns instance's name given to it during the creation
+- `get invisible`- returns an information about instance's visiblity
+- `set invisible` - specifies instance's visiblity status
+- `get disabled` - returns an information about instance's disability
+- `get properties` - returns instance's internal state object (without the `id` property) 
+- `rename(name)` - updates instance's name
+- `show` - show's the instance if it's invisible
+- `hide` - hide's the instance if it's visible
+- `disable` - disables the instance 
+- `enable` - enables the instance 
+- `setListener` - an abstract method defined individually on each class. It lets the user to define global/local listener function.
+
+#### Node methods and propeties
+
+There are also a few methods and properties that are available for nodes (such as Panel, Section and Node) only:
+
+- `get collapsed` - returns an information about instance's collapsed property
+- `open` - sets `collapsed` property to `false`
+- `close` - sets `collapsed` property to `true`
+- `toggle` - toggles `collapsed` property
+
+#### Panel methods and properties
+
+- `get position` - returns `PanelPosition` object
+- `setPosition(position)` sets new panel position
+- `setListener(listener)` sets global change listener on the panel
+- `destroy` - clears panel's registry and listeners list, removes its `element` from the `parentElement` (usually `document.body`) and performs `Object.freeze` on its state and on the panel instance itself
+- `remove(name)` - removes first node with given name from the panel (this method works on the section's scope too)
+- `removeById(id)` - removes node with given id from the panel (this method works in the section's scope too)
+- `removeAll` removes all controls and nodes from the panel
+- `control(control, options)` creates new control
+- `section(options)` creates new section node
+- `set config` - loads panel's children using provided config object (setter)
+- `get config` - returns panel's current config object. Returned config object will always consist of controls'/nodes' identifiers as the keys
+
+#### Section and Slot properties
+
+- `control(control, options)` creates new control
+- `set config` - loads section's children using provided config object (setter)
+- `get config` - returns section's current config object. Returned config object will always consist of controls' identifiers as the keys
+- `remove(name)` - removes first node with given name from the section
+- `removeById(id)` - removes node with given id from the section
+- `removeAll` removes all controls and nodes from the section
+- `setListener(listener)` sets local change listener
+
+#### Common control's methods and properties
+
+- `get readonly` - informs if the control is readonly or not
+- `set readonly` - sets control's readonly property
+
+### Nodes
+
+<details>
+    <summary>Section</summary>
+
 ```js
-import SmartSettings from 'smartsettings'
+const section = panel.section({
+    name: 'Section',
+    collapsed: true,
+    disabled: false,
+    invisible: false,
+    listener: (update) => console.log(update.value),
+});
 ```
+</details>
 
-For UMD modules
-```js
-const SmartSettings = require('smartsettings')
-```
-
-And then just:
-
-```js
-const settings = new SmartSettings('Settings', 10 /* left */, 10 /* top */)
-```
-
-Or in the browser:
-```html
-<script src="https://unpkg.com/smartsettings@1.2.3/dist/smartsettings.umd.js"></script>
-```
-## Docs & demos
-
-[Documentation](https://afternoon2.github.io/smartsettings/)
-
-<p data-height="500" data-theme-id="0" data-slug-hash="08a144fdad89d6a44e956ce96c783873" data-default-tab="js,result" data-user="jakub_antolak" data-embed-version="2" data-pen-title="SmartSettings demo" class="codepen"><a href="https://codepen.io/jakub_antolak/pen/08a144fdad89d6a44e956ce96c783873/">SmartSettings demo</a></p>
-
-<p data-height="500" data-theme-id="dark" data-slug-hash="PeaZKE" data-default-tab="js,result" data-user="jakub_antolak" data-embed-version="2" data-pen-title="css gradient maker 2" class="codepen"><a href="https://codepen.io/jakub_antolak/pen/PeaZKE/">css gradient maker 2</a></p>
-
-## API overview
-- Controls:
-    - `button(name, callback)`
-    - `range(name, items, callback)` - items are min, max, default and step
-    - `select(name, items, callback)` - items are strings or numbers with option values
-    - `checkbox(name, value, callback)`
-    - `color(name, value, callback)`
-    - `text(name, value, callback)`
-    - `textarea(name, value, callback)`
-    - `number(name, items, callback)` - items are initial, step, min and max values. Initial and step values are mandatory
-    - `file(name, callback)`
-    - **In all cases the `callback` parameter (function executed on each change in the control) is optional**
-- Methods:
-    - `show(name)` - show settings panel or control (if the name is provided) 
-    - `hide(name)` - hide settings panel or control (if the name is provided)
-    - `enable(name)` - enable specific control
-    - `disable(name)` - disable specific control
-    - `open()` - open settings panel
-    - `close()` - close settings panel
-    - `toggle()` - open/close settings panel
-    - `destroy()` - remove current panel from the DOM
-    - `remove(name)` - removes specific control from the panel
-    - `removeAll()` - removes all controls from the panel
-    - `getValue(name)` - returns active value of the specific control
-    - `setValue(name, value, [synthetic event])` - sets new active value of the specific control. Set syntheticEvent to true if you want to dispatch an event after change.
-    - `getIndex(name)` - returns selected index of the select control
-    - `setIndex(name, value, [syntheticEvent])` - set new selected index of the select control. Set syntheticEvent to true if you want to dispatch an event after change.
-    - `getActiveValues()` - returns object with active values of all controls (except buttons)
-    - `setItems(name, items, [syntheticEvent])` - set new dropdown, range or progressbar control items. Set syntheticEvent to true if you want to dispatch an event after change.
-    - `getItems(name)` - get items of the specific dropdown, range or progressbar control
-    - `watch(callback)` - watch panel for changes and fire callback on each change (real or artificial - from `setItems` or `setValue`).
-    - `loadConfig(config)` - load controls in the settings panel from the given object/JSON string/array of objects (config description below).
-    - `getConfig([output])` - returns current configuration. Unless there is an output parameter specified, this method returns an object. But you can set the output to be an 'array' or JSON 'string'
-
-### Config template for `loadConfig` method
-
-Each entry in the config object should contain values specific for the control you want to load + type of the control. So in the `color` example it should be the `name` and `value` strings, 'color' `type` and (optionally) a `callback` function, etc. All types are written with small letters.
+<details>
+    <summary>Slot</summary>
 
 ```js
-const config = {
-    button: {
-        name: 'Button',
-        type: 'button',
-        callback: () => { /* some function */ }
-    }
-}
-// or
-const configArray = [{
-    name: 'Buton',
-    type: 'button',
-    callback: () => { /* some function */ }
-}]
-// or
-const configJSON = "{ "Btn": { "name": "Button", "type": "button" } }" // etc.
+const section = panel.slot({
+    name: 'Slot',
+    collapsed: true,
+    disabled: false,
+    invisible: false,
+    listener: (update) => console.log(update.value),
+});
 ```
+</details>
+
+### Controls
+
+<details>
+    <summary>Button</summary>
+
+```javascript
+const button = panel.control('button', {
+    name: 'Click me!',
+    listener: (update) => yourCallback()
+});
+```
+
+*no custom methods or properties defined*
+</details>
+
+<details>
+    <summary>Checkbox</summary>
+
+```javascript
+const checkbox = panel.control('checkbox', {
+    name: 'Is Awesome',
+    checked: true,
+    listener: (update) => yourCallback(update.value)
+});
+```
+
+- `get checked` - returns control's checked value
+- `check` - sets `checked` property to `true`
+- `uncheck` - sets `checked` property to `false`
+- `toggle` - toggles `checked` property
+</details>
+
+<details>
+    <summary>File</summary>
+
+```javascript
+const file = panel.control('file', {
+    name: 'Data',
+    listener: (update) => yourCallback(update.value)
+});
+```
+
+- `get accept` - returns file input's `accept` value
+- `set accept` - sets file input's `accept` value
+- `get files` - returns a `FileList` bound to the control's input
+</details>
+
+<details>
+    <summary>Number</summary>
+
+```javascript
+const number = panel.control('number', {
+    name: 'Humidity [%]',
+    min: 0,
+    max: 100,
+    step: 1,
+    value: 30,
+    listener: (update) => yourCallback(update.value)
+});
+
+```
+
+- `get value` - returns value
+- `set value` - sets new value
+- `get min` - returns min value
+- `set min` - returns min value
+- `get max` - sets new max value
+- `set max` - sets new max value
+- `get step` - sets new step value
+- `set step` - sets new step value
+</details>
+
+<details>
+    <summary>Range</summary>
+
+```javascript
+const range = panel.control('range', {
+    name: 'Gravity',
+    min: 0,
+    max: 100,
+    step: 1,
+    value: 10,
+    listener: (update) => yourCallback(update.value)
+});
+```
+
+- `get value` - returns value
+- `set value` - sets new value
+- `get min` - returns min value
+- `set min` - returns min value
+- `get max` - sets new max value
+- `set max` - sets new max value
+- `get step` - sets new step value
+- `set step` - sets new step value
+
+</details>
+
+<details>
+    <summary>Text</summary>
+
+```javascript
+const text = panel.control('text', {
+    name: 'Text input',
+    placeholder: 'Your value',
+    listener: (update) => yourCallback(update.value)
+});
+```
+
+- `get value` - returns value
+- `set value` - sets new value
+</details>
+
+<details>
+    <summary>TextArea</summary>
+
+```javascript
+const textarea = panel.control('textarea', {
+    name: 'Textarea input',
+    value: JSON.stringify(yourData),
+    readOnly: true,
+    listener: (update) => yourCallback(update.value)
+});
+```
+
+- `get value` - returns value
+- `set value` - sets new value
+</details>
+
+<details>
+    <summary>DropDown</summary>
+
+```javascript
+const dropdown = section.control('dropdown', {
+  name: 'Dropdown',
+  selected: 'first',
+  items: [
+    {
+      id: 'first',
+      text: 'First',
+      value: 'first',
+    },
+    {
+      id: 'second',
+      text: 'Second',
+      value: 'second',
+    },
+    {
+      id: 'third',
+      text: 'Third',
+      value: 'third',
+    },
+  ]
+});
+```
+
+- `get expanded` - returns `expaned` value
+- `set expanded` - sets `expanded` value 
+- `get selected` - returns a value of the selected item
+- `get items` - returns the items list
+- `set items` - replaces the items list
+- `toggle` - toggles `expanded` value 
+- `select(value)` - selects an item with a specific value
+</details>
+
+<details>
+    <summary>Color</summary>
+
+```javascript
+const color = section.control('color', {
+  name: 'Color',
+  value: 'rgba(19, 29, 135, 1)',
+});
+```
+
+- `get color` - returns `color` value as a CSS RGBA string
+- `set color` - sets `color` value as a CSS RGBA string
+- `get expanded` - returns `expaned` value
+- `set expanded` - sets `expanded` value 
+- `toggle` - toggles `expanded` value 
+</details>
