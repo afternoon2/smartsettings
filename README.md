@@ -2,9 +2,12 @@
 
 JS library for creating setting panels.
 
-<div style="text-align: center">
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![Codecov](https://img.shields.io/codecov/c/github/afternoon2/smartsettings) ![GitHub Release Date](https://img.shields.io/github/release-date/afternoon2/smartsettings)
 
-*Version 2.x.x*
+![GitHub top language](https://img.shields.io/github/languages/top/afternoon2/smartsettings?style=flat-square) ![npm](https://img.shields.io/npm/v/smartsettings?style=flat-square)
+
+<div style="text-align: center">
 
 ![SmartSettings Preview](https://raw.githubusercontent.com/afternoon2/smartsettings/assets/smartsettings_shot.png)
 
