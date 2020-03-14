@@ -82,6 +82,7 @@
   "resolutions": {
     "handlebars": "4.5.3",
     "serialize-javascript": "2.1.1",
-    "acorn": "7.1.1"
+    "acorn": "7.1.1",
+    "minimist": "1.2.2"
   }
 }
