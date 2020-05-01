@@ -1,88 +1,81 @@
 {
-  "name": "smartsettings",
-  "description": "Yet another JavaScript library for creating (smart) setting panels",
-  "version": "0.0.0-development",
-  "license": "MIT",
-  "author": "Jakub Antolak <poprostuantolak@gmail.com>",
-  "repository": "https://github.com/afternoon2/smartsettings",
-  "devDependencies": {
-    "@commitlint/cli": "^8.2.0",
-    "@commitlint/config-conventional": "^8.2.0",
-    "@types/jest": "^24.0.19",
-    "@types/node": "^12.11.1",
-    "@typescript-eslint/eslint-plugin": "^2.3.0",
-    "@typescript-eslint/parser": "^2.4.0",
-    "autoprefixer": "^9.6.5",
-    "awesome-typescript-loader": "^5.2.1",
-    "commitizen": "^4.0.3",
-    "css-loader": "^3.2.0",
-    "cz-lerna-changelog": "^2.0.2",
-    "eslint": "^6.5.1",
-    "eslint-config-airbnb-typescript": "^5.0.0",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.16.0",
-    "eslint-plugin-react-hooks": "^1.7.0",
-    "ghooks": "^2.0.4",
-    "husky": "^3.0.9",
-    "identity-obj-proxy": "^3.0.0",
-    "jest": "^24.9.0",
-    "jest-css-modules": "^2.1.0",
-    "jest-css-modules-transform": "^3.1.0",
-    "lerna": "^3.18.1",
-    "node-sass": "^4.13.0",
-    "postcss-loader": "^3.0.0",
-    "sass-loader": "^8.0.0",
-    "semantic-release": "^15.14.0",
-    "style-loader": "^1.0.0",
-    "terser-webpack-plugin": "^2.1.3",
-    "ts-jest": "^24.1.0",
-    "tsconfig-paths-webpack-plugin": "^3.2.0",
-    "typedoc": "^0.15.3",
-    "typescript": "^3.6.4",
-    "typings-for-css-modules-loader": "^1.7.0",
-    "utility-types": "^3.10.0",
-    "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.9",
-    "webpack-dev-server": "^3.8.2",
-    "webpack-merge": "^4.2.2"
-  },
-  "scripts": {
-    "build": "webpack --config=config/webpack.prod.js",
-    "build:dev": "webpack --config=config/webpack.dev.js",
-    "lint": "eslint -c .eslintrc.js src/ts/**/*.ts",
-    "lint:fix": "eslint -c .eslintrc.js src/ts/**/*.ts --fix",
-    "commit": "git-cz",
-    "test": "jest",
-    "docs": "typedoc --out ./docs ./src/**/*.ts",
-    "semantic-release": "semantic-release"
-  },
-  "files": [
-    "dist"
-  ],
-  "main": "dist/index.js",
-  "browserslist": [
-    "> 2%"
-  ],
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
+    "name": "smartsettings",
+    "description": "Yet another JavaScript library for creating (smart) setting panels",
+    "version": "0.0.0-development",
+    "license": "MIT",
+    "author": "Jakub Antolak <poprostuantolak@gmail.com>",
+    "repository": "https://github.com/afternoon2/smartsettings",
+    "devDependencies": {
+        "cz-conventional-changelog": "3.1.0",
+        "eslint": "^6.8.0",
+        "eslint-config-prettier": "^6.10.1",
+        "eslint-plugin-prettier": "^3.1.3",
+        "husky": "^4.2.5",
+        "prettier": "^2.0.4",
+        "rollup": "^2.6.1",
+        "rollup-plugin-typescript2": "^0.27.0",
+        "typescript": "^3.8.3",
+        "@commitlint/cli": "^8.2.0",
+        "@commitlint/config-conventional": "^8.2.0",
+        "@types/jest": "^24.0.19",
+        "@types/node": "^12.11.1",
+        "@typescript-eslint/eslint-plugin": "^2.3.0",
+        "@typescript-eslint/parser": "^2.4.0",
+        "autoprefixer": "^9.6.5",
+        "commitizen": "^4.0.3",
+        "cz-lerna-changelog": "^2.0.2",
+        "eslint-config-airbnb-typescript": "^5.0.0",
+        "eslint-plugin-import": "^2.18.2",
+        "eslint-plugin-jsx-a11y": "^6.2.3",
+        "eslint-plugin-react": "^7.16.0",
+        "eslint-plugin-react-hooks": "^1.7.0",
+        "ghooks": "^2.0.4",
+        "identity-obj-proxy": "^3.0.0",
+        "jest": "^24.9.0",
+        "jest-css-modules": "^2.1.0",
+        "jest-css-modules-transform": "^3.1.0",
+        "lerna": "^3.18.1",
+        "node-sass": "^4.13.0",
+        "semantic-release": "^15.14.0",
+        "ts-jest": "^24.1.0",
+        "tsconfig-paths-webpack-plugin": "^3.2.0",
+        "typings-for-css-modules-loader": "^1.7.0",
+        "utility-types": "^3.10.0"
+    },
+    "scripts": {
+        "build": "rollup -c && tsc",
+        "lint": "eslint . --ext .ts",
+        "lint:fix": "eslint . --ext .ts --fix",
+        "commit": "npx git-cz",
+        "build:dev": "webpack --config=config/webpack.dev.js",
+        "test": "jest"
+    },
+    "files": [
+        "dist"
+    ],
+    "main": "dist/index.js",
+    "browserslist": [
+        "> 2%"
+    ],
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/cz-conventional-changelog"
+        }
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "yarn lint:fix && yarn test",
+            "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+        }
+    },
+    "dependencies": {
+        "@simonwep/pickr": "^1.4.7",
+        "cuid": "^2.1.6"
+    },
+    "resolutions": {
+        "handlebars": "4.5.3",
+        "serialize-javascript": "2.1.1",
+        "acorn": "7.1.1",
+        "minimist": "1.2.2"
     }
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn lint:fix && yarn test",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
-  "dependencies": {
-    "@simonwep/pickr": "^1.4.7",
-    "cuid": "^2.1.6"
-  },
-  "resolutions": {
-    "handlebars": "4.5.3",
-    "serialize-javascript": "2.1.1",
-    "acorn": "7.1.1",
-    "minimist": "1.2.2"
-  }
 }

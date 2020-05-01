@@ -1,24 +1,21 @@
 module.exports = {
-  parser: '@typescript-eslint/parser',  // Specifies ESLint parser
-  extends: ['airbnb-typescript'],
-  parserOptions: {
-    ecmaVersion: 2019,
-    sourceType: 'module',
-    jsx: false,
-  },
-  rules: {
-    'import/prefer-default-export': 0,
-    'no-param-reassign': 0,
-    'import/no-extraneous-dependencies': 0
-  },
-  env: {
-    browser: true,
-    jest: true,
-  },
-  settings: {
-    react: {
-      pragma: 'React',
-      version: '16.0'
+    parser: "@typescript-eslint/parser",
+    extends: [
+        "plugin:@typescript-eslint/recommended", // Uses the recommended rules from the @typescript-eslint/eslint-plugin
+        "prettier/@typescript-eslint", // Uses eslint-config-prettier to disable ESLint rules from @typescript-eslint/eslint-plugin that would conflict with prettier
+        "plugin:prettier/recommended", // Enables eslint-plugin-prettier and eslint-config-prettier. This will display prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
+    ],
+    parserOptions: {
+        ecmaVersion: 2018, // Allows for the parsing of modern ECMAScript features
+        sourceType: "module", // Allows for the use of imports
     },
-  }
+    rules: {},
+    settings: {
+        "import/parsers": {
+            "@typescript-eslint/parser": [".ts", ".tsx"],
+        },
+        "import/resolver": {
+            typescript: {},
+        },
+    },
 };
