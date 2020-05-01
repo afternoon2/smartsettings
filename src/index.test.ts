@@ -6,4 +6,4 @@ describe('hello', () => {
 
         expect(output).toBe('hello world');
     });
-})
+});
