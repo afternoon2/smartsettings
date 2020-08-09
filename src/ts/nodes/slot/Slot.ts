@@ -158,37 +158,9 @@ export class SlotNode extends ParentNode {
   }
 
   private setBodyPosition() {
-    const { bodyElement, contentElement } = this;
-    const bodyWidth: number = contentElement.clientWidth;
-    const { left } = SlotNode.offset(bodyElement);
-    const right: number = document.documentElement.clientWidth - (left + bodyWidth);
+    const { contentElement } = this;
 
-    if (right > bodyWidth && left > bodyWidth) {
-      contentElement.style.top = '-20px';
-      contentElement.style.left = '100%';
-    } else {
-      if (left > bodyWidth) {
-        contentElement.style.top = '-20px';
-        contentElement.style.left = '100%';
-      } else {
-        if (right > bodyWidth) {
-          contentElement.style.top = '-20px';
-          contentElement.style.left = '-100%';
-        } else {
-          contentElement.style.top = '0px';
-          contentElement.style.left = '0px';
-        }
-      }
-    }
-  }
-
-  private static offset(element: HTMLElement): { [key: string]: number } {
-    const rect: DOMRect = element.getBoundingClientRect();
-    const scrollLeft: number = window.pageXOffset || document.documentElement.scrollLeft;
-    const scrollTop: number = window.pageYOffset || document.documentElement.scrollTop;
-    return {
-      top: rect.top + scrollTop,
-      left: rect.left + scrollLeft,
-    };
+    contentElement.style.top = '-20px';
+    contentElement.style.left = '100%';
   }
 }

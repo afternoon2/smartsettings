@@ -38,7 +38,7 @@ exports[`Slot node If it matches the snapshot 1`] = `
       
     <div
       class="slot__content "
-      style="top: 0px; left: 0px;"
+      style="top: -20px; left: 100%;"
     />
     
     
@@ -84,7 +84,7 @@ exports[`Slot node Open and close 1`] = `
       
     <div
       class="slot__content "
-      style="top: 0px; left: 0px;"
+      style="top: -20px; left: 100%;"
     />
     
     
@@ -130,7 +130,7 @@ exports[`Slot node Open and close 2`] = `
       
     <div
       class="slot__content "
-      style="top: 0px; left: 0px;"
+      style="top: -20px; left: 100%;"
     />
     
     
@@ -176,7 +176,7 @@ exports[`Slot node Open and close 3`] = `
       
     <div
       class="slot__content "
-      style="top: 0px; left: 0px;"
+      style="top: -20px; left: 100%;"
     />
     
     
@@ -222,7 +222,7 @@ exports[`Slot node Open and close by click 1`] = `
       
     <div
       class="slot__content "
-      style="top: 0px; left: 0px;"
+      style="top: -20px; left: 100%;"
     />
     
     
